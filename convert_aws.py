@@ -8,7 +8,6 @@ from datetime import datetime
 from PIL import Image
 
 from ocrd_utils import VERSION
-from ocrd_models import OcrdExif
 from ocrd_models.ocrd_page import (
     PcGtsType,
     PageType,
@@ -125,10 +124,6 @@ def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
     """
 
     pil_img = Image.open(img_path)
-    exif = OcrdExif(pil_img)
-    pil_img.close()
-
-    width, height = exif.width, exif.height
     now = datetime.now()
     pc_gts_type = PcGtsType(
         Metadata=MetadataType(
@@ -136,8 +131,8 @@ def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
         )
     )
     pagexml_page = PageType(
-        imageWidth=width,
-        imageHeight=height,
+        imageWidth=pil_img.width,
+        imageHeight=pil_img.height,
         imageFilename=f"images/{os.path.basename(img_path)}",
     )
     pc_gts_type.set_Page(pagexml_page)
@@ -162,8 +157,8 @@ def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
         Coords=CoordsType(
             points=points_from_awsgeometry(
                 TextractBoundingBox(page_block["Geometry"]["BoundingBox"]),
-                width,
-                height,
+                pil_img.width,
+                pil_img.height,
             )
         ),
         id=f'page-xml-{page_block["Id"]}',
@@ -184,8 +179,8 @@ def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
             Coords=CoordsType(
                 points=points_from_awsgeometry(
                     TextractBoundingBox(line_block["Geometry"]["BoundingBox"]),
-                    width,
-                    height,
+                    pil_img.width,
+                    pil_img.height,
                 )
             ),
             id=f'page-xml-{line_block["Id"]}',
@@ -207,8 +202,8 @@ def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
                 Coords=CoordsType(
                     points=points_from_awsgeometry(
                         TextractBoundingBox(word_block["Geometry"]["BoundingBox"]),
-                        width,
-                        height,
+                        pil_img.width,
+                        pil_img.height,
                     )
                 ),
                 id=f'page-xml-{word_block["Id"]}',
