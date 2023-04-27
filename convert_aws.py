@@ -22,7 +22,7 @@ from ocrd_models.ocrd_page import to_xml
 import json
 import math
 
-from typing import List
+from typing import List, Dict
 from dataclasses import dataclass
 from functools import singledispatch
 
@@ -43,6 +43,9 @@ class TextractPoint:
 class TextractPolygon:
     points: List[TextractPoint]
 
+    def __init__(self, polygon_dict: Dict[str, float]):
+        pass
+
     def __post_init__(self):
         if len(self.points) < 3:
             raise ValueError("A polygon must have at least 3 points.")
@@ -54,6 +57,12 @@ class TextractBoundingBox:
     top: float
     width: float
     height: float
+
+    def __init__(self, bbox_dict: Dict[str, float]):
+        self.left = bbox_dict["Left"]
+        self.top = bbox_dict["Top"]
+        self.width = bbox_dict["Width"]
+        self.height = bbox_dict["Height"]
 
     def __post_init__(self):
         if not 0 <= self.left <= 1:
@@ -158,12 +167,7 @@ def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
         TextEquiv=[TextEquivType(Unicode=page_block["childText"])],
         Coords=CoordsType(
             points=points_from_awsgeometry(
-                TextractBoundingBox(
-                    left=page_block["Geometry"]["BoundingBox"]["Left"],
-                    top=page_block["Geometry"]["BoundingBox"]["Top"],
-                    width=page_block["Geometry"]["BoundingBox"]["Width"],
-                    height=page_block["Geometry"]["BoundingBox"]["Height"],
-                ),
+                TextractBoundingBox(page_block["Geometry"]["BoundingBox"]),
                 width,
                 height,
             )
@@ -185,12 +189,7 @@ def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
             TextEquiv=[TextEquivType(Unicode=line_block["childText"])],
             Coords=CoordsType(
                 points=points_from_awsgeometry(
-                    TextractBoundingBox(
-                        left=line_block["Geometry"]["BoundingBox"]["Left"],
-                        top=line_block["Geometry"]["BoundingBox"]["Top"],
-                        width=line_block["Geometry"]["BoundingBox"]["Width"],
-                        height=line_block["Geometry"]["BoundingBox"]["Height"],
-                    ),
+                    TextractBoundingBox(line_block["Geometry"]["BoundingBox"]),
                     width,
                     height,
                 )
@@ -213,12 +212,7 @@ def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
                 TextEquiv=[TextEquivType(Unicode=word_block["Text"])],
                 Coords=CoordsType(
                     points=points_from_awsgeometry(
-                        TextractBoundingBox(
-                            left=word_block["Geometry"]["BoundingBox"]["Left"],
-                            top=word_block["Geometry"]["BoundingBox"]["Top"],
-                            width=word_block["Geometry"]["BoundingBox"]["Width"],
-                            height=word_block["Geometry"]["BoundingBox"]["Height"],
-                        ),
+                        TextractBoundingBox(word_block["Geometry"]["BoundingBox"]),
                         width,
                         height,
                     )
