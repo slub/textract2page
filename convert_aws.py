@@ -45,7 +45,7 @@ class TextractPolygon:
 
     def __post_init__(self):
         if len(self.points) < 3:
-            raise ValueError("A polygon must at least have 3 points.")
+            raise ValueError("A polygon must have at least 3 points.")
 
 
 @dataclass
