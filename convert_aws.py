@@ -1,4 +1,5 @@
 from datetime import datetime
+
 import os
 
 
@@ -21,19 +22,72 @@ from ocrd_models.ocrd_page import to_xml
 import json
 import math
 
+from typing import List
+from dataclasses import dataclass
+from functools import singledispatch
 
-def aws_bbox_to_page_points(bbox: dict, page_width: int, page_height: int) -> str:
-    left = bbox["Left"]
-    top = bbox["Top"]
-    width = bbox["Width"]
-    height = bbox["Height"]
 
-    x1 = math.ceil(left * page_width)
-    y1 = math.ceil(top * page_height)
-    x2 = math.ceil((left + width) * page_width)
+@dataclass
+class TextractPoint:
+    x: float
+    y: float
+
+    def __post_init__(self):
+        if not 0 <= self.x <= 1:
+            raise ValueError("x coordinate must be in the interval [0, 1].")
+        if not 0 <= self.y <= 1:
+            raise ValueError("y coordinate must be in the interval [0, 1].")
+
+
+@dataclass
+class TextractPolygon:
+    points: List[TextractPoint]
+
+    def __post_init__(self):
+        if len(self.points) < 3:
+            raise ValueError("A polygon must at least have 3 points.")
+
+
+@dataclass
+class TextractBoundingBox:
+    left: float
+    top: float
+    width: float
+    height: float
+
+    def __post_init__(self):
+        if not 0 <= self.left <= 1:
+            raise ValueError("left must be in the interval [0, 1].")
+        if not 0 <= self.top <= 1:
+            raise ValueError("top must be in the interval [0, 1].")
+        if not 0 <= self.width <= 1:
+            raise ValueError("width must be in the interval [0, 1].")
+        if not 0 <= self.height <= 1:
+            raise ValueError("height must be in the interval [0, 1].")
+
+
+@singledispatch
+def points_from_awsgeometry(textract_geom, page_width, page_height):
+    """Convert a Textract geomerty into a string of points, which are
+    scaled to the image width and height."""
+
+    raise NotImplementedError(
+        f"Cannot process this type of data ({type(textract_geom)})"
+    )
+
+
+@points_from_awsgeometry.register
+def _(textract_geom: TextractBoundingBox, page_width: int, page_height: int) -> str:
+    """Convert a TextractBoundingBox into a string of points in the order top,left
+    top,right bottom,right bottom,left.
+    """
+
+    x1 = math.ceil(textract_geom.left * page_width)
+    y1 = math.ceil(textract_geom.top * page_height)
+    x2 = math.ceil((textract_geom.left + textract_geom.width) * page_width)
     y2 = y1
     x3 = x2
-    y3 = math.ceil((top + height) * page_height)
+    y3 = math.ceil((textract_geom.top + textract_geom.height) * page_height)
     x4 = x1
     y4 = y3
 
@@ -42,9 +96,15 @@ def aws_bbox_to_page_points(bbox: dict, page_width: int, page_height: int) -> st
     return points
 
 
-def parse_aws_json(img_path: str, json_path: str, out_path: str) -> str:
-    """
-    Parse an AWS-JSON to PAGE-XML. Requires the original
+@points_from_awsgeometry.register
+def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
+    """Convert a TextractPolygon into a string of points."""
+
+    print("convert polygon")
+
+
+def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
+    """Convert an AWS-Textract-JSON to PAGE-XML. Requires the original
     input image of AWS-OCR to get absolute image coordinates.
 
     Amazon Documentation: https://docs.aws.amazon.com/textract/latest/dg/how-it-works-document-layout.html
@@ -97,8 +157,15 @@ def parse_aws_json(img_path: str, json_path: str, out_path: str) -> str:
     pagexml_text_region = TextRegionType(
         TextEquiv=[TextEquivType(Unicode=page_block["childText"])],
         Coords=CoordsType(
-            points=aws_bbox_to_page_points(
-                page_block["Geometry"]["BoundingBox"], width, height
+            points=points_from_awsgeometry(
+                TextractBoundingBox(
+                    left=page_block["Geometry"]["BoundingBox"]["Left"],
+                    top=page_block["Geometry"]["BoundingBox"]["Top"],
+                    width=page_block["Geometry"]["BoundingBox"]["Width"],
+                    height=page_block["Geometry"]["BoundingBox"]["Height"],
+                ),
+                width,
+                height,
             )
         ),
         id=f'page-xml-{page_block["Id"]}',
@@ -117,8 +184,15 @@ def parse_aws_json(img_path: str, json_path: str, out_path: str) -> str:
         pagexml_text_line = TextLineType(
             TextEquiv=[TextEquivType(Unicode=line_block["childText"])],
             Coords=CoordsType(
-                points=aws_bbox_to_page_points(
-                    line_block["Geometry"]["BoundingBox"], width, height
+                points=points_from_awsgeometry(
+                    TextractBoundingBox(
+                        left=line_block["Geometry"]["BoundingBox"]["Left"],
+                        top=line_block["Geometry"]["BoundingBox"]["Top"],
+                        width=line_block["Geometry"]["BoundingBox"]["Width"],
+                        height=line_block["Geometry"]["BoundingBox"]["Height"],
+                    ),
+                    width,
+                    height,
                 )
             ),
             id=f'page-xml-{line_block["Id"]}',
@@ -138,8 +212,15 @@ def parse_aws_json(img_path: str, json_path: str, out_path: str) -> str:
             pagexml_word = WordType(
                 TextEquiv=[TextEquivType(Unicode=word_block["Text"])],
                 Coords=CoordsType(
-                    points=aws_bbox_to_page_points(
-                        word_block["Geometry"]["BoundingBox"], width, height
+                    points=points_from_awsgeometry(
+                        TextractBoundingBox(
+                            left=word_block["Geometry"]["BoundingBox"]["Left"],
+                            top=word_block["Geometry"]["BoundingBox"]["Top"],
+                            width=word_block["Geometry"]["BoundingBox"]["Width"],
+                            height=word_block["Geometry"]["BoundingBox"]["Height"],
+                        ),
+                        width,
+                        height,
                     )
                 ),
                 id=f'page-xml-{word_block["Id"]}',
@@ -150,8 +231,8 @@ def parse_aws_json(img_path: str, json_path: str, out_path: str) -> str:
         f.write(to_xml(pc_gts_type))
 
 
-# page_xml = parse_aws_json(
-#     "google-ocr-testbed/images/18xx-Missio-EMU-0042.jpg",
-#     "google-ocr-testbed/aws_json/18xx-Missio-EMU.json",
-#     "google-ocr-testbed/test_workspace/page/18xx-Missio-EMU-0042.xml",
-# )
+page_xml = convert_textract(
+    "workspace/images/18xx-Missio-EMU-0042.jpg",
+    "workspace/textract/18xx-Missio-EMU.json",
+    "workspace/page/18xx-Missio-EMU-0042.xml",
+)
