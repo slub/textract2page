@@ -1,8 +1,10 @@
-from datetime import datetime
-
 import os
-
-
+import json
+import math
+from typing import List, Dict
+from dataclasses import dataclass
+from functools import singledispatch
+from datetime import datetime
 from PIL import Image
 
 from ocrd_utils import VERSION
@@ -17,15 +19,7 @@ from ocrd_models.ocrd_page import (
     TextLineType,
     WordType,
 )
-
 from ocrd_models.ocrd_page import to_xml
-import json
-import math
-
-from typing import List, Dict
-from dataclasses import dataclass
-from functools import singledispatch
-
 
 @dataclass
 class TextractPoint:
