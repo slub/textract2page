@@ -52,10 +52,10 @@ class TextractBoundingBox:
     height: float
 
     def __init__(self, bbox_dict: Dict[str, float]):
-        self.left = bbox_dict["Left"]
-        self.top = bbox_dict["Top"]
-        self.width = bbox_dict["Width"]
-        self.height = bbox_dict["Height"]
+        self.left = bbox_dict.get("Left", -1)
+        self.top = bbox_dict.get("Top", -1)
+        self.width = bbox_dict.get("Width", -1)
+        self.height = bbox_dict.get("Height", -1)
 
     def __post_init__(self):
         if not 0 <= self.left <= 1:
@@ -70,7 +70,7 @@ class TextractBoundingBox:
 
 @singledispatch
 def points_from_awsgeometry(textract_geom, page_width, page_height):
-    """Convert a Textract geomerty into a string of points, which are
+    """Convert a Textract geometry into a string of points, which are
     scaled to the image width and height."""
 
     raise NotImplementedError(
