@@ -20,6 +20,7 @@ from ocrd_models.ocrd_page import (
 )
 from ocrd_models.ocrd_page import to_xml
 
+
 @dataclass
 class TextractPoint:
     x: float
@@ -105,7 +106,7 @@ def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     print("convert polygon")
 
 
-def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
+def convert_file(img_path: str, json_path: str, out_path: str) -> str:
     """Convert an AWS-Textract-JSON to PAGE-XML. Requires the original
     input image of AWS-OCR to get absolute image coordinates.
 
@@ -212,10 +213,3 @@ def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
 
     with open(out_path, "w") as f:
         f.write(to_xml(pc_gts_type))
-
-
-page_xml = convert_textract(
-    "workspace/images/18xx-Missio-EMU-0042.jpg",
-    "workspace/textract/18xx-Missio-EMU.json",
-    "workspace/page/18xx-Missio-EMU-0042.xml",
-)
