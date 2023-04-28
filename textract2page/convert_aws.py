@@ -171,7 +171,7 @@ def convert_file(img_path: str, json_path: str, out_path: str) -> str:
                                            pil_img.height,
             )
         ),
-        id=f'page-xml-{page_block["Id"]}',
+        id=f'region-{page_block["Id"]}',
     )
     if "Text" in page_block:
         pagexml_text_region.add_TextEquiv(TextEquivType(Unicode=page_block["Text"]))
@@ -197,7 +197,7 @@ def convert_file(img_path: str, json_path: str, out_path: str) -> str:
                                                pil_img.height,
                 )
             ),
-            id=f'page-xml-{line_block["Id"]}',
+            id=f'line-{line_block["Id"]}',
         )
         if "Text" in line_block:
             pagexml_text_line.add_TextEquiv(TextEquivType(Unicode=line_block["Text"]))
@@ -220,7 +220,7 @@ def convert_file(img_path: str, json_path: str, out_path: str) -> str:
                                                    pil_img.height,
                     )
                 ),
-                id=f'page-xml-{word_block["Id"]}',
+                id=f'word-{word_block["Id"]}',
             )
             if "Text" in word_block:
                 pagexml_word.add_TextEquiv(TextEquivType(Unicode=word_block["Text"]))
