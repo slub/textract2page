@@ -1,0 +1,1 @@
+from textract2page.textract2page import textract2page

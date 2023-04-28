@@ -136,7 +136,7 @@ def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     )
 
 
-def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
+def textract2page(json_path: str, img_path: str, out_path: str) -> str:
     """Convert an AWS-Textract-JSON to PAGE-XML. Requires the original
     input image of AWS-OCR to get absolute image coordinates.
 
@@ -148,8 +148,8 @@ def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
     AWS WORD block is mapped to to Word.
 
     Arguments:
-        img_path (str): path to JPEG file
         json_path (str): path to JSON file
+        img_path (str): path to JPEG file
         out_path (str): path to output file (<path>/<filename>.xml)
 
     """
@@ -185,13 +185,6 @@ def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
             line_blocks[block["Id"]] = block
         if block["BlockType"] == "WORD":
             word_blocks[block["Id"]] = block
-
-    poly = TextractPolygon(page_block["Geometry"]["Polygon"])
-    print(poly)
-    print(points_from_awsgeometry(poly, width, height))
-    bbox = poly.get_bounding_box()
-    print(bbox)
-    print(points_from_awsgeometry(bbox, width, height))
 
     # TextRegion from PAGE-block
     pagexml_text_region = TextRegionType(
@@ -254,10 +247,3 @@ def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
 
     with open(out_path, "w") as f:
         f.write(to_xml(pc_gts_type))
-
-
-page_xml = convert_textract(
-    "workspace/images/18xx-Missio-EMU-0042.jpg",
-    "workspace/textract/18xx-Missio-EMU.json",
-    "workspace/page/18xx-Missio-EMU-0042.xml",
-)
