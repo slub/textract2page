@@ -36,8 +36,10 @@ class TextractPoint:
 class TextractPolygon:
     points: List[TextractPoint]
 
-    def __init__(self, polygon_dict: Dict[str, float]):
-        pass
+    def __init__(self, polygon: List[Dict[str, float]]):
+        self.points = [TextractPoint(point.get("X", -1),
+                                     point.get("Y", -1))
+                       for point in polygon]
 
     def __post_init__(self):
         if len(self.points) < 3:
@@ -102,7 +104,10 @@ def _(textract_geom: TextractBoundingBox, page_width: int, page_height: int) -> 
 def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     """Convert a TextractPolygon into a string of points."""
 
-    print("convert polygon")
+    points = " ".join(f"{math.ceil(point.x)},{math.ceil(point.y}"
+                      for point in textract_geom.points)
+
+    return points
 
 
 def convert_file(img_path: str, json_path: str, out_path: str) -> str:
@@ -154,14 +159,18 @@ def convert_file(img_path: str, json_path: str, out_path: str) -> str:
         if block["BlockType"] == "WORD":
             word_blocks[block["Id"]] = block
 
+    # prefer Polygon over BoundingBox
+    if "Polygon" in page_block["Geometry"]:
+        awsgeometry = TextractPolygon(page_block["Geometry"]["Polygon"])
+    else:
+        awsgeometry = TextractBoundingBox(page_block["Geometry"]["BoundingBox"])
     # TextRegion from PAGE-block
     pagexml_text_region = TextRegionType(
         TextEquiv=[TextEquivType(Unicode=page_block["childText"])],
         Coords=CoordsType(
-            points=points_from_awsgeometry(
-                TextractBoundingBox(page_block["Geometry"]["BoundingBox"]),
-                pil_img.width,
-                pil_img.height,
+            points=points_from_awsgeometry(awsgeometry,
+                                           pil_img.width,
+                                           pil_img.height,
             )
         ),
         id=f'page-xml-{page_block["Id"]}',
