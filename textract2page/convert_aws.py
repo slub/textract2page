@@ -1,4 +1,3 @@
-import os
 import json
 import math
 from typing import List, Dict
@@ -117,10 +116,13 @@ def convert_file(img_path: str, json_path: str, out_path: str) -> str:
     AWS LINE block is mapped to to TextLine.
     AWS WORD block is mapped to to Word.
 
+    Output file will reference the image file under `Page/@imageFilename`
+    with its full path. So you may want to use a relative path.
+
     Arguments:
         img_path (str): path to JPEG file
-        json_path (str): path to JSON file
-        out_path (str): path to output file (<path>/<filename>.xml)
+        json_path (str): path to input JSON file
+        out_path (str): path to output XML file
 
     """
 
@@ -134,7 +136,7 @@ def convert_file(img_path: str, json_path: str, out_path: str) -> str:
     pagexml_page = PageType(
         imageWidth=pil_img.width,
         imageHeight=pil_img.height,
-        imageFilename=f"images/{os.path.basename(img_path)}",
+        imageFilename=img_path,
     )
     pc_gts_type.set_Page(pagexml_page)
 
