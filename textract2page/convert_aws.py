@@ -110,9 +110,12 @@ def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     return points
 
 
-def convert_file(img_path: str, json_path: str, out_path: str) -> str:
-    """Convert an AWS-Textract-JSON to PAGE-XML. Requires the original
-    input image of AWS-OCR to get absolute image coordinates.
+def convert_file(img_path: str, json_path: str, out_path: str) -> None:
+    """Convert an AWS-Textract-JSON file to a PAGE-XML file.
+
+    Also requires the original input image of AWS OCR to get absolute image coordinates.
+    Output file will reference the image file under `Page/@imageFilename`
+    with its full path. (So you may want to use a relative path.)
 
     Amazon Documentation: https://docs.aws.amazon.com/textract/latest/dg/how-it-works-document-layout.html
 
@@ -120,9 +123,6 @@ def convert_file(img_path: str, json_path: str, out_path: str) -> str:
     AWS PAGE block is mapped to to TextRegion.
     AWS LINE block is mapped to to TextLine.
     AWS WORD block is mapped to to Word.
-
-    Output file will reference the image file under `Page/@imageFilename`
-    with its full path. So you may want to use a relative path.
 
     Arguments:
         img_path (str): path to JPEG file
@@ -168,8 +168,7 @@ def convert_file(img_path: str, json_path: str, out_path: str) -> str:
         Coords=CoordsType(
             points=points_from_awsgeometry(awsgeometry,
                                            pil_img.width,
-                                           pil_img.height,
-            )
+                                           pil_img.height)
         ),
         id=f'region-{page_block["Id"]}',
     )
@@ -194,8 +193,7 @@ def convert_file(img_path: str, json_path: str, out_path: str) -> str:
             Coords=CoordsType(
                 points=points_from_awsgeometry(awsgeometry,
                                                pil_img.width,
-                                               pil_img.height,
-                )
+                                               pil_img.height)
             ),
             id=f'line-{line_block["Id"]}',
         )
@@ -217,8 +215,7 @@ def convert_file(img_path: str, json_path: str, out_path: str) -> str:
                 Coords=CoordsType(
                     points=points_from_awsgeometry(awsgeometry,
                                                    pil_img.width,
-                                                   pil_img.height,
-                    )
+                                                   pil_img.height)
                 ),
                 id=f'word-{word_block["Id"]}',
             )
