@@ -104,7 +104,7 @@ def _(textract_geom: TextractBoundingBox, page_width: int, page_height: int) -> 
 def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     """Convert a TextractPolygon into a string of points."""
 
-    points = " ".join(f"{math.ceil(point.x)},{math.ceil(point.y}"
+    points = " ".join(f"{math.ceil(point.x)},{math.ceil(point.y)}"
                       for point in textract_geom.points)
 
     return points
@@ -159,14 +159,12 @@ def convert_file(img_path: str, json_path: str, out_path: str) -> str:
         if block["BlockType"] == "WORD":
             word_blocks[block["Id"]] = block
 
-    # prefer Polygon over BoundingBox
     if "Polygon" in page_block["Geometry"]:
         awsgeometry = TextractPolygon(page_block["Geometry"]["Polygon"])
     else:
         awsgeometry = TextractBoundingBox(page_block["Geometry"]["BoundingBox"])
     # TextRegion from PAGE-block
     pagexml_text_region = TextRegionType(
-        TextEquiv=[TextEquivType(Unicode=page_block["childText"])],
         Coords=CoordsType(
             points=points_from_awsgeometry(awsgeometry,
                                            pil_img.width,
@@ -175,52 +173,58 @@ def convert_file(img_path: str, json_path: str, out_path: str) -> str:
         ),
         id=f'page-xml-{page_block["Id"]}',
     )
-    pagexml_page.insert_TextRegion_at(0, pagexml_text_region)
+    if "Text" in page_block:
+        pagexml_text_region.add_TextEquiv(TextEquivType(Unicode=page_block["Text"]))
+    pagexml_page.add_TextRegion(pagexml_text_region)
 
     # AWS-Documentation: PAGE, LINE, and WORD blocks are related to each
     # other in a  parent-to-child relationship.
 
     # TextLine from LINE blocks that are listed in the PAGE-block's
     # child relationships
-    for i, line_block_id in enumerate(
-        [rel["Ids"] for rel in page_block["Relationships"] if rel["Type"] == "CHILD"][0]
-    ):
+    for line_block_id in [rel["Ids"]
+                          for rel in page_block.get("Relationships", [])
+                          if rel["Type"] == "CHILD"][0]:
         line_block = line_blocks[line_block_id]
+        if "Polygon" in line_block["Geometry"]:
+            awsgeometry = TextractPolygon(line_block["Geometry"]["Polygon"])
+        else:
+            awsgeometry = TextractBoundingBox(line_block["Geometry"]["BoundingBox"])
         pagexml_text_line = TextLineType(
-            TextEquiv=[TextEquivType(Unicode=line_block["childText"])],
             Coords=CoordsType(
-                points=points_from_awsgeometry(
-                    TextractBoundingBox(line_block["Geometry"]["BoundingBox"]),
-                    pil_img.width,
-                    pil_img.height,
+                points=points_from_awsgeometry(awsgeometry,
+                                               pil_img.width,
+                                               pil_img.height,
                 )
             ),
             id=f'page-xml-{line_block["Id"]}',
         )
-        pagexml_text_region.insert_TextLine_at(i, pagexml_text_line)
+        if "Text" in line_block:
+            pagexml_text_line.add_TextEquiv(TextEquivType(Unicode=line_block["Text"]))
+        pagexml_text_region.add_TextLine(pagexml_text_line)
 
         # Word from WORD blocks that are listed in the LINE-block's
         # child relationships
-        for i, word_block_id in enumerate(
-            [
-                rel["Ids"]
-                for rel in line_block["Relationships"]
-                if rel["Type"] == "CHILD"
-            ][0]
-        ):
+        for word_block_id in [rel["Ids"]
+                              for rel in line_block.get("Relationships", [])
+                              if rel["Type"] == "CHILD"][0]:
             word_block = word_blocks[word_block_id]
+            if "Polygon" in word_block["Geometry"]:
+                awsgeometry = TextractPolygon(word_block["Geometry"]["Polygon"])
+            else:
+                awsgeometry = TextractBoundingBox(word_block["Geometry"]["BoundingBox"])
             pagexml_word = WordType(
-                TextEquiv=[TextEquivType(Unicode=word_block["Text"])],
                 Coords=CoordsType(
-                    points=points_from_awsgeometry(
-                        TextractBoundingBox(word_block["Geometry"]["BoundingBox"]),
-                        pil_img.width,
-                        pil_img.height,
+                    points=points_from_awsgeometry(awsgeometry,
+                                                   pil_img.width,
+                                                   pil_img.height,
                     )
                 ),
                 id=f'page-xml-{word_block["Id"]}',
             )
-            pagexml_text_line.insert_Word_at(i, pagexml_word)
+            if "Text" in word_block:
+                pagexml_word.add_TextEquiv(TextEquivType(Unicode=word_block["Text"]))
+            pagexml_text_line.add_Word(pagexml_word)
 
     with open(out_path, "w") as f:
         f.write(to_xml(pc_gts_type))
