@@ -33,20 +33,6 @@ class TextractPoint:
 
 
 @dataclass
-class TextractPolygon:
-    points: List[TextractPoint]
-
-    def __init__(self, polygon: List[Dict[str, float]]):
-        self.points = [TextractPoint(point.get("X", -1),
-                                     point.get("Y", -1))
-                       for point in polygon]
-
-    def __post_init__(self):
-        if len(self.points) < 3:
-            raise ValueError("A polygon must have at least 3 points.")
-
-
-@dataclass
 class TextractBoundingBox:
     left: float
     top: float
@@ -61,14 +47,41 @@ class TextractBoundingBox:
 
     def __post_init__(self):
         if not 0 <= self.left <= 1:
-            raise ValueError("left must be in the interval [0, 1].")
+            raise ValueError("Left must be in the interval [0, 1].")
         if not 0 <= self.top <= 1:
-            raise ValueError("top must be in the interval [0, 1].")
+            raise ValueError("Top must be in the interval [0, 1].")
         if not 0 <= self.width <= 1:
-            raise ValueError("width must be in the interval [0, 1].")
+            raise ValueError("Width must be in the interval [0, 1].")
         if not 0 <= self.height <= 1:
-            raise ValueError("height must be in the interval [0, 1].")
+            raise ValueError("Height must be in the interval [0, 1].")
+        if self.width + self.left > 1:
+            raise ValueError("Sum of left and width must not exceed 1.")
+        if self.height + self.top > 1:
+            raise ValueError("Sum of top and height must not exceed 1.")
 
+@dataclass
+class TextractPolygon:
+    points: List[TextractPoint]
+
+    def __init__(self, polygon: List[Dict[str, float]]):
+        self.points = [TextractPoint(point.get("X", -1),
+                                     point.get("Y", -1))
+                       for point in polygon]
+
+    def __post_init__(self):
+        if len(self.points) < 3:
+            raise ValueError("A polygon must have at least 3 points.")
+
+    def get_bounding_box(self) -> TextractBoundingBox:
+        x_coords = [p.x for p in self.points]
+        y_coords = [p.y for p in self.points]
+        bbox_dict = {
+            "Left": min(x_coords),
+            "Top": min(y_coords),
+            "Width": max(x_coords) - min(x_coords),
+            "Height": max(y_coords) - min(y_coords),
+        }
+        return TextractBoundingBox(bbox_dict)
 
 @singledispatch
 def points_from_awsgeometry(textract_geom, page_width, page_height):
@@ -81,7 +94,9 @@ def points_from_awsgeometry(textract_geom, page_width, page_height):
 
 
 @points_from_awsgeometry.register
-def _(textract_geom: TextractBoundingBox, page_width: int, page_height: int) -> str:
+def _(
+    textract_geom: TextractBoundingBox, page_width: int, page_height: int
+) -> str:
     """Convert a TextractBoundingBox into a string of points in the order top,left
     top,right bottom,right bottom,left.
     """
@@ -125,10 +140,9 @@ def convert_file(img_path: str, json_path: str, out_path: str) -> None:
     AWS WORD block is mapped to to Word.
 
     Arguments:
-        img_path (str): path to JPEG file
         json_path (str): path to input JSON file
+        img_path (str): path to input JPEG file
         out_path (str): path to output XML file
-
     """
 
     pil_img = Image.open(img_path)
