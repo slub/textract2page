@@ -26,11 +26,8 @@ class TextractPoint:
     y: float
 
     def __post_init__(self):
-        if not 0 <= self.x <= 1:
-            raise ValueError("x coordinate must be in the interval [0, 1].")
-        if not 0 <= self.y <= 1:
-            raise ValueError("y coordinate must be in the interval [0, 1].")
-
+        assert 0 <= self.x <= 1, self
+        assert 0 <= self.y <= 1, self
 
 @dataclass
 class TextractBoundingBox:
@@ -44,20 +41,15 @@ class TextractBoundingBox:
         self.top = bbox_dict.get("Top", -1)
         self.width = bbox_dict.get("Width", -1)
         self.height = bbox_dict.get("Height", -1)
+        self.__post_init__()
 
     def __post_init__(self):
-        if not 0 <= self.left <= 1:
-            raise ValueError("Left must be in the interval [0, 1].")
-        if not 0 <= self.top <= 1:
-            raise ValueError("Top must be in the interval [0, 1].")
-        if not 0 <= self.width <= 1:
-            raise ValueError("Width must be in the interval [0, 1].")
-        if not 0 <= self.height <= 1:
-            raise ValueError("Height must be in the interval [0, 1].")
-        if self.width + self.left > 1:
-            raise ValueError("Sum of left and width must not exceed 1.")
-        if self.height + self.top > 1:
-            raise ValueError("Sum of top and height must not exceed 1.")
+        assert 0 <= self.left <= 1, self
+        assert 0 <= self.top <= 1, self
+        assert 0 <= self.width <= 1, self
+        assert 0 <= self.height <= 1, self
+        assert self.width + self.left <= 1, self
+        assert self.height + self.top <= 1, self
 
 @dataclass
 class TextractPolygon:
@@ -67,10 +59,10 @@ class TextractPolygon:
         self.points = [TextractPoint(point.get("X", -1),
                                      point.get("Y", -1))
                        for point in polygon]
+        self.__post_init__()
 
     def __post_init__(self):
-        if len(self.points) < 3:
-            raise ValueError("A polygon must have at least 3 points.")
+        assert len(self.points) >= 3, len(self.points)
 
     def get_bounding_box(self) -> TextractBoundingBox:
         x_coords = [p.x for p in self.points]
