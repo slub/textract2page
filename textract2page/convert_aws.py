@@ -104,7 +104,7 @@ def _(textract_geom: TextractBoundingBox, page_width: int, page_height: int) -> 
 def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     """Convert a TextractPolygon into a string of points."""
 
-    points = " ".join(f"{math.ceil(point.x)},{math.ceil(point.y)}"
+    points = " ".join(f"{math.ceil(point.x * page_width)},{math.ceil(point.y * page_height)}"
                       for point in textract_geom.points)
 
     return points
