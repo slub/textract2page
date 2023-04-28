@@ -2,7 +2,6 @@ from datetime import datetime
 
 import os
 
-
 from PIL import Image
 
 from ocrd_utils import VERSION
@@ -105,7 +104,9 @@ def points_from_awsgeometry(textract_geom, page_width, page_height):
 
 
 @points_from_awsgeometry.register
-def _(textract_geom: TextractBoundingBox, page_width: int, page_height: int) -> str:
+def _(
+    textract_geom: TextractBoundingBox, page_width: int, page_height: int
+) -> str:
     """Convert a TextractBoundingBox into a string of points in the order top,left
     top,right bottom,right bottom,left.
     """
@@ -206,7 +207,11 @@ def textract2page(json_path: str, img_path: str, out_path: str) -> str:
     # TextLine from LINE blocks that are listed in the PAGE-block's
     # child relationships
     for i, line_block_id in enumerate(
-        [rel["Ids"] for rel in page_block["Relationships"] if rel["Type"] == "CHILD"][0]
+        [
+            rel["Ids"]
+            for rel in page_block["Relationships"]
+            if rel["Type"] == "CHILD"
+        ][0]
     ):
         line_block = line_blocks[line_block_id]
         pagexml_text_line = TextLineType(
@@ -236,7 +241,9 @@ def textract2page(json_path: str, img_path: str, out_path: str) -> str:
                 TextEquiv=[TextEquivType(Unicode=word_block["Text"])],
                 Coords=CoordsType(
                     points=points_from_awsgeometry(
-                        TextractBoundingBox(word_block["Geometry"]["BoundingBox"]),
+                        TextractBoundingBox(
+                            word_block["Geometry"]["BoundingBox"]
+                        ),
                         width,
                         height,
                     )

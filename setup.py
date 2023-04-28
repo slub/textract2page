@@ -23,7 +23,14 @@ setup(
     long_description=long_description,
     long_description_content_type="text/x-rst",
     url="https://github.com/rue-a/textract2page",
+    license="MIT",
     packages=find_packages(".", exclude=["tests", "tests.*"]),
+    install_requires=["ocrd>=2.49.0", "Pillow>=9.5.0"],
+    entry_points={
+        "console_scripts": [
+            "textract2page = textract2page.cli:textract2page_cli"
+        ]
+    },
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",

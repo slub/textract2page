@@ -31,3 +31,9 @@ textract2page(
 )
 
 ```
+
+### CLI
+
+```bash
+textract2page --json_path "textract.json" --img_path "img.jpg" --out_path "page.xml"
+```
