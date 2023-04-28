@@ -40,18 +40,6 @@ class TextractPoint:
 
 
 @dataclass
-class TextractPolygon:
-    points: List[TextractPoint]
-
-    def __init__(self, polygon_dict: Dict[str, float]):
-        pass
-
-    def __post_init__(self):
-        if len(self.points) < 3:
-            raise ValueError("A polygon must have at least 3 points.")
-
-
-@dataclass
 class TextractBoundingBox:
     left: float
     top: float
@@ -66,13 +54,44 @@ class TextractBoundingBox:
 
     def __post_init__(self):
         if not 0 <= self.left <= 1:
-            raise ValueError("left must be in the interval [0, 1].")
+            raise ValueError("Left must be in the interval [0, 1].")
         if not 0 <= self.top <= 1:
-            raise ValueError("top must be in the interval [0, 1].")
+            raise ValueError("Top must be in the interval [0, 1].")
         if not 0 <= self.width <= 1:
-            raise ValueError("width must be in the interval [0, 1].")
+            raise ValueError("Width must be in the interval [0, 1].")
         if not 0 <= self.height <= 1:
-            raise ValueError("height must be in the interval [0, 1].")
+            raise ValueError("Height must be in the interval [0, 1].")
+        if self.width + self.left > 1:
+            raise ValueError("Sum of left and width must not exceed 1.")
+        if self.height + self.top > 1:
+            raise ValueError("Sum of top and height must not exceed 1.")
+
+
+@dataclass
+class TextractPolygon:
+    points: List[TextractPoint]
+
+    def __init__(self, polygon_dict: List[Dict[str, float]]):
+        self.points = []
+        for point in polygon_dict:
+            point = TextractPoint(point["X"], point["Y"])
+            self.points.append(point)
+
+    def __post_init__(self):
+        if len(self.points) < 3:
+            raise ValueError("A polygon must have at least 3 points.")
+
+    def get_bounding_box(self) -> TextractBoundingBox:
+        x_coords = [p.x for p in self.points]
+        y_coords = [p.y for p in self.points]
+        bbox_dict = {
+            "Left": min(x_coords),
+            "Top": min(y_coords),
+            "Width": max(x_coords) - min(x_coords),
+            "Height": max(y_coords) - min(y_coords),
+        }
+
+        return TextractBoundingBox(bbox_dict)
 
 
 @singledispatch
@@ -109,7 +128,12 @@ def _(textract_geom: TextractBoundingBox, page_width: int, page_height: int) -> 
 def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     """Convert a TextractPolygon into a string of points."""
 
-    print("convert polygon")
+    return " ".join(
+        [
+            f"{math.ceil(p.x*page_width)},{math.ceil(p.y*page_height)}"
+            for p in textract_geom.points
+        ]
+    )
 
 
 def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
@@ -161,6 +185,13 @@ def convert_textract(img_path: str, json_path: str, out_path: str) -> str:
             line_blocks[block["Id"]] = block
         if block["BlockType"] == "WORD":
             word_blocks[block["Id"]] = block
+
+    poly = TextractPolygon(page_block["Geometry"]["Polygon"])
+    print(poly)
+    print(points_from_awsgeometry(poly, width, height))
+    bbox = poly.get_bounding_box()
+    print(bbox)
+    print(points_from_awsgeometry(bbox, width, height))
 
     # TextRegion from PAGE-block
     pagexml_text_region = TextRegionType(
