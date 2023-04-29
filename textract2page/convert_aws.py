@@ -29,6 +29,7 @@ class TextractPoint:
         assert 0 <= self.x <= 1, self
         assert 0 <= self.y <= 1, self
 
+
 @dataclass
 class TextractBoundingBox:
     left: float
@@ -50,6 +51,7 @@ class TextractBoundingBox:
         assert 0 <= self.height <= 1, self
         assert self.width + self.left <= 1, self
         assert self.height + self.top <= 1, self
+
 
 @dataclass
 class TextractPolygon:
@@ -74,6 +76,7 @@ class TextractPolygon:
             "Height": max(y_coords) - min(y_coords),
         }
         return TextractBoundingBox(bbox_dict)
+
 
 @singledispatch
 def points_from_awsgeometry(textract_geom, page_width, page_height):
