@@ -29,5 +29,3 @@ class TestConvertTextract(TestCase):
                          result_tree.xpath('/page:PcGts/page:Metadata/*', namespaces=NS)):
                 meta.getparent().remove(meta)
             assert ET.tostring(target_tree) == ET.tostring(result_tree)
-
-    #test_cli()...

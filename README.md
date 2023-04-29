@@ -43,4 +43,19 @@ You can get a list of options with `--help` or `-h`
 
 ## Testing
 
-(not yet)
+Requires installation and a local copy of the repository.
+
+To run regression tests with `pytest`, do
+
+    make deps-test
+    make test-api
+
+To run regression test via command line, do
+
+    # optionally:
+    sudo apt-get install xmlstarlet
+    make test-cli
+
+(If `xmlstarlet` is available, then the CLI test will
+also validate the result tree. Otherwise, this just
+checks the command completes without error.)
