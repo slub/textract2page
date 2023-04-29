@@ -117,7 +117,7 @@ def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     return points
 
 
-def convert_file(img_path: str, json_path: str, out_path: str) -> None:
+def convert_file(json_path: str, img_path: str, out_path: str) -> None:
     """Convert an AWS-Textract-JSON file to a PAGE-XML file.
 
     Also requires the original input image of AWS OCR to get absolute image coordinates.

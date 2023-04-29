@@ -17,7 +17,7 @@ def cli(output_file, aws_json_file, image_file):
     The output file will reference the image file under `Page/@imageFilename`
     with its full path. (So you may want to use a relative path.)
     """
-    convert_file(image_file, aws_json_file, output_file)
+    convert_file(aws_json_file, image_file, output_file)
 
 if __name__ == '__main__':
     cli() # pylint: disable=no-value-for-parameter
