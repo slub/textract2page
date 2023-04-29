@@ -1,4 +1,4 @@
-test/workspace
+tests/workspace
 *.egg-info
 __pycache__
 build
