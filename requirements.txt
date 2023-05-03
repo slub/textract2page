@@ -1,0 +1,4 @@
+click
+pillow
+ocrd_utils
+ocrd_models

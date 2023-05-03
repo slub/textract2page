@@ -1,0 +1,6 @@
+tests/workspace
+*.egg-info
+__pycache__
+build
+dist
+*~
