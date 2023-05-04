@@ -10,6 +10,8 @@ help:
 	@echo "   test-api   Run the API tests (using pytest)"
 	@echo "   test-cli   Run the CLI tests (optionally using xmlstarlet)"
 	@echo "   test       Run both kinds of tests"
+	@echo "   build      Create source and binary pkgs under dist/"
+	@echo "   publish    Upload pkgs from dist/ to PyPI"
 	@echo
 	@echo " Variables"
 	@echo
@@ -34,4 +36,12 @@ test-cli:
 	if command -v xmlstarlet &> /dev/null; then diff -u <($(UNDATED) tests/workspace/page/18xx-Missio-EMU-0042.xml) <($(UNDATED) $(OUT)); fi
 	-$(RM) $(OUT)
 
-.PHONY: help install deps-test test test-api test-cli
+build:
+	$(PYTHON) -m pip build
+
+publish:
+	twine check dist/*
+	twine upload dist/*
+
+
+.PHONY: help install deps-test test test-api test-cli build publish
