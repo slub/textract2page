@@ -9,7 +9,7 @@
 
 This software converts OCR results from
 [Amazon AWS Textract Response](https://docs.aws.amazon.com/textract/latest/dg/how-it-works-document-layout.html)
-files to [PAGE XML](https://github.com/PRImA-Research-Lab/PAGE-XML) files.
+files to [PRImA PAGE XML](https://github.com/PRImA-Research-Lab/PAGE-XML) files.
 
 ## Installation
 
