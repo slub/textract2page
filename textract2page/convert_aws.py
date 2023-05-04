@@ -162,6 +162,7 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
 
     for block in aws_json["Blocks"]:
         if block["BlockType"] == "PAGE":
+            assert not page_block, "page must not have more than 1 PAGE block"
             page_block = block
         if block["BlockType"] == "LINE":
             line_blocks[block["Id"]] = block
@@ -190,9 +191,11 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
 
     # TextLine from LINE blocks that are listed in the PAGE-block's
     # child relationships
-    for line_block_id in [rel["Ids"]
-                          for rel in page_block.get("Relationships", [])
-                          if rel["Type"] == "CHILD"][0]:
+    for line_block_id in next((rel.get("Ids", [])
+                               for rel in page_block.get("Relationships", [])
+                               if rel["Type"] == "CHILD"), []):
+        if line_block_id not in line_blocks:
+            continue
         line_block = line_blocks[line_block_id]
         if "Polygon" in line_block["Geometry"]:
             awsgeometry = TextractPolygon(line_block["Geometry"]["Polygon"])
@@ -212,9 +215,11 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
 
         # Word from WORD blocks that are listed in the LINE-block's
         # child relationships
-        for word_block_id in [rel["Ids"]
-                              for rel in line_block.get("Relationships", [])
-                              if rel["Type"] == "CHILD"][0]:
+        for word_block_id in next((rel.get("Ids", [])
+                                   for rel in line_block.get("Relationships", [])
+                                   if rel["Type"] == "CHILD"), []):
+            if word_block_id not in word_blocks:
+                continue
             word_block = word_blocks[word_block_id]
             if "Polygon" in word_block["Geometry"]:
                 awsgeometry = TextractPolygon(word_block["Geometry"]["Polygon"])
