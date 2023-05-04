@@ -2,6 +2,8 @@
 
 > Convert AWS Textract JSON to PRImA PAGE XML
 
+[![PyPI Release](https://img.shields.io/pypi/v/textract2page.svg)](https://pypi.org/project/textract2page/)
+[![CI Tests](https://github.com/rue-a/textract2page/actions/workflows/test.yml/badge.svg)](https://github.com/rue-a/textract2page/actions/workflows/test.yml)
 
 ## Introduction
 
