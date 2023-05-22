@@ -10,6 +10,7 @@ from textract2page import convert_file
 
 THIS_DIR = Path(__file__).resolve().parent
 
+
 class TestConvertTextract(TestCase):
 
     def setUp(self):
@@ -25,7 +26,7 @@ class TestConvertTextract(TestCase):
             convert_file(str(self.aws), str(self.img), out.name)
             _, result_tree, _, _ = parseEtree(out.name, silence=True)
             # remove elements bearing dates (Created, LastChange, Creator/Version)
-            for meta in (target_tree.xpath('/page:PcGts/page:Metadata/*', namespaces=NS) + \
+            for meta in (target_tree.xpath('/page:PcGts/page:Metadata/*', namespaces=NS) +
                          result_tree.xpath('/page:PcGts/page:Metadata/*', namespaces=NS)):
                 meta.getparent().remove(meta)
             assert ET.tostring(target_tree) == ET.tostring(result_tree)
