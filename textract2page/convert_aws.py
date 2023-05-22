@@ -279,5 +279,9 @@ def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_
                 pagexml_word.add_TextEquiv(TextEquivType(Unicode=word_block["Text"]))
             pagexml_text_line.add_Word(pagexml_word)
 
+    if not out_path:
+        print(to_xml(pc_gts_type))
+        return
+
     with open(out_path, "w") as f:
         f.write(to_xml(pc_gts_type))
