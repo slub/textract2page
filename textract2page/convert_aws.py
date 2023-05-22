@@ -16,6 +16,9 @@ from ocrd_models.ocrd_page import (
     CoordsType,
     TextLineType,
     WordType,
+    ReadingOrderType,
+    OrderedGroupType,
+    RegionRefIndexedType
 )
 from ocrd_models.ocrd_page import to_xml
 
@@ -120,7 +123,7 @@ def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     return points
 
 
-def convert_file(json_path: str, img_path: str, out_path: str) -> None:
+def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_order: bool = True) -> None:
     """Convert an AWS-Textract-JSON file to a PAGE-XML file.
 
     Also requires the original input image of AWS OCR to get absolute image coordinates.
@@ -138,6 +141,7 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
         json_path (str): path to input JSON file
         img_path (str): path to input JPEG file
         out_path (str): path to output XML file
+        preserve_reading_order (boolean): preserve reading order  of lines as indicated by Textract
     """
 
     pil_img = Image.open(img_path)
@@ -153,6 +157,18 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
         imageFilename=img_path,
     )
     pc_gts_type.set_Page(pagexml_page)
+
+    ordered_group = None
+    if preserve_reading_order:
+        # set up ReadingOrder
+        reading_order = ReadingOrderType(
+            OrderedGroup=OrderedGroupType(
+                id="textract_reading_order",
+                comments="Reading order of lines as defined by Textract."
+            )
+        )
+        ordered_group = reading_order.get_OrderedGroup()
+        pagexml_page.set_ReadingOrder(reading_order)
 
     json_file = open(json_path, "r")
     aws_json = json.load(json_file)
@@ -174,23 +190,24 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
     else:
         awsgeometry = TextractBoundingBox(page_block["Geometry"]["BoundingBox"])
     # TextRegion from PAGE-block
-    pagexml_text_region = TextRegionType(
-        Coords=CoordsType(
-            points=points_from_awsgeometry(awsgeometry,
-                                           pil_img.width,
-                                           pil_img.height)
-        ),
-        id=f'region-{page_block["Id"]}',
-    )
-    if "Text" in page_block:
-        pagexml_text_region.add_TextEquiv(TextEquivType(Unicode=page_block["Text"]))
-    pagexml_page.add_TextRegion(pagexml_text_region)
+    # pagexml_text_region = TextRegionType(
+    #     Coords=CoordsType(
+    #         points=points_from_awsgeometry(awsgeometry,
+    #                                        pil_img.width,
+    #                                        pil_img.height)
+    #     ),
+    #     id=f'region-{page_block["Id"]}',
+    # )
+    # if "Text" in page_block:
+    #     pagexml_text_region.add_TextEquiv(TextEquivType(Unicode=page_block["Text"]))
+    # pagexml_page.add_TextRegion(pagexml_text_region)
 
     # AWS-Documentation: PAGE, LINE, and WORD blocks are related to each
     # other in a  parent-to-child relationship.
 
     # TextLine from LINE blocks that are listed in the PAGE-block's
     # child relationships
+    reading_order_index = 0
     for line_block_id in next((rel.get("Ids", [])
                                for rel in page_block.get("Relationships", [])
                                if rel["Type"] == "CHILD"), []):
@@ -201,6 +218,21 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
             awsgeometry = TextractPolygon(line_block["Geometry"]["Polygon"])
         else:
             awsgeometry = TextractBoundingBox(line_block["Geometry"]["BoundingBox"])
+
+        # wrap lines in separate TextRegions to preserve reading order
+        # (ReadingOrder references TextRegions)
+        line_region_id = f'line-region-{line_block["Id"]}'
+        pagexml_text_region_line = TextRegionType(
+            Coords=CoordsType(
+                points=points_from_awsgeometry(awsgeometry,
+                                               pil_img.width,
+                                               pil_img.height)
+            ),
+            id=line_region_id,
+        )
+        pagexml_page.add_TextRegion(pagexml_text_region_line)
+
+        # append lines to text regions
         pagexml_text_line = TextLineType(
             Coords=CoordsType(
                 points=points_from_awsgeometry(awsgeometry,
@@ -211,7 +243,17 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
         )
         if "Text" in line_block:
             pagexml_text_line.add_TextEquiv(TextEquivType(Unicode=line_block["Text"]))
-        pagexml_text_region.add_TextLine(pagexml_text_line)
+        pagexml_text_region_line.add_TextLine(pagexml_text_line)
+
+        if ordered_group:
+            # store reading order
+            ordered_group.add_RegionRefIndexed(
+                RegionRefIndexedType(
+                    index=reading_order_index,
+                    regionRef=line_region_id
+                )
+            )
+            reading_order_index += 1
 
         # Word from WORD blocks that are listed in the LINE-block's
         # child relationships
