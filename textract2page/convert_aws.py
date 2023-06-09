@@ -1,7 +1,7 @@
 import json
 import math
 import sys
-from typing import List, Dict
+from typing import List, Dict, Tuple
 from dataclasses import dataclass
 from functools import singledispatch
 from datetime import datetime
@@ -19,7 +19,9 @@ from ocrd_models.ocrd_page import (
     WordType,
     ReadingOrderType,
     OrderedGroupType,
-    RegionRefIndexedType
+    RegionRefIndexedType,
+    TableRegionType,
+    TableCellRoleType
 )
 from ocrd_models.ocrd_page import to_xml
 
@@ -124,6 +126,34 @@ def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     return points
 
 
+def part_of_table(line_block: dict, table_blocks: dict, all_blocks: dict) -> Tuple[dict, dict]:
+    """Checks if a certain line is part of a table. In case it is, returns information
+    about the the role that this line has in the table.
+
+    Textract identifies words as part of a table via CHILD relationships
+    in a CELL BLOCK. A CELL BLOCK can (only?) have WORDS as CHILDS. However, these 
+    words are always parts of LINES, which are not identified as CHILDS of a CELL.
+
+    To check if a LINE is part of a table we need to check if the LINE has WORD-CHILDS
+    that are part of a CELL.
+    """
+
+    cell_blocks, merged_cell_blocks, table_title_blocks, table_footer_blocks = {}, {}, {}, {}
+    for block in all_blocks:
+        if block["BlockType"] == "CELL":
+            cell_blocks[block["Id"]] = block
+
+    for word_block_id in next((rel.get("Ids", [])
+                               for rel in line_block.get("Relationships", [])
+                               if rel["Type"] == "CHILD"), []):
+        for table_block in table_blocks.values():
+            for cell_block_id in next((rel.get("Ids", []) for rel in table_block.get("Relationships", []) if rel["Type"] == "CHILD"), []):
+                cell_block = cell_blocks[cell_block_id]
+                if not word_block_id in next((rel.get("Ids", []) for rel in cell_block.get("Relationships", []) if rel["Type"] == "CHILD"), []):
+                    return None, None
+                return table_block, cell_block
+
+
 def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_order: bool = True) -> None:
     """Convert an AWS-Textract-JSON file to a PAGE-XML file.
 
@@ -147,7 +177,7 @@ def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_
 
     pil_img = Image.open(img_path)
     now = datetime.now()
-    pc_gts_type = PcGtsType(
+    page_content_type = PcGtsType(
         Metadata=MetadataType(
             Creator="OCR-D/core %s" % VERSION, Created=now, LastChange=now
         )
@@ -157,7 +187,7 @@ def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_
         imageHeight=pil_img.height,
         imageFilename=img_path,
     )
-    pc_gts_type.set_Page(pagexml_page)
+    page_content_type.set_Page(pagexml_page)
 
     ordered_group = None
     if preserve_reading_order:
@@ -175,8 +205,8 @@ def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_
     aws_json = json.load(json_file)
     json_file.close()
 
-    page_block, line_blocks, word_blocks = {}, {}, {}
-
+    # build dicts for different textract block types
+    page_block, line_blocks, word_blocks, table_blocks = {}, {}, {}, {}
     for block in aws_json["Blocks"]:
         if block["BlockType"] == "PAGE":
             assert not page_block, "page must not have more than 1 PAGE block"
@@ -185,29 +215,40 @@ def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_
             line_blocks[block["Id"]] = block
         if block["BlockType"] == "WORD":
             word_blocks[block["Id"]] = block
+        if block["BlockType"] == "TABLE":
+            table_blocks[block["Id"]] = block
 
-    if "Polygon" in page_block["Geometry"]:
-        awsgeometry = TextractPolygon(page_block["Geometry"]["Polygon"])
-    else:
-        awsgeometry = TextractBoundingBox(page_block["Geometry"]["BoundingBox"])
-    # TextRegion from PAGE-block
-    # pagexml_text_region = TextRegionType(
-    #     Coords=CoordsType(
-    #         points=points_from_awsgeometry(awsgeometry,
-    #                                        pil_img.width,
-    #                                        pil_img.height)
-    #     ),
-    #     id=f'region-{page_block["Id"]}',
-    # )
-    # if "Text" in page_block:
-    #     pagexml_text_region.add_TextEquiv(TextEquivType(Unicode=page_block["Text"]))
-    # pagexml_page.add_TextRegion(pagexml_text_region)
+    # 1. find tables in page, create table skeleton objects, store object references
+    # 2. find lines & words in page
+    #   -> for each line & word check if part of a table -> add to table
+    #       otherwise, add to page
 
-    # AWS-Documentation: PAGE, LINE, and WORD blocks are related to each
-    # other in a  parent-to-child relationship.
+    # (1)
+    for table_block_id in next((rel.get("Ids", [])
+                               for rel in page_block.get("Relationships", [])
+                               if rel["Type"] == "CHILD"), []):
+        if table_block_id not in table_blocks:
+            continue
+        table_block = table_blocks[table_block_id]
+        if "Polygon" in table_block["Geometry"]:
+            awsgeometry = TextractPolygon(table_block["Geometry"]["Polygon"])
+        else:
+            awsgeometry = TextractBoundingBox(table_block["Geometry"]["BoundingBox"])
+        table_region_id = f'table-region-{table_block["Id"]}'
+        pagexml_table_region = TableRegionType(
+            Coords=CoordsType(
+                points=points_from_awsgeometry(awsgeometry,
+                                               pil_img.width,
+                                               pil_img.height)
+            ),
+            id=table_region_id,
+        )
+        pagexml_page.add_TableRegion(pagexml_table_region)
+        # store table region object references
+        table_blocks[table_block_id]["table_region_ref"] = pagexml_table_region
 
-    # TextLine from LINE blocks that are listed in the PAGE-block's
-    # child relationships
+    # (2)
+
     reading_order_index = 0
     for line_block_id in next((rel.get("Ids", [])
                                for rel in page_block.get("Relationships", [])
@@ -231,7 +272,13 @@ def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_
             ),
             id=line_region_id,
         )
-        pagexml_page.add_TextRegion(pagexml_text_region_line)
+
+        table_block, cell_block = part_of_table(line_block, table_blocks, aws_json["Blocks"])
+        if table_block and cell_block:
+
+            table_block['table_region_ref'].add_TextRegion(pagexml_text_region_line)
+        else:
+            pagexml_page.add_TextRegion(pagexml_text_region_line)
 
         # append lines to text regions
         pagexml_text_line = TextLineType(
@@ -280,10 +327,15 @@ def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_
                 pagexml_word.add_TextEquiv(TextEquivType(Unicode=word_block["Text"]))
             pagexml_text_line.add_Word(pagexml_word)
 
-    result = to_xml(pc_gts_type)
+    result = to_xml(page_content_type)
     if not out_path:
         sys.stdout.write(result)
         return
 
     with open(out_path, "w") as f:
         f.write(result)
+
+
+convert_file(json_path='tests/workspace/Hofzuweisungslisten-AWS/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000/analyzeDocResponse.json',
+             img_path='/home/ruemmler/Nextcloud/Projects/textract2page/tests/workspace/Hofzuweisungslisten-AWS/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000.tif',
+             out_path='out.xml')
