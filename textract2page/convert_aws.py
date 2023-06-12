@@ -21,7 +21,7 @@ from ocrd_models.ocrd_page import (
     OrderedGroupType,
     RegionRefIndexedType,
     TableRegionType,
-    TableCellRoleType
+    TableCellRoleType,
 )
 from ocrd_models.ocrd_page import to_xml
 
@@ -64,9 +64,10 @@ class TextractPolygon:
     points: List[TextractPoint]
 
     def __init__(self, polygon: List[Dict[str, float]]):
-        self.points = [TextractPoint(point.get("X", -1),
-                                     point.get("Y", -1))
-                       for point in polygon]
+        self.points = [
+            TextractPoint(point.get("X", -1), point.get("Y", -1))
+            for point in polygon
+        ]
         self.__post_init__()
 
     def __post_init__(self):
@@ -120,41 +121,81 @@ def _(
 def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     """Convert a TextractPolygon into a string of points."""
 
-    points = " ".join(f"{math.ceil(point.x * page_width)},{math.ceil(point.y * page_height)}"
-                      for point in textract_geom.points)
+    points = " ".join(
+        f"{math.ceil(point.x * page_width)},{math.ceil(point.y * page_height)}"
+        for point in textract_geom.points
+    )
 
     return points
 
 
-def part_of_table(line_block: dict, table_blocks: dict, all_blocks: dict) -> Tuple[dict, dict]:
+def part_of_table(
+    line_block: dict, table_blocks: dict, all_blocks: dict
+) -> Tuple[dict, dict]:
     """Checks if a certain line is part of a table. In case it is, returns information
     about the the role that this line has in the table.
 
     Textract identifies words as part of a table via CHILD relationships
-    in a CELL BLOCK. A CELL BLOCK can (only?) have WORDS as CHILDS. However, these 
+    in a CELL BLOCK. A CELL BLOCK can (only?) have WORDS as CHILDS. However, these
     words are always parts of LINES, which are not identified as CHILDS of a CELL.
 
     To check if a LINE is part of a table we need to check if the LINE has WORD-CHILDS
     that are part of a CELL.
     """
 
-    cell_blocks, merged_cell_blocks, table_title_blocks, table_footer_blocks = {}, {}, {}, {}
+    cell_blocks, merged_cell_blocks, table_title_blocks, table_footer_blocks = (
+        {},
+        {},
+        {},
+        {},
+    )
+
     for block in all_blocks:
         if block["BlockType"] == "CELL":
             cell_blocks[block["Id"]] = block
 
-    for word_block_id in next((rel.get("Ids", [])
-                               for rel in line_block.get("Relationships", [])
-                               if rel["Type"] == "CHILD"), []):
+    for word_block_id in next(
+        (
+            rel.get("Ids", [])
+            for rel in line_block.get("Relationships", [])
+            if rel["Type"] == "CHILD"
+        ),
+        [],
+    ):
         for table_block in table_blocks.values():
-            for cell_block_id in next((rel.get("Ids", []) for rel in table_block.get("Relationships", []) if rel["Type"] == "CHILD"), []):
+            for cell_block_id in next(
+                (
+                    rel.get("Ids", [])
+                    for rel in table_block.get("Relationships", [])
+                    if rel["Type"] == "CHILD"
+                ),
+                [],
+            ):
                 cell_block = cell_blocks[cell_block_id]
-                if not word_block_id in next((rel.get("Ids", []) for rel in cell_block.get("Relationships", []) if rel["Type"] == "CHILD"), []):
-                    return None, None
-                return table_block, cell_block
+                # next cell if cell has no childs
+                if not any(
+                    rel.get("Type") == "CHILD"
+                    for rel in cell_block.get("Relationships", [])
+                ):
+                    continue
+
+                word_block_ids_in_cell_block = [
+                    rel.get("Ids", [])
+                    for rel in cell_block.get("Relationships", [])
+                    if rel["Type"] == "CHILD"
+                ][0]
+                if word_block_id in word_block_ids_in_cell_block:
+                    # if one id of a word in a line is part of a cell, this line is part of this cell
+                    return table_block, cell_block
+        return None, None
 
 
-def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_order: bool = True) -> None:
+def convert_file(
+    json_path: str,
+    img_path: str,
+    out_path: str,
+    preserve_reading_order: bool = True,
+) -> None:
     """Convert an AWS-Textract-JSON file to a PAGE-XML file.
 
     Also requires the original input image of AWS OCR to get absolute image coordinates.
@@ -195,7 +236,7 @@ def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_
         reading_order = ReadingOrderType(
             OrderedGroup=OrderedGroupType(
                 id="textract_reading_order",
-                comments="Reading order of lines as defined by Textract."
+                comments="Reading order of lines as defined by Textract.",
             )
         )
         ordered_group = reading_order.get_OrderedGroup()
@@ -224,22 +265,29 @@ def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_
     #       otherwise, add to page
 
     # (1)
-    for table_block_id in next((rel.get("Ids", [])
-                               for rel in page_block.get("Relationships", [])
-                               if rel["Type"] == "CHILD"), []):
+    for table_block_id in next(
+        (
+            rel.get("Ids", [])
+            for rel in page_block.get("Relationships", [])
+            if rel["Type"] == "CHILD"
+        ),
+        [],
+    ):
         if table_block_id not in table_blocks:
             continue
         table_block = table_blocks[table_block_id]
         if "Polygon" in table_block["Geometry"]:
             awsgeometry = TextractPolygon(table_block["Geometry"]["Polygon"])
         else:
-            awsgeometry = TextractBoundingBox(table_block["Geometry"]["BoundingBox"])
+            awsgeometry = TextractBoundingBox(
+                table_block["Geometry"]["BoundingBox"]
+            )
         table_region_id = f'table-region-{table_block["Id"]}'
         pagexml_table_region = TableRegionType(
             Coords=CoordsType(
-                points=points_from_awsgeometry(awsgeometry,
-                                               pil_img.width,
-                                               pil_img.height)
+                points=points_from_awsgeometry(
+                    awsgeometry, pil_img.width, pil_img.height
+                )
             ),
             id=table_region_id,
         )
@@ -250,81 +298,102 @@ def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_
     # (2)
 
     reading_order_index = 0
-    for line_block_id in next((rel.get("Ids", [])
-                               for rel in page_block.get("Relationships", [])
-                               if rel["Type"] == "CHILD"), []):
+    for line_block_id in next(
+        (
+            rel.get("Ids", [])
+            for rel in page_block.get("Relationships", [])
+            if rel["Type"] == "CHILD"
+        ),
+        [],
+    ):
         if line_block_id not in line_blocks:
             continue
         line_block = line_blocks[line_block_id]
         if "Polygon" in line_block["Geometry"]:
             awsgeometry = TextractPolygon(line_block["Geometry"]["Polygon"])
         else:
-            awsgeometry = TextractBoundingBox(line_block["Geometry"]["BoundingBox"])
+            awsgeometry = TextractBoundingBox(
+                line_block["Geometry"]["BoundingBox"]
+            )
 
         # wrap lines in separate TextRegions to preserve reading order
         # (ReadingOrder references TextRegions)
         line_region_id = f'line-region-{line_block["Id"]}'
         pagexml_text_region_line = TextRegionType(
             Coords=CoordsType(
-                points=points_from_awsgeometry(awsgeometry,
-                                               pil_img.width,
-                                               pil_img.height)
+                points=points_from_awsgeometry(
+                    awsgeometry, pil_img.width, pil_img.height
+                )
             ),
             id=line_region_id,
         )
 
-        table_block, cell_block = part_of_table(line_block, table_blocks, aws_json["Blocks"])
+        table_block, cell_block = part_of_table(
+            line_block, table_blocks, aws_json["Blocks"]
+        )
+        print(cell_block)
         if table_block and cell_block:
-
-            table_block['table_region_ref'].add_TextRegion(pagexml_text_region_line)
+            table_block["table_region_ref"].add_TextRegion(
+                pagexml_text_region_line
+            )
         else:
             pagexml_page.add_TextRegion(pagexml_text_region_line)
 
         # append lines to text regions
         pagexml_text_line = TextLineType(
             Coords=CoordsType(
-                points=points_from_awsgeometry(awsgeometry,
-                                               pil_img.width,
-                                               pil_img.height)
+                points=points_from_awsgeometry(
+                    awsgeometry, pil_img.width, pil_img.height
+                )
             ),
             id=f'line-{line_block["Id"]}',
         )
         if "Text" in line_block:
-            pagexml_text_line.add_TextEquiv(TextEquivType(Unicode=line_block["Text"]))
+            pagexml_text_line.add_TextEquiv(
+                TextEquivType(Unicode=line_block["Text"])
+            )
         pagexml_text_region_line.add_TextLine(pagexml_text_line)
 
         if ordered_group:
             # store reading order
             ordered_group.add_RegionRefIndexed(
                 RegionRefIndexedType(
-                    index=reading_order_index,
-                    regionRef=line_region_id
+                    index=reading_order_index, regionRef=line_region_id
                 )
             )
             reading_order_index += 1
 
         # Word from WORD blocks that are listed in the LINE-block's
         # child relationships
-        for word_block_id in next((rel.get("Ids", [])
-                                   for rel in line_block.get("Relationships", [])
-                                   if rel["Type"] == "CHILD"), []):
+        for word_block_id in next(
+            (
+                rel.get("Ids", [])
+                for rel in line_block.get("Relationships", [])
+                if rel["Type"] == "CHILD"
+            ),
+            [],
+        ):
             if word_block_id not in word_blocks:
                 continue
             word_block = word_blocks[word_block_id]
             if "Polygon" in word_block["Geometry"]:
                 awsgeometry = TextractPolygon(word_block["Geometry"]["Polygon"])
             else:
-                awsgeometry = TextractBoundingBox(word_block["Geometry"]["BoundingBox"])
+                awsgeometry = TextractBoundingBox(
+                    word_block["Geometry"]["BoundingBox"]
+                )
             pagexml_word = WordType(
                 Coords=CoordsType(
-                    points=points_from_awsgeometry(awsgeometry,
-                                                   pil_img.width,
-                                                   pil_img.height)
+                    points=points_from_awsgeometry(
+                        awsgeometry, pil_img.width, pil_img.height
+                    )
                 ),
                 id=f'word-{word_block["Id"]}',
             )
             if "Text" in word_block:
-                pagexml_word.add_TextEquiv(TextEquivType(Unicode=word_block["Text"]))
+                pagexml_word.add_TextEquiv(
+                    TextEquivType(Unicode=word_block["Text"])
+                )
             pagexml_text_line.add_Word(pagexml_word)
 
     result = to_xml(page_content_type)
@@ -336,6 +405,8 @@ def convert_file(json_path: str, img_path: str, out_path: str, preserve_reading_
         f.write(result)
 
 
-convert_file(json_path='tests/workspace/Hofzuweisungslisten-AWS/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000/analyzeDocResponse.json',
-             img_path='/home/ruemmler/Nextcloud/Projects/textract2page/tests/workspace/Hofzuweisungslisten-AWS/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000.tif',
-             out_path='out.xml')
+convert_file(
+    json_path="ocr_test/Hofzuweisungslisten-AWS/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000/analyzeDocResponse.json",
+    img_path="ocr_test/OCR-D-IMG/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000.tif",
+    out_path="ocr_test/OCR-D-SEG-PAGE/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000.xml",
+)
