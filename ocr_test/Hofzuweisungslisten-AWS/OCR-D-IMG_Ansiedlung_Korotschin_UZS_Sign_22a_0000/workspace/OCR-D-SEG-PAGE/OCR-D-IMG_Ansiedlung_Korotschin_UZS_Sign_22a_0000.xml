@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pc:PcGts xmlns:pc="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
     <pc:Metadata>
-        <pc:Creator>OCR-D/core 2.49.0</pc:Creator>
-        <pc:Created>2023-06-12T16:31:42.281438</pc:Created>
-        <pc:LastChange>2023-06-12T16:31:42.281438</pc:LastChange>
+        <pc:Creator>OCR-D/core 2.50.0</pc:Creator>
+        <pc:Created>2023-06-13T14:40:48.666644</pc:Created>
+        <pc:LastChange>2023-06-13T14:40:48.666644</pc:LastChange>
     </pc:Metadata>
-    <pc:Page imageFilename="ocr_test/OCR-D-IMG/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000.tif" imageWidth="2496" imageHeight="3509">
+    <pc:Page imageFilename="OCR-D-IMG/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000.tif" imageWidth="2496" imageHeight="3509">
         <pc:ReadingOrder>
             <pc:OrderedGroup id="textract_reading_order" comments="Reading order of lines as defined by Textract.">
                 <pc:RegionRefIndexed index="0" regionRef="line-region-36004225-6378-4196-a885-4870c8d35596"/>

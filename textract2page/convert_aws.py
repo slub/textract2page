@@ -129,6 +129,20 @@ def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     return points
 
 
+def get_ids_of_child_blocks(aws_block: dict) -> List[str]:
+    if not any(
+        rel.get("Type") == "CHILD" for rel in aws_block.get("Relationships", [])
+    ):
+        return []
+
+    child_block_ids = [
+        rel.get("Ids", [])
+        for rel in aws_block.get("Relationships", [])
+        if rel["Type"] == "CHILD"
+    ][0]
+    return child_block_ids
+
+
 def part_of_table(
     line_block: dict, table_blocks: dict, all_blocks: dict
 ) -> Tuple[dict, dict]:
@@ -154,37 +168,11 @@ def part_of_table(
         if block["BlockType"] == "CELL":
             cell_blocks[block["Id"]] = block
 
-    for word_block_id in next(
-        (
-            rel.get("Ids", [])
-            for rel in line_block.get("Relationships", [])
-            if rel["Type"] == "CHILD"
-        ),
-        [],
-    ):
+    for word_block_id in get_ids_of_child_blocks(line_block):
         for table_block in table_blocks.values():
-            for cell_block_id in next(
-                (
-                    rel.get("Ids", [])
-                    for rel in table_block.get("Relationships", [])
-                    if rel["Type"] == "CHILD"
-                ),
-                [],
-            ):
+            for cell_block_id in get_ids_of_child_blocks(table_block):
                 cell_block = cell_blocks[cell_block_id]
-                # next cell if cell has no childs
-                if not any(
-                    rel.get("Type") == "CHILD"
-                    for rel in cell_block.get("Relationships", [])
-                ):
-                    continue
-
-                word_block_ids_in_cell_block = [
-                    rel.get("Ids", [])
-                    for rel in cell_block.get("Relationships", [])
-                    if rel["Type"] == "CHILD"
-                ][0]
-                if word_block_id in word_block_ids_in_cell_block:
+                if word_block_id in get_ids_of_child_blocks(cell_block):
                     # if one id of a word in a line is part of a cell, this line is part of this cell
                     return table_block, cell_block
         return None, None
@@ -403,10 +391,3 @@ def convert_file(
 
     with open(out_path, "w") as f:
         f.write(result)
-
-
-convert_file(
-    json_path="ocr_test/Hofzuweisungslisten-AWS/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000/analyzeDocResponse.json",
-    img_path="ocr_test/OCR-D-IMG/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000.tif",
-    out_path="ocr_test/OCR-D-SEG-PAGE/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000.xml",
-)
