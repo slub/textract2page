@@ -65,8 +65,7 @@ class TextractPolygon:
 
     def __init__(self, polygon: List[Dict[str, float]]):
         self.points = [
-            TextractPoint(point.get("X", -1), point.get("Y", -1))
-            for point in polygon
+            TextractPoint(point.get("X", -1), point.get("Y", -1)) for point in polygon
         ]
         self.__post_init__()
 
@@ -96,9 +95,7 @@ def points_from_awsgeometry(textract_geom, page_width, page_height):
 
 
 @points_from_awsgeometry.register
-def _(
-    textract_geom: TextractBoundingBox, page_width: int, page_height: int
-) -> str:
+def _(textract_geom: TextractBoundingBox, page_width: int, page_height: int) -> str:
     """Convert a TextractBoundingBox into a string of points in the order top,left
     top,right bottom,right bottom,left.
     """
@@ -130,6 +127,14 @@ def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
 
 
 def get_ids_of_child_blocks(aws_block: dict) -> List[str]:
+    """Searches a AWS-Textract-BLOCK for Relationsships of the type CHILD
+    and returns a list of the CHILD-Ids, or an empty list otherwise.
+
+    Arguments:
+        aws_block (dict): following AWS-Textract-BLOCK structure (https://docs.aws.amazon.com/textract/latest/dg/API_Block.html)
+    Returns:
+        A list of AWS-Textract-BLOCK Ids (can be empty).
+    """
     if not any(
         rel.get("Type") == "CHILD" for rel in aws_block.get("Relationships", [])
     ):
@@ -144,7 +149,12 @@ def get_ids_of_child_blocks(aws_block: dict) -> List[str]:
 
 
 def part_of_table(
-    line_block: dict, table_blocks: dict, all_blocks: dict
+    line_block: dict,
+    table_blocks: dict,
+    cell_blocks: dict,
+    merged_cell_blocks: dict,
+    table_title_blocks: dict,
+    table_footer_blocks: dict,
 ) -> Tuple[dict, dict]:
     """Checks if a certain line is part of a table. In case it is, returns information
     about the the role that this line has in the table.
@@ -154,19 +164,14 @@ def part_of_table(
     words are always parts of LINES, which are not identified as CHILDS of a CELL.
 
     To check if a LINE is part of a table we need to check if the LINE has WORD-CHILDS
-    that are part of a CELL.
+    that are part of a CELL. If at least one WORD-CHILD is part of a CELL, the LINE
+    is identified as part of the cell.
+
+    Arguments:
+        line_block (dict): the line that is examined, given as a AWS-Textract-LINE-BLOCK
+        table_blocks (dict): the tables identified in the document, given as a dictionary
+            in the form {table-block-id-1: AWS-Textract-TABLE-BLOCK-1, table-block-id-2: ...}
     """
-
-    cell_blocks, merged_cell_blocks, table_title_blocks, table_footer_blocks = (
-        {},
-        {},
-        {},
-        {},
-    )
-
-    for block in all_blocks:
-        if block["BlockType"] == "CELL":
-            cell_blocks[block["Id"]] = block
 
     for word_block_id in get_ids_of_child_blocks(line_block):
         for table_block in table_blocks.values():
@@ -193,9 +198,9 @@ def convert_file(
     Amazon Documentation: https://docs.aws.amazon.com/textract/latest/dg/how-it-works-document-layout.html
 
 
-    AWS PAGE block is mapped to to TextRegion.
-    AWS LINE block is mapped to to TextLine.
-    AWS WORD block is mapped to to Word.
+    AWS PAGE BLOCK is mapped to to TextRegion.
+    AWS LINE BLOCK is mapped to to TextLine.
+    AWS WORD BLOCK is mapped to to Word.
 
     Arguments:
         json_path (str): path to input JSON file
@@ -235,7 +240,26 @@ def convert_file(
     json_file.close()
 
     # build dicts for different textract block types
-    page_block, line_blocks, word_blocks, table_blocks = {}, {}, {}, {}
+
+    (
+        page_block,
+        line_blocks,
+        word_blocks,
+        table_blocks,
+        cell_blocks,
+        merged_cell_blocks,
+        table_title_blocks,
+        table_footer_blocks,
+    ) = (
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+    )
     for block in aws_json["Blocks"]:
         if block["BlockType"] == "PAGE":
             assert not page_block, "page must not have more than 1 PAGE block"
@@ -246,6 +270,14 @@ def convert_file(
             word_blocks[block["Id"]] = block
         if block["BlockType"] == "TABLE":
             table_blocks[block["Id"]] = block
+        if block["BlockType"] == "CELL":
+            cell_blocks[block["Id"]] = block
+        if block["BlockType"] == "MERGED_CELL":
+            merged_cell_blocks[block["Id"]] = block
+        if block["BlockType"] == "TABLE_TITLE":
+            table_title_blocks[block["Id"]] = block
+        if block["BlockType"] == "TABLE_FOOTER":
+            table_footer_blocks[block["Id"]] = block
 
     # 1. find tables in page, create table skeleton objects, store object references
     # 2. find lines & words in page
@@ -253,23 +285,14 @@ def convert_file(
     #       otherwise, add to page
 
     # (1)
-    for table_block_id in next(
-        (
-            rel.get("Ids", [])
-            for rel in page_block.get("Relationships", [])
-            if rel["Type"] == "CHILD"
-        ),
-        [],
-    ):
+    for table_block_id in get_ids_of_child_blocks(page_block):
         if table_block_id not in table_blocks:
             continue
         table_block = table_blocks[table_block_id]
         if "Polygon" in table_block["Geometry"]:
             awsgeometry = TextractPolygon(table_block["Geometry"]["Polygon"])
         else:
-            awsgeometry = TextractBoundingBox(
-                table_block["Geometry"]["BoundingBox"]
-            )
+            awsgeometry = TextractBoundingBox(table_block["Geometry"]["BoundingBox"])
         table_region_id = f'table-region-{table_block["Id"]}'
         pagexml_table_region = TableRegionType(
             Coords=CoordsType(
@@ -300,9 +323,7 @@ def convert_file(
         if "Polygon" in line_block["Geometry"]:
             awsgeometry = TextractPolygon(line_block["Geometry"]["Polygon"])
         else:
-            awsgeometry = TextractBoundingBox(
-                line_block["Geometry"]["BoundingBox"]
-            )
+            awsgeometry = TextractBoundingBox(line_block["Geometry"]["BoundingBox"])
 
         # wrap lines in separate TextRegions to preserve reading order
         # (ReadingOrder references TextRegions)
@@ -316,14 +337,18 @@ def convert_file(
             id=line_region_id,
         )
 
+        # check if line is part of a table, add text regions to table region
+        # if so, otherwise add to page
         table_block, cell_block = part_of_table(
-            line_block, table_blocks, aws_json["Blocks"]
+            line_block,
+            table_blocks,
+            cell_blocks,
+            merged_cell_blocks,
+            table_title_blocks,
+            table_footer_blocks,
         )
-        print(cell_block)
         if table_block and cell_block:
-            table_block["table_region_ref"].add_TextRegion(
-                pagexml_text_region_line
-            )
+            table_block["table_region_ref"].add_TextRegion(pagexml_text_region_line)
         else:
             pagexml_page.add_TextRegion(pagexml_text_region_line)
 
@@ -337,9 +362,7 @@ def convert_file(
             id=f'line-{line_block["Id"]}',
         )
         if "Text" in line_block:
-            pagexml_text_line.add_TextEquiv(
-                TextEquivType(Unicode=line_block["Text"])
-            )
+            pagexml_text_line.add_TextEquiv(TextEquivType(Unicode=line_block["Text"]))
         pagexml_text_region_line.add_TextLine(pagexml_text_line)
 
         if ordered_group:
@@ -367,9 +390,7 @@ def convert_file(
             if "Polygon" in word_block["Geometry"]:
                 awsgeometry = TextractPolygon(word_block["Geometry"]["Polygon"])
             else:
-                awsgeometry = TextractBoundingBox(
-                    word_block["Geometry"]["BoundingBox"]
-                )
+                awsgeometry = TextractBoundingBox(word_block["Geometry"]["BoundingBox"])
             pagexml_word = WordType(
                 Coords=CoordsType(
                     points=points_from_awsgeometry(
@@ -379,9 +400,7 @@ def convert_file(
                 id=f'word-{word_block["Id"]}',
             )
             if "Text" in word_block:
-                pagexml_word.add_TextEquiv(
-                    TextEquivType(Unicode=word_block["Text"])
-                )
+                pagexml_word.add_TextEquiv(TextEquivType(Unicode=word_block["Text"]))
             pagexml_text_line.add_Word(pagexml_word)
 
     result = to_xml(page_content_type)
