@@ -6,6 +6,8 @@ from dataclasses import dataclass
 from functools import singledispatch
 from datetime import datetime
 from PIL import Image
+from abc import ABC, abstractmethod
+
 
 from ocrd_utils import VERSION
 from ocrd_models.ocrd_page import (
@@ -26,8 +28,12 @@ from ocrd_models.ocrd_page import (
 from ocrd_models.ocrd_page import to_xml
 
 
+class TextractGeometry(ABC):
+    pass
+
+
 @dataclass
-class TextractPoint:
+class TextractPoint(TextractGeometry):
     x: float
     y: float
 
@@ -37,7 +43,7 @@ class TextractPoint:
 
 
 @dataclass
-class TextractBoundingBox:
+class TextractBoundingBox(TextractGeometry):
     left: float
     top: float
     width: float
@@ -60,12 +66,13 @@ class TextractBoundingBox:
 
 
 @dataclass
-class TextractPolygon:
+class TextractPolygon(TextractGeometry):
     points: List[TextractPoint]
 
     def __init__(self, polygon: List[Dict[str, float]]):
         self.points = [
-            TextractPoint(point.get("X", -1), point.get("Y", -1)) for point in polygon
+            TextractPoint(point.get("X", -1), point.get("Y", -1))
+            for point in polygon
         ]
         self.__post_init__()
 
@@ -84,6 +91,82 @@ class TextractPolygon:
         return TextractBoundingBox(bbox_dict)
 
 
+class Table:
+    """Table model to handle tables detected by AWS Textract."""
+
+    def __init__(
+        self,
+        aws_table_block: dict,
+        aws_cell_blocks: dict,
+        aws_merged_cell_blocks: dict,
+        aws_table_title_blocks: dict,
+        aws_table_footer_blocks: dict,
+        aws_line_blocks: dict,
+    ) -> None:
+        self.id = aws_table_block["Id"]
+        self.geometry = build_aws_geomerty(aws_table_block["Geometry"])
+        self.confidence = aws_table_block["Confidence"]
+        self.common_cells, self.merged_cells = {}, {}
+
+        for block_id in get_ids_of_child_blocks(aws_table_block):
+            if block_id in aws_cell_blocks.keys():
+                self.common_cells[block_id] = CommonCell(
+                    aws_cell_blocks[block_id], aws_line_blocks
+                )
+            elif block_id in aws_merged_cell_blocks.keys():
+                self.merged_cells[block_id] = MergedCell(
+                    aws_cell_blocks[block_id], aws_line_blocks
+                )
+            elif block_id in aws_table_title_blocks.keys():
+                self.title_cells[block_id] = TitleCell(
+                    aws_cell_blocks[block_id], aws_line_blocks
+                )
+            elif block_id in aws_table_footer_blocks.keys():
+                self.footer_cells[block_id] = FooterCell(
+                    aws_cell_blocks[block_id], aws_line_blocks
+                )
+
+
+class Cell(ABC):
+    """Cell model to handle cells detected by AWS Textract."""
+
+    def __init__(self, aws_cell_block: dict, aws_line_blocks: dict) -> None:
+        self.id = aws_cell_block["Id"]
+        self.geometry = build_aws_geomerty(aws_cell_block["Geometry"])
+        self.confidence = aws_cell_block["Confidence"]
+        self.row_index = aws_cell_block["RowIndex"]
+        self.column_index = aws_cell_block["ColumnIndex"]
+        self.row_span = aws_cell_block["RowSpan"]
+        self.column_span = aws_cell_block["ColumnSpan"]
+        self.column_header = "COLUMN_HEADER" in aws_cell_block.get(
+            "EntityTypes", []
+        )
+
+
+class CommonCell(Cell):
+    """Cell Model for the  AWS Textract table cells"""
+
+    pass
+
+
+class MergedCell(Cell):
+    """Cell Model for the  AWS Textract table merged cells"""
+
+    pass
+
+
+class TitleCell(Cell):
+    """Cell Model for the  AWS Textract table title cells"""
+
+    pass
+
+
+class FooterCell(Cell):
+    """Cell Model for the  AWS Textract table footer cells"""
+
+    pass
+
+
 @singledispatch
 def points_from_awsgeometry(textract_geom, page_width, page_height):
     """Convert a Textract geometry into a string of points, which are
@@ -95,7 +178,9 @@ def points_from_awsgeometry(textract_geom, page_width, page_height):
 
 
 @points_from_awsgeometry.register
-def _(textract_geom: TextractBoundingBox, page_width: int, page_height: int) -> str:
+def _(
+    textract_geom: TextractBoundingBox, page_width: int, page_height: int
+) -> str:
     """Convert a TextractBoundingBox into a string of points in the order top,left
     top,right bottom,right bottom,left.
     """
@@ -124,6 +209,15 @@ def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     )
 
     return points
+
+
+def build_aws_geomerty(aws_block_geometry: dict) -> TextractGeometry:
+    geometry = None
+    if "Polygon" in aws_block_geometry:
+        geometry = TextractPolygon(aws_block_geometry["Polygon"])
+    else:
+        geometry = TextractBoundingBox(aws_block_geometry["BoundingBox"])
+    return geometry
 
 
 def get_ids_of_child_blocks(aws_block: dict) -> List[str]:
@@ -279,25 +373,31 @@ def convert_file(
         if block["BlockType"] == "TABLE_FOOTER":
             table_footer_blocks[block["Id"]] = block
 
-    # 1. find tables in page, create table skeleton objects, store object references
-    # 2. find lines & words in page
-    #   -> for each line & word check if part of a table -> add to table
-    #       otherwise, add to page
+    # build tables
+    tables = []
+    for table_block in table_blocks.values():
+        tables.append(
+            Table(
+                table_block,
+                cell_blocks,
+                merged_cell_blocks,
+                table_title_blocks,
+                table_footer_blocks,
+                line_blocks,
+            )
+        )
 
-    # (1)
+    # ----------
     for table_block_id in get_ids_of_child_blocks(page_block):
         if table_block_id not in table_blocks:
             continue
         table_block = table_blocks[table_block_id]
-        if "Polygon" in table_block["Geometry"]:
-            awsgeometry = TextractPolygon(table_block["Geometry"]["Polygon"])
-        else:
-            awsgeometry = TextractBoundingBox(table_block["Geometry"]["BoundingBox"])
+        table_geometry = build_aws_geomerty(table_block["Geometry"])
         table_region_id = f'table-region-{table_block["Id"]}'
         pagexml_table_region = TableRegionType(
             Coords=CoordsType(
                 points=points_from_awsgeometry(
-                    awsgeometry, pil_img.width, pil_img.height
+                    table_geometry, pil_img.width, pil_img.height
                 )
             ),
             id=table_region_id,
@@ -305,25 +405,14 @@ def convert_file(
         pagexml_page.add_TableRegion(pagexml_table_region)
         # store table region object references
         table_blocks[table_block_id]["table_region_ref"] = pagexml_table_region
-
-    # (2)
+    # --------------------
 
     reading_order_index = 0
-    for line_block_id in next(
-        (
-            rel.get("Ids", [])
-            for rel in page_block.get("Relationships", [])
-            if rel["Type"] == "CHILD"
-        ),
-        [],
-    ):
+    for line_block_id in get_ids_of_child_blocks(page_block):
         if line_block_id not in line_blocks:
             continue
         line_block = line_blocks[line_block_id]
-        if "Polygon" in line_block["Geometry"]:
-            awsgeometry = TextractPolygon(line_block["Geometry"]["Polygon"])
-        else:
-            awsgeometry = TextractBoundingBox(line_block["Geometry"]["BoundingBox"])
+        line_geometry = build_aws_geomerty(line_block["Geometry"])
 
         # wrap lines in separate TextRegions to preserve reading order
         # (ReadingOrder references TextRegions)
@@ -331,7 +420,7 @@ def convert_file(
         pagexml_text_region_line = TextRegionType(
             Coords=CoordsType(
                 points=points_from_awsgeometry(
-                    awsgeometry, pil_img.width, pil_img.height
+                    line_geometry, pil_img.width, pil_img.height
                 )
             ),
             id=line_region_id,
@@ -348,7 +437,9 @@ def convert_file(
             table_footer_blocks,
         )
         if table_block and cell_block:
-            table_block["table_region_ref"].add_TextRegion(pagexml_text_region_line)
+            table_block["table_region_ref"].add_TextRegion(
+                pagexml_text_region_line
+            )
         else:
             pagexml_page.add_TextRegion(pagexml_text_region_line)
 
@@ -356,13 +447,15 @@ def convert_file(
         pagexml_text_line = TextLineType(
             Coords=CoordsType(
                 points=points_from_awsgeometry(
-                    awsgeometry, pil_img.width, pil_img.height
+                    line_geometry, pil_img.width, pil_img.height
                 )
             ),
             id=f'line-{line_block["Id"]}',
         )
         if "Text" in line_block:
-            pagexml_text_line.add_TextEquiv(TextEquivType(Unicode=line_block["Text"]))
+            pagexml_text_line.add_TextEquiv(
+                TextEquivType(Unicode=line_block["Text"])
+            )
         pagexml_text_region_line.add_TextLine(pagexml_text_line)
 
         if ordered_group:
@@ -376,31 +469,24 @@ def convert_file(
 
         # Word from WORD blocks that are listed in the LINE-block's
         # child relationships
-        for word_block_id in next(
-            (
-                rel.get("Ids", [])
-                for rel in line_block.get("Relationships", [])
-                if rel["Type"] == "CHILD"
-            ),
-            [],
-        ):
+        for word_block_id in get_ids_of_child_blocks(line_block):
             if word_block_id not in word_blocks:
                 continue
             word_block = word_blocks[word_block_id]
-            if "Polygon" in word_block["Geometry"]:
-                awsgeometry = TextractPolygon(word_block["Geometry"]["Polygon"])
-            else:
-                awsgeometry = TextractBoundingBox(word_block["Geometry"]["BoundingBox"])
+            word_geometry = build_aws_geomerty(word_block["Geometry"])
+
             pagexml_word = WordType(
                 Coords=CoordsType(
                     points=points_from_awsgeometry(
-                        awsgeometry, pil_img.width, pil_img.height
+                        word_geometry, pil_img.width, pil_img.height
                     )
                 ),
                 id=f'word-{word_block["Id"]}',
             )
             if "Text" in word_block:
-                pagexml_word.add_TextEquiv(TextEquivType(Unicode=word_block["Text"]))
+                pagexml_word.add_TextEquiv(
+                    TextEquivType(Unicode=word_block["Text"])
+                )
             pagexml_text_line.add_Word(pagexml_word)
 
     result = to_xml(page_content_type)
