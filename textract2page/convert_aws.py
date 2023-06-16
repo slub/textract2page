@@ -162,16 +162,18 @@ class TextractTable(TextractBlock):
                 )
 
         # order cells in reading order (top-left to bottom-right)
-        ordered_cells = sorted(
-            self.common_cells,
-            key=lambda cell: (cell.row_index, cell.column_index),
-        )
-        # order lines in reading order (top-left to bottom-right)
+        # (apparently, the cell are already ordered correctly as given by textract)
+        # ordered_cells = sorted(
+        #     self.common_cells,
+        #     key=lambda cell: (cell.row_index, cell.column_index),
+        # )
+
         self.ordered_line_ids = [
             line
-            for lines in [cell.get_line_ids() for cell in ordered_cells]
+            for lines in [cell.get_line_ids() for cell in self.common_cells]
             for line in lines
         ]
+        print(self.ordered_line_ids)
 
     def get_ordered_line_ids(self) -> List[str]:
         return self.ordered_line_ids
@@ -202,6 +204,12 @@ class TextractCell(TextractBlock):
         self.table_summary = "TABLE_SUMMARY" in aws_cell_block.get(
             "EntityTypes", []
         )
+
+    def get_row_index(self) -> int:
+        return self.row_index
+
+    def get_col_index(self) -> int:
+        return self.column_index
 
     def get_cell_types(self) -> List[str]:
         types = []
@@ -320,41 +328,6 @@ def get_ids_of_child_blocks(aws_block: dict) -> List[str]:
         if rel["Type"] == "CHILD"
     ][0]
     return child_block_ids
-
-
-def part_of_table(
-    line_block: dict,
-    table_blocks: dict,
-    cell_blocks: dict,
-    merged_cell_blocks: dict,
-    table_title_blocks: dict,
-    table_footer_blocks: dict,
-) -> Tuple[dict, dict]:
-    """Checks if a certain line is part of a table. In case it is, returns information
-    about the the role that this line has in the table.
-
-    Textract identifies words as part of a table via CHILD relationships
-    in a CELL BLOCK. A CELL BLOCK can (only?) have WORDS as CHILDS. However, these
-    words are always parts of LINES, which are not identified as CHILDS of a CELL.
-
-    To check if a LINE is part of a table we need to check if the LINE has WORD-CHILDS
-    that are part of a CELL. If at least one WORD-CHILD is part of a CELL, the LINE
-    is identified as part of the cell.
-
-    Arguments:
-        line_block (dict): the line that is examined, given as a AWS-Textract-LINE-BLOCK
-        table_blocks (dict): the tables identified in the document, given as a dictionary
-            in the form {table-block-id-1: AWS-Textract-TABLE-BLOCK-1, table-block-id-2: ...}
-    """
-
-    for word_block_id in get_ids_of_child_blocks(line_block):
-        for table_block in table_blocks.values():
-            for cell_block_id in get_ids_of_child_blocks(table_block):
-                cell_block = cell_blocks[cell_block_id]
-                if word_block_id in get_ids_of_child_blocks(cell_block):
-                    # if one id of a word in a line is part of a cell, this line is part of this cell
-                    return table_block, cell_block
-        return None, None
 
 
 def convert_file(
