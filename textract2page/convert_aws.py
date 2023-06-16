@@ -91,8 +91,43 @@ class TextractPolygon(TextractGeometry):
         return TextractBoundingBox(bbox_dict)
 
 
-class Table:
-    """Table model to handle tables detected by AWS Textract."""
+class TextractBlock(ABC):
+    """Generic Textract BLOCK"""
+
+    @abstractmethod
+    def __init__(self, aws_block: dict) -> None:
+        self.id = aws_block["Id"]
+        self.geometry = build_aws_geomerty(aws_block["Geometry"])
+        self.confidence = float(aws_block["Confidence"])
+
+    def get_id(self) -> str:
+        return self.id
+
+    def get_geometry(self) -> TextractGeometry:
+        return self.geometry
+
+    def get_confidence(self) -> float:
+        return self.confidence
+
+
+class TextractTable(TextractBlock):
+    """Table model to handle tables detected by AWS Textract.
+
+    AWS table model:
+    TABLE --> CELLS --> WORDS
+    TABLE --> MERGED_CELLS --> CELLS --> WORDS
+    TABLE --> TABLE_TITLE --> WORDS
+    TABLE --> TABLE_FOOTER --> WORDS
+
+    The CELLS that are childs of MERGED_CELLS are also childs
+    of the TABLE. So they appear twice.
+
+    Addionally, each WORD is part of a LINE. However, LINES are
+    only present in the overall AWS model:
+
+    PAGE --> LINES --> WORDS
+    PAGE --> TABLES --> <...>
+    """
 
     def __init__(
         self,
@@ -103,72 +138,117 @@ class Table:
         aws_table_footer_blocks: dict,
         aws_line_blocks: dict,
     ) -> None:
-        self.id = aws_table_block["Id"]
-        self.geometry = build_aws_geomerty(aws_table_block["Geometry"])
-        self.confidence = aws_table_block["Confidence"]
-        self.common_cells, self.merged_cells = {}, {}
+        super().__init__(aws_block=aws_table_block)
+        # an aws table is either structured or semistructured. this is
+        # indicated in the values of 'EntityTypes'.
+        self.structured = "STRUCTURED_TABLE" in aws_table_block.get(
+            "EntityTypes", []
+        )
+        (self.common_cells, self.merged_cells) = ([], [])
 
         for block_id in get_ids_of_child_blocks(aws_table_block):
             if block_id in aws_cell_blocks.keys():
-                self.common_cells[block_id] = CommonCell(
-                    aws_cell_blocks[block_id], aws_line_blocks
+                self.common_cells.append(
+                    TextractCommonCell(
+                        aws_cell_blocks[block_id], aws_line_blocks
+                    )
                 )
-            elif block_id in aws_merged_cell_blocks.keys():
-                self.merged_cells[block_id] = MergedCell(
-                    aws_cell_blocks[block_id], aws_line_blocks
-                )
-            elif block_id in aws_table_title_blocks.keys():
-                self.title_cells[block_id] = TitleCell(
-                    aws_cell_blocks[block_id], aws_line_blocks
-                )
-            elif block_id in aws_table_footer_blocks.keys():
-                self.footer_cells[block_id] = FooterCell(
-                    aws_cell_blocks[block_id], aws_line_blocks
+        for block_id in get_ids_of_child_blocks(aws_table_block):
+            if block_id in aws_merged_cell_blocks.keys():
+                self.merged_cells.append(
+                    TextractMergedCell(
+                        aws_cell_blocks[block_id], self.common_cells
+                    )
                 )
 
+        # order cells in reading order (top-left to bottom-right)
+        ordered_cells = sorted(
+            self.common_cells,
+            key=lambda cell: (cell.row_index, cell.column_index),
+        )
+        # order lines in reading order (top-left to bottom-right)
+        self.ordered_line_ids = [
+            line
+            for lines in [cell.get_line_ids() for cell in ordered_cells]
+            for line in lines
+        ]
 
-class Cell(ABC):
+    def get_ordered_line_ids(self) -> List[str]:
+        return self.ordered_line_ids
+
+
+class TextractCell(TextractBlock):
     """Cell model to handle cells detected by AWS Textract."""
 
-    def __init__(self, aws_cell_block: dict, aws_line_blocks: dict) -> None:
-        self.id = aws_cell_block["Id"]
-        self.geometry = build_aws_geomerty(aws_cell_block["Geometry"])
-        self.confidence = aws_cell_block["Confidence"]
-        self.row_index = aws_cell_block["RowIndex"]
-        self.column_index = aws_cell_block["ColumnIndex"]
-        self.row_span = aws_cell_block["RowSpan"]
-        self.column_span = aws_cell_block["ColumnSpan"]
+    @abstractmethod
+    def __init__(self, aws_cell_block: dict) -> None:
+        super().__init__(aws_block=aws_cell_block)
+        self.row_index = int(aws_cell_block["RowIndex"])
+        self.column_index = int(aws_cell_block["ColumnIndex"])
+        self.row_span = int(aws_cell_block["RowSpan"])
+        self.column_span = int(aws_cell_block["ColumnSpan"])
         self.column_header = "COLUMN_HEADER" in aws_cell_block.get(
             "EntityTypes", []
         )
+        self.table_title = "TABLE_TITLE" in aws_cell_block.get(
+            "EntityTypes", []
+        )
+        self.table_footer = "TABLE_FOOTER" in aws_cell_block.get(
+            "EntityTypes", []
+        )
+        self.table_section_title = "TABLE_SECTION_TITLE" in aws_cell_block.get(
+            "EntityTypes", []
+        )
+        self.table_summary = "TABLE_SUMMARY" in aws_cell_block.get(
+            "EntityTypes", []
+        )
+
+    def get_cell_types(self) -> List[str]:
+        types = []
+        if self.table_footer:
+            types.append("table_footer")
+        if self.table_title:
+            types.append("table_title")
+        if self.table_section_title:
+            types.append("section_title")
+        if self.table_summary:
+            types.append("table_summary")
+        if self.column_header:
+            types.append("column_header")
+        return types
 
 
-class CommonCell(Cell):
+class TextractCommonCell(TextractCell):
     """Cell Model for the  AWS Textract table cells"""
 
-    pass
+    def __init__(self, aws_cell_block: dict, aws_line_blocks: dict) -> None:
+        super().__init__(aws_cell_block=aws_cell_block)
+        self.child_word_ids = get_ids_of_child_blocks(aws_cell_block)
+        self.child_line_ids = []
+        for line_block_id, line_block in aws_line_blocks.items():
+            if not set(self.child_word_ids).isdisjoint(
+                get_ids_of_child_blocks(line_block)
+            ):
+                self.child_line_ids.append(line_block_id)
+
+    def get_line_ids(self) -> List[str]:
+        return self.child_line_ids
 
 
-class MergedCell(Cell):
+class TextractMergedCell(TextractCell):
     """Cell Model for the  AWS Textract table merged cells"""
 
-    pass
-
-
-class TitleCell(Cell):
-    """Cell Model for the  AWS Textract table title cells"""
-
-    pass
-
-
-class FooterCell(Cell):
-    """Cell Model for the  AWS Textract table footer cells"""
-
-    pass
+    def __init__(self, aws_cell_block: dict, table_cells: dict) -> None:
+        super().__init__(aws_cell_block=aws_cell_block)
+        child_cell_ids = get_ids_of_child_blocks(aws_cell_block)
+        self.child_cells = []
+        for cell_block_id, cell in table_cells.items():
+            if cell_block_id in child_cell_ids:
+                self.child_cells.append(cell)
 
 
 @singledispatch
-def points_from_awsgeometry(textract_geom, page_width, page_height):
+def points_from_aws_geometry(textract_geom, page_width, page_height):
     """Convert a Textract geometry into a string of points, which are
     scaled to the image width and height."""
 
@@ -177,7 +257,7 @@ def points_from_awsgeometry(textract_geom, page_width, page_height):
     )
 
 
-@points_from_awsgeometry.register
+@points_from_aws_geometry.register
 def _(
     textract_geom: TextractBoundingBox, page_width: int, page_height: int
 ) -> str:
@@ -199,7 +279,7 @@ def _(
     return points
 
 
-@points_from_awsgeometry.register
+@points_from_aws_geometry.register
 def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     """Convert a TextractPolygon into a string of points."""
 
@@ -375,42 +455,31 @@ def convert_file(
 
     # build tables
     tables = []
+    table_id_pagexml_references = {}
     for table_block in table_blocks.values():
-        tables.append(
-            Table(
-                table_block,
-                cell_blocks,
-                merged_cell_blocks,
-                table_title_blocks,
-                table_footer_blocks,
-                line_blocks,
-            )
+        table = TextractTable(
+            table_block,
+            cell_blocks,
+            merged_cell_blocks,
+            table_title_blocks,
+            table_footer_blocks,
+            line_blocks,
         )
+        tables.append(table)
 
-    # ----------
-    for table_block_id in get_ids_of_child_blocks(page_block):
-        if table_block_id not in table_blocks:
-            continue
-        table_block = table_blocks[table_block_id]
-        table_geometry = build_aws_geomerty(table_block["Geometry"])
-        table_region_id = f'table-region-{table_block["Id"]}'
         pagexml_table_region = TableRegionType(
             Coords=CoordsType(
-                points=points_from_awsgeometry(
-                    table_geometry, pil_img.width, pil_img.height
+                points=points_from_aws_geometry(
+                    table.get_geometry(), pil_img.width, pil_img.height
                 )
             ),
-            id=table_region_id,
+            id=f"table-region-{table.get_id()}",
         )
         pagexml_page.add_TableRegion(pagexml_table_region)
-        # store table region object references
-        table_blocks[table_block_id]["table_region_ref"] = pagexml_table_region
-    # --------------------
+        table_id_pagexml_references[table.get_id()] = pagexml_table_region
 
     reading_order_index = 0
-    for line_block_id in get_ids_of_child_blocks(page_block):
-        if line_block_id not in line_blocks:
-            continue
+    for line_block_id in line_blocks.keys():
         line_block = line_blocks[line_block_id]
         line_geometry = build_aws_geomerty(line_block["Geometry"])
 
@@ -419,25 +488,17 @@ def convert_file(
         line_region_id = f'line-region-{line_block["Id"]}'
         pagexml_text_region_line = TextRegionType(
             Coords=CoordsType(
-                points=points_from_awsgeometry(
+                points=points_from_aws_geometry(
                     line_geometry, pil_img.width, pil_img.height
                 )
             ),
             id=line_region_id,
         )
-
-        # check if line is part of a table, add text regions to table region
-        # if so, otherwise add to page
-        table_block, cell_block = part_of_table(
-            line_block,
-            table_blocks,
-            cell_blocks,
-            merged_cell_blocks,
-            table_title_blocks,
-            table_footer_blocks,
+        line_in_table = any(
+            line_block_id in table.get_ordered_line_ids() for table in tables
         )
-        if table_block and cell_block:
-            table_block["table_region_ref"].add_TextRegion(
+        if line_in_table:
+            table_id_pagexml_references[table.get_id()].add_TextRegion(
                 pagexml_text_region_line
             )
         else:
@@ -446,7 +507,7 @@ def convert_file(
         # append lines to text regions
         pagexml_text_line = TextLineType(
             Coords=CoordsType(
-                points=points_from_awsgeometry(
+                points=points_from_aws_geometry(
                     line_geometry, pil_img.width, pil_img.height
                 )
             ),
@@ -477,7 +538,7 @@ def convert_file(
 
             pagexml_word = WordType(
                 Coords=CoordsType(
-                    points=points_from_awsgeometry(
+                    points=points_from_aws_geometry(
                         word_geometry, pil_img.width, pil_img.height
                     )
                 ),
