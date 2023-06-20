@@ -21,7 +21,9 @@ from ocrd_models.ocrd_page import (
     WordType,
     ReadingOrderType,
     OrderedGroupType,
+    UnorderedGroupType,
     RegionRefIndexedType,
+    RolesType,
     TableRegionType,
     TableCellRoleType,
 )
@@ -96,18 +98,9 @@ class TextractBlock(ABC):
 
     @abstractmethod
     def __init__(self, aws_block: dict) -> None:
-        self.id = aws_block["Id"]
-        self.geometry = build_aws_geomerty(aws_block["Geometry"])
-        self.confidence = float(aws_block["Confidence"])
-
-    def get_id(self) -> str:
-        return self.id
-
-    def get_geometry(self) -> TextractGeometry:
-        return self.geometry
-
-    def get_confidence(self) -> float:
-        return self.confidence
+        self.id = aws_block.get("Id")
+        self.geometry = build_aws_geomerty(aws_block.get("Geometry"))
+        self.confidence = float(aws_block.get("Confidence"))
 
 
 class TextractTable(TextractBlock):
@@ -136,7 +129,7 @@ class TextractTable(TextractBlock):
         aws_merged_cell_blocks: dict,
         aws_table_title_blocks: dict,
         aws_table_footer_blocks: dict,
-        aws_line_blocks: dict,
+        textract_words: dict,
     ) -> None:
         super().__init__(aws_block=aws_table_block)
         # an aws table is either structured or semistructured. this is
@@ -144,47 +137,59 @@ class TextractTable(TextractBlock):
         self.structured = "STRUCTURED_TABLE" in aws_table_block.get(
             "EntityTypes", []
         )
-        (self.common_cells, self.merged_cells) = ([], [])
+        self.common_cells = []
+        self.merged_cells = []
 
         for block_id in get_ids_of_child_blocks(aws_table_block):
             if block_id in aws_cell_blocks.keys():
                 self.common_cells.append(
                     TextractCommonCell(
-                        aws_cell_blocks[block_id], aws_line_blocks
+                        aws_cell_blocks[block_id], self, textract_words
                     )
                 )
         for block_id in get_ids_of_child_blocks(aws_table_block):
             if block_id in aws_merged_cell_blocks.keys():
                 self.merged_cells.append(
                     TextractMergedCell(
-                        aws_cell_blocks[block_id], self.common_cells
+                        aws_cell_blocks[block_id], self, self.common_cells
                     )
                 )
 
         # order cells in reading order (top-left to bottom-right)
-        # (apparently, the cell are already ordered correctly as given by textract)
+        # (apparently, the cells are already ordered correctly as given by textract)
         # ordered_cells = sorted(
         #     self.common_cells,
         #     key=lambda cell: (cell.row_index, cell.column_index),
         # )
 
-        self.ordered_line_ids = [
+        self.ordered_lines = [
             line
-            for lines in [cell.get_line_ids() for cell in self.common_cells]
+            for lines in [cell.child_lines for cell in self.common_cells]
             for line in lines
         ]
-        print(self.ordered_line_ids)
 
-    def get_ordered_line_ids(self) -> List[str]:
-        return self.ordered_line_ids
+
+class TextractLine(TextractBlock):
+    def __init__(self, aws_line_block: dict, words: dict) -> None:
+        super().__init__(aws_line_block)
+        self.text = aws_line_block.get("Text")
+        self.child_words = [
+            words.get(id) for id in get_ids_of_child_blocks(aws_line_block)
+        ]
+        for word in self.child_words:
+            word.parent_line = self
+        self.parent_cell = None
 
 
 class TextractCell(TextractBlock):
     """Cell model to handle cells detected by AWS Textract."""
 
     @abstractmethod
-    def __init__(self, aws_cell_block: dict) -> None:
+    def __init__(
+        self, aws_cell_block: dict, parent_table: TextractTable
+    ) -> None:
         super().__init__(aws_block=aws_cell_block)
+        self.parent_table = parent_table
         self.row_index = int(aws_cell_block["RowIndex"])
         self.column_index = int(aws_cell_block["ColumnIndex"])
         self.row_span = int(aws_cell_block["RowSpan"])
@@ -205,12 +210,6 @@ class TextractCell(TextractBlock):
             "EntityTypes", []
         )
 
-    def get_row_index(self) -> int:
-        return self.row_index
-
-    def get_col_index(self) -> int:
-        return self.column_index
-
     def get_cell_types(self) -> List[str]:
         types = []
         if self.table_footer:
@@ -229,30 +228,56 @@ class TextractCell(TextractBlock):
 class TextractCommonCell(TextractCell):
     """Cell Model for the  AWS Textract table cells"""
 
-    def __init__(self, aws_cell_block: dict, aws_line_blocks: dict) -> None:
-        super().__init__(aws_cell_block=aws_cell_block)
-        self.child_word_ids = get_ids_of_child_blocks(aws_cell_block)
-        self.child_line_ids = []
-        for line_block_id, line_block in aws_line_blocks.items():
-            if not set(self.child_word_ids).isdisjoint(
-                get_ids_of_child_blocks(line_block)
-            ):
-                self.child_line_ids.append(line_block_id)
-
-    def get_line_ids(self) -> List[str]:
-        return self.child_line_ids
+    def __init__(
+        self,
+        aws_cell_block: dict,
+        parent_table: TextractTable,
+        textract_words: dict,
+    ) -> None:
+        super().__init__(
+            aws_cell_block=aws_cell_block, parent_table=parent_table
+        )
+        self.parent_merged_cell = None
+        self.child_words = [
+            textract_words.get(id)
+            for id in get_ids_of_child_blocks(aws_cell_block)
+        ]
+        for word in self.child_words:
+            word.parent_cell = self
+        self.child_lines = []
+        for word in self.child_words:
+            if not word.parent_line in self.child_lines:
+                self.child_lines.append(word.parent_line)
+        for line in self.child_lines:
+            line.parent_cell = self
 
 
 class TextractMergedCell(TextractCell):
     """Cell Model for the  AWS Textract table merged cells"""
 
-    def __init__(self, aws_cell_block: dict, table_cells: dict) -> None:
-        super().__init__(aws_cell_block=aws_cell_block)
+    def __init__(
+        self,
+        aws_cell_block: dict,
+        partent_table: TextractTable,
+        table_cells: dict,
+    ) -> None:
+        super().__init__(
+            aws_cell_block=aws_cell_block, parent_table=partent_table
+        )
         child_cell_ids = get_ids_of_child_blocks(aws_cell_block)
         self.child_cells = []
         for cell_block_id, cell in table_cells.items():
             if cell_block_id in child_cell_ids:
                 self.child_cells.append(cell)
+                cell.parent_merged_cell = self
+
+
+class TextractWord(TextractBlock):
+    def __init__(self, aws_word_block: dict) -> None:
+        super().__init__(aws_word_block)
+        self.text = aws_word_block.get("Text")
+        self.parent_line = None
+        self.parent_cell = None
 
 
 @singledispatch
@@ -356,32 +381,6 @@ def convert_file(
         preserve_reading_order (boolean): preserve reading order  of lines as indicated by Textract
     """
 
-    pil_img = Image.open(img_path)
-    now = datetime.now()
-    page_content_type = PcGtsType(
-        Metadata=MetadataType(
-            Creator="OCR-D/core %s" % VERSION, Created=now, LastChange=now
-        )
-    )
-    pagexml_page = PageType(
-        imageWidth=pil_img.width,
-        imageHeight=pil_img.height,
-        imageFilename=img_path,
-    )
-    page_content_type.set_Page(pagexml_page)
-
-    ordered_group = None
-    if preserve_reading_order:
-        # set up ReadingOrder
-        reading_order = ReadingOrderType(
-            OrderedGroup=OrderedGroupType(
-                id="textract_reading_order",
-                comments="Reading order of lines as defined by Textract.",
-            )
-        )
-        ordered_group = reading_order.get_OrderedGroup()
-        pagexml_page.set_ReadingOrder(reading_order)
-
     json_file = open(json_path, "r")
     aws_json = json.load(json_file)
     json_file.close()
@@ -426,54 +425,116 @@ def convert_file(
         if block["BlockType"] == "TABLE_FOOTER":
             table_footer_blocks[block["Id"]] = block
 
+    # build words
+    words = {}
+    for word_id, word_block in word_blocks.items():
+        words[word_id] = TextractWord(word_block)
+
+    # build lines
+    lines = {}
+    for line_id, line_block in line_blocks.items():
+        lines[line_id] = TextractLine(line_block, words)
+
     # build tables
-    tables = []
-    table_id_pagexml_references = {}
-    for table_block in table_blocks.values():
-        table = TextractTable(
+
+    tables = {}
+    for table_id, table_block in table_blocks.items():
+        tables[table_id] = TextractTable(
             table_block,
             cell_blocks,
             merged_cell_blocks,
             table_title_blocks,
             table_footer_blocks,
-            line_blocks,
+            words,
         )
-        tables.append(table)
 
+    # build PRIMAPageXML
+    pil_img = Image.open(img_path)
+    now = datetime.now()
+    page_content_type = PcGtsType(
+        Metadata=MetadataType(
+            Creator="OCR-D/core %s" % VERSION, Created=now, LastChange=now
+        )
+    )
+    pagexml_page = PageType(
+        imageWidth=pil_img.width,
+        imageHeight=pil_img.height,
+        imageFilename=img_path,
+    )
+    page_content_type.set_Page(pagexml_page)
+
+    reading_order = None
+    ordered_group = None
+    unordered_group = None
+    if preserve_reading_order:
+        unordered_group = UnorderedGroupType(id="reading_order")
+        # set up ReadingOrder
+
+        ordered_group = OrderedGroupType(
+            id="line_reading_order",
+            comments="Reading order of lines as defined by Textract.",
+        )
+        unordered_group.add_OrderedGroup(ordered_group)
+
+    tables_metadata = {}
+    for table_id, table in tables.items():
         pagexml_table_region = TableRegionType(
             Coords=CoordsType(
                 points=points_from_aws_geometry(
-                    table.get_geometry(), pil_img.width, pil_img.height
+                    table.geometry, pil_img.width, pil_img.height
                 )
             ),
-            id=f"table-region-{table.get_id()}",
+            id=f"table-region-{table_id}",
         )
         pagexml_page.add_TableRegion(pagexml_table_region)
-        table_id_pagexml_references[table.get_id()] = pagexml_table_region
+        tables_metadata[table_id] = {
+            "page_xml_representation": pagexml_table_region,
+            "reading_order_index_of_last_line_before_table": None,
+        }
 
+    # build pageXML lines
+    # line reading order is given by order of line keys in dict
     reading_order_index = 0
-    for line_block_id in line_blocks.keys():
-        line_block = line_blocks[line_block_id]
-        line_geometry = build_aws_geomerty(line_block["Geometry"])
 
+    for line_id, line in lines.items():
         # wrap lines in separate TextRegions to preserve reading order
         # (ReadingOrder references TextRegions)
-        line_region_id = f'line-region-{line_block["Id"]}'
+        line_region_id = f"line-region-{line_id}"
         pagexml_text_region_line = TextRegionType(
             Coords=CoordsType(
                 points=points_from_aws_geometry(
-                    line_geometry, pil_img.width, pil_img.height
+                    line.geometry, pil_img.width, pil_img.height
                 )
             ),
             id=line_region_id,
         )
-        line_in_table = any(
-            line_block_id in table.get_ordered_line_ids() for table in tables
-        )
-        if line_in_table:
-            table_id_pagexml_references[table.get_id()].add_TextRegion(
+
+        # if line has parent cell, it is part of a table
+        if line.parent_cell:
+            table = line.parent_cell.parent_table
+            tables_metadata[table.id]["page_xml_representation"].add_TextRegion(
                 pagexml_text_region_line
             )
+
+            pagexml_table_cell_role = TableCellRoleType(
+                rowIndex=line.parent_cell.row_index,
+                columnIndex=line.parent_cell.column_index,
+                rowSpan=line.parent_cell.row_span,
+                colSpan=line.parent_cell.column_span,
+                header=line.parent_cell.column_header,
+            )
+            pagexml_roles_type = RolesType(
+                TableCellRole=pagexml_table_cell_role
+            )
+            pagexml_text_region_line.set_Roles(pagexml_roles_type)
+            # store reading order index of last line when encountering a table
+            # the first time
+            if not tables_metadata[table.id][
+                "reading_order_index_of_last_line_before_table"
+            ]:
+                tables_metadata[table.id][
+                    "reading_order_index_of_last_line_before_table"
+                ] = (reading_order_index - 1)
         else:
             pagexml_page.add_TextRegion(pagexml_text_region_line)
 
@@ -481,18 +542,16 @@ def convert_file(
         pagexml_text_line = TextLineType(
             Coords=CoordsType(
                 points=points_from_aws_geometry(
-                    line_geometry, pil_img.width, pil_img.height
+                    line.geometry, pil_img.width, pil_img.height
                 )
             ),
             id=f'line-{line_block["Id"]}',
         )
-        if "Text" in line_block:
-            pagexml_text_line.add_TextEquiv(
-                TextEquivType(Unicode=line_block["Text"])
-            )
+        if line.text:
+            pagexml_text_line.add_TextEquiv(TextEquivType(Unicode=line.text))
         pagexml_text_region_line.add_TextLine(pagexml_text_line)
 
-        if ordered_group:
+        if preserve_reading_order and not line.parent_cell:
             # store reading order
             ordered_group.add_RegionRefIndexed(
                 RegionRefIndexedType(
@@ -501,28 +560,41 @@ def convert_file(
             )
             reading_order_index += 1
 
-        # Word from WORD blocks that are listed in the LINE-block's
-        # child relationships
-        for word_block_id in get_ids_of_child_blocks(line_block):
-            if word_block_id not in word_blocks:
-                continue
-            word_block = word_blocks[word_block_id]
-            word_geometry = build_aws_geomerty(word_block["Geometry"])
-
+        # build pagexml words
+        for word in line.child_words:
             pagexml_word = WordType(
                 Coords=CoordsType(
                     points=points_from_aws_geometry(
-                        word_geometry, pil_img.width, pil_img.height
+                        word.geometry, pil_img.width, pil_img.height
                     )
                 ),
                 id=f'word-{word_block["Id"]}',
             )
-            if "Text" in word_block:
-                pagexml_word.add_TextEquiv(
-                    TextEquivType(Unicode=word_block["Text"])
-                )
+            if word.text:
+                pagexml_word.add_TextEquiv(TextEquivType(Unicode=word.text))
             pagexml_text_line.add_Word(pagexml_word)
 
+    if preserve_reading_order:
+        for table_id, table in tables.items():
+            table_ordered_group = OrderedGroupType(
+                id=f"table_reading_order_{table_id}",
+                comments="Reading order of table.",
+            )
+            table_reading_order_index = 0
+            for line in table.ordered_lines:
+                table_ordered_group.add_RegionRefIndexed(
+                    RegionRefIndexedType(
+                        index=table_reading_order_index,
+                        regionRef=f"line-region-{line.id}",
+                    )
+                )
+                table_reading_order_index += 1
+
+            unordered_group.add_OrderedGroup(table_ordered_group)
+
+    if preserve_reading_order:
+        reading_order = ReadingOrderType(UnorderedGroup=unordered_group)
+        pagexml_page.set_ReadingOrder(reading_order)
     result = to_xml(page_content_type)
     if not out_path:
         sys.stdout.write(result)
