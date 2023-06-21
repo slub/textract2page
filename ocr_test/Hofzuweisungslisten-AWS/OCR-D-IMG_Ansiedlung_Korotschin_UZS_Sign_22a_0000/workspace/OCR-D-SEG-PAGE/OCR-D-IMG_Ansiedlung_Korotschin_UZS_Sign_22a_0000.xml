@@ -2,8 +2,8 @@
 <pc:PcGts xmlns:pc="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
     <pc:Metadata>
         <pc:Creator>OCR-D/core 2.51.0</pc:Creator>
-        <pc:Created>2023-06-20T16:54:05.984066</pc:Created>
-        <pc:LastChange>2023-06-20T16:54:05.984066</pc:LastChange>
+        <pc:Created>2023-06-21T13:55:01.713893</pc:Created>
+        <pc:LastChange>2023-06-21T13:55:01.713893</pc:LastChange>
     </pc:Metadata>
     <pc:Page imageFilename="OCR-D-IMG/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000.tif" imageWidth="2496" imageHeight="3509">
         <pc:ReadingOrder>

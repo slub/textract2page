@@ -129,6 +129,7 @@ class TextractTable(TextractBlock):
         aws_merged_cell_blocks: dict,
         aws_table_title_blocks: dict,
         aws_table_footer_blocks: dict,
+        aws_selection_element_blocks: dict,
         textract_words: dict,
     ) -> None:
         super().__init__(aws_block=aws_table_block)
@@ -144,7 +145,10 @@ class TextractTable(TextractBlock):
             if block_id in aws_cell_blocks.keys():
                 self.common_cells.append(
                     TextractCommonCell(
-                        aws_cell_blocks[block_id], self, textract_words
+                        aws_cell_blocks[block_id],
+                        self,
+                        aws_selection_element_blocks,
+                        textract_words,
                     )
                 )
         for block_id in get_ids_of_child_blocks(aws_table_block):
@@ -170,11 +174,12 @@ class TextractTable(TextractBlock):
 
 
 class TextractLine(TextractBlock):
-    def __init__(self, aws_line_block: dict, words: dict) -> None:
+    def __init__(self, aws_line_block: dict, textract_words: dict) -> None:
         super().__init__(aws_line_block)
         self.text = aws_line_block.get("Text")
         self.child_words = [
-            words.get(id) for id in get_ids_of_child_blocks(aws_line_block)
+            textract_words.get(id)
+            for id in get_ids_of_child_blocks(aws_line_block)
         ]
         for word in self.child_words:
             word.parent_line = self
@@ -232,6 +237,7 @@ class TextractCommonCell(TextractCell):
         self,
         aws_cell_block: dict,
         parent_table: TextractTable,
+        aws_selection_element_blocks: dict,
         textract_words: dict,
     ) -> None:
         super().__init__(
@@ -241,6 +247,16 @@ class TextractCommonCell(TextractCell):
         self.child_words = [
             textract_words.get(id)
             for id in get_ids_of_child_blocks(aws_cell_block)
+            if textract_words.get(id)
+        ]
+        # this is probably 1 element at max. Docs don't state
+        # this clearly though.
+        self.child_selection_elements = [
+            TextractSelectionElement(
+                aws_selection_element_blocks.get(id), parent_cell=self
+            )
+            for id in get_ids_of_child_blocks(aws_cell_block)
+            if aws_selection_element_blocks.get(id)
         ]
         for word in self.child_words:
             word.parent_cell = self
@@ -278,6 +294,103 @@ class TextractWord(TextractBlock):
         self.text = aws_word_block.get("Text")
         self.parent_line = None
         self.parent_cell = None
+
+
+class TextractValue(TextractBlock):
+    """
+    Both Textract Key and Textract Value are modeled as a KEY_VALUE_SET-
+    BlockType in the AWS Textract JSON response. The differentiation is
+    done via the value in EntityTypes.
+
+    https://docs.aws.amazon.com/textract/latest/dg/how-it-works-kvp.html"""
+
+    def __init__(
+        self,
+        aws_key_value_set_block: dict,
+        aws_selection_element_blocks: dict,
+        textract_words: dict,
+    ) -> None:
+        super().__init__(aws_key_value_set_block)
+        if not "VALUE" in aws_key_value_set_block.get("EntityTypes", []):
+            raise ValueError("The provided textract block is no VALUE block.")
+        self.child_words = [
+            textract_words.get(id)
+            for id in get_ids_of_child_blocks(aws_key_value_set_block)
+            if textract_words.get(id)
+        ]
+        # this is probably 1 element at max. Docs don't state
+        # this clearly though.
+        self.child_selection_elements = [
+            TextractSelectionElement(
+                aws_selection_element_blocks.get(id), parent_value=self
+            )
+            for id in get_ids_of_child_blocks(aws_key_value_set_block)
+            if aws_selection_element_blocks.get(id)
+        ]
+        self.associated_key = None
+
+
+class TextractKey(TextractBlock):
+    """
+    Both Textract Key and Textract Value are modeled as a KEY_VALUE_SET-
+    BlockType in the AWS Textract JSON response. The differentiation is
+    done via the value in EntityTypes.
+
+    https://docs.aws.amazon.com/textract/latest/dg/how-it-works-kvp.html"""
+
+    def __init__(
+        self,
+        aws_key_value_set_block: dict,
+        textract_values: dict,
+        textract_words: dict,
+    ) -> None:
+        super().__init__(aws_key_value_set_block)
+        if not "KEY" in aws_key_value_set_block.get("EntityTypes", []):
+            raise ValueError("The provided textract block is no KEY block.")
+        self.child_words = [
+            textract_words.get(id)
+            for id in get_ids_of_child_blocks(aws_key_value_set_block)
+            if textract_words.get(id)
+        ]
+        associated_value_ids = []
+        if any(
+            rel.get("Type") == "VALUE"
+            for rel in aws_key_value_set_block.get("Relationships", [])
+        ):
+            associated_value_ids = [
+                rel.get("Ids", [])
+                for rel in aws_key_value_set_block.get("Relationships", [])
+                if rel["Type"] == "VALUE"
+            ][0]
+        self.associated_values = [
+            textract_values.get(id) for id in associated_value_ids
+        ]
+        for value in self.associated_values:
+            value.associated_key = self
+
+
+class TextractSelectionElement(TextractBlock):
+    """Models a Textract selection element block
+    https://docs.aws.amazon.com/textract/latest/dg/how-it-works-selectables.html
+    """
+
+    def __init__(
+        self,
+        aws_selection_element_block: dict,
+        parent_cell: TextractCommonCell = None,
+        parent_value: TextractValue = None,
+    ) -> None:
+        super().__init__(aws_selection_element_block)
+        self.selected = False
+        if aws_selection_element_block.get("SelectionStatus") == "SELECTED":
+            self.selected = True
+        self.parent_cell = None
+        self.parent_value = None
+
+        if parent_cell:
+            self.parent_cell = parent_cell
+        if parent_value:
+            self.parent_value = parent_value
 
 
 @singledispatch
@@ -396,16 +509,9 @@ def convert_file(
         merged_cell_blocks,
         table_title_blocks,
         table_footer_blocks,
-    ) = (
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-    )
+        selection_element_blocks,
+        key_value_set_blocks,
+    ) = ({}, {}, {}, {}, {}, {}, {}, {}, {}, {})
     for block in aws_json["Blocks"]:
         if block["BlockType"] == "PAGE":
             assert not page_block, "page must not have more than 1 PAGE block"
@@ -424,6 +530,10 @@ def convert_file(
             table_title_blocks[block["Id"]] = block
         if block["BlockType"] == "TABLE_FOOTER":
             table_footer_blocks[block["Id"]] = block
+        if block["BlockType"] == "SELECTION_ELEMENT":
+            selection_element_blocks[block["Id"]] = block
+        if block["BlockType"] == "KEY_VALUE_SET":
+            key_value_set_blocks[block["Id"]] = block
 
     # build words
     words = {}
@@ -436,7 +546,6 @@ def convert_file(
         lines[line_id] = TextractLine(line_block, words)
 
     # build tables
-
     tables = {}
     for table_id, table_block in table_blocks.items():
         tables[table_id] = TextractTable(
@@ -445,8 +554,23 @@ def convert_file(
             merged_cell_blocks,
             table_title_blocks,
             table_footer_blocks,
+            selection_element_blocks,
             words,
         )
+
+    # build values
+    values = {}
+    for key_value_set_id, key_value_set in key_value_set_blocks.items():
+        if "VALUE" in key_value_set.get("EntityTypes", []):
+            keys[key_value_set_id] = TextractKey(
+                key_value_set, selection_element_blocks, words
+            )
+
+    # build keys
+    keys = {}
+    for key_value_set_id, key_value_set in key_value_set_blocks.items():
+        if "KEY" in key_value_set.get("EntityTypes", []):
+            keys[key_value_set_id] = TextractKey(key_value_set, values, words)
 
     # build PRIMAPageXML
     pil_img = Image.open(img_path)
