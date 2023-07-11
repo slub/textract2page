@@ -21,7 +21,7 @@ from ocrd_models.ocrd_page import (
     WordType,
     ReadingOrderType,
     OrderedGroupType,
-    UnorderedGroupType,
+    OrderedGroupIndexedType,
     RegionRefIndexedType,
     RolesType,
     TableRegionType,
@@ -135,6 +135,9 @@ class TextractTable(TextractBlock):
         super().__init__(aws_block=aws_table_block)
         # an aws table is either structured or semistructured. this is
         # indicated in the values of 'EntityTypes'.
+        
+        
+        self.reading_order = None
         self.structured = "STRUCTURED_TABLE" in aws_table_block.get(
             "EntityTypes", []
         )
@@ -158,9 +161,9 @@ class TextractTable(TextractBlock):
                         aws_cell_blocks[block_id], self, self.common_cells
                     )
                 )
-
+        # (apparently, the cells are already ordered correctly as 
+        # given by textract, so we skip next lines.)
         # order cells in reading order (top-left to bottom-right)
-        # (apparently, the cells are already ordered correctly as given by textract)
         # ordered_cells = sorted(
         #     self.common_cells,
         #     key=lambda cell: (cell.row_index, cell.column_index),
@@ -587,21 +590,98 @@ def convert_file(
     )
     page_content_type.set_Page(pagexml_page)
 
-    reading_order = None
-    ordered_group = None
-    unordered_group = None
-    if preserve_reading_order:
-        unordered_group = UnorderedGroupType(id="reading_order")
-        # set up ReadingOrder
 
-        ordered_group = OrderedGroupType(
+    global_ordered_group = None
+    if preserve_reading_order:
+        # set up ReadingOrder
+        global_ordered_group = OrderedGroupType(
             id="line_reading_order",
             comments="Reading order of lines as defined by Textract.",
         )
-        unordered_group.add_OrderedGroup(ordered_group)
 
-    tables_metadata = {}
+    
+
+    # build pageXML lines
+    # line reading order is given by order of line keys in dict
+    global_reading_order_index = 0
+
+    
+
+    for line_id, line in lines.items():
+    
+        if line.parent_cell:
+            parent_table = line.parent_cell.parent_table
+            if not parent_table.reading_order and preserve_reading_order:
+                local_reading_order = OrderedGroupIndexedType(
+                    index=global_reading_order_index,
+                    id=f"table_{table_id}_reading_order",
+                    comments="Reading order of this table.",
+                )             
+                global_ordered_group.add_OrderedGroupIndexed(
+                    local_reading_order
+                )            
+                parent_table.reading_order = local_reading_order
+                global_reading_order_index += 1
+
+        else:
+            # wrap lines in separate TextRegions to preserve reading order
+            # (ReadingOrder references TextRegions)
+            line_region_id = f"line-region-{line_id}"
+            pagexml_text_region_line = TextRegionType(
+                Coords=CoordsType(
+                    points=points_from_aws_geometry(
+                        line.geometry, pil_img.width, pil_img.height
+                    )
+                ),
+                id=line_region_id,
+            )
+            pagexml_page.add_TextRegion(pagexml_text_region_line)
+
+            # store reading order
+            if preserve_reading_order:                
+                global_ordered_group.add_RegionRefIndexed(
+                    RegionRefIndexedType(
+                        index=global_reading_order_index, regionRef=line_region_id
+                    )
+                )
+                global_reading_order_index += 1
+
+            # append lines to text regions
+            pagexml_text_line = TextLineType(
+                Coords=CoordsType(
+                    points=points_from_aws_geometry(
+                        line.geometry, pil_img.width, pil_img.height
+                    )
+                ),
+                id=f'line-{line_block["Id"]}',
+            )
+            if line.text:
+                pagexml_text_line.add_TextEquiv(TextEquivType(Unicode=line.text))
+            pagexml_text_region_line.add_TextLine(pagexml_text_line)
+
+
+
+            # build pagexml words
+            for word in line.child_words:
+                pagexml_word = WordType(
+                    Coords=CoordsType(
+                        points=points_from_aws_geometry(
+                            word.geometry, pil_img.width, pil_img.height
+                        )
+                    ),
+                    id=f'word-{word_block["Id"]}',
+                )
+                if word.text:
+                    pagexml_word.add_TextEquiv(TextEquivType(Unicode=word.text))
+                pagexml_text_line.add_Word(pagexml_word)
+
     for table_id, table in tables.items():
+
+        local_reading_order_index = 0
+        local_reading_order = table.reading_order
+        print(local_reading_order)
+            
+
         pagexml_table_region = TableRegionType(
             Coords=CoordsType(
                 points=points_from_aws_geometry(
@@ -611,113 +691,76 @@ def convert_file(
             id=f"table-region-{table_id}",
         )
         pagexml_page.add_TableRegion(pagexml_table_region)
-        tables_metadata[table_id] = {
-            "page_xml_representation": pagexml_table_region,
-            "reading_order_index_of_last_line_before_table": None,
-        }
 
-    # build pageXML lines
-    # line reading order is given by order of line keys in dict
-    reading_order_index = 0
-
-    for line_id, line in lines.items():
-        # wrap lines in separate TextRegions to preserve reading order
-        # (ReadingOrder references TextRegions)
-        line_region_id = f"line-region-{line_id}"
-        pagexml_text_region_line = TextRegionType(
-            Coords=CoordsType(
-                points=points_from_aws_geometry(
-                    line.geometry, pil_img.width, pil_img.height
-                )
-            ),
-            id=line_region_id,
-        )
-
-        # if line has parent cell, it is part of a table
-        if line.parent_cell:
-            table = line.parent_cell.parent_table
-            tables_metadata[table.id]["page_xml_representation"].add_TextRegion(
-                pagexml_text_region_line
+        for cell in table.common_cells:
+            # create a text region for each cell
+            cell_region_id = f"cell-region-{cell.id}"
+            pagexml_cell_region = TextRegionType(
+                Coords=CoordsType(
+                    points=points_from_aws_geometry(
+                        cell.geometry, pil_img.width, pil_img.height
+                    )
+                ),
+                id=cell_region_id,
             )
+            pagexml_table_region.add_TextRegion(pagexml_cell_region)
 
             pagexml_table_cell_role = TableCellRoleType(
-                rowIndex=line.parent_cell.row_index,
-                columnIndex=line.parent_cell.column_index,
-                rowSpan=line.parent_cell.row_span,
-                colSpan=line.parent_cell.column_span,
-                header=line.parent_cell.column_header,
+                rowIndex=cell.row_index,
+                columnIndex=cell.column_index,
+                rowSpan=cell.row_span,
+                colSpan=cell.column_span,
+                header=cell.column_header,
             )
             pagexml_roles_type = RolesType(
                 TableCellRole=pagexml_table_cell_role
             )
-            pagexml_text_region_line.set_Roles(pagexml_roles_type)
-            # store reading order index of last line when encountering a table
-            # the first time
-            if not tables_metadata[table.id][
-                "reading_order_index_of_last_line_before_table"
-            ]:
-                tables_metadata[table.id][
-                    "reading_order_index_of_last_line_before_table"
-                ] = (reading_order_index - 1)
-        else:
-            pagexml_page.add_TextRegion(pagexml_text_region_line)
+            pagexml_cell_region.set_Roles(pagexml_roles_type)
 
-        # append lines to text regions
-        pagexml_text_line = TextLineType(
-            Coords=CoordsType(
-                points=points_from_aws_geometry(
-                    line.geometry, pil_img.width, pil_img.height
-                )
-            ),
-            id=f'line-{line_block["Id"]}',
-        )
-        if line.text:
-            pagexml_text_line.add_TextEquiv(TextEquivType(Unicode=line.text))
-        pagexml_text_region_line.add_TextLine(pagexml_text_line)
-
-        if preserve_reading_order and not line.parent_cell:
             # store reading order
-            ordered_group.add_RegionRefIndexed(
-                RegionRefIndexedType(
-                    index=reading_order_index, regionRef=line_region_id
-                )
-            )
-            reading_order_index += 1
-
-        # build pagexml words
-        for word in line.child_words:
-            pagexml_word = WordType(
-                Coords=CoordsType(
-                    points=points_from_aws_geometry(
-                        word.geometry, pil_img.width, pil_img.height
-                    )
-                ),
-                id=f'word-{word_block["Id"]}',
-            )
-            if word.text:
-                pagexml_word.add_TextEquiv(TextEquivType(Unicode=word.text))
-            pagexml_text_line.add_Word(pagexml_word)
-
-    if preserve_reading_order:
-        for table_id, table in tables.items():
-            table_ordered_group = OrderedGroupType(
-                id=f"table_reading_order_{table_id}",
-                comments="Reading order of table.",
-            )
-            table_reading_order_index = 0
-            for line in table.ordered_lines:
-                table_ordered_group.add_RegionRefIndexed(
+            if preserve_reading_order:                
+                local_reading_order.add_RegionRefIndexed(
                     RegionRefIndexedType(
-                        index=table_reading_order_index,
-                        regionRef=f"line-region-{line.id}",
+                        index=local_reading_order_index, regionRef=cell_region_id
                     )
                 )
-                table_reading_order_index += 1
+                local_reading_order_index += 1
 
-            unordered_group.add_OrderedGroup(table_ordered_group)
+            for line in cell.child_lines:
+                # append lines to text regions
+                pagexml_text_line = TextLineType(
+                    Coords=CoordsType(
+                        points=points_from_aws_geometry(
+                            line.geometry, pil_img.width, pil_img.height
+                        )
+                    ),
+                    id=f'line-{line_block["Id"]}',
+                )
+                if line.text:
+                    pagexml_text_line.add_TextEquiv(TextEquivType(Unicode=line.text))
+                pagexml_cell_region.add_TextLine(pagexml_text_line)                
+
+                # build pagexml words
+                for word in line.child_words:
+                    pagexml_word = WordType(
+                        Coords=CoordsType(
+                            points=points_from_aws_geometry(
+                                word.geometry, pil_img.width, pil_img.height
+                            )
+                        ),
+                        id=f'word-{word_block["Id"]}',
+                    )
+                    if word.text:
+                        pagexml_word.add_TextEquiv(TextEquivType(Unicode=word.text))
+                    pagexml_text_line.add_Word(pagexml_word)
+
+
+
+
 
     if preserve_reading_order:
-        reading_order = ReadingOrderType(UnorderedGroup=unordered_group)
+        print(global_ordered_group.get_OrderedGroupIndexed()[0].get_RegionRefIndexed()[6].get_index())
+        reading_order = ReadingOrderType(OrderedGroup=global_ordered_group)
         pagexml_page.set_ReadingOrder(reading_order)
     result = to_xml(page_content_type)
     if not out_path:
