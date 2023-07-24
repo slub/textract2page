@@ -1,4 +1,4 @@
-"""Convert an AWS Textract response to Prima PAGE XML."""
+"""Convert an AWS Textract response to PRIMA Page XML."""
 
 import json
 import math
