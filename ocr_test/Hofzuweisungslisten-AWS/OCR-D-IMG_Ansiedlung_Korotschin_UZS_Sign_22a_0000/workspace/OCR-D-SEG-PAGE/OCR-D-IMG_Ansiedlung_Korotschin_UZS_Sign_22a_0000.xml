@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pc:PcGts xmlns:pc="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
     <pc:Metadata>
-        <pc:Creator>OCR-D/core 2.52.0</pc:Creator>
-        <pc:Created>2023-07-11T15:14:44.146597</pc:Created>
-        <pc:LastChange>2023-07-11T15:14:44.146597</pc:LastChange>
+        <pc:Creator>OCR-D/core 2.49.0</pc:Creator>
+        <pc:Created>2023-07-11T15:26:57.137647</pc:Created>
+        <pc:LastChange>2023-07-11T15:26:57.137647</pc:LastChange>
     </pc:Metadata>
     <pc:Page imageFilename="OCR-D-IMG/OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0000.tif" imageWidth="2496" imageHeight="3509">
         <pc:ReadingOrder>
@@ -21,85 +21,85 @@
                 <pc:RegionRefIndexed index="10" regionRef="line-region-cc4c4b37-2aac-4290-9adb-dc237b41e0b0"/>
                 <pc:RegionRefIndexed index="11" regionRef="line-region-66e04fcd-dee8-4303-be58-64d0902fff98"/>
                 <pc:RegionRefIndexed index="12" regionRef="line-region-5a44a9d9-36ff-4a86-9025-ed2eb4c3ff29"/>
-                <pc:OrderedGroupIndexed id="table_16d80cfb-cab6-4e0a-a4f9-05fd738fef19_reading_order" index="13" comments="Reading order of this table.">
-                    <pc:RegionRefIndexed index="0" regionRef="cell-region-aedb3861-15d3-4db8-a76b-5f055504e733"/>
-                    <pc:RegionRefIndexed index="1" regionRef="cell-region-2d5f2a3a-80a7-4165-8c7d-3d4353718db2"/>
-                    <pc:RegionRefIndexed index="2" regionRef="cell-region-5ab7596e-3fd3-42a9-9cd6-315e9c30376d"/>
-                    <pc:RegionRefIndexed index="3" regionRef="cell-region-b3307f00-dc44-468a-ac0c-5d95138b108e"/>
-                    <pc:RegionRefIndexed index="4" regionRef="cell-region-b0d585e3-6705-4d78-add9-72866e3bc183"/>
-                    <pc:RegionRefIndexed index="5" regionRef="cell-region-deaf1cf8-6999-4aea-9e34-26fa5fba14d2"/>
-                    <pc:RegionRefIndexed index="6" regionRef="cell-region-22d8849a-714b-4e4b-8b2f-182b4577dbc3"/>
-                    <pc:RegionRefIndexed index="7" regionRef="cell-region-9725d214-7329-450c-b4d8-98eec6250b47"/>
-                    <pc:RegionRefIndexed index="8" regionRef="cell-region-55ff3466-8e1a-40da-9bd1-6c26e7b0d1b6"/>
-                    <pc:RegionRefIndexed index="9" regionRef="cell-region-26c67f43-5f3c-486a-8b3d-261dc433ca05"/>
-                    <pc:RegionRefIndexed index="10" regionRef="cell-region-155afbb2-f2c8-47d0-9e2c-87381aa5f282"/>
-                    <pc:RegionRefIndexed index="11" regionRef="cell-region-4cf1f91c-2461-467b-add7-d86ffa694dd8"/>
-                    <pc:RegionRefIndexed index="12" regionRef="cell-region-3add484c-e0b0-44a4-8543-2960647e429b"/>
-                    <pc:RegionRefIndexed index="13" regionRef="cell-region-cb747678-619c-4170-a25d-2e3ff71fb4fa"/>
-                    <pc:RegionRefIndexed index="14" regionRef="cell-region-310bdebf-5363-472a-90b3-5c0b82cb243c"/>
-                    <pc:RegionRefIndexed index="15" regionRef="cell-region-afb719e3-a492-475c-94e4-82f0798a3fb4"/>
-                    <pc:RegionRefIndexed index="16" regionRef="cell-region-ed0a75a5-ba88-4138-bd16-8bf3dbe5926b"/>
-                    <pc:RegionRefIndexed index="17" regionRef="cell-region-be89311d-b145-4eae-8b08-772f0219fa09"/>
-                    <pc:RegionRefIndexed index="18" regionRef="cell-region-932cf502-073f-4cfd-8bdc-aacf30455f6b"/>
-                    <pc:RegionRefIndexed index="19" regionRef="cell-region-1e0086f9-7514-433e-934f-c4dc64fdccdb"/>
-                    <pc:RegionRefIndexed index="20" regionRef="cell-region-6c9c5c61-f6be-467a-a20d-1d30a5aeffa5"/>
-                    <pc:RegionRefIndexed index="21" regionRef="cell-region-d79a3369-d13b-47b0-a0ff-6d5eaf9508c8"/>
-                    <pc:RegionRefIndexed index="22" regionRef="cell-region-f16a4965-280f-404b-8b01-dd63d9a0a234"/>
-                    <pc:RegionRefIndexed index="23" regionRef="cell-region-40665f3c-4a83-440d-a49d-469d9a8fe930"/>
-                    <pc:RegionRefIndexed index="24" regionRef="cell-region-c84a70f3-7b2a-4de8-9428-da3c2f781f33"/>
-                    <pc:RegionRefIndexed index="25" regionRef="cell-region-a4497d0a-170f-427e-b9ef-aa2a8e44d420"/>
-                    <pc:RegionRefIndexed index="26" regionRef="cell-region-dc041a29-fdde-479a-b190-a0bef8709b28"/>
-                    <pc:RegionRefIndexed index="27" regionRef="cell-region-3d74a585-08a2-46f8-aa56-611cd84655c1"/>
-                    <pc:RegionRefIndexed index="28" regionRef="cell-region-9970ee7e-e474-46aa-aa58-37c44862a8b5"/>
-                    <pc:RegionRefIndexed index="29" regionRef="cell-region-6fd7f5ae-39db-4dc7-be4b-f3b29c5dd32c"/>
-                    <pc:RegionRefIndexed index="30" regionRef="cell-region-3632f00c-a414-4446-9481-b6560354105f"/>
-                    <pc:RegionRefIndexed index="31" regionRef="cell-region-73565c14-da54-4f31-b790-6ac1af122126"/>
-                    <pc:RegionRefIndexed index="32" regionRef="cell-region-5a4a557e-2512-4911-8adf-54856c1144b0"/>
-                    <pc:RegionRefIndexed index="33" regionRef="cell-region-be6a5407-94e5-4061-ba42-ee0c463a7e80"/>
-                    <pc:RegionRefIndexed index="34" regionRef="cell-region-ebea83f6-ab58-44f3-b4a3-ee9d1bb17dc7"/>
-                    <pc:RegionRefIndexed index="35" regionRef="cell-region-023254a1-fe13-441a-bee3-17d98f53a24c"/>
-                    <pc:RegionRefIndexed index="36" regionRef="cell-region-43dec7a0-08d2-4491-a8d5-be8ab8657d19"/>
-                    <pc:RegionRefIndexed index="37" regionRef="cell-region-b76e7dfe-f2de-4663-a993-5ee1b3dd4a9f"/>
-                    <pc:RegionRefIndexed index="38" regionRef="cell-region-a30c7936-af44-43da-988b-59f89315936f"/>
-                    <pc:RegionRefIndexed index="39" regionRef="cell-region-d0924907-004f-454b-b5de-c50910807bd8"/>
-                    <pc:RegionRefIndexed index="40" regionRef="cell-region-08f6d7f7-d76b-4afa-ab8b-c629dd0675c3"/>
-                    <pc:RegionRefIndexed index="41" regionRef="cell-region-6b26dcfa-6c58-4f11-96e7-ab72ef663115"/>
-                    <pc:RegionRefIndexed index="42" regionRef="cell-region-44a2bbd9-e519-4dcb-8a77-8f8be9dd1513"/>
-                    <pc:RegionRefIndexed index="43" regionRef="cell-region-10eb4a36-ec25-4ca2-ba5f-2520c7fef23a"/>
-                    <pc:RegionRefIndexed index="44" regionRef="cell-region-0c0499b5-d32a-4f70-b739-eaf7cb18f3e4"/>
-                    <pc:RegionRefIndexed index="45" regionRef="cell-region-ba79b049-0288-4f72-acff-a2b8e58c9193"/>
-                    <pc:RegionRefIndexed index="46" regionRef="cell-region-37fee680-9536-491d-9024-706412dc7431"/>
-                    <pc:RegionRefIndexed index="47" regionRef="cell-region-4181df51-c7b9-4d4b-bc41-6f07316ef1ce"/>
-                    <pc:RegionRefIndexed index="48" regionRef="cell-region-c82bc663-6bcd-4510-9bb7-2c828509d3d8"/>
-                    <pc:RegionRefIndexed index="49" regionRef="cell-region-d6e88ae1-33eb-4b1a-800d-05adc2b65057"/>
-                    <pc:RegionRefIndexed index="50" regionRef="cell-region-3356cf5d-0341-4aef-83d8-e5c6ac5751d1"/>
-                    <pc:RegionRefIndexed index="51" regionRef="cell-region-c36307c7-03c0-45b1-83eb-090fe16949e4"/>
-                    <pc:RegionRefIndexed index="52" regionRef="cell-region-8debed61-ff04-4feb-a034-1569ff6747cd"/>
-                    <pc:RegionRefIndexed index="53" regionRef="cell-region-dc87d8a5-890f-4d5d-bf45-c2018936e7e2"/>
-                    <pc:RegionRefIndexed index="54" regionRef="cell-region-b16c0268-6d7a-4435-a770-d2e3550140c4"/>
-                    <pc:RegionRefIndexed index="55" regionRef="cell-region-ebc8eb91-2920-4391-a8dd-bcf0406ddac1"/>
-                    <pc:RegionRefIndexed index="56" regionRef="cell-region-fa63ca44-9b7e-48a9-8603-2d4936416757"/>
-                    <pc:RegionRefIndexed index="57" regionRef="cell-region-3ca876e6-e0b3-496c-ae9f-6d1c6ac9a228"/>
-                    <pc:RegionRefIndexed index="58" regionRef="cell-region-c3666bf2-acb1-4f55-904a-de98f9e80523"/>
-                    <pc:RegionRefIndexed index="59" regionRef="cell-region-49240721-b3cf-412e-b74b-8c75529e4ee3"/>
-                    <pc:RegionRefIndexed index="60" regionRef="cell-region-74fe45ed-c70d-4086-b06d-fed3ec2ddd86"/>
-                    <pc:RegionRefIndexed index="61" regionRef="cell-region-897e8c9a-e5a6-4794-a10d-f21c3f88c47e"/>
-                    <pc:RegionRefIndexed index="62" regionRef="cell-region-6dc16cc5-a1b8-4324-9eed-79dd34104ebe"/>
-                    <pc:RegionRefIndexed index="63" regionRef="cell-region-42cf748b-121d-4473-ace4-4220fe9d758d"/>
-                    <pc:RegionRefIndexed index="64" regionRef="cell-region-a933f4b0-3e0f-438c-ae45-67acc24ee2fd"/>
-                    <pc:RegionRefIndexed index="65" regionRef="cell-region-f48c0c09-00b4-40c2-8543-186e66de1c2f"/>
-                    <pc:RegionRefIndexed index="66" regionRef="cell-region-991732fd-d3f3-46c7-bae8-2bf94ade7d7e"/>
-                    <pc:RegionRefIndexed index="67" regionRef="cell-region-281f5a9a-e259-4a04-8755-31053adaef1f"/>
-                    <pc:RegionRefIndexed index="68" regionRef="cell-region-b7a555c6-c4f0-4324-96bc-01b80c41e036"/>
-                    <pc:RegionRefIndexed index="69" regionRef="cell-region-0f821660-2756-4872-abf9-80573b00d9d5"/>
-                    <pc:RegionRefIndexed index="70" regionRef="cell-region-ebfa77cb-82f5-4a4b-8445-aaec7233f9a1"/>
-                    <pc:RegionRefIndexed index="71" regionRef="cell-region-b8ebf9e7-3a80-4ed3-9d44-d0ab9eeaf7a3"/>
-                    <pc:RegionRefIndexed index="72" regionRef="cell-region-89b53443-a7bc-4dae-8e7a-7d9516530af7"/>
-                    <pc:RegionRefIndexed index="73" regionRef="cell-region-c6260ab7-44ea-4f4c-91fd-1a108b4e1181"/>
-                    <pc:RegionRefIndexed index="74" regionRef="cell-region-976b2668-8211-4788-8efe-47cb78e2c540"/>
-                    <pc:RegionRefIndexed index="75" regionRef="cell-region-2f902c59-dd08-495c-ba7e-4af36d360b8d"/>
-                    <pc:RegionRefIndexed index="76" regionRef="cell-region-ab6d3032-e755-4a71-8972-231055dee16a"/>
-                </pc:OrderedGroupIndexed>
+                <pc:UnorderedGroupIndexed id="table_16d80cfb-cab6-4e0a-a4f9-05fd738fef19_reading_order" index="13" comments="Reading order of this table.">
+                    <pc:RegionRef regionRef="cell-region-aedb3861-15d3-4db8-a76b-5f055504e733"/>
+                    <pc:RegionRef regionRef="cell-region-2d5f2a3a-80a7-4165-8c7d-3d4353718db2"/>
+                    <pc:RegionRef regionRef="cell-region-5ab7596e-3fd3-42a9-9cd6-315e9c30376d"/>
+                    <pc:RegionRef regionRef="cell-region-b3307f00-dc44-468a-ac0c-5d95138b108e"/>
+                    <pc:RegionRef regionRef="cell-region-b0d585e3-6705-4d78-add9-72866e3bc183"/>
+                    <pc:RegionRef regionRef="cell-region-deaf1cf8-6999-4aea-9e34-26fa5fba14d2"/>
+                    <pc:RegionRef regionRef="cell-region-22d8849a-714b-4e4b-8b2f-182b4577dbc3"/>
+                    <pc:RegionRef regionRef="cell-region-9725d214-7329-450c-b4d8-98eec6250b47"/>
+                    <pc:RegionRef regionRef="cell-region-55ff3466-8e1a-40da-9bd1-6c26e7b0d1b6"/>
+                    <pc:RegionRef regionRef="cell-region-26c67f43-5f3c-486a-8b3d-261dc433ca05"/>
+                    <pc:RegionRef regionRef="cell-region-155afbb2-f2c8-47d0-9e2c-87381aa5f282"/>
+                    <pc:RegionRef regionRef="cell-region-4cf1f91c-2461-467b-add7-d86ffa694dd8"/>
+                    <pc:RegionRef regionRef="cell-region-3add484c-e0b0-44a4-8543-2960647e429b"/>
+                    <pc:RegionRef regionRef="cell-region-cb747678-619c-4170-a25d-2e3ff71fb4fa"/>
+                    <pc:RegionRef regionRef="cell-region-310bdebf-5363-472a-90b3-5c0b82cb243c"/>
+                    <pc:RegionRef regionRef="cell-region-afb719e3-a492-475c-94e4-82f0798a3fb4"/>
+                    <pc:RegionRef regionRef="cell-region-ed0a75a5-ba88-4138-bd16-8bf3dbe5926b"/>
+                    <pc:RegionRef regionRef="cell-region-be89311d-b145-4eae-8b08-772f0219fa09"/>
+                    <pc:RegionRef regionRef="cell-region-932cf502-073f-4cfd-8bdc-aacf30455f6b"/>
+                    <pc:RegionRef regionRef="cell-region-1e0086f9-7514-433e-934f-c4dc64fdccdb"/>
+                    <pc:RegionRef regionRef="cell-region-6c9c5c61-f6be-467a-a20d-1d30a5aeffa5"/>
+                    <pc:RegionRef regionRef="cell-region-d79a3369-d13b-47b0-a0ff-6d5eaf9508c8"/>
+                    <pc:RegionRef regionRef="cell-region-f16a4965-280f-404b-8b01-dd63d9a0a234"/>
+                    <pc:RegionRef regionRef="cell-region-40665f3c-4a83-440d-a49d-469d9a8fe930"/>
+                    <pc:RegionRef regionRef="cell-region-c84a70f3-7b2a-4de8-9428-da3c2f781f33"/>
+                    <pc:RegionRef regionRef="cell-region-a4497d0a-170f-427e-b9ef-aa2a8e44d420"/>
+                    <pc:RegionRef regionRef="cell-region-dc041a29-fdde-479a-b190-a0bef8709b28"/>
+                    <pc:RegionRef regionRef="cell-region-3d74a585-08a2-46f8-aa56-611cd84655c1"/>
+                    <pc:RegionRef regionRef="cell-region-9970ee7e-e474-46aa-aa58-37c44862a8b5"/>
+                    <pc:RegionRef regionRef="cell-region-6fd7f5ae-39db-4dc7-be4b-f3b29c5dd32c"/>
+                    <pc:RegionRef regionRef="cell-region-3632f00c-a414-4446-9481-b6560354105f"/>
+                    <pc:RegionRef regionRef="cell-region-73565c14-da54-4f31-b790-6ac1af122126"/>
+                    <pc:RegionRef regionRef="cell-region-5a4a557e-2512-4911-8adf-54856c1144b0"/>
+                    <pc:RegionRef regionRef="cell-region-be6a5407-94e5-4061-ba42-ee0c463a7e80"/>
+                    <pc:RegionRef regionRef="cell-region-ebea83f6-ab58-44f3-b4a3-ee9d1bb17dc7"/>
+                    <pc:RegionRef regionRef="cell-region-023254a1-fe13-441a-bee3-17d98f53a24c"/>
+                    <pc:RegionRef regionRef="cell-region-43dec7a0-08d2-4491-a8d5-be8ab8657d19"/>
+                    <pc:RegionRef regionRef="cell-region-b76e7dfe-f2de-4663-a993-5ee1b3dd4a9f"/>
+                    <pc:RegionRef regionRef="cell-region-a30c7936-af44-43da-988b-59f89315936f"/>
+                    <pc:RegionRef regionRef="cell-region-d0924907-004f-454b-b5de-c50910807bd8"/>
+                    <pc:RegionRef regionRef="cell-region-08f6d7f7-d76b-4afa-ab8b-c629dd0675c3"/>
+                    <pc:RegionRef regionRef="cell-region-6b26dcfa-6c58-4f11-96e7-ab72ef663115"/>
+                    <pc:RegionRef regionRef="cell-region-44a2bbd9-e519-4dcb-8a77-8f8be9dd1513"/>
+                    <pc:RegionRef regionRef="cell-region-10eb4a36-ec25-4ca2-ba5f-2520c7fef23a"/>
+                    <pc:RegionRef regionRef="cell-region-0c0499b5-d32a-4f70-b739-eaf7cb18f3e4"/>
+                    <pc:RegionRef regionRef="cell-region-ba79b049-0288-4f72-acff-a2b8e58c9193"/>
+                    <pc:RegionRef regionRef="cell-region-37fee680-9536-491d-9024-706412dc7431"/>
+                    <pc:RegionRef regionRef="cell-region-4181df51-c7b9-4d4b-bc41-6f07316ef1ce"/>
+                    <pc:RegionRef regionRef="cell-region-c82bc663-6bcd-4510-9bb7-2c828509d3d8"/>
+                    <pc:RegionRef regionRef="cell-region-d6e88ae1-33eb-4b1a-800d-05adc2b65057"/>
+                    <pc:RegionRef regionRef="cell-region-3356cf5d-0341-4aef-83d8-e5c6ac5751d1"/>
+                    <pc:RegionRef regionRef="cell-region-c36307c7-03c0-45b1-83eb-090fe16949e4"/>
+                    <pc:RegionRef regionRef="cell-region-8debed61-ff04-4feb-a034-1569ff6747cd"/>
+                    <pc:RegionRef regionRef="cell-region-dc87d8a5-890f-4d5d-bf45-c2018936e7e2"/>
+                    <pc:RegionRef regionRef="cell-region-b16c0268-6d7a-4435-a770-d2e3550140c4"/>
+                    <pc:RegionRef regionRef="cell-region-ebc8eb91-2920-4391-a8dd-bcf0406ddac1"/>
+                    <pc:RegionRef regionRef="cell-region-fa63ca44-9b7e-48a9-8603-2d4936416757"/>
+                    <pc:RegionRef regionRef="cell-region-3ca876e6-e0b3-496c-ae9f-6d1c6ac9a228"/>
+                    <pc:RegionRef regionRef="cell-region-c3666bf2-acb1-4f55-904a-de98f9e80523"/>
+                    <pc:RegionRef regionRef="cell-region-49240721-b3cf-412e-b74b-8c75529e4ee3"/>
+                    <pc:RegionRef regionRef="cell-region-74fe45ed-c70d-4086-b06d-fed3ec2ddd86"/>
+                    <pc:RegionRef regionRef="cell-region-897e8c9a-e5a6-4794-a10d-f21c3f88c47e"/>
+                    <pc:RegionRef regionRef="cell-region-6dc16cc5-a1b8-4324-9eed-79dd34104ebe"/>
+                    <pc:RegionRef regionRef="cell-region-42cf748b-121d-4473-ace4-4220fe9d758d"/>
+                    <pc:RegionRef regionRef="cell-region-a933f4b0-3e0f-438c-ae45-67acc24ee2fd"/>
+                    <pc:RegionRef regionRef="cell-region-f48c0c09-00b4-40c2-8543-186e66de1c2f"/>
+                    <pc:RegionRef regionRef="cell-region-991732fd-d3f3-46c7-bae8-2bf94ade7d7e"/>
+                    <pc:RegionRef regionRef="cell-region-281f5a9a-e259-4a04-8755-31053adaef1f"/>
+                    <pc:RegionRef regionRef="cell-region-b7a555c6-c4f0-4324-96bc-01b80c41e036"/>
+                    <pc:RegionRef regionRef="cell-region-0f821660-2756-4872-abf9-80573b00d9d5"/>
+                    <pc:RegionRef regionRef="cell-region-ebfa77cb-82f5-4a4b-8445-aaec7233f9a1"/>
+                    <pc:RegionRef regionRef="cell-region-b8ebf9e7-3a80-4ed3-9d44-d0ab9eeaf7a3"/>
+                    <pc:RegionRef regionRef="cell-region-89b53443-a7bc-4dae-8e7a-7d9516530af7"/>
+                    <pc:RegionRef regionRef="cell-region-c6260ab7-44ea-4f4c-91fd-1a108b4e1181"/>
+                    <pc:RegionRef regionRef="cell-region-976b2668-8211-4788-8efe-47cb78e2c540"/>
+                    <pc:RegionRef regionRef="cell-region-2f902c59-dd08-495c-ba7e-4af36d360b8d"/>
+                    <pc:RegionRef regionRef="cell-region-ab6d3032-e755-4a71-8972-231055dee16a"/>
+                </pc:UnorderedGroupIndexed>
                 <pc:RegionRefIndexed index="14" regionRef="line-region-22f80273-d3ef-4fb0-a440-9d4a44a12c5c"/>
                 <pc:RegionRefIndexed index="15" regionRef="line-region-e27a5c0d-e5b8-4aac-b46b-96bc67df1c74"/>
                 <pc:RegionRefIndexed index="16" regionRef="line-region-d67e577a-cc09-422b-906e-334ba3f9a45c"/>
