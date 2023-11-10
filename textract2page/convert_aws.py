@@ -533,6 +533,7 @@ def convert_file(
         preserve_reading_order (boolean): preserve reading order  of lines as indicated by Textract
     """
 
+    print(f"beginning converting {json_path}")
     json_file = open(json_path, "r", encoding="utf-8")
     aws_json = json.load(json_file)
     json_file.close()
@@ -602,7 +603,7 @@ def convert_file(
     values = {}
     for key_value_set_id, key_value_set in key_value_set_blocks.items():
         if "VALUE" in key_value_set.get("EntityTypes", []):
-            values[key_value_set_id] = TextractKey(
+            values[key_value_set_id] = TextractValue(
                 key_value_set, selection_element_blocks, words
             )
 
@@ -813,3 +814,4 @@ def convert_file(
 
     with open(out_path, "w", encoding="utf-8") as out_file:
         out_file.write(result)
+        print(f"  finished writing {out_path}\n")
