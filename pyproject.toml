@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "textract2page"
-dynamic = ["version"]
+dynamic = ["authors", "classifiers", "dependencies", "description", "keywords", "license", "readme", "requires-python", "scripts", "version"]
 
 [tool.setuptools_scm]
 write_to = "textract2page/_version.py"
