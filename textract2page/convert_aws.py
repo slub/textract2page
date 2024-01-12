@@ -205,8 +205,8 @@ class TextractCell(TextractBlock):
     ) -> None:
         super().__init__(aws_block=aws_cell_block)
         self.parent_table = parent_table
-        self.row_index = int(aws_cell_block["RowIndex"])
-        self.column_index = int(aws_cell_block["ColumnIndex"])
+        self.row_index = int(aws_cell_block["RowIndex"]) -1
+        self.column_index = int(aws_cell_block["ColumnIndex"])-1
         self.row_span = int(aws_cell_block["RowSpan"])
         self.column_span = int(aws_cell_block["ColumnSpan"])
         self.column_header = "COLUMN_HEADER" in aws_cell_block.get(
