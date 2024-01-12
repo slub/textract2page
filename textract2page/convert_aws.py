@@ -180,6 +180,14 @@ class TextractTable(TextractBlock):
             for line in lines
         ]
 
+        # store row and col nb
+        row_indices = []
+        col_indices = []
+        for cell in self.common_cells:
+            row_indices.append(cell.row_index)
+            col_indices.append(cell.column_index)
+        self.rows = max(row_indices) + 1
+        self.columns = max(col_indices) + 1
 
 class TextractLine(TextractBlock):
     """Line class to handle lines detected by AWS Textract."""
@@ -725,6 +733,8 @@ def convert_file(
                 )
             ),
             id=f"table-region-{table_id}",
+            rows=table.rows,
+            columns=table.columns
         )
         pagexml_page.add_TableRegion(pagexml_table_region)
 
