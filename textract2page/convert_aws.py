@@ -786,16 +786,22 @@ def convert_file(
                     )
                 )
                 local_reading_order_index += 1
-
+            
+            # lines and words might span multiples cells, if this is the case 
+            # all cell are assigned the same line/word-text. To prevent the 
+            # according TextLineTypes/WordTypes to have the same IDs, each
+            # id is append with the cells row and col index.
             for line in cell.child_lines:
                 # append lines to text regions
+
+                
                 pagexml_text_line = TextLineType(
                     Coords=CoordsType(
                         points=points_from_aws_geometry(
                             line.geometry, pil_img.width, pil_img.height
                         )
                     ),
-                    id=f"line-{line.id}",
+                    id=f"line-{line.id}-{cell.row_index}-{cell.column_index}",
                 )
                 if line.text:
                     pagexml_text_line.add_TextEquiv(
@@ -813,7 +819,7 @@ def convert_file(
                                 word.geometry, pil_img.width, pil_img.height
                             )
                         ),
-                        id=f"word-{word.id}",
+                        id=f"word-{word.id}-{cell.row_index}-{cell.column_index}",
                     )
                     if word.text:
                         pagexml_word.add_TextEquiv(
