@@ -1,4 +1,3 @@
-tests/workspace
 textract2page/_version.py
 *.egg-info
 __pycache__
@@ -7,3 +6,4 @@ dist
 *~
 .vscode
 ocrd.log
+ocr_test
