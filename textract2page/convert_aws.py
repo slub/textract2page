@@ -652,6 +652,7 @@ def convert_file(
     indexed_tables = {}
 
     for line_id, line in lines.items():
+        # if line is part of a table
         if line.parent_cell:
             parent_table = line.parent_cell.parent_table
             if (
@@ -668,7 +669,7 @@ def convert_file(
                 )
                 indexed_tables[parent_table.id] = local_reading_order
                 global_reading_order_index += 1
-
+        # if line is not part of a table
         else:
             # wrap lines in separate TextRegions to preserve reading order
             # (ReadingOrder references TextRegions)
@@ -704,7 +705,9 @@ def convert_file(
             )
             if line.text:
                 pagexml_text_line.add_TextEquiv(
-                    TextEquivType(Unicode=line.text)
+                    TextEquivType(
+                        conf=line.confidence,
+                        Unicode=line.text)
                 )
             pagexml_text_region_line.add_TextLine(pagexml_text_line)
 
@@ -719,7 +722,9 @@ def convert_file(
                     id=f"word-{word.id}",
                 )
                 if word.text:
-                    pagexml_word.add_TextEquiv(TextEquivType(Unicode=word.text))
+                    pagexml_word.add_TextEquiv(TextEquivType(
+                        conf=word.confidence,
+                        Unicode=word.text))
                 pagexml_text_line.add_Word(pagexml_word)
 
     for table_id, table in tables.items():
@@ -794,7 +799,9 @@ def convert_file(
                 )
                 if line.text:
                     pagexml_text_line.add_TextEquiv(
-                        TextEquivType(Unicode=line.text)
+                        TextEquivType(
+                            conf=line.confidence,
+                            Unicode=line.text)
                     )
                 pagexml_cell_region.add_TextLine(pagexml_text_line)
 
@@ -810,7 +817,9 @@ def convert_file(
                     )
                     if word.text:
                         pagexml_word.add_TextEquiv(
-                            TextEquivType(Unicode=word.text)
+                            TextEquivType(
+                                conf=word.confidence,
+                                Unicode=word.text)
                         )
                     pagexml_text_line.add_Word(pagexml_word)
 
