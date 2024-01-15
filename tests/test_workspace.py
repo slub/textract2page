@@ -43,4 +43,12 @@ class TestConvertTextract(TestCase):
                     "/page:PcGts/page:Metadata/*", namespaces=NS
                 ) + result_tree.xpath("/page:PcGts/page:Metadata/*", namespaces=NS):
                     meta.getparent().remove(meta)
+                # remove img path from Page element
+
+                del result_tree.find(".//page:Page", namespaces=NS).attrib[
+                    "imageFilename"
+                ]
+                del target_tree.find(".//page:Page", namespaces=NS).attrib[
+                    "imageFilename"
+                ]
                 assert ET.tostring(target_tree) == ET.tostring(result_tree)
