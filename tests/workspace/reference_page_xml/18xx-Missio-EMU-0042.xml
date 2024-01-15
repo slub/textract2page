@@ -6,7 +6,7 @@
         <page:Created>2024-01-12T16:29:03.744483</page:Created>
         <page:LastChange>2024-01-12T16:29:03.744483</page:LastChange>
     </page:Metadata>
-    <page:Page imageFilename="tests/workspace/images/18xx-Missio-EMU-0042.jpg" imageWidth="2135" imageHeight="3240">
+    <page:Page imageFilename="/home/runner/work/textract2page/tests/workspace/images/18xx-Missio-EMU-0042.jpg" imageWidth="2135" imageHeight="3240">
         <page:ReadingOrder>
             <page:OrderedGroup id="line_reading_order" comments="Reading order of lines as defined by Textract.">
                 <page:RegionRefIndexed index="0" regionRef="line-region-2f3a03cb-39d9-4f8f-922c-12090f0c3cb9"/>
