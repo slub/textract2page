@@ -6,7 +6,7 @@
         <page:Created>2024-01-12T16:30:04.800502</page:Created>
         <page:LastChange>2024-01-12T16:30:04.800502</page:LastChange>
     </page:Metadata>
-    <page:Page imageFilename="/hoem/runner/work/textract2page/tests/workspace/images/Ansiedlung_WD_Wielun_Lentschütz_0053.tif" imageWidth="2479" imageHeight="3509">
+    <page:Page imageFilename="/home/runner/work/textract2page/tests/workspace/images/Ansiedlung_WD_Wielun_Lentschütz_0053.tif" imageWidth="2479" imageHeight="3509">
         <page:ReadingOrder>
             <page:OrderedGroup id="line_reading_order" comments="Reading order of lines as defined by Textract.">
                 <page:RegionRefIndexed index="0" regionRef="line-region-49d8a203-82dc-4aea-aae4-94647f4a9394"/>
