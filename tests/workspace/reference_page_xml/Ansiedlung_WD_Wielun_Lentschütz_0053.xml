@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pc:PcGts xmlns:pc="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
+<pc:PcGts xmlns:pc="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
     <pc:Metadata>
         <pc:Creator>OCR-D/core 2.52.0</pc:Creator>
         <pc:Created>2024-01-12T16:30:04.800502</pc:Created>
         <pc:LastChange>2024-01-12T16:30:04.800502</pc:LastChange>
     </pc:Metadata>
-    <pc:Page imageFilename="textract2page/tests/workspace/images/Ansiedlung_WD_Wielun_Lentschütz_0053.tif" imageWidth="2479" imageHeight="3509">
+    <pc:Page imageFilename="tests/workspace/images/Ansiedlung_WD_Wielun_Lentschütz_0053.tif" imageWidth="2479" imageHeight="3509">
         <pc:ReadingOrder>
             <pc:OrderedGroup id="line_reading_order" comments="Reading order of lines as defined by Textract.">
                 <pc:RegionRefIndexed index="0" regionRef="line-region-49d8a203-82dc-4aea-aae4-94647f4a9394"/>
