@@ -49,16 +49,18 @@ class TestConvertTextract(TestCase):
                     meta.getparent().remove(meta)
                 # remove img path from Page element
 
-                del result_tree.find(
+                res_img_path_elem = result_tree.find(
                     ".//pc:Page",
                     namespaces={
                         "pc": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15"
                     },
-                ).attrib["imageFilename"]
-                del target_tree.find(
+                )
+                del res_img_path_elem.attrib["imageFilename"]
+                tar_img_path_elem = target_tree.find(
                     ".//pc:Page",
                     namespaces={
                         "pc": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15"
                     },
-                ).attrib["imageFilename"]
+                )
+                del tar_img_path_elem.attrib["imageFilename"]
                 assert ET.tostring(target_tree) == ET.tostring(result_tree)
