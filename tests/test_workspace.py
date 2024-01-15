@@ -27,10 +27,6 @@ class TestConvertTextract(TestCase):
             for filename in (workspace / "images").iterdir()
         ]
 
-        # self.aws = Path("textract_reponses") / "18xx-Missio-EMU.json"
-        # self.img = Path("images") / "18xx-Missio-EMU-0042.jpg"
-        # self.xml = Path("page") / "18xx-Missio-EMU-0042.xml"
-
     def test_api(self):
         for path in self.test_path_dict:
             print(path)
@@ -40,15 +36,29 @@ class TestConvertTextract(TestCase):
                 _, result_tree, _, _ = parseEtree(out.name, silence=True)
                 # remove elements bearing dates (Created, LastChange, Creator/Version)
                 for meta in target_tree.xpath(
-                    "/page:PcGts/page:Metadata/*", namespaces=NS
-                ) + result_tree.xpath("/page:PcGts/page:Metadata/*", namespaces=NS):
+                    "/pc:PcGts/pc:Metadata/*",
+                    namespaces={
+                        "pc": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15"
+                    },
+                ) + result_tree.xpath(
+                    "/pc:PcGts/pc:Metadata/*",
+                    namespaces={
+                        "pc": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15"
+                    },
+                ):
                     meta.getparent().remove(meta)
                 # remove img path from Page element
 
-                del result_tree.find(".//page:Page", namespaces=NS).attrib[
-                    "imageFilename"
-                ]
-                del target_tree.find(".//page:Page", namespaces=NS).attrib[
-                    "imageFilename"
-                ]
+                del result_tree.find(
+                    ".//pc:Page",
+                    namespaces={
+                        "pc": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15"
+                    },
+                ).attrib["imageFilename"]
+                del target_tree.find(
+                    ".//pc:Page",
+                    namespaces={
+                        "pc": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15"
+                    },
+                ).attrib["imageFilename"]
                 assert ET.tostring(target_tree) == ET.tostring(result_tree)
