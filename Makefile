@@ -32,8 +32,8 @@ test-api:
 test-cli: OUT != mktemp -u
 test-cli: UNDATED := xmlstarlet ed -N pc=http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 -d /pc:PcGts/pc:Metadata/*
 test-cli:
-	cd tests/workspace; textract2page -O $(OUT) textract/18xx-Missio-EMU.json images/18xx-Missio-EMU-0042.jpg
-	if command -v xmlstarlet &> /dev/null; then diff -u <($(UNDATED) tests/workspace/page/18xx-Missio-EMU-0042.xml) <($(UNDATED) $(OUT)); fi
+	cd tests/workspace; textract2page -O $(OUT) textract_responses/18xx-Missio-EMU.json images/18xx-Missio-EMU-0042.jpg
+	if command -v xmlstarlet &> /dev/null; then diff -u <($(UNDATED) tests/workspace/reference_page_xml/18xx-Missio-EMU-0042.xml) <($(UNDATED) $(OUT)); fi
 	-$(RM) $(OUT)
 
 build:
