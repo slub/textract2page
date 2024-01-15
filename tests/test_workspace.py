@@ -50,14 +50,14 @@ class TestConvertTextract(TestCase):
                 # remove img path from Page element
 
                 res_img_path_elem = result_tree.find(
-                    ".//pc:Page",
+                    "pc:Page",
                     namespaces={
                         "pc": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15"
                     },
                 )
                 del res_img_path_elem.attrib["imageFilename"]
                 tar_img_path_elem = target_tree.find(
-                    ".//pc:Page",
+                    "pc:Page",
                     namespaces={
                         "pc": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15"
                     },

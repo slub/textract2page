@@ -30,7 +30,7 @@ test-api:
 	$(PYTHON) -m pytest $(PYTEST_ARGS) tests
 
 test-cli: OUT != mktemp -u
-test-cli: UNDATED := xmlstarlet ed -N pc=http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 -d /pc:PcGts/pc:Metadata/*
+test-cli: UNDATED := xmlstarlet ed -N pc=http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 -d /pc:PcGts/pc:Metadata/* -d "/pc:PcGts/pc:Page/@imageFilename"
 test-cli:
 	cd tests/workspace; textract2page -O $(OUT) textract_responses/18xx-Missio-EMU-0042.json images/18xx-Missio-EMU-0042.jpg
 	if command -v xmlstarlet &> /dev/null; then diff -u <($(UNDATED) tests/workspace/reference_page_xml/18xx-Missio-EMU-0042.xml) <($(UNDATED) $(OUT)); fi
