@@ -18,9 +18,11 @@ class TestConvertTextract(TestCase):
 
         self.test_path_dict = [
             {
-                "aws": Path("textract_responses") / f"{filename.name.split('.', 1)[0]}.json",
+                "aws": Path("textract_responses")
+                / f"{filename.name.split('.', 1)[0]}.json",
                 "img": Path("images") / filename,
-                "xml": Path("reference_page_xml") / f"{filename.name.split('.', 1)[0]}.xml",
+                "xml": Path("reference_page_xml")
+                / f"{filename.name.split('.', 1)[0]}.xml",
             }
             for filename in (workspace / "images").iterdir()
         ]
@@ -37,8 +39,8 @@ class TestConvertTextract(TestCase):
                 convert_file(str(path["aws"]), str(path["img"]), out.name)
                 _, result_tree, _, _ = parseEtree(out.name, silence=True)
                 # remove elements bearing dates (Created, LastChange, Creator/Version)
-                for meta in target_tree.xpath("/page:PcGts/page:Metadata/*", namespaces=NS) + result_tree.xpath(
+                for meta in target_tree.xpath(
                     "/page:PcGts/page:Metadata/*", namespaces=NS
-                ):
+                ) + result_tree.xpath("/page:PcGts/page:Metadata/*", namespaces=NS):
                     meta.getparent().remove(meta)
                 assert ET.tostring(target_tree) == ET.tostring(result_tree)
