@@ -64,6 +64,6 @@ class TestConvertTextract(TestCase):
                     },
                 )
                 del tar_img_path_elem.attrib["imageFilename"]
-                assert ET.tostring(target_tree) == ET.tostring(result_tree), unified_diff(
+                assert ET.tostring(target_tree) == ET.tostring(result_tree), list(unified_diff(
                     ET.tostring(target_tree, pretty_print=True, encoding='UTF-8'),
-                    ET.tostring(result_tree, pretty_print=True, encoding='UTF-8'))
+                    ET.tostring(result_tree, pretty_print=True, encoding='UTF-8')))
