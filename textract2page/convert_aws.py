@@ -706,7 +706,7 @@ def convert_file(
             if line.text:
                 pagexml_text_line.add_TextEquiv(
                     TextEquivType(
-                        conf=line.confidence,
+                        conf=line.confidence / 100,
                         Unicode=line.text)
                 )
             pagexml_text_region_line.add_TextLine(pagexml_text_line)
@@ -723,7 +723,7 @@ def convert_file(
                 )
                 if word.text:
                     pagexml_word.add_TextEquiv(TextEquivType(
-                        conf=word.confidence,
+                        conf=word.confidence / 100,
                         Unicode=word.text))
                 pagexml_text_line.add_Word(pagexml_word)
 
@@ -806,7 +806,7 @@ def convert_file(
                 if line.text:
                     pagexml_text_line.add_TextEquiv(
                         TextEquivType(
-                            conf=line.confidence,
+                            conf=line.confidence / 100,
                             Unicode=line.text)
                     )
                 pagexml_cell_region.add_TextLine(pagexml_text_line)
@@ -824,7 +824,7 @@ def convert_file(
                     if word.text:
                         pagexml_word.add_TextEquiv(
                             TextEquivType(
-                                conf=word.confidence,
+                                conf=word.confidence / 100,
                                 Unicode=word.text)
                         )
                     pagexml_text_line.add_Word(pagexml_word)
