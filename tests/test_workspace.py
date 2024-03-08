@@ -1,5 +1,6 @@
 from pathlib import Path
 from os import chdir
+from difflib import unified_diff
 from unittest import TestCase, skip, main
 from tempfile import NamedTemporaryFile
 from ocrd_models.ocrd_page import parseEtree
@@ -63,4 +64,6 @@ class TestConvertTextract(TestCase):
                     },
                 )
                 del tar_img_path_elem.attrib["imageFilename"]
-                assert ET.tostring(target_tree) == ET.tostring(result_tree)
+                assert ET.tostring(target_tree) == ET.tostring(result_tree), unified_diff(
+                    ET.tostring(target_tree, pretty_print=True, encoding='UTF-8'),
+                    ET.tostring(result_tree, pretty_print=True, encoding='UTF-8'))
