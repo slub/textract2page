@@ -3,7 +3,7 @@
 import json
 import math
 import sys
-from typing import List, Dict
+from typing import List, Dict, Final
 from dataclasses import dataclass
 from functools import singledispatch
 from datetime import datetime
@@ -31,6 +31,23 @@ from ocrd_models.ocrd_page import (
     TableCellRoleType,
 )
 from ocrd_models.ocrd_page import to_xml
+
+
+text_type_map: Final = {"PRINTED": "printed", "HANDWRITING": "handwritten-cursive"}
+
+# Textract layout types -> Page layout types
+layout_type_map: Final = {
+    "LAYOUT_TITLE": "heading",
+    "LAYOUT_HEADER": "header",
+    "LAYOUT_FOOTER": "footer",
+    "LAYOUT_SECTION_HEADER": "heading",
+    "LAYOUT_PAGE_NUMBER": "page-number",
+    "LAYOUT_LIST": "other",
+    "LAYOUT_FIGURE": "other",
+    "LAYOUT_TABLE": "other",
+    "LAYOUT_KEY_VALUE_SET": "other",
+    "LAYOUT_TEXT": "paragraph",
+}
 
 
 class TextractGeometry(ABC):
@@ -82,8 +99,7 @@ class TextractPolygon(TextractGeometry):
 
     def __init__(self, polygon: List[Dict[str, float]]):
         self.points = [
-            TextractPoint(point.get("X", -1), point.get("Y", -1))
-            for point in polygon
+            TextractPoint(point.get("X", -1), point.get("Y", -1)) for point in polygon
         ]
         self.__post_init__()
 
@@ -107,10 +123,57 @@ class TextractBlock(ABC):
     """Generic Textract BLOCK"""
 
     @abstractmethod
-    def __init__(self, aws_block: dict) -> None:
+    def __init__(self, aws_block: Dict) -> None:
         self.id = aws_block.get("Id")
-        self.geometry = build_aws_geomerty(aws_block.get("Geometry"))
+        self.geometry = build_aws_geometry(aws_block.get("Geometry"))
         self.confidence = float(aws_block.get("Confidence"))
+
+
+class TextractLayout(TextractBlock):
+    """Base class for Textract Layout objects.
+
+    From AmazonTextractDocs:
+    https://docs.aws.amazon.com/textract/latest/dg/layoutresponse.html
+
+    Each element returns two key pieces of information. First is the bounding
+    box of the layout element, which shows its location. Second, the element
+    contains a list of IDs. These IDs point to the components of the layout
+    element, often lines of text represented by LINE objects. Layout elements
+    can also point to different objects, such as TABLE objects, Key-Value pairs,
+    or LAYOUT_TEXT elements in the case of LAYOUT_LIST.
+
+    Elements are returned in implied reading order. This means layout elements
+    will be returned by document analysis left to right, top to bottom. For
+    multicolumn pages, elements are returned from the top of the leftmost column,
+    moving left to  right until the bottom of the column is reached. Then, the
+    elements from the next leftmost column are returned in the same way.
+    """
+
+    def __init__(
+        self, aws_layout_block: Dict, textract_words: Dict, textract_lines: Dict
+    ) -> None:
+        super().__init__(aws_block=aws_layout_block)
+        self.layout_type = layout_type_map.get(aws_layout_block["BlockType"])
+
+        child_words = [
+            textract_words.get(id)
+            for id in get_ids_of_child_blocks(aws_layout_block)
+            if textract_words.get(id)
+        ]
+        for word in child_words:
+            word.parent_layout = self
+
+        self.child_lines = [
+            textract_lines.get(id)
+            for id in get_ids_of_child_blocks(aws_layout_block)
+            if textract_lines.get(id)
+        ]
+        for word in child_words:
+            if not word.parent_line in self.child_lines:
+                self.child_lines.append(word.parent_line)
+
+        for line in self.child_lines:
+            line.parent_layout = self
 
 
 class TextractTable(TextractBlock):
@@ -134,21 +197,19 @@ class TextractTable(TextractBlock):
 
     def __init__(
         self,
-        aws_table_block: dict,
-        aws_cell_blocks: dict,
-        aws_merged_cell_blocks: dict,
-        aws_table_title_blocks: dict,
-        aws_table_footer_blocks: dict,
-        aws_selection_element_blocks: dict,
-        textract_words: dict,
+        aws_table_block: Dict,
+        aws_cell_blocks: Dict,
+        aws_merged_cell_blocks: Dict,
+        aws_table_title_blocks: Dict,
+        aws_table_footer_blocks: Dict,
+        aws_selection_element_blocks: Dict,
+        textract_words: Dict,
     ) -> None:
         super().__init__(aws_block=aws_table_block)
         # an aws table is either structured or semistructured. this is
         # indicated in the values of 'EntityTypes'.
 
-        self.structured = "STRUCTURED_TABLE" in aws_table_block.get(
-            "EntityTypes", []
-        )
+        self.structured = "STRUCTURED_TABLE" in aws_table_block.get("EntityTypes", [])
         self.common_cells = []
         self.merged_cells = []
 
@@ -189,49 +250,44 @@ class TextractTable(TextractBlock):
         self.rows = max(row_indices) + 1
         self.columns = max(col_indices) + 1
 
+
 class TextractLine(TextractBlock):
     """Line class to handle lines detected by AWS Textract."""
 
-    def __init__(self, aws_line_block: dict, textract_words: dict) -> None:
-        super().__init__(aws_line_block)
+    def __init__(
+        self,
+        aws_line_block: Dict,
+        textract_words: Dict,
+    ) -> None:
+        super().__init__(aws_block=aws_line_block)
         self.text = aws_line_block.get("Text")
         self.child_words = [
-            textract_words.get(id)
-            for id in get_ids_of_child_blocks(aws_line_block)
+            textract_words.get(id) for id in get_ids_of_child_blocks(aws_line_block)
         ]
         for word in self.child_words:
             word.parent_line = self
         self.parent_cell = None
+        self.parent_layout = None
 
 
 class TextractCell(TextractBlock):
     """Cell class to handle cells detected by AWS Textract."""
 
     @abstractmethod
-    def __init__(
-        self, aws_cell_block: dict, parent_table: TextractTable
-    ) -> None:
+    def __init__(self, aws_cell_block: Dict, parent_table: TextractTable) -> None:
         super().__init__(aws_block=aws_cell_block)
         self.parent_table = parent_table
-        self.row_index = int(aws_cell_block["RowIndex"]) -1
-        self.column_index = int(aws_cell_block["ColumnIndex"])-1
+        self.row_index = int(aws_cell_block["RowIndex"]) - 1
+        self.column_index = int(aws_cell_block["ColumnIndex"]) - 1
         self.row_span = int(aws_cell_block["RowSpan"])
         self.column_span = int(aws_cell_block["ColumnSpan"])
-        self.column_header = "COLUMN_HEADER" in aws_cell_block.get(
-            "EntityTypes", []
-        )
-        self.table_title = "TABLE_TITLE" in aws_cell_block.get(
-            "EntityTypes", []
-        )
-        self.table_footer = "TABLE_FOOTER" in aws_cell_block.get(
-            "EntityTypes", []
-        )
+        self.column_header = "COLUMN_HEADER" in aws_cell_block.get("EntityTypes", [])
+        self.table_title = "TABLE_TITLE" in aws_cell_block.get("EntityTypes", [])
+        self.table_footer = "TABLE_FOOTER" in aws_cell_block.get("EntityTypes", [])
         self.table_section_title = "TABLE_SECTION_TITLE" in aws_cell_block.get(
             "EntityTypes", []
         )
-        self.table_summary = "TABLE_SUMMARY" in aws_cell_block.get(
-            "EntityTypes", []
-        )
+        self.table_summary = "TABLE_SUMMARY" in aws_cell_block.get("EntityTypes", [])
 
     def get_cell_types(self) -> List[str]:
         """Get all types of this cell as a list. Possible types: table title,
@@ -255,14 +311,12 @@ class TextractCommonCell(TextractCell):
 
     def __init__(
         self,
-        aws_cell_block: dict,
+        aws_cell_block: Dict,
         parent_table: TextractTable,
-        aws_selection_element_blocks: dict,
-        textract_words: dict,
+        aws_selection_element_blocks: Dict,
+        textract_words: Dict,
     ) -> None:
-        super().__init__(
-            aws_cell_block=aws_cell_block, parent_table=parent_table
-        )
+        super().__init__(aws_cell_block=aws_cell_block, parent_table=parent_table)
         self.parent_merged_cell = None
         self.child_words = [
             textract_words.get(id)
@@ -295,12 +349,10 @@ class TextractMergedCell(TextractCell):
 
     def __init__(
         self,
-        aws_cell_block: dict,
+        aws_cell_block: Dict,
         parent_table: TextractTable,
     ) -> None:
-        super().__init__(
-            aws_cell_block=aws_cell_block, parent_table=parent_table
-        )
+        super().__init__(aws_cell_block=aws_cell_block, parent_table=parent_table)
         child_cell_ids = get_ids_of_child_blocks(aws_cell_block)
 
         self.child_cells = []
@@ -311,15 +363,11 @@ class TextractMergedCell(TextractCell):
                     cell.parent_merged_cell = self
 
         self.child_words = [
-            word
-            for child_cell in self.child_cells
-            for word in child_cell.child_words
+            word for child_cell in self.child_cells for word in child_cell.child_words
         ]
 
         self.child_lines = [
-            line
-            for child_cell in self.child_cells
-            for line in child_cell.child_lines
+            line for child_cell in self.child_cells for line in child_cell.child_lines
         ]
 
         self.child_selection_elements = [
@@ -332,11 +380,16 @@ class TextractMergedCell(TextractCell):
 class TextractWord(TextractBlock):
     """Word class for the  AWS Textract words."""
 
-    def __init__(self, aws_word_block: dict) -> None:
-        super().__init__(aws_word_block)
+    def __init__(
+        self,
+        aws_word_block: Dict,
+    ) -> None:
+        super().__init__(aws_block=aws_word_block)
         self.text = aws_word_block.get("Text")
+        self.text_type = text_type_map.get(aws_word_block.get("TextType"))
         self.parent_line = None
         self.parent_cell = None
+        self.parent_layout = None
 
 
 class TextractValue(TextractBlock):
@@ -349,11 +402,11 @@ class TextractValue(TextractBlock):
 
     def __init__(
         self,
-        aws_key_value_set_block: dict,
-        aws_selection_element_blocks: dict,
-        textract_words: dict,
+        aws_key_value_set_block: Dict,
+        aws_selection_element_blocks: Dict,
+        textract_words: Dict,
     ) -> None:
-        super().__init__(aws_key_value_set_block)
+        super().__init__(aws_block=aws_key_value_set_block)
         if not "VALUE" in aws_key_value_set_block.get("EntityTypes", []):
             raise ValueError("The provided textract block is no VALUE block.")
         self.child_words = [
@@ -383,11 +436,11 @@ class TextractKey(TextractBlock):
 
     def __init__(
         self,
-        aws_key_value_set_block: dict,
-        textract_values: dict,
-        textract_words: dict,
+        aws_key_value_set_block: Dict,
+        textract_values: Dict,
+        textract_words: Dict,
     ) -> None:
-        super().__init__(aws_key_value_set_block)
+        super().__init__(aws_block=aws_key_value_set_block)
         if not "KEY" in aws_key_value_set_block.get("EntityTypes", []):
             raise ValueError("The provided textract block is no KEY block.")
         self.child_words = [
@@ -419,7 +472,7 @@ class TextractSelectionElement(TextractBlock):
 
     def __init__(
         self,
-        aws_selection_element_block: dict,
+        aws_selection_element_block: Dict,
         parent_cell: TextractCommonCell = None,
         parent_value: TextractValue = None,
     ) -> None:
@@ -447,9 +500,7 @@ def points_from_aws_geometry(textract_geom, page_width, page_height):
 
 
 @points_from_aws_geometry.register
-def _(
-    textract_geom: TextractBoundingBox, page_width: int, page_height: int
-) -> str:
+def _(textract_geom: TextractBoundingBox, page_width: int, page_height: int) -> str:
     """Convert a TextractBoundingBox into a string of points in the order top,left
     top,right bottom,right bottom,left.
     """
@@ -480,7 +531,7 @@ def _(textract_geom: TextractPolygon, page_width: int, page_height: int) -> str:
     return points
 
 
-def build_aws_geomerty(aws_block_geometry: dict) -> TextractGeometry:
+def build_aws_geometry(aws_block_geometry: Dict) -> TextractGeometry:
     """Build polygon geometry if given in the AWS Textract response, or the
     bounding box geometry otherwise."""
 
@@ -492,7 +543,7 @@ def build_aws_geomerty(aws_block_geometry: dict) -> TextractGeometry:
     return geometry
 
 
-def get_ids_of_child_blocks(aws_block: dict) -> List[str]:
+def get_ids_of_child_blocks(aws_block: Dict) -> List[str]:
     """Searches a AWS-Textract-BLOCK for Relationsships of the type CHILD
     and returns a list of the CHILD-Ids, or an empty list otherwise.
 
@@ -560,7 +611,8 @@ def convert_file(
         table_footer_blocks,
         selection_element_blocks,
         key_value_set_blocks,
-    ) = ({}, {}, {}, {}, {}, {}, {}, {}, {}, {})
+        layout_blocks,
+    ) = ({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {})
     for block in aws_json["Blocks"]:
         if block["BlockType"] == "PAGE":
             assert not page_block, "page must not have more than 1 PAGE block"
@@ -583,6 +635,9 @@ def convert_file(
             selection_element_blocks[block["Id"]] = block
         if block["BlockType"] == "KEY_VALUE_SET":
             key_value_set_blocks[block["Id"]] = block
+        # we handle layout somewhat different
+        if block["BlockType"].startswith("LAYOUT_"):
+            layout_blocks[block["Id"]] = block
 
     # build words
     words = {}
@@ -593,6 +648,12 @@ def convert_file(
     lines = {}
     for line_id, line_block in line_blocks.items():
         lines[line_id] = TextractLine(line_block, words)
+
+    # build layouts
+    layouts = [
+        TextractLayout(layout_block, words, lines)
+        for layout_block in layout_blocks.values()
+    ]
 
     # build tables
     tables = {}
@@ -649,27 +710,45 @@ def convert_file(
     # line reading order is given by order of line keys in dict
     global_reading_order_index = 0
     # preserve table positions in reading order
-    indexed_tables = {}
+    visited_tables = {}
+    visited_layouts = {}
 
     for line_id, line in lines.items():
         # if line is part of a table
         if line.parent_cell:
             parent_table = line.parent_cell.parent_table
             if (
-                not (parent_table.id in indexed_tables.keys())
+                not (parent_table.id in visited_tables.keys())
                 and preserve_reading_order
             ):
+
                 local_reading_order = UnorderedGroupIndexedType(
                     index=global_reading_order_index,
                     id=f"table_{parent_table.id}_reading_order",
                     comments="Reading order of this table.",
                 )
-                global_ordered_group.add_UnorderedGroupIndexed(
-                    local_reading_order
-                )
-                indexed_tables[parent_table.id] = local_reading_order
+                global_ordered_group.add_UnorderedGroupIndexed(local_reading_order)
+                visited_tables[parent_table.id] = local_reading_order
                 global_reading_order_index += 1
-        # if line is not part of a table
+        # if line is part of a layout
+        elif line.parent_layout:
+            continue
+            # local reading order
+            parent_layout = line.parent_layout
+            if (
+                not (parent_layout.id in visited_layouts.keys())
+                and preserve_reading_order
+            ):
+                local_reading_order = UnorderedGroupIndexedType(
+                    index=global_reading_order_index,
+                    id=f"layout_{parent_layout.id}_reading_order",
+                    comments="Reading order of this layout element.",
+                )
+                global_ordered_group.add_UnorderedGroupIndexed(local_reading_order)
+                visited_layouts[parent_layout.id] = local_reading_order
+
+                global_reading_order_index += 1
+
         else:
             # wrap lines in separate TextRegions to preserve reading order
             # (ReadingOrder references TextRegions)
@@ -705,9 +784,7 @@ def convert_file(
             )
             if line.text:
                 pagexml_text_line.add_TextEquiv(
-                    TextEquivType(
-                        conf=line.confidence,
-                        Unicode=line.text)
+                    TextEquivType(conf=line.confidence, Unicode=line.text)
                 )
             pagexml_text_region_line.add_TextLine(pagexml_text_line)
 
@@ -720,16 +797,118 @@ def convert_file(
                         )
                     ),
                     id=f"word-{word.id}",
+                    production=word.text_type,
                 )
                 if word.text:
-                    pagexml_word.add_TextEquiv(TextEquivType(
-                        conf=word.confidence,
-                        Unicode=word.text))
+                    pagexml_word.add_TextEquiv(
+                        TextEquivType(conf=word.confidence, Unicode=word.text)
+                    )
+                pagexml_text_line.add_Word(pagexml_word)
+
+    for layout in layouts:
+        # ignore layout_type: other
+        if layout.layout_type == "other":
+            continue
+
+        pagexml_text_region = TextRegionType(
+            Coords=CoordsType(
+                points=points_from_aws_geometry(
+                    layout.geometry, pil_img.width, pil_img.height
+                )
+            ),
+            id=f"layout-text-region-{layout.id}",
+            type_=layout.layout_type,
+        )
+        pagexml_page.add_TextRegion(pagexml_text_region)
+
+        # local_reading_order_index = 0
+        # local_reading_order = visited_layouts[layout.id]
+
+        # igonre local reading order
+        if preserve_reading_order:
+            global_ordered_group.add_RegionRefIndexed(
+                RegionRefIndexedType(
+                    index=global_reading_order_index,
+                    regionRef=f"layout-text-region-{layout.id}",
+                )
+            )
+            global_reading_order_index += 1
+
+        for line in layout.child_lines:
+
+            # # preserve inner reading order of lines within layout objects
+            # # create a text region for each line
+            # line_region_id = f"line-region-{line.id}"
+            # pagexml_line_region = TextRegionType(
+            #     Coords=CoordsType(
+            #         points=points_from_aws_geometry(
+            #             line.geometry, pil_img.width, pil_img.height
+            #         )
+            #     ),
+            #     id=line_region_id,
+            # )
+            # pagexml_text_region.add_TextRegion(pagexml_line_region)
+
+            # # store reading order
+            # if preserve_reading_order:
+            #     local_reading_order.add_RegionRef(
+            #         RegionRefType(
+            #             index=local_reading_order_index,
+            #             regionRef=line_region_id,
+            #         )
+            #     )
+            #     local_reading_order_index += 1
+
+            # # append lines to text regions
+            # pagexml_text_line = TextLineType(
+            #     Coords=CoordsType(
+            #         points=points_from_aws_geometry(
+            #             line.geometry, pil_img.width, pil_img.height
+            #         )
+            #     ),
+            #     id=f"line-{line.id}",
+            # )
+            # if line.text:
+            #     pagexml_text_line.add_TextEquiv(
+            #         TextEquivType(conf=line.confidence, Unicode=line.text)
+            #     )
+            # pagexml_line_region.add_TextLine(pagexml_text_line)
+
+            # append lines to text region (no inner reading order)
+            pagexml_text_line = TextLineType(
+                Coords=CoordsType(
+                    points=points_from_aws_geometry(
+                        line.geometry, pil_img.width, pil_img.height
+                    )
+                ),
+                id=f"line-{line.id}",
+            )
+            if line.text:
+                pagexml_text_region.add_TextEquiv(
+                    TextEquivType(conf=line.confidence, Unicode=line.text)
+                )
+            pagexml_text_region.add_TextLine(pagexml_text_line)
+
+            # build pagexml words
+            for word in line.child_words:
+                pagexml_word = WordType(
+                    Coords=CoordsType(
+                        points=points_from_aws_geometry(
+                            word.geometry, pil_img.width, pil_img.height
+                        )
+                    ),
+                    id=f"word-{word.id}",
+                    production=word.text_type,
+                )
+                if word.text:
+                    pagexml_word.add_TextEquiv(
+                        TextEquivType(conf=word.confidence, Unicode=word.text)
+                    )
                 pagexml_text_line.add_Word(pagexml_word)
 
     for table_id, table in tables.items():
         local_reading_order_index = 0
-        local_reading_order = indexed_tables[table_id]
+        local_reading_order = visited_tables[table_id]
 
         pagexml_table_region = TableRegionType(
             Coords=CoordsType(
@@ -739,7 +918,7 @@ def convert_file(
             ),
             id=f"table-region-{table_id}",
             rows=table.rows,
-            columns=table.columns
+            columns=table.columns,
         )
         pagexml_page.add_TableRegion(pagexml_table_region)
 
@@ -772,9 +951,7 @@ def convert_file(
                 colSpan=cell.column_span,
                 header=cell.column_header,
             )
-            pagexml_roles_type = RolesType(
-                TableCellRole=pagexml_table_cell_role
-            )
+            pagexml_roles_type = RolesType(TableCellRole=pagexml_table_cell_role)
             pagexml_cell_region.set_Roles(pagexml_roles_type)
 
             # store reading order
@@ -786,15 +963,14 @@ def convert_file(
                     )
                 )
                 local_reading_order_index += 1
-            
-            # lines and words might span multiples cells, if this is the case 
-            # all cell are assigned the same line/word-text. To prevent the 
+
+            # lines and words might span multiples cells, if this is the case
+            # all cell are assigned the same line/word-text. To prevent the
             # according TextLineTypes/WordTypes to have the same IDs, each
             # id is append with the cells row and col index.
             for line in cell.child_lines:
                 # append lines to text regions
 
-                
                 pagexml_text_line = TextLineType(
                     Coords=CoordsType(
                         points=points_from_aws_geometry(
@@ -805,9 +981,7 @@ def convert_file(
                 )
                 if line.text:
                     pagexml_text_line.add_TextEquiv(
-                        TextEquivType(
-                            conf=line.confidence,
-                            Unicode=line.text)
+                        TextEquivType(conf=line.confidence, Unicode=line.text)
                     )
                 pagexml_cell_region.add_TextLine(pagexml_text_line)
 
@@ -820,12 +994,11 @@ def convert_file(
                             )
                         ),
                         id=f"word-{word.id}-{cell.row_index}-{cell.column_index}",
+                        production=word.text_type,
                     )
                     if word.text:
                         pagexml_word.add_TextEquiv(
-                            TextEquivType(
-                                conf=word.confidence,
-                                Unicode=word.text)
+                            TextEquivType(conf=word.confidence, Unicode=word.text)
                         )
                     pagexml_text_line.add_Word(pagexml_word)
 
@@ -833,6 +1006,7 @@ def convert_file(
         reading_order = ReadingOrderType(OrderedGroup=global_ordered_group)
         pagexml_page.set_ReadingOrder(reading_order)
     result = to_xml(page_content_type)
+
     if not out_path:
         sys.stdout.write(result)
         return
