@@ -29,25 +29,12 @@ from ocrd_models.ocrd_page import (
     RolesType,
     TableRegionType,
     TableCellRoleType,
+    ImageRegionType,
 )
 from ocrd_models.ocrd_page import to_xml
 
 
 text_type_map: Final = {"PRINTED": "printed", "HANDWRITING": "handwritten-cursive"}
-
-# Textract layout types -> Page layout types
-layout_type_map: Final = {
-    "LAYOUT_TITLE": "heading",
-    "LAYOUT_HEADER": "header",
-    "LAYOUT_FOOTER": "footer",
-    "LAYOUT_SECTION_HEADER": "heading",
-    "LAYOUT_PAGE_NUMBER": "page-number",
-    "LAYOUT_LIST": "other",
-    "LAYOUT_FIGURE": "other",
-    "LAYOUT_TABLE": "other",
-    "LAYOUT_KEY_VALUE_SET": "other",
-    "LAYOUT_TEXT": "paragraph",
-}
 
 
 class TextractGeometry(ABC):
@@ -153,7 +140,21 @@ class TextractLayout(TextractBlock):
         self, aws_layout_block: Dict, textract_words: Dict, textract_lines: Dict
     ) -> None:
         super().__init__(aws_block=aws_layout_block)
-        self.layout_type = layout_type_map.get(aws_layout_block["BlockType"])
+        # Textract layout types -> Page layout types
+        layout_type_map: Final = {
+            "LAYOUT_TITLE": "heading",
+            "LAYOUT_HEADER": "header",
+            "LAYOUT_FOOTER": "footer",
+            "LAYOUT_SECTION_HEADER": "heading",
+            "LAYOUT_PAGE_NUMBER": "page-number",
+            "LAYOUT_LIST": "other",
+            "LAYOUT_FIGURE": "other",
+            "LAYOUT_TABLE": "other",
+            "LAYOUT_KEY_VALUE_SET": "other",
+            "LAYOUT_TEXT": "paragraph",
+        }
+        self.page_layout_type = layout_type_map.get(aws_layout_block["BlockType"])
+        self.textract_layout_type = aws_layout_block["BlockType"]
 
         child_words = [
             textract_words.get(id)
@@ -711,7 +712,6 @@ def convert_file(
     global_reading_order_index = 0
     # preserve table positions in reading order
     visited_tables = {}
-    visited_layouts = {}
 
     for line_id, line in lines.items():
         # if line is part of a table
@@ -730,25 +730,13 @@ def convert_file(
                 global_ordered_group.add_UnorderedGroupIndexed(local_reading_order)
                 visited_tables[parent_table.id] = local_reading_order
                 global_reading_order_index += 1
-        # if line is part of a layout
+
+        # if line is part of a layout do nothing here
         elif line.parent_layout:
             continue
-            # local reading order
-            parent_layout = line.parent_layout
-            if (
-                not (parent_layout.id in visited_layouts.keys())
-                and preserve_reading_order
-            ):
-                local_reading_order = UnorderedGroupIndexedType(
-                    index=global_reading_order_index,
-                    id=f"layout_{parent_layout.id}_reading_order",
-                    comments="Reading order of this layout element.",
-                )
-                global_ordered_group.add_UnorderedGroupIndexed(local_reading_order)
-                visited_layouts[parent_layout.id] = local_reading_order
 
-                global_reading_order_index += 1
-
+        # if line is neither part of a table, nor of a layout, create dummy
+        # region around the line
         else:
             # wrap lines in separate TextRegions to preserve reading order
             # (ReadingOrder references TextRegions)
@@ -807,7 +795,30 @@ def convert_file(
 
     for layout in layouts:
         # ignore layout_type: other
-        if layout.layout_type == "other":
+        if layout.textract_layout_type == "LAYOUT_FIGURE":
+            pagexml_text_region = ImageRegionType(
+                Coords=CoordsType(
+                    points=points_from_aws_geometry(
+                        layout.geometry, pil_img.width, pil_img.height
+                    )
+                ),
+                id=f"layout-image-region-{layout.id}",
+                type_=layout.page_layout_type,
+                custom=f"textract-layout-type: {layout.textract_layout_type.split('LAYOUT_')[1].lower()};",
+            )
+            pagexml_page.add_TextRegion(pagexml_text_region)
+
+            if preserve_reading_order:
+                global_ordered_group.add_RegionRefIndexed(
+                    RegionRefIndexedType(
+                        index=global_reading_order_index,
+                        regionRef=f"layout-text-region-{layout.id}",
+                    )
+                )
+                global_reading_order_index += 1
+            continue
+        if layout.textract_layout_type == "LAYOUT_TABLE":
+            # we cover tables separatly
             continue
 
         pagexml_text_region = TextRegionType(
@@ -817,14 +828,11 @@ def convert_file(
                 )
             ),
             id=f"layout-text-region-{layout.id}",
-            type_=layout.layout_type,
+            type_=layout.page_layout_type,
+            custom=f"textract-layout-type: {layout.textract_layout_type.split('LAYOUT_')[1].lower()};",
         )
         pagexml_page.add_TextRegion(pagexml_text_region)
 
-        # local_reading_order_index = 0
-        # local_reading_order = visited_layouts[layout.id]
-
-        # igonre local reading order
         if preserve_reading_order:
             global_ordered_group.add_RegionRefIndexed(
                 RegionRefIndexedType(
@@ -836,45 +844,6 @@ def convert_file(
 
         for line in layout.child_lines:
 
-            # # preserve inner reading order of lines within layout objects
-            # # create a text region for each line
-            # line_region_id = f"line-region-{line.id}"
-            # pagexml_line_region = TextRegionType(
-            #     Coords=CoordsType(
-            #         points=points_from_aws_geometry(
-            #             line.geometry, pil_img.width, pil_img.height
-            #         )
-            #     ),
-            #     id=line_region_id,
-            # )
-            # pagexml_text_region.add_TextRegion(pagexml_line_region)
-
-            # # store reading order
-            # if preserve_reading_order:
-            #     local_reading_order.add_RegionRef(
-            #         RegionRefType(
-            #             index=local_reading_order_index,
-            #             regionRef=line_region_id,
-            #         )
-            #     )
-            #     local_reading_order_index += 1
-
-            # # append lines to text regions
-            # pagexml_text_line = TextLineType(
-            #     Coords=CoordsType(
-            #         points=points_from_aws_geometry(
-            #             line.geometry, pil_img.width, pil_img.height
-            #         )
-            #     ),
-            #     id=f"line-{line.id}",
-            # )
-            # if line.text:
-            #     pagexml_text_line.add_TextEquiv(
-            #         TextEquivType(conf=line.confidence, Unicode=line.text)
-            #     )
-            # pagexml_line_region.add_TextLine(pagexml_text_line)
-
-            # append lines to text region (no inner reading order)
             pagexml_text_line = TextLineType(
                 Coords=CoordsType(
                     points=points_from_aws_geometry(
