@@ -35,6 +35,18 @@ from ocrd_models.ocrd_page import to_xml
 
 
 text_type_map: Final = {"PRINTED": "printed", "HANDWRITING": "handwritten-cursive"}
+layout_type_map: Final = {
+    "LAYOUT_TITLE": "heading",
+    "LAYOUT_HEADER": "header",
+    "LAYOUT_FOOTER": "footer",
+    "LAYOUT_SECTION_HEADER": "heading",
+    "LAYOUT_PAGE_NUMBER": "page-number",
+    "LAYOUT_LIST": "other",
+    "LAYOUT_FIGURE": "other",
+    "LAYOUT_TABLE": "other",
+    "LAYOUT_KEY_VALUE_SET": "other",
+    "LAYOUT_TEXT": "paragraph",
+}
 
 
 class TextractGeometry(ABC):
@@ -113,7 +125,7 @@ class TextractBlock(ABC):
     def __init__(self, aws_block: Dict) -> None:
         self.id = aws_block.get("Id")
         self.geometry = build_aws_geometry(aws_block.get("Geometry"))
-        self.confidence = float(aws_block.get("Confidence"))
+        self.confidence = float(aws_block.get("Confidence")) / 100
 
 
 class TextractLayout(TextractBlock):
@@ -141,18 +153,7 @@ class TextractLayout(TextractBlock):
     ) -> None:
         super().__init__(aws_block=aws_layout_block)
         # Textract layout types -> Page layout types
-        layout_type_map: Final = {
-            "LAYOUT_TITLE": "heading",
-            "LAYOUT_HEADER": "header",
-            "LAYOUT_FOOTER": "footer",
-            "LAYOUT_SECTION_HEADER": "heading",
-            "LAYOUT_PAGE_NUMBER": "page-number",
-            "LAYOUT_LIST": "other",
-            "LAYOUT_FIGURE": "other",
-            "LAYOUT_TABLE": "other",
-            "LAYOUT_KEY_VALUE_SET": "other",
-            "LAYOUT_TEXT": "paragraph",
-        }
+
         self.page_layout_type = layout_type_map.get(aws_layout_block["BlockType"])
         self.textract_layout_type = aws_layout_block["BlockType"]
 
@@ -686,6 +687,9 @@ def convert_file(
     # --------------------------------------------------------------------------
     # build PRIMAPageXML
     pil_img = Image.open(img_path)
+    img_width = pil_img.width
+    img_height = pil_img.height
+    pil_img.close()
     now = datetime.now()
     page_content_type = PcGtsType(
         Metadata=MetadataType(
@@ -693,8 +697,8 @@ def convert_file(
         )
     )
     pagexml_page = PageType(
-        imageWidth=pil_img.width,
-        imageHeight=pil_img.height,
+        imageWidth=img_width,
+        imageHeight=img_height,
         imageFilename=img_path,
     )
     page_content_type.set_Page(pagexml_page)
@@ -744,7 +748,7 @@ def convert_file(
             pagexml_text_region_line = TextRegionType(
                 Coords=CoordsType(
                     points=points_from_aws_geometry(
-                        line.geometry, pil_img.width, pil_img.height
+                        line.geometry, img_width, img_height
                     )
                 ),
                 id=line_region_id,
@@ -765,7 +769,7 @@ def convert_file(
             pagexml_text_line = TextLineType(
                 Coords=CoordsType(
                     points=points_from_aws_geometry(
-                        line.geometry, pil_img.width, pil_img.height
+                        line.geometry, img_width, img_height
                     )
                 ),
                 id=f"line-{line_id}",
@@ -781,7 +785,7 @@ def convert_file(
                 pagexml_word = WordType(
                     Coords=CoordsType(
                         points=points_from_aws_geometry(
-                            word.geometry, pil_img.width, pil_img.height
+                            word.geometry, img_width, img_height
                         )
                     ),
                     id=f"word-{word.id}",
@@ -796,10 +800,10 @@ def convert_file(
     for layout in layouts:
         # ignore layout_type: other
         if layout.textract_layout_type == "LAYOUT_FIGURE":
-            pagexml_text_region = ImageRegionType(
+            pagexml_img_region = ImageRegionType(
                 Coords=CoordsType(
                     points=points_from_aws_geometry(
-                        layout.geometry, pil_img.width, pil_img.height
+                        layout.geometry, img_width, img_height
                     )
                 ),
                 id=f"layout-image-region-{layout.id}",
@@ -815,9 +819,7 @@ def convert_file(
 
         pagexml_text_region = TextRegionType(
             Coords=CoordsType(
-                points=points_from_aws_geometry(
-                    layout.geometry, pil_img.width, pil_img.height
-                )
+                points=points_from_aws_geometry(layout.geometry, img_width, img_height)
             ),
             id=f"layout-text-region-{layout.id}",
             type_=layout.page_layout_type,
@@ -839,7 +841,7 @@ def convert_file(
             pagexml_text_line = TextLineType(
                 Coords=CoordsType(
                     points=points_from_aws_geometry(
-                        line.geometry, pil_img.width, pil_img.height
+                        line.geometry, img_width, img_height
                     )
                 ),
                 id=f"line-{line.id}",
@@ -855,7 +857,7 @@ def convert_file(
                 pagexml_word = WordType(
                     Coords=CoordsType(
                         points=points_from_aws_geometry(
-                            word.geometry, pil_img.width, pil_img.height
+                            word.geometry, img_width, img_height
                         )
                     ),
                     id=f"word-{word.id}",
@@ -873,9 +875,7 @@ def convert_file(
 
         pagexml_table_region = TableRegionType(
             Coords=CoordsType(
-                points=points_from_aws_geometry(
-                    table.geometry, pil_img.width, pil_img.height
-                )
+                points=points_from_aws_geometry(table.geometry, img_width, img_height)
             ),
             id=f"table-region-{table_id}",
             rows=table.rows,
@@ -898,7 +898,7 @@ def convert_file(
             pagexml_cell_region = TextRegionType(
                 Coords=CoordsType(
                     points=points_from_aws_geometry(
-                        cell.geometry, pil_img.width, pil_img.height
+                        cell.geometry, img_width, img_height
                     )
                 ),
                 id=cell_region_id,
@@ -935,7 +935,7 @@ def convert_file(
                 pagexml_text_line = TextLineType(
                     Coords=CoordsType(
                         points=points_from_aws_geometry(
-                            line.geometry, pil_img.width, pil_img.height
+                            line.geometry, img_width, img_height
                         )
                     ),
                     id=f"line-{line.id}-{cell.row_index}-{cell.column_index}",
@@ -951,7 +951,7 @@ def convert_file(
                     pagexml_word = WordType(
                         Coords=CoordsType(
                             points=points_from_aws_geometry(
-                                word.geometry, pil_img.width, pil_img.height
+                                word.geometry, img_width, img_height
                             )
                         ),
                         id=f"word-{word.id}-{cell.row_index}-{cell.column_index}",
