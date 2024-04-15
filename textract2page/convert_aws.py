@@ -582,11 +582,6 @@ def convert_file(
 
     Amazon Documentation: https://docs.aws.amazon.com/textract/latest/dg/how-it-works-document-layout.html
 
-
-    AWS PAGE BLOCK is mapped to to TextRegion.
-    AWS LINE BLOCK is mapped to to TextLine.
-    AWS WORD BLOCK is mapped to to Word.
-
     Arguments:
         json_path (str): path to input JSON file
         img_path (str): path to input JPEG file
