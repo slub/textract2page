@@ -808,14 +808,6 @@ def convert_file(
             )
             pagexml_page.add_ImageRegion(pagexml_img_region)
 
-            if preserve_reading_order:
-                global_ordered_group.add_RegionRefIndexed(
-                    RegionRefIndexedType(
-                        index=global_reading_order_index,
-                        regionRef=f"layout-text-region-{layout.id}",
-                    )
-                )
-                global_reading_order_index += 1
             continue
         if layout.textract_layout_type == "LAYOUT_TABLE":
             # we cover tables separatly
