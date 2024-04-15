@@ -806,7 +806,7 @@ def convert_file(
                 type_=layout.page_layout_type,
                 custom=f"textract-layout-type: {layout.textract_layout_type.split('LAYOUT_')[1].lower()};",
             )
-            pagexml_page.add_TextRegion(pagexml_text_region)
+            pagexml_page.add_ImageRegion(pagexml_img_region)
 
             if preserve_reading_order:
                 global_ordered_group.add_RegionRefIndexed(
