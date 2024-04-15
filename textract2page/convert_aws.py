@@ -3,7 +3,7 @@
 import json
 import math
 import sys
-from typing import List, Dict, Final
+from typing import List, Dict
 from dataclasses import dataclass
 from functools import singledispatch
 from datetime import datetime
@@ -34,8 +34,8 @@ from ocrd_models.ocrd_page import (
 from ocrd_models.ocrd_page import to_xml
 
 
-text_type_map: Final = {"PRINTED": "printed", "HANDWRITING": "handwritten-cursive"}
-layout_type_map: Final = {
+TEXT_TYPE_MAP = {"PRINTED": "printed", "HANDWRITING": "handwritten-cursive"}
+LAYOUT_TYPE_MAP = {
     "LAYOUT_TITLE": "heading",
     "LAYOUT_HEADER": "header",
     "LAYOUT_FOOTER": "footer",
@@ -154,7 +154,7 @@ class TextractLayout(TextractBlock):
         super().__init__(aws_block=aws_layout_block)
         # Textract layout types -> Page layout types
 
-        self.page_layout_type = layout_type_map.get(aws_layout_block["BlockType"])
+        self.page_layout_type = LAYOUT_TYPE_MAP.get(aws_layout_block["BlockType"])
         self.textract_layout_type = aws_layout_block["BlockType"]
 
         child_words = [
@@ -388,7 +388,7 @@ class TextractWord(TextractBlock):
     ) -> None:
         super().__init__(aws_block=aws_word_block)
         self.text = aws_word_block.get("Text")
-        self.text_type = text_type_map.get(aws_word_block.get("TextType"))
+        self.text_type = TEXT_TYPE_MAP.get(aws_word_block.get("TextType"))
         self.parent_line = None
         self.parent_cell = None
         self.parent_layout = None
