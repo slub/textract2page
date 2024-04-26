@@ -21,12 +21,13 @@ class TestConvertTextract(TestCase):
             {
                 "aws": Path("textract_responses")
                 / f"{filename.name.split('.', 1)[0]}.json",
-                "img": Path("images") / filename,
+                "img": Path("images") / filename.name,
                 "xml": Path("reference_page_xml")
                 / f"{filename.name.split('.', 1)[0]}.xml",
             }
             for filename in (workspace / "images").iterdir()
         ]
+        print(self.test_path_dict)
 
     def test_api(self):
         for path in self.test_path_dict:

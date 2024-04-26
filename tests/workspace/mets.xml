@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mets:mets xmlns:mets="http://www.loc.gov/METS/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:lc/xmlns/premis-v2 http://www.loc.gov/standards/premis/v2/premis-v2-0.xsd http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-6.xsd http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd http://www.loc.gov/mix/v10 http://www.loc.gov/standards/mix/mix10/mix10.xsd">
-  <mets:metsHdr CREATEDATE="2023-06-21T13:50:00.807482">
+  <mets:metsHdr CREATEDATE="2024-04-24T11:11:46.027506">
     <mets:agent TYPE="OTHER" OTHERTYPE="SOFTWARE" ROLE="CREATOR">
-      <mets:name>ocrd/core v2.51.0</mets:name>
+      <mets:name>ocrd/core v2.63.3</mets:name>
     </mets:agent>
   </mets:metsHdr>
   <mets:dmdSec ID="DMDLOG_0001">
@@ -18,30 +18,42 @@
   <mets:fileSec>
     <mets:fileGrp USE="OCR-D-IMG">
       <mets:file ID="OCR-D-IMG_f18xx-Missio-EMU-0042" MIMETYPE="image/jpeg">
-        <mets:FLocat LOCTYPE="OTHER" OTHERLOCTYPE="FILE" xlink:href="images/18xx-Missio-EMU-0042.jpg"/>
+        <mets:FLocat xlink:href="images/18xx-Missio-EMU-0042.jpg" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
       </mets:file>
       <mets:file ID="OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0018" MIMETYPE="image/tiff">
-        <mets:FLocat LOCTYPE="OTHER" OTHERLOCTYPE="FILE" xlink:href="images/Ansiedlung_Korotschin_UZS_Sign_22a_0018.tif"/>
+        <mets:FLocat xlink:href="images/Ansiedlung_Korotschin_UZS_Sign_22a_0018.tif" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
       </mets:file>
       <mets:file ID="OCR-D-IMG_Ansiedlung_WD_Wielun_Lentschütz_0053" MIMETYPE="image/tiff">
-        <mets:FLocat LOCTYPE="OTHER" OTHERLOCTYPE="FILE" xlink:href="images/Ansiedlung_WD_Wielun_Lentschütz_0053.tif"/>
+        <mets:FLocat xlink:href="images/Ansiedlung_WD_Wielun_Lentschütz_0053.tif" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
       </mets:file>
       <mets:file ID="OCR-D-IMG_Lodz_UZS_25_0056" MIMETYPE="image/tiff">
-        <mets:FLocat LOCTYPE="OTHER" OTHERLOCTYPE="FILE" xlink:href="images/Lodz_UZS_25_0056.tif"/>
+        <mets:FLocat xlink:href="images/Lodz_UZS_25_0056.tif" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      </mets:file>
+      <mets:file ID="OCR-D-IMG_nd1969-01-21_3" MIMETYPE="image/jpeg">
+        <mets:FLocat xlink:href="images/nd1969-01-21_3.jpg" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      </mets:file>
+      <mets:file ID="OCR-D-IMG_nowa_doba" MIMETYPE="image/jpeg">
+        <mets:FLocat xlink:href="images/nowa_doba.jpg" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
       </mets:file>
     </mets:fileGrp>
     <mets:fileGrp USE="OCR-D-SEG-PAGE">
       <mets:file ID="OCR-D-SEG-PAGE_f18xx-Missio-EMU-0042" MIMETYPE="application/vnd.prima.page+xml">
-        <mets:FLocat LOCTYPE="OTHER" OTHERLOCTYPE="FILE" xlink:href="page/18xx-Missio-EMU-0042.xml"/>
+        <mets:FLocat xlink:href="reference_page_xml/18xx-Missio-EMU-0042.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
       </mets:file>
       <mets:file ID="OCR-D-SEG-PAGE_Ansiedlung_Korotschin_UZS_Sign_22a_0018" MIMETYPE="application/vnd.prima.page+xml">
-        <mets:FLocat LOCTYPE="OTHER" OTHERLOCTYPE="FILE" xlink:href="page/Ansiedlung_Korotschin_UZS_Sign_22a_0018.xml"/>
+        <mets:FLocat xlink:href="reference_page_xml/Ansiedlung_Korotschin_UZS_Sign_22a_0018.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
       </mets:file>
       <mets:file ID="OCR-D-SEG-PAGE_Ansiedlung_WD_Wielun_Lentschütz_0053" MIMETYPE="application/vnd.prima.page+xml">
-        <mets:FLocat LOCTYPE="OTHER" OTHERLOCTYPE="FILE" xlink:href="page/Ansiedlung_WD_Wielun_Lentschütz_0053.xml"/>
+        <mets:FLocat xlink:href="reference_page_xml/Ansiedlung_WD_Wielun_Lentschütz_0053.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
       </mets:file>
       <mets:file ID="OCR-D-SEG-PAGE_Lodz_UZS_25_0056" MIMETYPE="application/vnd.prima.page+xml">
-        <mets:FLocat LOCTYPE="OTHER" OTHERLOCTYPE="FILE" xlink:href="page/Lodz_UZS_25_0056.xml"/>
+        <mets:FLocat xlink:href="reference_page_xml/Lodz_UZS_25_0056.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      </mets:file>
+      <mets:file ID="OCR-D-SEG-PAGE_nd1969-01-21_03" MIMETYPE="application/vnd.prima.page+xml">
+        <mets:FLocat xlink:href="reference_page_xml/nd1969-01-21_03.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      </mets:file>
+      <mets:file ID="OCR-D-SEG-PAGE_nowa_doba" MIMETYPE="application/vnd.prima.page+xml">
+        <mets:FLocat xlink:href="reference_page_xml/nowa_doba.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
       </mets:file>
     </mets:fileGrp>
   </mets:fileSec>
@@ -62,6 +74,16 @@
       <mets:div TYPE="page" ID="Lodz_UZS_25_0056">
         <mets:fptr FILEID="OCR-D-IMG_Lodz_UZS_25_0056"/>
         <mets:fptr FILEID="OCR-D-SEG-PAGE_Lodz_UZS_25_0056"/>
+      </mets:div>
+      <mets:div TYPE="page" ID="nd1969-01-21_3">
+        <mets:fptr FILEID="OCR-D-IMG_nd1969-01-21_3"/>
+      </mets:div>
+      <mets:div TYPE="page" ID="nowa_doba">
+        <mets:fptr FILEID="OCR-D-IMG_nowa_doba"/>
+        <mets:fptr FILEID="OCR-D-SEG-PAGE_nowa_doba"/>
+      </mets:div>
+      <mets:div TYPE="page" ID="nd1969-01-21_03">
+        <mets:fptr FILEID="OCR-D-SEG-PAGE_nd1969-01-21_03"/>
       </mets:div>
     </mets:div>
   </mets:structMap>

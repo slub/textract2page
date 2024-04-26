@@ -6,4 +6,5 @@ dist
 *~
 .vscode
 ocrd.log
-ocr_test
+tests/workspace/OCR-D-IMG
+tests/workspace/OCR-D-SEG-PAGE
