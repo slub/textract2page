@@ -724,7 +724,9 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
         key_value_set_blocks,
         layout_blocks,
     ) = ({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {})
-    for block in aws_json["Blocks"]:
+    block_order = {}
+    for order, block in enumerate(aws_json["Blocks"]):
+        block_order[block["Id"]] = order
         if block["BlockType"] == "PAGE":
             assert not page_block, "page must not have more than 1 PAGE block"
             page_block = block
@@ -795,6 +797,10 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
 
     # reading order of top-level objects
     textract_objects_in_reading_order = derive_reading_order(words.values())
+    def aws_block_order(obj):
+        return block_order[obj.id]
+    textract_objects_in_reading_order = sorted(textract_objects_in_reading_order,
+                                               key=aws_block_order)
 
     # build PRIMAPageXML
     pil_img = Image.open(img_path)
