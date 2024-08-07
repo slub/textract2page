@@ -617,30 +617,27 @@ def get_ids_of_child_blocks(aws_block: Dict) -> List[str]:
 
 def derive_reading_order(word_list: List[TextractWord]):
     """
-    The reding order of the objects within a Textract response is
+    The reading order of the objects within an AWS Textract response is
     ultimately given by the order of the word blocks in the response.
 
     Each word belongs either to a specific line, cell, value, key
-    or layout. From these, value, key and layout can be considered
-    top-level objects in terms of the reading order. Each cell belongs
-    to a table, which then is the top-level reading order object.
+    or layout object. Among these, the cases value, key and layout object
+    can be considered top level in terms of the reading order. Each cell
+    belongs to a table, which then is the top-level reading order object.
+    Lines however are a special case: they mostly belong to one of the
+    top-level reading order objects, but sometimes can also be a top level
+    themselves. This results in two checks for each word:
 
-    Lines are a special case: lines mostly belong to one of the top-
-    level reading order objects mention atop, however they can also
-    be a top-level reading order object themselves. This results in two
-    checks for each word
+    - Does the word belong to a line? 
+      * And if so: Does the line belong to another top-level object
+        (table, key, value, layout)?
+      * Otherwise: to which top-level object does it belong?
 
-    1) belongs the word to a line? And if so: belongs the line to another
-    top-level object (table, key, value, layout)?
-    2) if the word does not belong to a line: to which top-level object
-    it belongs?
-
-    With this checks in palce, we iterate through all words and collect
+    With these checks in place, we iterate through all words and collect
     the respective top-level objects in reading order.
 
-    As of my understanding words can not be top level objects, i.e. always
-    stay in a is-child-of relation to some other object of the textract
-    response.
+    As of my understanding, words can not be top level objects, i.e. always
+    stay in a child relation to some other object of the Textract response.
     """
 
     top_level_objects_in_reading_order = []
