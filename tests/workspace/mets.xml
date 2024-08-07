@@ -35,6 +35,9 @@
       <mets:file ID="OCR-D-IMG_nowa_doba" MIMETYPE="image/jpeg">
         <mets:FLocat xlink:href="images/nowa_doba.jpg" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
       </mets:file>
+      <mets:file ID="OCR-D-IMG_sn1991-02-09_pr_0002" MIMETYPE="image/jpeg">
+        <mets:FLocat xlink:href="images/sn1991-02-09_pr_0002.jpg" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      </mets:file>
     </mets:fileGrp>
     <mets:fileGrp USE="OCR-D-SEG-PAGE">
       <mets:file ID="OCR-D-SEG-PAGE_f18xx-Missio-EMU-0042" MIMETYPE="application/vnd.prima.page+xml">
@@ -54,6 +57,9 @@
       </mets:file>
       <mets:file ID="OCR-D-SEG-PAGE_nowa_doba" MIMETYPE="application/vnd.prima.page+xml">
         <mets:FLocat xlink:href="reference_page_xml/nowa_doba.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      </mets:file>
+      <mets:file ID="OCR-D-SEG-PAGE_sn1991-02-09_pr_0002" MIMETYPE="application/vnd.prima.page+xml">
+        <mets:FLocat xlink:href="reference_page_xml/sn1991-02-09_pr_0002.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
       </mets:file>
     </mets:fileGrp>
   </mets:fileSec>
@@ -82,6 +88,10 @@
       <mets:div TYPE="page" ID="nowa_doba">
         <mets:fptr FILEID="OCR-D-IMG_nowa_doba"/>
         <mets:fptr FILEID="OCR-D-SEG-PAGE_nowa_doba"/>
+      </mets:div>
+      <mets:div TYPE="page" ID="sn1991-02-09_pr_0002">
+        <mets:fptr FILEID="OCR-D-IMG_sn1991-02-09_pr_0002"/>
+        <mets:fptr FILEID="OCR-D-SEG-PAGE_sn1991-02-09_pr_0002"/>
       </mets:div>
     </mets:div>
   </mets:structMap>
