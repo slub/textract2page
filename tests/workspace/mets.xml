@@ -49,8 +49,8 @@
       <mets:file ID="OCR-D-SEG-PAGE_Lodz_UZS_25_0056" MIMETYPE="application/vnd.prima.page+xml">
         <mets:FLocat xlink:href="reference_page_xml/Lodz_UZS_25_0056.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
       </mets:file>
-      <mets:file ID="OCR-D-SEG-PAGE_nd1969-01-21_03" MIMETYPE="application/vnd.prima.page+xml">
-        <mets:FLocat xlink:href="reference_page_xml/nd1969-01-21_03.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      <mets:file ID="OCR-D-SEG-PAGE_nd1969-01-21_3" MIMETYPE="application/vnd.prima.page+xml">
+        <mets:FLocat xlink:href="reference_page_xml/nd1969-01-21_3.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
       </mets:file>
       <mets:file ID="OCR-D-SEG-PAGE_nowa_doba" MIMETYPE="application/vnd.prima.page+xml">
         <mets:FLocat xlink:href="reference_page_xml/nowa_doba.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
@@ -77,13 +77,11 @@
       </mets:div>
       <mets:div TYPE="page" ID="nd1969-01-21_3">
         <mets:fptr FILEID="OCR-D-IMG_nd1969-01-21_3"/>
+        <mets:fptr FILEID="OCR-D-SEG-PAGE_nd1969-01-21_3"/>
       </mets:div>
       <mets:div TYPE="page" ID="nowa_doba">
         <mets:fptr FILEID="OCR-D-IMG_nowa_doba"/>
         <mets:fptr FILEID="OCR-D-SEG-PAGE_nowa_doba"/>
-      </mets:div>
-      <mets:div TYPE="page" ID="nd1969-01-21_03">
-        <mets:fptr FILEID="OCR-D-SEG-PAGE_nd1969-01-21_03"/>
       </mets:div>
     </mets:div>
   </mets:structMap>
