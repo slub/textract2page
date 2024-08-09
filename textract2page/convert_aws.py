@@ -796,11 +796,14 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
             keys[key_value_set_id] = TextractKey(key_value_set, values, words)
 
     # reading order of top-level objects
+    # - derived from linear word-order (as fall-back)
     textract_objects_in_reading_order = derive_reading_order(words.values())
-    def aws_block_order(obj):
-        return block_order[obj.id]
-    textract_objects_in_reading_order = sorted(textract_objects_in_reading_order,
-                                               key=aws_block_order)
+    # - taken from top level directly (only useful with LAYOUT results)
+    if any(layouts):
+        def aws_block_order(obj):
+            return block_order[obj.id]
+        textract_objects_in_reading_order = sorted(textract_objects_in_reading_order,
+                                                   key=aws_block_order)
 
     # build PRIMAPageXML
     pil_img = Image.open(img_path)
