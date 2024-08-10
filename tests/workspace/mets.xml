@@ -62,36 +62,66 @@
         <mets:FLocat xlink:href="reference_page_xml/sn1991-02-09_pr_0002.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
       </mets:file>
     </mets:fileGrp>
+    <mets:fileGrp USE="AWS">
+      <mets:file ID="AWS_18xx-Missio-EMU-0042" MIMETYPE="application/json">
+        <mets:FLocat xlink:href="textract_responses/18xx-Missio-EMU-0042.json" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      </mets:file>
+      <mets:file ID="AWS_Ansiedlung_Korotschin_UZS_Sign_22a_0018" MIMETYPE="application/json">
+        <mets:FLocat xlink:href="textract_responses/Ansiedlung_Korotschin_UZS_Sign_22a_0018.json" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      </mets:file>
+      <mets:file ID="AWS_Ansiedlung_WD_Wielun_Lentschütz_0053" MIMETYPE="application/json">
+        <mets:FLocat xlink:href="textract_responses/Ansiedlung_WD_Wielun_Lentschütz_0053.json" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      </mets:file>
+      <mets:file ID="AWS_Lodz_UZS_25_0056" MIMETYPE="application/json">
+        <mets:FLocat xlink:href="textract_responses/Lodz_UZS_25_0056.json" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      </mets:file>
+      <mets:file ID="AWS_nd1969-01-21_3" MIMETYPE="application/json">
+        <mets:FLocat xlink:href="textract_responses/nd1969-01-21_3.json" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      </mets:file>
+      <mets:file ID="AWS_nowa_doba" MIMETYPE="application/json">
+        <mets:FLocat xlink:href="textract_responses/nowa_doba.json" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      </mets:file>
+      <mets:file ID="AWS_sn1991-02-09_pr_0002" MIMETYPE="application/json">
+        <mets:FLocat xlink:href="textract_responses/sn1991-02-09_pr_0002.json" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+      </mets:file>
+    </mets:fileGrp>
   </mets:fileSec>
   <mets:structMap TYPE="PHYSICAL">
     <mets:div TYPE="physSequence">
       <mets:div TYPE="page" ID="f18xx-Missio-EMU-0042">
         <mets:fptr FILEID="OCR-D-IMG_f18xx-Missio-EMU-0042"/>
         <mets:fptr FILEID="OCR-D-SEG-PAGE_f18xx-Missio-EMU-0042"/>
+        <mets:fptr FILEID="AWS_18xx-Missio-EMU-0042"/>
       </mets:div>
       <mets:div TYPE="page" ID="Ansiedlung_Korotschin_UZS_Sign_22a_0018">
         <mets:fptr FILEID="OCR-D-IMG_Ansiedlung_Korotschin_UZS_Sign_22a_0018"/>
         <mets:fptr FILEID="OCR-D-SEG-PAGE_Ansiedlung_Korotschin_UZS_Sign_22a_0018"/>
+        <mets:fptr FILEID="AWS_Ansiedlung_Korotschin_UZS_Sign_22a_0018"/>
       </mets:div>
       <mets:div TYPE="page" ID="Ansiedlung_WD_Wielun_Lentschütz_0053">
         <mets:fptr FILEID="OCR-D-IMG_Ansiedlung_WD_Wielun_Lentschütz_0053"/>
         <mets:fptr FILEID="OCR-D-SEG-PAGE_Ansiedlung_WD_Wielun_Lentschütz_0053"/>
+        <mets:fptr FILEID="AWS_Ansiedlung_WD_Wielun_Lentschütz_0053"/>
       </mets:div>
       <mets:div TYPE="page" ID="Lodz_UZS_25_0056">
         <mets:fptr FILEID="OCR-D-IMG_Lodz_UZS_25_0056"/>
         <mets:fptr FILEID="OCR-D-SEG-PAGE_Lodz_UZS_25_0056"/>
+        <mets:fptr FILEID="AWS_Lodz_UZS_25_0056"/>
       </mets:div>
       <mets:div TYPE="page" ID="nd1969-01-21_3">
         <mets:fptr FILEID="OCR-D-IMG_nd1969-01-21_3"/>
         <mets:fptr FILEID="OCR-D-SEG-PAGE_nd1969-01-21_3"/>
+        <mets:fptr FILEID="AWS_nd1969-01-21_3"/>
       </mets:div>
       <mets:div TYPE="page" ID="nowa_doba">
         <mets:fptr FILEID="OCR-D-IMG_nowa_doba"/>
         <mets:fptr FILEID="OCR-D-SEG-PAGE_nowa_doba"/>
+        <mets:fptr FILEID="AWS_nowa_doba"/>
       </mets:div>
       <mets:div TYPE="page" ID="sn1991-02-09_pr_0002">
         <mets:fptr FILEID="OCR-D-IMG_sn1991-02-09_pr_0002"/>
         <mets:fptr FILEID="OCR-D-SEG-PAGE_sn1991-02-09_pr_0002"/>
+        <mets:fptr FILEID="AWS_sn1991-02-09_pr_0002"/>
       </mets:div>
     </mets:div>
   </mets:structMap>
