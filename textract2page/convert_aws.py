@@ -156,7 +156,7 @@ class TextractLayout(TextractBlock):
         super().__init__(aws_block=aws_layout_block)
         # Textract layout types -> Page layout types
 
-        self.page_layout_type = LAYOUT_TYPE_MAP.get(aws_layout_block["BlockType"])
+        self.page_layout_type = LAYOUT_TYPE_MAP.get(aws_layout_block["BlockType"], 'floating')
         self.textract_layout_type = aws_layout_block["BlockType"]
         self.prefix = (
             f"{self.prefix}-{self.textract_layout_type.lower().replace('_','-')}"
@@ -663,9 +663,6 @@ def derive_reading_order(word_list: List[TextractWord]):
             if complex_line_parent:
                 if complex_line_parent not in top_level_objects_in_reading_order:
                     top_level_objects_in_reading_order.append(complex_line_parent)
-            else:
-                if word.parent_line not in top_level_objects_in_reading_order:
-                    top_level_objects_in_reading_order.append(word.parent_line)
 
         complex_word_parent = next(
             (
@@ -795,6 +792,51 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
         if "KEY" in key_value_set.get("EntityTypes", []):
             keys[key_value_set_id] = TextractKey(key_value_set, values, words)
 
+    # build dummy lines for dangling words
+    for word in words.values():
+        # if word is part of a line do nothing here
+        if word.parent_line:
+            continue
+
+        # if word is part of a table do nothing here
+        if word.parent_cell:
+            continue
+
+        # if word is part of a layout do nothing here
+        if word.parent_layout:
+            continue
+
+        # if word is neither part of a line, table, nor layout,
+        # create dummy line around the word
+        dummy_block = dict(word_blocks[word.id])
+        dummy_block["Id"] = word.id + "_parent"
+        dummy = TextractLine(dummy_block, {})
+        dummy.child_words = [word]
+        word.parent_line = dummy
+        block_order[dummy.id] = block_order[word.id]
+        lines.append(dummy)
+
+    # build dummy layouts for dangling lines
+    for line in lines.values():
+        # if line is part of a table do nothing here
+        if line.parent_cell:
+            continue
+
+        # if line is part of a layout do nothing here
+        if line.parent_layout:
+            continue
+
+        # if line is neither part of a table, nor of a layout,
+        # create dummy region around the line
+        dummy_block = dict(line_blocks[line.id])
+        dummy_block["Id"] = line.id + "_parent"
+        dummy_block["BlockType"] = "LAYOUT_DUMMY"
+        dummy = TextractLayout(dummy_block, {}, {})
+        dummy.child_lines = [line]
+        line.parent_layout = dummy
+        block_order[dummy.id] = block_order[line.id]
+        layouts.append(dummy)
+
     # reading order of top-level objects
     # - derived from linear word-order (as fall-back)
     text_regions = derive_reading_order(words.values())
@@ -870,67 +912,9 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
             global_ordered_group.add_RegionRefIndexed(
                 RegionRefIndexedType(
                     index=global_reading_order_index,
-                    regionRef=f"{textract_object.prefix}_text-region_{textract_object.id}",
+                    regionRef=f"{textract_object.prefix}_{textract_object.id}",
                 )
             )
-
-    # build pageXML lines
-    for line_id, line in lines.items():
-        # if line is part of a table do nothing here
-        if line.parent_cell:
-            continue
-
-        # if line is part of a layout do nothing here
-        elif line.parent_layout:
-            continue
-
-        # if line is neither part of a table, nor of a layout, create dummy
-        # region around the line
-        else:
-            # wrap lines in separate TextRegions to preserve reading order
-            # (ReadingOrder references TextRegions)
-            line_region_id = f"{line.prefix}_text-region_{line.id}"
-            pagexml_text_region_line = TextRegionType(
-                Coords=CoordsType(
-                    points=points_from_aws_geometry(
-                        line.geometry, img_width, img_height
-                    )
-                ),
-                id=line_region_id,
-            )
-            pagexml_page.add_TextRegion(pagexml_text_region_line)
-
-            # append lines to text regions
-            pagexml_text_line = TextLineType(
-                Coords=CoordsType(
-                    points=points_from_aws_geometry(
-                        line.geometry, img_width, img_height
-                    )
-                ),
-                id=f"{line.prefix}_{line_id}",
-            )
-            if line.text:
-                pagexml_text_line.add_TextEquiv(
-                    TextEquivType(conf=line.confidence, Unicode=line.text)
-                )
-            pagexml_text_region_line.add_TextLine(pagexml_text_line)
-
-            # build pagexml words
-            for word in line.child_words:
-                pagexml_word = WordType(
-                    Coords=CoordsType(
-                        points=points_from_aws_geometry(
-                            word.geometry, img_width, img_height
-                        )
-                    ),
-                    id=f"{word.prefix}_{word.id}",
-                    production=word.text_type,
-                )
-                if word.text:
-                    pagexml_word.add_TextEquiv(
-                        TextEquivType(conf=word.confidence, Unicode=word.text)
-                    )
-                pagexml_text_line.add_Word(pagexml_word)
 
     for layout in layouts:
 
@@ -958,10 +942,13 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
             Coords=CoordsType(
                 points=points_from_aws_geometry(layout.geometry, img_width, img_height)
             ),
-            id=f"{layout.prefix}_text-region_{layout.id}",
+            id=f"{layout.prefix}_{layout.id}",
             type_=layout.page_layout_type,
-            custom=f"textract-layout-type: {layout.textract_layout_type.split('LAYOUT_')[1].lower()};",
         )
+        if layout.textract_layout_type != "LAYOUT_DUMMY":
+            pagexml_text_region.set_custom(
+                f"textract-layout-type: {layout.textract_layout_type.split('LAYOUT_')[1].lower()};"
+            )
         pagexml_page.add_TextRegion(pagexml_text_region)
 
         for line in layout.child_lines:
