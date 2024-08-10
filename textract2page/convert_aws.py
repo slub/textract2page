@@ -797,13 +797,35 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
 
     # reading order of top-level objects
     # - derived from linear word-order (as fall-back)
-    textract_objects_in_reading_order = derive_reading_order(words.values())
+    text_regions = derive_reading_order(words.values())
     # - taken from top level directly (only useful with LAYOUT results)
     if any(layouts):
         def aws_block_order(obj):
             return block_order[obj.id]
-        textract_objects_in_reading_order = sorted(textract_objects_in_reading_order,
-                                                   key=aws_block_order)
+        layout_regions = sorted(layouts, key=aws_block_order)
+        # tables are special:
+        for table in tables.values():
+            layout_pos = -1
+            # try to find matching LAYOUT_TABLE
+            for layout in layout_regions:
+                if layout.geometry == table.geometry:
+                    layout_pos = layout_regions.index(layout)
+                    layout_regions[layout_pos] = table
+                    break
+            if layout_pos > -1:
+                continue
+            # or re-use prior/next relations in word-based order
+            text_pos = text_regions.index(table)
+            if text_pos > 0:
+                # insert after predecessor
+                layout_pos = layout_regions.index(text_regions[text_pos - 1]) + 1
+            else:
+                # insert before successor
+                layout_pos = layout_regions.index(text_regions[text_pos + 1]) + 1
+            layout_regions = layout_regions[:layout_pos] + [table] + layout_regions[layout_pos:]
+        textract_objects_in_reading_order = layout_regions
+    else:
+        textract_objects_in_reading_order = text_regions
 
     # build PRIMAPageXML
     pil_img = Image.open(img_path)
@@ -922,14 +944,14 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
                 ),
                 id=f"{layout.prefix}_{layout.id}",
                 type_=layout.page_layout_type,
-                custom=f"textract-layout-type: {layout.textract_layout_type.split('LAYOUT_')[1].lower()};",
+                custom="textract-layout-type: figure;",
             )
             pagexml_page.add_ImageRegion(pagexml_img_region)
             continue
 
         # handle tables
         if layout.textract_layout_type == "LAYOUT_TABLE":
-            # we cover tables separatly
+            # we covered tables already
             continue
 
         pagexml_text_region = TextRegionType(
