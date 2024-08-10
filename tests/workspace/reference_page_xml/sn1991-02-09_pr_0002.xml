@@ -2,25 +2,29 @@
 <pc:PcGts xmlns:pc="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
     <pc:Metadata>
         <pc:Creator>OCR-D/core 2.66.0</pc:Creator>
-        <pc:Created>2024-08-07T12:08:33.687879</pc:Created>
-        <pc:LastChange>2024-08-07T12:08:33.687879</pc:LastChange>
+        <pc:Created>2024-08-09T23:45:39.275783</pc:Created>
+        <pc:LastChange>2024-08-09T23:45:39.275783</pc:LastChange>
     </pc:Metadata>
-    <pc:Page imageFilename="IMG/sn1991-02-09_pr_0002.jpg" imageWidth="2626" imageHeight="3660">
+    <pc:Page imageFilename="images/sn1991-02-09_pr_0002.jpg" imageWidth="2626" imageHeight="3660">
         <pc:ReadingOrder>
             <pc:OrderedGroup id="global-reading-order" comments="Reading order as defined by Textract.">
-                <pc:RegionRefIndexed index="0" regionRef="textract-layout-title_text-region_440d87ab-2878-493a-b32f-0ed14063d78e"/>
-                <pc:RegionRefIndexed index="1" regionRef="textract-layout-text_text-region_ee94dbee-a4fd-42ad-be86-6ee8c8311228"/>
-                <pc:RegionRefIndexed index="2" regionRef="textract-layout-text_text-region_82c131d8-f14a-4349-b914-9c65bf367158"/>
-                <pc:RegionRefIndexed index="3" regionRef="textract-layout-text_text-region_fcd4990f-9fd9-4cf5-8dd2-cfac74f6791b"/>
-                <pc:RegionRefIndexed index="4" regionRef="textract-layout-section-header_text-region_ad88d6e7-9dad-42b4-a243-13f9ee306244"/>
-                <pc:RegionRefIndexed index="5" regionRef="textract-layout-text_text-region_209364ca-a554-4843-b0a1-7ffa7cdf9a27"/>
-                <pc:RegionRefIndexed index="6" regionRef="textract-layout-text_text-region_5e097afd-8294-46bc-ae3b-1def8964ef59"/>
-                <pc:RegionRefIndexed index="7" regionRef="textract-layout-text_text-region_6126008f-6ab5-4621-b44f-c254fd1b0f5c"/>
-                <pc:RegionRefIndexed index="8" regionRef="textract-layout-text_text-region_4f94c85c-771a-48cf-b345-312ba2370b30"/>
-                <pc:RegionRefIndexed index="9" regionRef="textract-layout-footer_text-region_9cef3f87-cd73-450a-bca9-335c233c5014"/>
+                <pc:RegionRefIndexed index="0" regionRef="textract-layout-title_440d87ab-2878-493a-b32f-0ed14063d78e"/>
+                <pc:RegionRefIndexed index="1" regionRef="textract-layout-figure_62098cf2-dafd-4ad4-9f41-21ca03bd8ae0"/>
+                <pc:RegionRefIndexed index="2" regionRef="textract-layout-text_ee94dbee-a4fd-42ad-be86-6ee8c8311228"/>
+                <pc:RegionRefIndexed index="3" regionRef="textract-layout-figure_c8e8dfaa-f2fb-4d4c-80f1-c65baa6a9e89"/>
+                <pc:RegionRefIndexed index="4" regionRef="textract-layout-text_82c131d8-f14a-4349-b914-9c65bf367158"/>
+                <pc:RegionRefIndexed index="5" regionRef="textract-layout-figure_26929c61-3dec-4638-b8f4-58f8b0594884"/>
+                <pc:RegionRefIndexed index="6" regionRef="textract-layout-text_fcd4990f-9fd9-4cf5-8dd2-cfac74f6791b"/>
+                <pc:RegionRefIndexed index="7" regionRef="textract-layout-section-header_ad88d6e7-9dad-42b4-a243-13f9ee306244"/>
+                <pc:RegionRefIndexed index="8" regionRef="textract-layout-text_209364ca-a554-4843-b0a1-7ffa7cdf9a27"/>
+                <pc:RegionRefIndexed index="9" regionRef="textract-layout-text_5e097afd-8294-46bc-ae3b-1def8964ef59"/>
+                <pc:RegionRefIndexed index="10" regionRef="textract-layout-figure_0a571fbd-dc11-4d5c-bbf9-96fa070bbac7"/>
+                <pc:RegionRefIndexed index="11" regionRef="textract-layout-text_6126008f-6ab5-4621-b44f-c254fd1b0f5c"/>
+                <pc:RegionRefIndexed index="12" regionRef="textract-layout-text_4f94c85c-771a-48cf-b345-312ba2370b30"/>
+                <pc:RegionRefIndexed index="13" regionRef="textract-layout-footer_9cef3f87-cd73-450a-bca9-335c233c5014"/>
             </pc:OrderedGroup>
         </pc:ReadingOrder>
-        <pc:TextRegion id="textract-layout-title_text-region_440d87ab-2878-493a-b32f-0ed14063d78e" custom="textract-layout-type: title;" type="heading">
+        <pc:TextRegion id="textract-layout-title_440d87ab-2878-493a-b32f-0ed14063d78e" custom="textract-layout-type: title;" type="heading">
             <pc:Coords points="178,123 904,122 904,484 177,484"/>
             <pc:TextLine id="textract-line_b02063c7-2116-4654-961d-15f46c0cc7a1">
                 <pc:Coords points="178,123 904,122 904,207 178,207"/>
@@ -101,7 +105,7 @@
                 <pc:Unicode>tu a tam</pc:Unicode>
             </pc:TextEquiv>
         </pc:TextRegion>
-        <pc:TextRegion id="textract-layout-text_text-region_ee94dbee-a4fd-42ad-be86-6ee8c8311228" custom="textract-layout-type: text;" type="paragraph">
+        <pc:TextRegion id="textract-layout-text_ee94dbee-a4fd-42ad-be86-6ee8c8311228" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="186,1863 924,1863 923,1983 186,1983"/>
             <pc:TextLine id="textract-line_f5dcbc6d-2ac6-42ed-800e-b4ddd6d26451">
                 <pc:Coords points="186,1863 922,1863 922,1900 186,1899"/>
@@ -230,7 +234,7 @@
                 <pc:Unicode>stowarki lubosciwje mjenuja</pc:Unicode>
             </pc:TextEquiv>
         </pc:TextRegion>
-        <pc:TextRegion id="textract-layout-text_text-region_82c131d8-f14a-4349-b914-9c65bf367158" custom="textract-layout-type: text;" type="paragraph">
+        <pc:TextRegion id="textract-layout-text_82c131d8-f14a-4349-b914-9c65bf367158" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="184,3140 919,3141 919,3259 184,3258"/>
             <pc:TextLine id="textract-line_4044e00d-dc6c-401f-a7fc-35b82d4a638d">
                 <pc:Coords points="187,3140 919,3141 919,3177 186,3176"/>
@@ -359,7 +363,7 @@
                 <pc:Unicode>W rukomaj, tola borta hisce faluje</pc:Unicode>
             </pc:TextEquiv>
         </pc:TextRegion>
-        <pc:TextRegion id="textract-layout-text_text-region_fcd4990f-9fd9-4cf5-8dd2-cfac74f6791b" custom="textract-layout-type: text;" type="paragraph">
+        <pc:TextRegion id="textract-layout-text_fcd4990f-9fd9-4cf5-8dd2-cfac74f6791b" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="985,1157 2509,1157 2509,1443 985,1443"/>
             <pc:TextLine id="textract-line_f599efd4-e1ed-415a-97fa-908b16516b29">
                 <pc:Coords points="985,1157 2509,1157 2509,1197 985,1197"/>
@@ -944,7 +948,7 @@
                 <pc:Unicode>péstowarnje "Bjarnat Krawc" Z Pancic-Kukowa maly program</pc:Unicode>
             </pc:TextEquiv>
         </pc:TextRegion>
-        <pc:TextRegion id="textract-layout-section-header_text-region_ad88d6e7-9dad-42b4-a243-13f9ee306244" custom="textract-layout-type: section_header;" type="heading">
+        <pc:TextRegion id="textract-layout-section-header_ad88d6e7-9dad-42b4-a243-13f9ee306244" custom="textract-layout-type: section_header;" type="heading">
             <pc:Coords points="1958,1449 2505,1449 2505,1485 1959,1485"/>
             <pc:TextLine id="textract-line_9bb6cc19-5a8a-41f5-9acf-ac49999a4203">
                 <pc:Coords points="1958,1449 2505,1449 2505,1485 1959,1485"/>
@@ -995,7 +999,7 @@
                 <pc:Unicode>Fota: H.-Chr. Lindner (1), B. Hancik (3)</pc:Unicode>
             </pc:TextEquiv>
         </pc:TextRegion>
-        <pc:TextRegion id="textract-layout-text_text-region_209364ca-a554-4843-b0a1-7ffa7cdf9a27" custom="textract-layout-type: text;" type="paragraph">
+        <pc:TextRegion id="textract-layout-text_209364ca-a554-4843-b0a1-7ffa7cdf9a27" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="982,1511 1720,1511 1721,2127 982,2127"/>
             <pc:TextLine id="textract-line_d1670a91-62f1-43f4-a049-7e548e7995e1">
                 <pc:Coords points="1019,1511 1719,1511 1719,1549 1019,1549"/>
@@ -1724,7 +1728,7 @@
                 <pc:Unicode>swoje wjeselo pri wustupje ansamblowcow W Ka-</pc:Unicode>
             </pc:TextEquiv>
         </pc:TextRegion>
-        <pc:TextRegion id="textract-layout-text_text-region_5e097afd-8294-46bc-ae3b-1def8964ef59" custom="textract-layout-type: text;" type="paragraph">
+        <pc:TextRegion id="textract-layout-text_5e097afd-8294-46bc-ae3b-1def8964ef59" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="1776,1513 2517,1513 2518,2128 1776,2127"/>
             <pc:TextLine id="textract-line_3275446b-919d-4f6d-b9c3-14c2636df0e4">
                 <pc:Coords points="1781,1513 2517,1513 2517,1550 1781,1550"/>
@@ -2495,7 +2499,7 @@
                 <pc:Unicode>so Z tym tez W prichodze pokrocowac. B. Hancik</pc:Unicode>
             </pc:TextEquiv>
         </pc:TextRegion>
-        <pc:TextRegion id="textract-layout-text_text-region_6126008f-6ab5-4621-b44f-c254fd1b0f5c" custom="textract-layout-type: text;" type="paragraph">
+        <pc:TextRegion id="textract-layout-text_6126008f-6ab5-4621-b44f-c254fd1b0f5c" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="980,3101 2499,3103 2499,3262 980,3260"/>
             <pc:TextLine id="textract-line_f458d54d-2817-4dd7-9316-58747c5a9981">
                 <pc:Coords points="980,3101 2499,3103 2499,3138 980,3137"/>
@@ -2780,7 +2784,7 @@
                 <pc:Unicode>mowa skupina</pc:Unicode>
             </pc:TextEquiv>
         </pc:TextRegion>
-        <pc:TextRegion id="textract-layout-text_text-region_4f94c85c-771a-48cf-b345-312ba2370b30" custom="textract-layout-type: text;" type="paragraph">
+        <pc:TextRegion id="textract-layout-text_4f94c85c-771a-48cf-b345-312ba2370b30" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="181,3314 914,3315 913,3418 181,3417"/>
             <pc:TextLine id="textract-line_f9f41143-65e7-4a53-9c80-36403f880a04">
                 <pc:Coords points="181,3314 914,3315 913,3418 181,3417"/>
@@ -2801,7 +2805,7 @@
                 <pc:Unicode>2 predzenak</pc:Unicode>
             </pc:TextEquiv>
         </pc:TextRegion>
-        <pc:TextRegion id="textract-layout-footer_text-region_9cef3f87-cd73-450a-bca9-335c233c5014" custom="textract-layout-type: footer;" type="footer">
+        <pc:TextRegion id="textract-layout-footer_9cef3f87-cd73-450a-bca9-335c233c5014" custom="textract-layout-type: footer;" type="footer">
             <pc:Coords points="1934,3356 2504,3356 2504,3396 1934,3395"/>
             <pc:TextLine id="textract-line_063a271a-a7f9-453e-9ae3-560cfb24f8e1">
                 <pc:Coords points="1934,3356 2504,3356 2504,3396 1934,3395"/>
