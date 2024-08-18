@@ -24,6 +24,7 @@ from ocrd_models.ocrd_page import (
     WordType,
     ReadingOrderType,
     OrderedGroupType,
+    OrderedGroupIndexedType,
     UnorderedGroupIndexedType,
     RegionRefIndexedType,
     RegionRefType,
@@ -760,10 +761,13 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
         lines[line_id] = TextractLine(line_block, words)
 
     # build layouts
-    layouts = [
-        TextractLayout(layout_block, words, lines)
-        for layout_block in layout_blocks.values()
-    ]
+    layouts = {}
+    for layout_id, layout_block in layout_blocks.items():
+        layouts[layout_id] = TextractLayout(
+            layout_block,
+            words,
+            lines
+        )
 
     # build tables
     tables = {}
@@ -835,7 +839,7 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
         dummy.child_lines = [line]
         line.parent_layout = dummy
         block_order[dummy.id] = block_order[line.id]
-        layouts.append(dummy)
+        layouts[dummy.id] = dummy
 
     # reading order of top-level objects
     # - derived from linear word-order (as fall-back)
@@ -844,7 +848,7 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
     if any(layouts):
         def aws_block_order(obj):
             return block_order[obj.id]
-        layout_regions = sorted(layouts, key=aws_block_order)
+        layout_regions = sorted(layouts.values(), key=aws_block_order)
         # tables are special:
         for table in tables.values():
             layout_pos = -1
@@ -898,14 +902,27 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
     ):
         # set up local reading orders for tables
         table = tables.get(textract_object.id, None)
+        layout = layouts.get(textract_object.id, None)
         if table:
             local_reading_order = UnorderedGroupIndexedType(
                 index=global_reading_order_index,
                 id=f"{table.prefix}_{table.id}_reading-order",
                 comments="Reading order of this table.",
+                regionRef=f"{table.prefix}_{table.id}",
             )
             global_ordered_group.add_UnorderedGroupIndexed(local_reading_order)
             local_reading_orders[f"{table.prefix}_{table.id}_reading-order"] = (
+                local_reading_order
+            )
+        elif layout and layout.textract_layout_type == "LAYOUT_FIGURE" and len(layout.child_lines):
+            local_reading_order = OrderedGroupIndexedType(
+                index=global_reading_order_index,
+                id=f"{layout.prefix}_{layout.id}_reading-order",
+                comments="Reading order of this region.",
+                regionRef=f"{layout.prefix}_{layout.id}",
+            )
+            global_ordered_group.add_OrderedGroupIndexed(local_reading_order)
+            local_reading_orders[f"{layout.prefix}_{layout.id}_reading-order"] = (
                 local_reading_order
             )
         else:
@@ -916,7 +933,7 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
                 )
             )
 
-    for layout in layouts:
+    for layout in layouts.values():
 
         # handle figures
         if layout.textract_layout_type == "LAYOUT_FIGURE":
@@ -931,6 +948,63 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
                 custom="textract-layout-type: figure;",
             )
             pagexml_page.add_ImageRegion(pagexml_img_region)
+
+            local_reading_order_index = 0
+            for line in layout.child_lines:
+                # create a dummy text region for each line
+                line_region_id = f"{line.prefix}_text-region_{line.id}"
+                pagexml_line_region = TextRegionType(
+                    Coords=CoordsType(
+                        points=points_from_aws_geometry(
+                            line.geometry, img_width, img_height
+                        )
+                    ),
+                    id=line_region_id,
+                )
+                pagexml_img_region.add_TextRegion(pagexml_line_region)
+
+                local_layout_reading_order = local_reading_orders[
+                    f"{layout.prefix}_{layout.id}_reading-order"
+                ]
+                local_layout_reading_order.add_RegionRefIndexed(
+                    RegionRefIndexedType(
+                        index=local_reading_order_index,
+                        regionRef=line_region_id,
+                    )
+                )
+                local_reading_order_index += 1
+
+                pagexml_text_line = TextLineType(
+                    Coords=CoordsType(
+                        points=points_from_aws_geometry(
+                            line.geometry, img_width, img_height
+                        )
+                    ),
+                    id=f"{line.prefix}_{line.id}",
+                )
+                if line.text:
+                    pagexml_text_line.add_TextEquiv(
+                        TextEquivType(conf=line.confidence, Unicode=line.text)
+                    )
+                pagexml_line_region.add_TextLine(pagexml_text_line)
+
+                # build pagexml words
+                for word in line.child_words:
+                    pagexml_word = WordType(
+                        Coords=CoordsType(
+                            points=points_from_aws_geometry(
+                                word.geometry, img_width, img_height
+                            )
+                        ),
+                        id=f"{word.prefix}_{word.id}",
+                        production=word.text_type,
+                    )
+                    if word.text:
+                        pagexml_word.add_TextEquiv(
+                            TextEquivType(conf=word.confidence, Unicode=word.text)
+                        )
+                    pagexml_text_line.add_Word(pagexml_word)
+
             continue
 
         # handle tables
@@ -983,7 +1057,7 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
                     )
                 pagexml_text_line.add_Word(pagexml_word)
 
-    for table_id, table in tables.items():
+    for table in tables.values():
         local_reading_order_index = 0
         local_table_reading_order = local_reading_orders[
             f"{table.prefix}_{table.id}_reading-order"
