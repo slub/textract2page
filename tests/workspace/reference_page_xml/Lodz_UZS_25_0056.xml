@@ -2,8 +2,8 @@
 <pc:PcGts xmlns:pc="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
     <pc:Metadata>
         <pc:Creator>OCR-D/core 2.66.0</pc:Creator>
-        <pc:Created>2024-08-10T02:18:39.294110</pc:Created>
-        <pc:LastChange>2024-08-10T02:18:39.294110</pc:LastChange>
+        <pc:Created>2024-08-21T14:58:01.253637</pc:Created>
+        <pc:LastChange>2024-08-21T14:58:01.253637</pc:LastChange>
     </pc:Metadata>
     <pc:Page imageFilename="images/Lodz_UZS_25_0056.tif" imageWidth="2479" imageHeight="3509">
         <pc:ReadingOrder>
@@ -21,7 +21,7 @@
                 <pc:RegionRefIndexed index="10" regionRef="textract-layout-dummy_6976d700-4156-464b-8a4a-eb3f7cadc6cd_parent"/>
                 <pc:RegionRefIndexed index="11" regionRef="textract-layout-dummy_e4341aca-59a4-4c9e-92d7-f7bb7dd3adf6_parent"/>
                 <pc:RegionRefIndexed index="12" regionRef="textract-layout-dummy_dc3c64b7-1328-4825-9aa5-6a46ea690795_parent"/>
-                <pc:UnorderedGroupIndexed id="textract-table_116da1f4-b713-4cd0-acf6-ea433ee67021_reading-order" index="13" comments="Reading order of this table.">
+                <pc:UnorderedGroupIndexed id="textract-table_116da1f4-b713-4cd0-acf6-ea433ee67021_reading-order" regionRef="textract-table_116da1f4-b713-4cd0-acf6-ea433ee67021" index="13" comments="Reading order of this table.">
                     <pc:RegionRef regionRef="textract-cell_text-region_dea1006a-8a8d-44ab-9c43-eb3b766da5d2"/>
                     <pc:RegionRef regionRef="textract-cell_text-region_fdfeb590-d97d-4fd4-9b66-3b204bdbffee"/>
                     <pc:RegionRef regionRef="textract-cell_text-region_1aad6add-eb1d-4ee7-b54d-3ddbb439c8b5"/>
@@ -170,10 +170,10 @@
                         <pc:Unicode>Polizeiführer</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.87246467590332">
+                    <pc:Unicode>Der Höhere 44- und Polizeiführer</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.87246467590332">
-                <pc:Unicode>Der Höhere 44- und Polizeiführer</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_48c9abbc-1c04-4fc7-88dd-e1cc55a14c95_parent" type="floating">
             <pc:Coords points="1951,176 2238,179 2238,225 1950,222"/>
@@ -185,10 +185,10 @@
                         <pc:Unicode>Verfraulich!</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.913887710571289">
+                    <pc:Unicode>Verfraulich!</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.913887710571289">
-                <pc:Unicode>Verfraulich!</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_d1f4a2a0-e5d4-48f5-ac03-75bc56eaf6b5_parent" type="floating">
             <pc:Coords points="438,267 772,270 772,322 437,319"/>
@@ -200,10 +200,10 @@
                         <pc:Unicode>Ansiedlungssfab</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.653406143188477">
+                    <pc:Unicode>Ansiedlungssfab</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.653406143188477">
-                <pc:Unicode>Ansiedlungssfab</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_dc9763d8-5aa6-4b6c-b7c2-7b400d7523d6_parent" type="floating">
             <pc:Coords points="273,385 1182,393 1181,503 272,494"/>
@@ -227,10 +227,10 @@
                         <pc:Unicode>11/11.1940</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.721364288330078">
+                    <pc:Unicode>Hofzuweisungsliste vom 11/11.1940</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.721364288330078">
-                <pc:Unicode>Hofzuweisungsliste vom 11/11.1940</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_744767c4-4460-40a2-9262-6553930a6aaa_parent" type="floating">
             <pc:Coords points="1382,432 1725,435 1725,483 1382,480"/>
@@ -242,10 +242,10 @@
                         <pc:Unicode>Ansiedlungsdorf</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.902243881225586">
+                    <pc:Unicode>Ansiedlungsdorf</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.902243881225586">
-                <pc:Unicode>Ansiedlungsdorf</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_255b9574-bf35-4d21-ae18-85da31d61b88_parent" type="floating">
             <pc:Coords points="1799,466 2120,469 2120,508 1799,505"/>
@@ -257,10 +257,10 @@
                         <pc:Unicode>Balkow</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.982879943847656">
+                    <pc:Unicode>Balkow</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.982879943847656">
-                <pc:Unicode>Balkow</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_ecd24782-6920-445b-8fc8-b189ebb6c3a2_parent" type="floating">
             <pc:Coords points="273,488 809,493 808,581 272,577"/>
@@ -278,10 +278,10 @@
                         <pc:Unicode>5. IV</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.577610664367676">
+                    <pc:Unicode>Ansiedlungstag 5. IV</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.577610664367676">
-                <pc:Unicode>Ansiedlungstag 5. IV</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_fc12ab4e-05e3-4993-8b2d-ab595f9541dd_parent" type="floating">
             <pc:Coords points="1032,526 1178,527 1177,605 1031,604"/>
@@ -293,10 +293,10 @@
                         <pc:Unicode>19/40</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.398620223999023">
+                    <pc:Unicode>19/40</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.398620223999023">
-                <pc:Unicode>19/40</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_2bb06316-e80c-4aea-952b-425721746533_parent" type="floating">
             <pc:Coords points="1381,529 1589,531 1589,569 1380,567"/>
@@ -308,10 +308,10 @@
                         <pc:Unicode>Gemeinde</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.989039077758789">
+                    <pc:Unicode>Gemeinde</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.989039077758789">
-                <pc:Unicode>Gemeinde</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_10a10f5b-73fb-45c5-b5a5-bd2d80949bdb_parent" type="floating">
             <pc:Coords points="1855,539 2056,541 2056,581 1855,579"/>
@@ -323,10 +323,10 @@
                         <pc:Unicode>Piontsk</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.424005432128906">
+                    <pc:Unicode>Piontsk</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.424005432128906">
-                <pc:Unicode>Piontsk</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_6976d700-4156-464b-8a4a-eb3f7cadc6cd_parent" type="floating">
             <pc:Coords points="272,614 850,619 850,662 272,657"/>
@@ -344,10 +344,10 @@
                         <pc:Unicode>Ansiedlungsstab</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.851691284179688">
+                    <pc:Unicode>Verteiler: Ansiedlungsstab</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.851691284179688">
-                <pc:Unicode>Verteiler: Ansiedlungsstab</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_e4341aca-59a4-4c9e-92d7-f7bb7dd3adf6_parent" type="floating">
             <pc:Coords points="1382,622 1489,623 1489,660 1381,659"/>
@@ -359,10 +359,10 @@
                         <pc:Unicode>Kreis</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.996851119995117">
+                    <pc:Unicode>Kreis</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.996851119995117">
-                <pc:Unicode>Kreis</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_dc3c64b7-1328-4825-9aa5-6a46ea690795_parent" type="floating">
             <pc:Coords points="1623,635 1910,637 1910,674 1622,671"/>
@@ -374,10 +374,10 @@
                         <pc:Unicode>Lentschlitz</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.719613800048828">
+                    <pc:Unicode>Lentschlitz</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.719613800048828">
-                <pc:Unicode>Lentschlitz</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_c67b915e-5ffc-4ab0-950b-0dfcde4eab4f_parent" type="floating">
             <pc:Coords points="1052,3109 1205,3110 1205,3145 1052,3144"/>
@@ -389,10 +389,10 @@
                         <pc:Unicode>Summe:</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.965584564208984">
+                    <pc:Unicode>Summe:</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.965584564208984">
-                <pc:Unicode>Summe:</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_a74cdf6d-8324-4b6f-bb16-8d1b6528737d_parent" type="floating">
             <pc:Coords points="817,3180 1202,3183 1202,3231 817,3228"/>
@@ -416,10 +416,10 @@
                         <pc:Unicode>Seite</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.853525161743164">
+                    <pc:Unicode>Übertrag von Seite</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.853525161743164">
-                <pc:Unicode>Übertrag von Seite</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_8e510786-ffb2-42c6-b43c-69d142957e22_parent" type="floating">
             <pc:Coords points="806,3313 972,3315 972,3362 806,3361"/>
@@ -431,10 +431,10 @@
                         <pc:Unicode>Übertrag</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.636470985412598">
+                    <pc:Unicode>Übertrag</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.636470985412598">
-                <pc:Unicode>Übertrag</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TableRegion id="textract-table_116da1f4-b713-4cd0-acf6-ea433ee67021" rows="12" columns="9">
             <pc:Coords points="268,695 2392,714 2377,3061 246,3045"/>

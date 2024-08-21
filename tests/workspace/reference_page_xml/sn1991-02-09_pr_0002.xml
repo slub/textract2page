@@ -2,8 +2,8 @@
 <pc:PcGts xmlns:pc="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
     <pc:Metadata>
         <pc:Creator>OCR-D/core 2.66.0</pc:Creator>
-        <pc:Created>2024-08-09T23:45:39.275783</pc:Created>
-        <pc:LastChange>2024-08-09T23:45:39.275783</pc:LastChange>
+        <pc:Created>2024-08-21T12:36:46.396449</pc:Created>
+        <pc:LastChange>2024-08-21T12:36:46.396449</pc:LastChange>
     </pc:Metadata>
     <pc:Page imageFilename="images/sn1991-02-09_pr_0002.jpg" imageWidth="2626" imageHeight="3660">
         <pc:ReadingOrder>
@@ -40,6 +40,9 @@
                         <pc:Unicode>ptacokwasnych</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.966218872070313">
+                    <pc:Unicode>Wo ptacokwasnych</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_42d39547-25a2-49f5-85f5-14246aa6751c">
                 <pc:Coords points="282,220 796,220 796,303 282,303"/>
@@ -49,6 +52,9 @@
                         <pc:Unicode>swjedzenjach</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.960987091064453">
+                    <pc:Unicode>swjedzenjach</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_fefaeb79-5d56-4d21-a923-f70d250f852d">
                 <pc:Coords points="224,316 854,316 854,387 224,387"/>
@@ -70,6 +76,9 @@
                         <pc:Unicode>dzeci</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.79714485168457">
+                    <pc:Unicode>za serbske dzeci</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_a303db1e-74f5-49b0-8f72-ffa0ddb2efe9">
                 <pc:Coords points="393,418 685,418 685,484 393,484"/>
@@ -91,19 +100,10 @@
                         <pc:Unicode>tam</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.998757019042969">
+                    <pc:Unicode>tu a tam</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.966218872070313">
-                <pc:Unicode>Wo ptacokwasnych</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.960987091064453">
-                <pc:Unicode>swjedzenjach</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.79714485168457">
-                <pc:Unicode>za serbske dzeci</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.998757019042969">
-                <pc:Unicode>tu a tam</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-text_ee94dbee-a4fd-42ad-be86-6ee8c8311228" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="186,1863 924,1863 923,1983 186,1983"/>
@@ -145,6 +145,9 @@
                         <pc:Unicode>wuslekanych</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.829632949829102">
+                    <pc:Unicode>Tez pri zwoblekanju stonkow a wuslekanych</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_3bcd6d16-9875-4271-97dd-30a4fada6faa">
                 <pc:Coords points="188,1905 924,1906 923,1942 188,1942"/>
@@ -202,6 +205,9 @@
                         <pc:Unicode>pe-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.825467147827148">
+                    <pc:Unicode>holcow pomhae Ryncec ceta, kaz ju dzeci a pe-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_435bb103-36de-4dc0-9bce-abc527b2561c">
                 <pc:Coords points="188,1947 625,1947 625,1983 187,1983"/>
@@ -223,16 +229,10 @@
                         <pc:Unicode>mjenuja</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.883113403320313">
+                    <pc:Unicode>stowarki lubosciwje mjenuja</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.829632949829102">
-                <pc:Unicode>Tez pri zwoblekanju stonkow a wuslekanych</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.825467147827148">
-                <pc:Unicode>holcow pomhae Ryncec ceta, kaz ju dzeci a pe-</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.883113403320313">
-                <pc:Unicode>stowarki lubosciwje mjenuja</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-text_82c131d8-f14a-4349-b914-9c65bf367158" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="184,3140 919,3141 919,3259 184,3258"/>
@@ -274,6 +274,9 @@
                         <pc:Unicode>byta</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.947226791381836">
+                    <pc:Unicode>Njewjesta Radworskeho ptaceho kwasa je byta</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_028a3783-5b79-4a1e-95bd-75d1aea63504">
                 <pc:Coords points="186,3182 919,3183 919,3220 186,3219"/>
@@ -313,6 +316,9 @@
                         <pc:Unicode>hizo</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.911268615722656">
+                    <pc:Unicode>Gabriela Handrikec. Kwasny kwecel ma hizo</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_0e0910fd-9115-4998-8706-e8e5bc65ed43">
                 <pc:Coords points="184,3223 691,3224 691,3259 184,3258"/>
@@ -352,16 +358,10 @@
                         <pc:Unicode>faluje</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.947361068725586">
+                    <pc:Unicode>W rukomaj, tola borta hisce faluje</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.947226791381836">
-                <pc:Unicode>Njewjesta Radworskeho ptaceho kwasa je byta</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.911268615722656">
-                <pc:Unicode>Gabriela Handrikec. Kwasny kwecel ma hizo</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.947361068725586">
-                <pc:Unicode>W rukomaj, tola borta hisce faluje</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-text_fcd4990f-9fd9-4cf5-8dd2-cfac74f6791b" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="985,1157 2509,1157 2509,1443 985,1443"/>
@@ -457,6 +457,9 @@
                         <pc:Unicode>kwas-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.866355819702148">
+                    <pc:Unicode>We wjesolej rejce predstajeja so tu holcy a hólcy serbskeje péstowarnje Z Chróscic. Styrnace kwas-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_aa73f318-1892-49c3-aa05-c35a5d9ade9c">
                 <pc:Coords points="986,1198 2508,1199 2508,1239 986,1238"/>
@@ -532,6 +535,9 @@
                         <pc:Unicode>lu-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.918409118652344">
+                    <pc:Unicode>nych porikow je sobu wuhotowalo ptacokwasny program na dzecacym predstajenju Serbskeho lu-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_783fb218-73ba-45a4-8420-326125050faa">
                 <pc:Coords points="986,1239 2508,1240 2508,1277 986,1276"/>
@@ -613,6 +619,9 @@
                         <pc:Unicode>nimale</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.817688598632813">
+                    <pc:Unicode>doweho ansambla W Kamjenskim hoscencu "Mesto Drjezdzany. Na nim be so wobdzellito nimale</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_b79b933f-9e52-4d0d-b6dd-06a882aaee8a">
                 <pc:Coords points="985,1280 2508,1280 2508,1321 985,1320"/>
@@ -712,6 +721,9 @@
                         <pc:Unicode>serb-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.799278869628906">
+                    <pc:Unicode>600 dzeci ze tyrnace pestowarnjow zupy "Michal Hórnik" kaz tez dzeci 1. letnika ze tyrjoch serb-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_da2751ef-f6ad-451f-95c0-f918a82dbc0e">
                 <pc:Coords points="985,1321 2508,1322 2508,1360 985,1360"/>
@@ -787,6 +799,9 @@
                         <pc:Unicode>dwe</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.905191192626953">
+                    <pc:Unicode>skich sulow. Pjec serbskich kwasnych hoscinow mózachmy tam wuhladac. Z Pancic-Kukowa dwe</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_bee6290c-1bed-4839-8130-6b35ce3ea8e4">
                 <pc:Coords points="985,1363 2507,1363 2507,1403 985,1402"/>
@@ -880,6 +895,9 @@
                         <pc:Unicode>dzeci</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.808358383178711">
+                    <pc:Unicode>kaz tez z Wotrowa, Konjec a Chróscio po jednej. Zabyc nochcemy prispomnic, zo poskicichu dzeci</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_084ea960-576c-4bcd-a52d-06710a67bcad">
                 <pc:Coords points="985,1404 1932,1404 1932,1443 985,1443"/>
@@ -925,28 +943,10 @@
                         <pc:Unicode>program</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.840781173706055">
+                    <pc:Unicode>péstowarnje "Bjarnat Krawc" Z Pancic-Kukowa maly program</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.866355819702148">
-                <pc:Unicode>We wjesolej rejce predstajeja so tu holcy a hólcy serbskeje péstowarnje Z Chróscic. Styrnace kwas-</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.918409118652344">
-                <pc:Unicode>nych porikow je sobu wuhotowalo ptacokwasny program na dzecacym predstajenju Serbskeho lu-</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.817688598632813">
-                <pc:Unicode>doweho ansambla W Kamjenskim hoscencu "Mesto Drjezdzany. Na nim be so wobdzellito nimale</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.799278869628906">
-                <pc:Unicode>600 dzeci ze tyrnace pestowarnjow zupy "Michal Hórnik" kaz tez dzeci 1. letnika ze tyrjoch serb-</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.905191192626953">
-                <pc:Unicode>skich sulow. Pjec serbskich kwasnych hoscinow mózachmy tam wuhladac. Z Pancic-Kukowa dwe</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.808358383178711">
-                <pc:Unicode>kaz tez z Wotrowa, Konjec a Chróscio po jednej. Zabyc nochcemy prispomnic, zo poskicichu dzeci</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.840781173706055">
-                <pc:Unicode>péstowarnje "Bjarnat Krawc" Z Pancic-Kukowa maly program</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-section-header_ad88d6e7-9dad-42b4-a243-13f9ee306244" custom="textract-layout-type: section_header;" type="heading">
             <pc:Coords points="1958,1449 2505,1449 2505,1485 1959,1485"/>
@@ -994,10 +994,10 @@
                         <pc:Unicode>(3)</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.958300628662109">
+                    <pc:Unicode>Fota: H.-Chr. Lindner (1), B. Hancik (3)</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.958300628662109">
-                <pc:Unicode>Fota: H.-Chr. Lindner (1), B. Hancik (3)</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-text_209364ca-a554-4843-b0a1-7ffa7cdf9a27" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="982,1511 1720,1511 1721,2127 982,2127"/>
@@ -1033,6 +1033,9 @@
                         <pc:Unicode>swjedzenje</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.909270553588867">
+                    <pc:Unicode>Wjesne a centralne ptacokwasne swjedzenje</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_b2d81499-aff7-4caf-b889-f419148072e5">
                 <pc:Coords points="984,1553 1720,1554 1720,1589 984,1589"/>
@@ -1078,6 +1081,9 @@
                         <pc:Unicode>wobradzichu</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.759743804931641">
+                    <pc:Unicode>wotmechu so W za tydzenjach a wobradzichu</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_29bbcba8-24ec-44e0-a93b-87c16c6d7b7f">
                 <pc:Coords points="984,1595 1720,1595 1720,1631 984,1631"/>
@@ -1135,6 +1141,9 @@
                         <pc:Unicode>densa</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.765207138061523">
+                    <pc:Unicode>dzecom wjele wjesela. Rjenje tuz, ZO so tez densa</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_251b20ef-309a-495b-a1ca-5b8676afc8fe">
                 <pc:Coords points="982,1636 1720,1636 1720,1672 982,1672"/>
@@ -1186,6 +1195,9 @@
                         <pc:Unicode>Po</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.846801376342773">
+                    <pc:Unicode>tutón jónkrótny serbski zymski nalok sweru haji. Po</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_3564bbbd-30d7-44c8-b6e6-d76701100244">
                 <pc:Coords points="984,1678 1719,1678 1719,1714 984,1714"/>
@@ -1231,6 +1243,9 @@
                         <pc:Unicode>dzeci</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.788139495849609">
+                    <pc:Unicode>wsach su chodzili péstowarske a sulske dzeci</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_47ad3dcf-82f2-4562-a46e-16ce334b31bf">
                 <pc:Coords points="983,1718 1719,1719 1719,1753 983,1753"/>
@@ -1282,6 +1297,9 @@
                         <pc:Unicode>Wo-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.843582000732422">
+                    <pc:Unicode>W kwasnej drasce. Hac W Chróscicach, we Wo-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_cf4a84ac-6636-4640-bf59-972770835e4c">
                 <pc:Coords points="982,1760 1718,1760 1718,1796 982,1796"/>
@@ -1315,6 +1333,9 @@
                         <pc:Unicode>Radworju</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.902156295776367">
+                    <pc:Unicode>trowje, W Pancicach-Kukowje, Ralbicach, Radworju</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_51accb8f-552d-4460-8f53-570a5456da84">
                 <pc:Coords points="984,1801 1719,1801 1719,1837 984,1837"/>
@@ -1366,6 +1387,9 @@
                         <pc:Unicode>wu-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.933792724609375">
+                    <pc:Unicode>abo we Worklecach. Serbski ludowy ansambl je wu-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_d9f57905-3ecb-4628-8ac4-2ee95b5193b5">
                 <pc:Coords points="984,1842 1718,1842 1718,1879 983,1878"/>
@@ -1405,6 +1429,9 @@
                         <pc:Unicode>spodobnym</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.97865364074707">
+                    <pc:Unicode>hotowal rjad zarjadowanjow ze swojim spodobnym</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_7d3a5aa2-dfe9-40a1-825e-bbca0825d11e">
                 <pc:Coords points="983,1884 1718,1885 1718,1920 983,1920"/>
@@ -1450,6 +1477,9 @@
                         <pc:Unicode>so-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.929824600219727">
+                    <pc:Unicode>programom, je pohnut malych wopytowarjow k so-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_95440a48-e31e-4a71-9950-7869e6e09562">
                 <pc:Coords points="983,1925 1719,1925 1719,1961 983,1961"/>
@@ -1495,6 +1525,9 @@
                         <pc:Unicode>mjez</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.815942535400391">
+                    <pc:Unicode>buspewanju. Wjace hac 700 dzeci namaka mjez</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_16e4aa47-cd46-47df-af2c-02d6db4e09c0">
                 <pc:Coords points="983,1966 1718,1967 1719,2002 983,2002"/>
@@ -1546,6 +1579,9 @@
                         <pc:Unicode>na</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.854690628051758">
+                    <pc:Unicode>druhim W hotelu "Mesto Budyin" swoju radosó na</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_08534cbf-b5fd-4b01-9f29-71e6443d589f">
                 <pc:Coords points="983,2008 1718,2009 1718,2044 983,2044"/>
@@ -1597,6 +1633,9 @@
                         <pc:Unicode>tyr-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.808869171142578">
+                    <pc:Unicode>poskicenym, a skoro 600 dzeci, prewaznje ze tyr-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_67edbb02-8fac-4d77-9850-d2b94f33caf6">
                 <pc:Coords points="984,2049 1720,2050 1720,2086 984,2085"/>
@@ -1636,6 +1675,9 @@
                         <pc:Unicode>méjese</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.690772476196289">
+                    <pc:Unicode>nace péstowamjow zupy "Michal Hórnik", méjese</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_f5e224d7-9925-4667-902f-5eab5cde51fa">
                 <pc:Coords points="983,2091 1718,2091 1718,2127 983,2127"/>
@@ -1681,52 +1723,10 @@
                         <pc:Unicode>Ka-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.926592178344727">
+                    <pc:Unicode>swoje wjeselo pri wustupje ansamblowcow W Ka-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.909270553588867">
-                <pc:Unicode>Wjesne a centralne ptacokwasne swjedzenje</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.759743804931641">
-                <pc:Unicode>wotmechu so W za tydzenjach a wobradzichu</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.765207138061523">
-                <pc:Unicode>dzecom wjele wjesela. Rjenje tuz, ZO so tez densa</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.846801376342773">
-                <pc:Unicode>tutón jónkrótny serbski zymski nalok sweru haji. Po</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.788139495849609">
-                <pc:Unicode>wsach su chodzili péstowarske a sulske dzeci</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.843582000732422">
-                <pc:Unicode>W kwasnej drasce. Hac W Chróscicach, we Wo-</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.902156295776367">
-                <pc:Unicode>trowje, W Pancicach-Kukowje, Ralbicach, Radworju</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.933792724609375">
-                <pc:Unicode>abo we Worklecach. Serbski ludowy ansambl je wu-</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.97865364074707">
-                <pc:Unicode>hotowal rjad zarjadowanjow ze swojim spodobnym</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.929824600219727">
-                <pc:Unicode>programom, je pohnut malych wopytowarjow k so-</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.815942535400391">
-                <pc:Unicode>buspewanju. Wjace hac 700 dzeci namaka mjez</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.854690628051758">
-                <pc:Unicode>druhim W hotelu "Mesto Budyin" swoju radosó na</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.808869171142578">
-                <pc:Unicode>poskicenym, a skoro 600 dzeci, prewaznje ze tyr-</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.690772476196289">
-                <pc:Unicode>nace péstowamjow zupy "Michal Hórnik", méjese</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.926592178344727">
-                <pc:Unicode>swoje wjeselo pri wustupje ansamblowcow W Ka-</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-text_5e097afd-8294-46bc-ae3b-1def8964ef59" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="1776,1513 2517,1513 2518,2128 1776,2127"/>
@@ -1762,6 +1762,9 @@
                         <pc:Unicode>Wezo</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.730104064941406">
+                    <pc:Unicode>mjenskim hoscencu "Mesto Drjezdzany. Wezo</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_e5a7c8b6-f82f-4aa8-9a0c-7252e57ac34c">
                 <pc:Coords points="1781,1555 2517,1555 2517,1592 1781,1591"/>
@@ -1819,6 +1822,9 @@
                         <pc:Unicode>hao</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.805239410400391">
+                    <pc:Unicode>swjecese so tez W Delnjej Luzicy. We wjace hao</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_1e1d435c-c57d-4039-9c22-42dc312b8ac9">
                 <pc:Coords points="1781,1597 2516,1597 2517,1633 1781,1633"/>
@@ -1876,6 +1882,9 @@
                         <pc:Unicode>cimz</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.864279479980469">
+                    <pc:Unicode>dwaceci wsach je so létusi zapust swjecit, pri cimz</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_4ce95a90-e7d5-431c-9bba-de4c657a5576">
                 <pc:Coords points="1780,1638 2495,1638 2495,1674 1780,1674"/>
@@ -1921,6 +1930,9 @@
                         <pc:Unicode>zahaji.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.869290237426758">
+                    <pc:Unicode>so W Prjawozu sled tychle zarjadowanjow zahaji.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_a9e5d78a-eac5-4462-9f20-f013dffb5ff8">
                 <pc:Coords points="1815,1679 2515,1679 2516,1716 1815,1716"/>
@@ -1966,6 +1978,9 @@
                         <pc:Unicode>njeby-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.749243240356445">
+                    <pc:Unicode>Bjez kozdehozkuli fenka so nico njewjerci, njeby-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_e90f4997-42e6-4ca4-8b25-a4e2733502b1">
                 <pc:Coords points="1779,1720 2516,1721 2516,1756 1779,1756"/>
@@ -2017,6 +2032,9 @@
                         <pc:Unicode>nje-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.897947235107422">
+                    <pc:Unicode>chu SO móhli prewjesó tute krasne swjedzenje, nje-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_edb74081-4846-43e3-a3ac-d2fa2b31c3c6">
                 <pc:Coords points="1779,1761 2516,1762 2516,1798 1779,1798"/>
@@ -2068,6 +2086,9 @@
                         <pc:Unicode>stusa</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.751893844604492">
+                    <pc:Unicode>móhto so hajic tuto serbske wanje. Tohodla stusa</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_d8d1cadd-9abe-4980-a1eb-0538bb5aec87">
                 <pc:Coords points="1779,1803 2516,1803 2516,1838 1779,1838"/>
@@ -2113,6 +2134,9 @@
                         <pc:Unicode>Hermanna</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.847461700439453">
+                    <pc:Unicode>wosebity dak na tutym méstnje zalozbje Hermanna</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_0cd1bf0c-9242-43cb-8741-50ae375b2173">
                 <pc:Coords points="1779,1843 2516,1844 2516,1880 1779,1880"/>
@@ -2164,6 +2188,9 @@
                         <pc:Unicode>sredkami</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.835536041259766">
+                    <pc:Unicode>Niermanna, kotraz je wo to ze swojimi sredkami</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_0d2cd471-5d21-427f-94ab-df19a54e298b">
                 <pc:Coords points="1779,1885 2507,1885 2507,1921 1779,1920"/>
@@ -2203,6 +2230,9 @@
                         <pc:Unicode>Dahmsowej-Meékan</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.779992828369141">
+                    <pc:Unicode>zmoznita. A runje tak Wórsi Dahmsowej-Meékan</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_17998f9e-2a72-469d-b8d0-0c56705ceaca">
                 <pc:Coords points="1778,1927 2405,1927 2405,1963 1778,1963"/>
@@ -2254,6 +2284,9 @@
                         <pc:Unicode>styki.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.901084899902344">
+                    <pc:Unicode>kec, kotraz je nawjazala tute tak nuzne styki.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_3a7cde29-10f4-4286-999e-5415b061777f">
                 <pc:Coords points="1813,1968 2515,1969 2515,2005 1813,2005"/>
@@ -2293,6 +2326,9 @@
                         <pc:Unicode>wulkozarjado-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.889666442871094">
+                    <pc:Unicode>Cylkownje prewjedze so letsa 17 wulkozarjado-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_0e0afdec-9b9a-44cb-a92a-60dda734caac">
                 <pc:Coords points="1778,2010 2515,2010 2515,2046 1778,2045"/>
@@ -2344,6 +2380,9 @@
                         <pc:Unicode>de-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.884877548217773">
+                    <pc:Unicode>wanjow we Luzicy. Wosom za doroscenych a de-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_6337b913-3ecf-41e5-9847-743e44431ba0">
                 <pc:Coords points="1776,2047 2515,2048 2515,2087 1776,2087"/>
@@ -2395,6 +2434,9 @@
                         <pc:Unicode>hodzi</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.850798568725586">
+                    <pc:Unicode>wjec za dzeci. Wulkotna to wec. Nadzijomnje hodzi</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_5bab0bfa-ef5a-4760-9946-76782261f665">
                 <pc:Coords points="1778,2093 2516,2093 2516,2128 1778,2127"/>
@@ -2452,52 +2494,10 @@
                         <pc:Unicode>Hancik</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.823685913085938">
+                    <pc:Unicode>so Z tym tez W prichodze pokrocowac. B. Hancik</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.730104064941406">
-                <pc:Unicode>mjenskim hoscencu "Mesto Drjezdzany. Wezo</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.805239410400391">
-                <pc:Unicode>swjecese so tez W Delnjej Luzicy. We wjace hao</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.864279479980469">
-                <pc:Unicode>dwaceci wsach je so létusi zapust swjecit, pri cimz</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.869290237426758">
-                <pc:Unicode>so W Prjawozu sled tychle zarjadowanjow zahaji.</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.749243240356445">
-                <pc:Unicode>Bjez kozdehozkuli fenka so nico njewjerci, njeby-</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.897947235107422">
-                <pc:Unicode>chu SO móhli prewjesó tute krasne swjedzenje, nje-</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.751893844604492">
-                <pc:Unicode>móhto so hajic tuto serbske wanje. Tohodla stusa</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.847461700439453">
-                <pc:Unicode>wosebity dak na tutym méstnje zalozbje Hermanna</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.835536041259766">
-                <pc:Unicode>Niermanna, kotraz je wo to ze swojimi sredkami</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.779992828369141">
-                <pc:Unicode>zmoznita. A runje tak Wórsi Dahmsowej-Meékan</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.901084899902344">
-                <pc:Unicode>kec, kotraz je nawjazala tute tak nuzne styki.</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.889666442871094">
-                <pc:Unicode>Cylkownje prewjedze so letsa 17 wulkozarjado-</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.884877548217773">
-                <pc:Unicode>wanjow we Luzicy. Wosom za doroscenych a de-</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.850798568725586">
-                <pc:Unicode>wjec za dzeci. Wulkotna to wec. Nadzijomnje hodzi</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.823685913085938">
-                <pc:Unicode>so Z tym tez W prichodze pokrocowac. B. Hancik</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-text_6126008f-6ab5-4621-b44f-c254fd1b0f5c" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="980,3101 2499,3103 2499,3262 980,3260"/>
@@ -2575,6 +2575,9 @@
                         <pc:Unicode>hoscinu.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.853974304199219">
+                    <pc:Unicode>Serbska katolska péstowarnja "Alojs Andricki" je kaz druhe léta wuhotowala ptacokwasnu hoscinu.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_574ad7b4-c289-4f60-8966-18200020c0d5">
                 <pc:Coords points="981,3142 2499,3144 2499,3180 981,3179"/>
@@ -2656,6 +2659,9 @@
                         <pc:Unicode>Rabec</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.91761360168457">
+                    <pc:Unicode>Hanza Ryncec (w narodnej drasce) pri dohotowanju njewjesty, a tez pestowarka Blandina Rabec</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_d2f20234-bbe5-4170-a015-5664f12228b7">
                 <pc:Coords points="981,3183 2498,3184 2498,3222 981,3220"/>
@@ -2755,6 +2761,9 @@
                         <pc:Unicode>fil-</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.893128051757813">
+                    <pc:Unicode>pomha hisce pri tym abo tamnym. Wo dyrbi scasom hotowe byc, bórze prindze dze Serbska fil-</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
             <pc:TextLine id="textract-line_0b960f1e-b40d-4120-8053-d6519d586471">
                 <pc:Coords points="980,3226 1204,3226 1204,3260 980,3260"/>
@@ -2770,19 +2779,10 @@
                         <pc:Unicode>skupina</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.994844589233398">
+                    <pc:Unicode>mowa skupina</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.853974304199219">
-                <pc:Unicode>Serbska katolska péstowarnja "Alojs Andricki" je kaz druhe léta wuhotowala ptacokwasnu hoscinu.</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.91761360168457">
-                <pc:Unicode>Hanza Ryncec (w narodnej drasce) pri dohotowanju njewjesty, a tez pestowarka Blandina Rabec</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.893128051757813">
-                <pc:Unicode>pomha hisce pri tym abo tamnym. Wo dyrbi scasom hotowe byc, bórze prindze dze Serbska fil-</pc:Unicode>
-            </pc:TextEquiv>
-            <pc:TextEquiv conf="0.994844589233398">
-                <pc:Unicode>mowa skupina</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-text_4f94c85c-771a-48cf-b345-312ba2370b30" custom="textract-layout-type: text;" type="paragraph">
             <pc:Coords points="181,3314 914,3315 913,3418 181,3417"/>
@@ -2800,10 +2800,10 @@
                         <pc:Unicode>predzenak</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.862454528808594">
+                    <pc:Unicode>2 predzenak</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.862454528808594">
-                <pc:Unicode>2 predzenak</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-footer_9cef3f87-cd73-450a-bca9-335c233c5014" custom="textract-layout-type: footer;" type="footer">
             <pc:Coords points="1934,3356 2504,3356 2504,3396 1934,3395"/>
@@ -2833,10 +2833,10 @@
                         <pc:Unicode>1991</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.958769302368164">
+                    <pc:Unicode>SOBOTU, 9. FEBRUARA 1991</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.958769302368164">
-                <pc:Unicode>SOBOTU, 9. FEBRUARA 1991</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:ImageRegion id="textract-layout-figure_62098cf2-dafd-4ad4-9f41-21ca03bd8ae0" custom="textract-layout-type: figure;">
             <pc:Coords points="190,746 926,746 926,1829 188,1829"/>

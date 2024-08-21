@@ -2,8 +2,8 @@
 <pc:PcGts xmlns:pc="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
     <pc:Metadata>
         <pc:Creator>OCR-D/core 2.66.0</pc:Creator>
-        <pc:Created>2024-08-10T02:21:53.535152</pc:Created>
-        <pc:LastChange>2024-08-10T02:21:53.535152</pc:LastChange>
+        <pc:Created>2024-08-21T15:00:12.655363</pc:Created>
+        <pc:LastChange>2024-08-21T15:00:12.655363</pc:LastChange>
     </pc:Metadata>
     <pc:Page imageFilename="images/18xx-Missio-EMU-0042.jpg" imageWidth="2135" imageHeight="3240">
         <pc:ReadingOrder>
@@ -61,10 +61,10 @@
                         <pc:Unicode>30.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.999154586791992">
+                    <pc:Unicode>No. 30.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.999154586791992">
-                <pc:Unicode>No. 30.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_1f905640-b482-4e18-8a3c-26a886904572_parent" type="floating">
             <pc:Coords points="902,181 1472,181 1472,243 902,243"/>
@@ -82,10 +82,10 @@
                         <pc:Unicode>HYMN,</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.978466339111328">
+                    <pc:Unicode>PARTING HYMN,</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.978466339111328">
-                <pc:Unicode>PARTING HYMN,</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_4fedac26-b21a-4b7e-89a7-e707bbeb9c82_parent" type="floating">
             <pc:Coords points="1878,281 1951,281 1952,315 1878,315"/>
@@ -97,10 +97,10 @@
                         <pc:Unicode>Arr.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.99661979675293">
+                    <pc:Unicode>Arr.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.99661979675293">
-                <pc:Unicode>Arr.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_e14c9ec6-9fbb-4da5-be1a-b27335ddf3db_parent" type="floating">
             <pc:Coords points="451,495 1894,495 1894,542 451,542"/>
@@ -196,10 +196,10 @@
                         <pc:Unicode>love</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.980292739868164">
+                    <pc:Unicode>1. How pleasant thus to dwell be - low, In fel - low-ship of love</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.980292739868164">
-                <pc:Unicode>1. How pleasant thus to dwell be - low, In fel - low-ship of love</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_e100bf7c-9d5b-404c-8ab2-4c429c9cc614_parent" type="floating">
             <pc:Coords points="1907,499 1919,499 1919,532 1907,532"/>
@@ -211,10 +211,10 @@
                         <pc:Unicode>!</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.957095184326172">
+                    <pc:Unicode>!</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.957095184326172">
-                <pc:Unicode>!</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_04e7e24f-cb53-483d-bc44-9312eabe8199_parent" type="floating">
             <pc:Coords points="518,540 1924,540 1924,587 518,587"/>
@@ -310,10 +310,10 @@
                         <pc:Unicode>bove.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.996310119628906">
+                    <pc:Unicode>And tho' we part, 'tis bliss to know The good shall meet a - bove.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.996310119628906">
-                <pc:Unicode>And tho' we part, 'tis bliss to know The good shall meet a - bove.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_e99e9a1c-8d7b-4e0d-9d65-6636749150d6_parent" type="floating">
             <pc:Coords points="449,584 1911,583 1911,632 450,633"/>
@@ -397,10 +397,10 @@
                         <pc:Unicode>pain,</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.996275634765625">
+                    <pc:Unicode>2. Yes, hap-py tho't! when we are free From earthly grief and pain,</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.996275634765625">
-                <pc:Unicode>2. Yes, hap-py tho't! when we are free From earthly grief and pain,</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_dda1ebda-6f30-410f-a708-a58c0a9c85e3_parent" type="floating">
             <pc:Coords points="516,628 1910,627 1910,676 517,677"/>
@@ -490,10 +490,10 @@
                         <pc:Unicode>gain.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.964950180053711">
+                    <pc:Unicode>In heav'n we shall each oth-er see, And nev - er part a - gain.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.964950180053711">
-                <pc:Unicode>In heav'n we shall each oth-er see, And nev - er part a - gain.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_cff354e7-5499-457c-980f-adf493a74ad2_parent" type="floating">
             <pc:Coords points="450,672 1931,671 1931,719 450,720"/>
@@ -577,10 +577,10 @@
                         <pc:Unicode>ways;</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.992279434204102">
+                    <pc:Unicode>3. Then let us each in strength di-vine, Still walk in wis-dom's ways;</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.992279434204102">
-                <pc:Unicode>3. Then let us each in strength di-vine, Still walk in wis-dom's ways;</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_a15fdde9-f5a1-44db-be30-ebb57cd7ed98_parent" type="floating">
             <pc:Coords points="515,717 1931,716 1931,764 515,766"/>
@@ -688,10 +688,10 @@
                         <pc:Unicode>praise.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.989145965576172">
+                    <pc:Unicode>That we, with those we love may join In nev - er - end - ing praise.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.989145965576172">
-                <pc:Unicode>That we, with those we love may join In nev - er - end - ing praise.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_05f86274-3228-443a-bb30-31d113117ba8_parent" type="floating">
             <pc:Coords points="472,1157 1115,1156 1115,1202 472,1203"/>
@@ -739,10 +739,10 @@
                         <pc:Unicode>bove,</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.992710266113281">
+                    <pc:Unicode>The good shall meet a - bove,</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.992710266113281">
-                <pc:Unicode>The good shall meet a - bove,</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_a62c60b2-b217-460c-8f8a-6203d1e82701_parent" type="floating">
             <pc:Coords points="1290,1158 1909,1156 1909,1203 1290,1204"/>
@@ -790,10 +790,10 @@
                         <pc:Unicode>bove,</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.997393417358398">
+                    <pc:Unicode>The good shall meet a - bove,</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.997393417358398">
-                <pc:Unicode>The good shall meet a - bove,</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_448df32e-9b17-4b43-a496-ccb042e5d3a7_parent" type="floating">
             <pc:Coords points="475,1202 1104,1201 1105,1247 476,1249"/>
@@ -847,10 +847,10 @@
                         <pc:Unicode>gain,</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.982618179321289">
+                    <pc:Unicode>And nev - er part a - gain,</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.982618179321289">
-                <pc:Unicode>And nev - er part a - gain,</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_5aabc58e-beb2-4509-8dad-6abe6e7079b8_parent" type="floating">
             <pc:Coords points="1291,1203 1898,1202 1899,1248 1291,1249"/>
@@ -904,10 +904,10 @@
                         <pc:Unicode>gain</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.978805389404297">
+                    <pc:Unicode>And nev - er part a - gain</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.978805389404297">
-                <pc:Unicode>And nev - er part a - gain</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_49710958-c505-4cc2-9fcb-8644d7842228_parent" type="floating">
             <pc:Coords points="486,1246 1135,1244 1135,1292 486,1293"/>
@@ -955,10 +955,10 @@
                         <pc:Unicode>praise,</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.981266632080078">
+                    <pc:Unicode>In nev - er - end-ing praise,</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.981266632080078">
-                <pc:Unicode>In nev - er - end-ing praise,</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_48080bd4-f2a5-4594-a829-a9d1f7ad1804_parent" type="floating">
             <pc:Coords points="1304,1247 1925,1246 1925,1292 1304,1293"/>
@@ -1018,10 +1018,10 @@
                         <pc:Unicode>praise,</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.970453186035156">
+                    <pc:Unicode>In nev - er - end - ing praise,</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.970453186035156">
-                <pc:Unicode>In nev - er - end - ing praise,</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_97d6527e-b9d5-4452-a9f8-13d4981e0ed7_parent" type="floating">
             <pc:Coords points="492,1719 1896,1715 1896,1764 492,1768"/>
@@ -1117,10 +1117,10 @@
                         <pc:Unicode>bove.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.966904144287109">
+                    <pc:Unicode>And tho' we part, 'tis bliss to know The good shall meet a - bove.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.966904144287109">
-                <pc:Unicode>And tho' we part, 'tis bliss to know The good shall meet a - bove.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_551ebaec-ab08-4926-b8b7-a3563524258a_parent" type="floating">
             <pc:Coords points="498,1764 1882,1760 1883,1809 498,1813"/>
@@ -1228,10 +1228,10 @@
                         <pc:Unicode>gain.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.988395614624023">
+                    <pc:Unicode>In heav'n we shall each oth - er see, And nev - er part a - gain.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.988395614624023">
-                <pc:Unicode>In heav'n we shall each oth - er see, And nev - er part a - gain.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_07480756-49a7-43b5-9700-c8f87ecb9be3_parent" type="floating">
             <pc:Coords points="477,1808 1912,1804 1912,1854 477,1858"/>
@@ -1339,10 +1339,10 @@
                         <pc:Unicode>praise.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.982509613037109">
+                    <pc:Unicode>That we, with those we love, may join In nev - er - end - ing praise.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.982509613037109">
-                <pc:Unicode>That we, with those we love, may join In nev - er - end - ing praise.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_3978d8e3-abbb-4f9c-ac04-1260a7b4e7d9_parent" type="floating">
             <pc:Coords points="1945,1932 1973,1932 1973,1970 1945,1970"/>
@@ -1354,10 +1354,10 @@
                         <pc:Unicode>of</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.855536270141602">
+                    <pc:Unicode>of</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.855536270141602">
-                <pc:Unicode>of</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_3d2c3d08-d963-42a5-81fc-0d28218f3102_parent" type="floating">
             <pc:Coords points="423,2143 662,2142 663,2203 423,2204"/>
@@ -1375,10 +1375,10 @@
                         <pc:Unicode>31.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.996023712158203">
+                    <pc:Unicode>No. 31.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.996023712158203">
-                <pc:Unicode>No. 31.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_deeeffc2-38be-4b8c-8e15-df529eb32586_parent" type="floating">
             <pc:Coords points="799,2143 1615,2140 1615,2199 799,2202"/>
@@ -1396,10 +1396,10 @@
                         <pc:Unicode>CONSECRATION.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.980909194946289">
+                    <pc:Unicode>ENTIRE CONSECRATION.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.980909194946289">
-                <pc:Unicode>ENTIRE CONSECRATION.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_c85d7e64-01c8-4782-82b6-d597c0d7cb52_parent" type="floating">
             <pc:Coords points="455,2230 971,2229 972,2261 455,2263"/>
@@ -1429,10 +1429,10 @@
                         <pc:Unicode>HAVERGAL.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.927725524902344">
+                    <pc:Unicode>MISS FRANCES R. HAVERGAL.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.927725524902344">
-                <pc:Unicode>MISS FRANCES R. HAVERGAL.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_eb1bd360-0617-4daa-b158-7ae2d88798c9_parent" type="floating">
             <pc:Coords points="1520,2231 1949,2230 1949,2266 1520,2268"/>
@@ -1468,10 +1468,10 @@
                         <pc:Unicode>MCINTOSH.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.98470573425293">
+                    <pc:Unicode>Arr. by R. M. MCINTOSH.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.98470573425293">
-                <pc:Unicode>Arr. by R. M. MCINTOSH.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_9527314d-8301-4a2e-ab0c-46148f6207ed_parent" type="floating">
             <pc:Coords points="533,2298 560,2298 560,2339 533,2339"/>
@@ -1483,10 +1483,10 @@
                         <pc:Unicode>9</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.948822021484375">
+                    <pc:Unicode>9</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.948822021484375">
-                <pc:Unicode>9</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_7757a748-a7d0-4cc2-8ef6-0c736f4faa04_parent" type="floating">
             <pc:Coords points="533,2348 563,2348 563,2387 533,2387"/>
@@ -1498,10 +1498,10 @@
                         <pc:Unicode>8</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.91417350769043">
+                    <pc:Unicode>8</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.91417350769043">
-                <pc:Unicode>8</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_14221db2-a5a9-4bf9-aff9-f653f3db0405_parent" type="floating">
             <pc:Coords points="478,2424 1197,2421 1197,2466 478,2469"/>
@@ -1555,10 +1555,10 @@
                         <pc:Unicode>be,</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.999257354736328">
+                    <pc:Unicode>1. Take my life and let it be,</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.999257354736328">
-                <pc:Unicode>1. Take my life and let it be,</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_7d39dc04-dba1-49ac-b103-c63b6a61915a_parent" type="floating">
             <pc:Coords points="1262,2424 1928,2422 1928,2467 1263,2470"/>
@@ -1600,10 +1600,10 @@
                         <pc:Unicode>Thee</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.988255233764648">
+                    <pc:Unicode>Con-se-crat - ed, Lord, to Thee</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.988255233764648">
-                <pc:Unicode>Con-se-crat - ed, Lord, to Thee</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_82bc0626-3874-497b-a6b8-692a71dcbee7_parent" type="floating">
             <pc:Coords points="477,2468 1201,2465 1201,2510 478,2513"/>
@@ -1657,10 +1657,10 @@
                         <pc:Unicode>be</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.999354400634766">
+                    <pc:Unicode>2. Take my feet and let them be</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.999354400634766">
-                <pc:Unicode>2. Take my feet and let them be</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_a3f5c020-d40a-4ce6-ae26-cc2f92722bb3_parent" type="floating">
             <pc:Coords points="1244,2468 1939,2465 1939,2509 1244,2512"/>
@@ -1708,10 +1708,10 @@
                         <pc:Unicode>Thee;</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.981742172241211">
+                    <pc:Unicode>Swift and beau-ti - ful for Thee;</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.981742172241211">
-                <pc:Unicode>Swift and beau-ti - ful for Thee;</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_3b1dc974-961d-4d62-80d8-07d9b4b7c0c0_parent" type="floating">
             <pc:Coords points="478,2512 1929,2506 1929,2554 478,2560"/>
@@ -1807,10 +1807,10 @@
                         <pc:Unicode>with-hold</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.9975830078125">
+                    <pc:Unicode>3. Take my sil - ver and my gold, Not a mite would I with-hold</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.9975830078125">
-                <pc:Unicode>3. Take my sil - ver and my gold, Not a mite would I with-hold</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_95522b3e-8c52-43a4-bda7-1b5bf79b4192_parent" type="floating">
             <pc:Coords points="477,2556 1922,2550 1922,2601 477,2607"/>
@@ -1912,10 +1912,10 @@
                         <pc:Unicode>mine</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.994306716918945">
+                    <pc:Unicode>4. Take my will and make it Thine, It shall be no long - er mine</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.994306716918945">
-                <pc:Unicode>4. Take my will and make it Thine, It shall be no long - er mine</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_37532188-2ac7-4482-9033-5be255f74c7b_parent" type="floating">
             <pc:Coords points="477,2600 1928,2594 1928,2643 477,2650"/>
@@ -1999,10 +1999,10 @@
                         <pc:Unicode>treas-ure-store</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.981227951049805">
+                    <pc:Unicode>5. Take my love; my Lord, I pour At Thy feet its treas-ure-store</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.981227951049805">
-                <pc:Unicode>5. Take my love; my Lord, I pour At Thy feet its treas-ure-store</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_20879a6e-b3cb-423d-93cf-a7defac7abd5_parent" type="floating">
             <pc:Coords points="439,2858 1891,2851 1891,2900 440,2907"/>
@@ -2116,10 +2116,10 @@
                         <pc:Unicode>be</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.993508529663086">
+                    <pc:Unicode>Cho. Lord, I give my - self to Thee, Thine for ev - er - more to be</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.993508529663086">
-                <pc:Unicode>Cho. Lord, I give my - self to Thee, Thine for ev - er - more to be</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_2c14c79b-88ef-4583-9dcc-0cc96b70f22f_parent" type="floating">
             <pc:Coords points="1155,2911 1257,2911 1257,2959 1155,2959"/>
@@ -2131,10 +2131,10 @@
                         <pc:Unicode>(102)</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.999290084838867">
+                    <pc:Unicode>(102)</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.999290084838867">
-                <pc:Unicode>(102)</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
     </pc:Page>
 </pc:PcGts>

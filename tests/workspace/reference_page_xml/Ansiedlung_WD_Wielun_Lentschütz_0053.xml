@@ -2,8 +2,8 @@
 <pc:PcGts xmlns:pc="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
     <pc:Metadata>
         <pc:Creator>OCR-D/core 2.66.0</pc:Creator>
-        <pc:Created>2024-08-10T02:19:45.109088</pc:Created>
-        <pc:LastChange>2024-08-10T02:19:45.109088</pc:LastChange>
+        <pc:Created>2024-08-21T14:59:22.152990</pc:Created>
+        <pc:LastChange>2024-08-21T14:59:22.152990</pc:LastChange>
     </pc:Metadata>
     <pc:Page imageFilename="images/Ansiedlung_WD_Wielun_Lentschütz_0053.tif" imageWidth="2479" imageHeight="3509">
         <pc:ReadingOrder>
@@ -29,7 +29,7 @@
                 <pc:RegionRefIndexed index="18" regionRef="textract-layout-dummy_72c1ee51-7c4e-4323-9037-054b16ccd122_parent"/>
                 <pc:RegionRefIndexed index="19" regionRef="textract-layout-dummy_56b592d0-73b2-45c0-a82d-90ab5d374cb3_parent"/>
                 <pc:RegionRefIndexed index="20" regionRef="textract-layout-dummy_9d836f64-17a3-4531-beae-da768e534e7c_parent"/>
-                <pc:UnorderedGroupIndexed id="textract-table_abd427a1-013e-45cb-a7e4-1fcb2435df76_reading-order" index="21" comments="Reading order of this table.">
+                <pc:UnorderedGroupIndexed id="textract-table_abd427a1-013e-45cb-a7e4-1fcb2435df76_reading-order" regionRef="textract-table_abd427a1-013e-45cb-a7e4-1fcb2435df76" index="21" comments="Reading order of this table.">
                     <pc:RegionRef regionRef="textract-cell_text-region_8819d174-16b8-4cf4-ac3a-b894afeff355"/>
                     <pc:RegionRef regionRef="textract-cell_text-region_55582e8f-359b-4304-9c20-e6eef34e3e46"/>
                     <pc:RegionRef regionRef="textract-cell_text-region_0e5f94ed-f68d-4314-af8c-4b7f0afa991f"/>
@@ -64,10 +64,10 @@
                         <pc:Unicode>55</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.9981884765625">
+                    <pc:Unicode>55</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.9981884765625">
-                <pc:Unicode>55</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_f85ed39c-089a-4460-a5f3-a7690295f22a_parent" type="floating">
             <pc:Coords points="1152,769 1752,769 1752,815 1152,816"/>
@@ -85,10 +85,10 @@
                         <pc:Unicode>60.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.949609603881836">
+                    <pc:Unicode>Aktion: 60.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.949609603881836">
-                <pc:Unicode>Aktion: 60.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_a54618bb-43a1-47e6-8fa8-747b6d6dfe59_parent" type="floating">
             <pc:Coords points="1296,913 1723,913 1723,966 1296,966"/>
@@ -118,10 +118,10 @@
                         <pc:Unicode>1940.</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.990213012695312">
+                    <pc:Unicode>am 27. 6. 1940.</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.990213012695312">
-                <pc:Unicode>am 27. 6. 1940.</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_61680804-7c8b-47f6-92c3-c33ac95c6387_parent" type="floating">
             <pc:Coords points="1040,1134 1644,1133 1644,1182 1040,1183"/>
@@ -145,10 +145,10 @@
                         <pc:Unicode>Leslau</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.985834808349609">
+                    <pc:Unicode>I. Kreis Leslau</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.985834808349609">
-                <pc:Unicode>I. Kreis Leslau</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_a1f29916-0ec5-45bf-becf-fd80438e1a0c_parent" type="floating">
             <pc:Coords points="1325,1229 2389,1229 2389,1275 1325,1276"/>
@@ -196,10 +196,10 @@
                         <pc:Unicode>Dörfer</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.963385543823242">
+                    <pc:Unicode>in den Gemeinden Boniewo - 6 Dörfer</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.963385543823242">
-                <pc:Unicode>in den Gemeinden Boniewo - 6 Dörfer</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_17df187d-0ecf-47fb-8435-5d9ddc4db2e3_parent" type="floating">
             <pc:Coords points="1839,1327 2188,1327 2188,1378 1839,1378"/>
@@ -223,10 +223,10 @@
                         <pc:Unicode>9</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.960119323730469">
+                    <pc:Unicode>Chocen - 9</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.960119323730469">
-                <pc:Unicode>Chocen - 9</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_5beb46ea-dbaa-425d-b850-2d88353c1560_parent" type="floating">
             <pc:Coords points="1840,1424 2189,1424 2189,1469 1840,1469"/>
@@ -250,10 +250,10 @@
                         <pc:Unicode>18</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.730192031860352">
+                    <pc:Unicode>Chodecz - 18</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.730192031860352">
-                <pc:Unicode>Chodecz - 18</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_ceca568d-3b09-4201-a3c4-161963554a05_parent" type="floating">
             <pc:Coords points="2275,1424 2305,1424 2305,1451 2275,1451"/>
@@ -265,10 +265,10 @@
                         <pc:Unicode>"</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.580903587341309">
+                    <pc:Unicode>"</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.580903587341309">
-                <pc:Unicode>"</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_95a27c97-1fbc-4b71-a5e7-a435f7ff2964_parent" type="floating">
             <pc:Coords points="1840,1521 2188,1520 2188,1574 1840,1575"/>
@@ -286,10 +286,10 @@
                         <pc:Unicode>3</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.899826736450195">
+                    <pc:Unicode>Pysskowo= 3</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.899826736450195">
-                <pc:Unicode>Pysskowo= 3</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_f4efc907-26e4-43d1-b0f3-3ab35ed0e2d8_parent" type="floating">
             <pc:Coords points="1783,1617 2191,1616 2191,1662 1783,1663"/>
@@ -313,10 +313,10 @@
                         <pc:Unicode>2</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.887591400146484">
+                    <pc:Unicode>Przedecz a 2</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.887591400146484">
-                <pc:Unicode>Przedecz a 2</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_7e09da58-c75f-4dff-9497-71173df5eb7f_parent" type="floating">
             <pc:Coords points="1695,1711 2307,1711 2307,1762 1695,1763"/>
@@ -352,10 +352,10 @@
                         <pc:Unicode>#</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.724063720703125">
+                    <pc:Unicode>U. Smilowice - 4 #</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.724063720703125">
-                <pc:Unicode>U. Smilowice - 4 #</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_e7fee437-f4ad-470a-a530-73db91b6c052_parent" type="floating">
             <pc:Coords points="1012,1836 1649,1835 1649,1886 1012,1886"/>
@@ -379,10 +379,10 @@
                         <pc:Unicode>Nessau</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.963856658935547">
+                    <pc:Unicode>II. Kreis Nessau</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.963856658935547">
-                <pc:Unicode>II. Kreis Nessau</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_f1ca1639-47d5-4015-a53c-03fc94700d92_parent" type="floating">
             <pc:Coords points="1327,1932 2192,1931 2192,1984 1327,1985"/>
@@ -424,10 +424,10 @@
                         <pc:Unicode>10</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.94013557434082">
+                    <pc:Unicode>in den Gemeinden Radziejow - 10</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.94013557434082">
-                <pc:Unicode>in den Gemeinden Radziejow - 10</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_221340ce-99eb-40f8-8752-adabf96b919e_parent" type="floating">
             <pc:Coords points="2277,1931 2306,1931 2306,1958 2277,1958"/>
@@ -439,10 +439,10 @@
                         <pc:Unicode>#</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.316139163970947">
+                    <pc:Unicode>#</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.316139163970947">
-                <pc:Unicode>#</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_ce2ea1fc-dbf8-4781-811e-ac830e492a1d_parent" type="floating">
             <pc:Coords points="1698,2004 2192,2004 2192,2051 1698,2051"/>
@@ -472,10 +472,10 @@
                         <pc:Unicode>2</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.88373291015625">
+                    <pc:Unicode>U. Sendzin - 2</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.88373291015625">
-                <pc:Unicode>U. Sendzin - 2</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_a5352ae1-c5a5-45a0-87d5-6797a43f25dd_parent" type="floating">
             <pc:Coords points="2277,2003 2307,2003 2307,2031 2277,2031"/>
@@ -487,10 +487,10 @@
                         <pc:Unicode>11</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.139833126068115">
+                    <pc:Unicode>11</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.139833126068115">
-                <pc:Unicode>11</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_cd5bd062-3b9c-49bb-ac17-af14776217cc_parent" type="floating">
             <pc:Coords points="986,2054 1822,2053 1822,2103 986,2104"/>
@@ -514,10 +514,10 @@
                         <pc:Unicode>Sieradsch</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.799858703613281">
+                    <pc:Unicode>III. Kreis Sieradsch</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.799858703613281">
-                <pc:Unicode>III. Kreis Sieradsch</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_6346f645-42e8-44f1-99e5-28a370ace015_parent" type="floating">
             <pc:Coords points="1327,2149 2307,2148 2307,2194 1327,2196"/>
@@ -565,10 +565,10 @@
                         <pc:Unicode>#</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.871702728271484">
+                    <pc:Unicode>in den Gemeinden Barezew - 2 #</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.871702728271484">
-                <pc:Unicode>in den Gemeinden Barezew - 2 #</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_72c1ee51-7c4e-4323-9037-054b16ccd122_parent" type="floating">
             <pc:Coords points="1696,2245 2194,2244 2194,2298 1696,2298"/>
@@ -598,10 +598,10 @@
                         <pc:Unicode>3</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.850229263305664">
+                    <pc:Unicode>U. Brzenic - 3</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.850229263305664">
-                <pc:Unicode>U. Brzenic - 3</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_56b592d0-73b2-45c0-a82d-90ab5d374cb3_parent" type="floating">
             <pc:Coords points="2073,2344 2193,2344 2193,2394 2073,2394"/>
@@ -619,10 +619,10 @@
                         <pc:Unicode>59</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.789750137329102">
+                    <pc:Unicode>- 59</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.789750137329102">
-                <pc:Unicode>- 59</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_9d836f64-17a3-4531-beae-da768e534e7c_parent" type="floating">
             <pc:Coords points="1446,2419 1591,2419 1591,2461 1446,2461"/>
@@ -634,10 +634,10 @@
                         <pc:Unicode>00000</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.633540878295898">
+                    <pc:Unicode>00000</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.633540878295898">
-                <pc:Unicode>00000</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TextRegion id="textract-layout-dummy_d36c5325-0d5e-4e46-9d96-e378c8b3a0e6_parent" type="floating">
             <pc:Coords points="1005,3138 2121,3136 2121,3188 1005,3191"/>
@@ -673,10 +673,10 @@
                         <pc:Unicode>Leslau!</pc:Unicode>
                     </pc:TextEquiv>
                 </pc:Word>
+                <pc:TextEquiv conf="0.970600204467773">
+                    <pc:Unicode>Urkundliche Ablage siehe Ordner Leslau!</pc:Unicode>
+                </pc:TextEquiv>
             </pc:TextLine>
-            <pc:TextEquiv conf="0.970600204467773">
-                <pc:Unicode>Urkundliche Ablage siehe Ordner Leslau!</pc:Unicode>
-            </pc:TextEquiv>
         </pc:TextRegion>
         <pc:TableRegion id="textract-table_abd427a1-013e-45cb-a7e4-1fcb2435df76" rows="5" columns="4">
             <pc:Coords points="975,2542 2407,2540 2407,3009 975,3012"/>
