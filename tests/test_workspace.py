@@ -55,4 +55,4 @@ def test_api(workspace_path, tmpdir):
         del tar_img_path_elem.attrib["imageFilename"]
         target_xml = ET.tostring(target_tree, pretty_print=True, encoding='UTF-8').decode('utf-8')
         result_xml = ET.tostring(result_tree, pretty_print=True, encoding='UTF-8').decode('utf-8')
-        assert target_xml == result_xml, path
+        assert result_xml == target_xml, path
