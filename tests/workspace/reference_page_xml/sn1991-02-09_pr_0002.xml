@@ -1,0 +1,2854 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pc:PcGts xmlns:pc="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
+    <pc:Metadata>
+        <pc:Creator>OCR-D/core 2.66.0</pc:Creator>
+        <pc:Created>2024-08-21T12:36:46.396449</pc:Created>
+        <pc:LastChange>2024-08-21T12:36:46.396449</pc:LastChange>
+    </pc:Metadata>
+    <pc:Page imageFilename="images/sn1991-02-09_pr_0002.jpg" imageWidth="2626" imageHeight="3660">
+        <pc:ReadingOrder>
+            <pc:OrderedGroup id="global-reading-order" comments="Reading order as defined by Textract.">
+                <pc:RegionRefIndexed index="0" regionRef="textract-layout-title_440d87ab-2878-493a-b32f-0ed14063d78e"/>
+                <pc:RegionRefIndexed index="1" regionRef="textract-layout-figure_62098cf2-dafd-4ad4-9f41-21ca03bd8ae0"/>
+                <pc:RegionRefIndexed index="2" regionRef="textract-layout-text_ee94dbee-a4fd-42ad-be86-6ee8c8311228"/>
+                <pc:RegionRefIndexed index="3" regionRef="textract-layout-figure_c8e8dfaa-f2fb-4d4c-80f1-c65baa6a9e89"/>
+                <pc:RegionRefIndexed index="4" regionRef="textract-layout-text_82c131d8-f14a-4349-b914-9c65bf367158"/>
+                <pc:RegionRefIndexed index="5" regionRef="textract-layout-figure_26929c61-3dec-4638-b8f4-58f8b0594884"/>
+                <pc:RegionRefIndexed index="6" regionRef="textract-layout-text_fcd4990f-9fd9-4cf5-8dd2-cfac74f6791b"/>
+                <pc:RegionRefIndexed index="7" regionRef="textract-layout-section-header_ad88d6e7-9dad-42b4-a243-13f9ee306244"/>
+                <pc:RegionRefIndexed index="8" regionRef="textract-layout-text_209364ca-a554-4843-b0a1-7ffa7cdf9a27"/>
+                <pc:RegionRefIndexed index="9" regionRef="textract-layout-text_5e097afd-8294-46bc-ae3b-1def8964ef59"/>
+                <pc:RegionRefIndexed index="10" regionRef="textract-layout-figure_0a571fbd-dc11-4d5c-bbf9-96fa070bbac7"/>
+                <pc:RegionRefIndexed index="11" regionRef="textract-layout-text_6126008f-6ab5-4621-b44f-c254fd1b0f5c"/>
+                <pc:RegionRefIndexed index="12" regionRef="textract-layout-text_4f94c85c-771a-48cf-b345-312ba2370b30"/>
+                <pc:RegionRefIndexed index="13" regionRef="textract-layout-footer_9cef3f87-cd73-450a-bca9-335c233c5014"/>
+            </pc:OrderedGroup>
+        </pc:ReadingOrder>
+        <pc:TextRegion id="textract-layout-title_440d87ab-2878-493a-b32f-0ed14063d78e" custom="textract-layout-type: title;" type="heading">
+            <pc:Coords points="178,123 904,122 904,484 177,484"/>
+            <pc:TextLine id="textract-line_b02063c7-2116-4654-961d-15f46c0cc7a1">
+                <pc:Coords points="178,123 904,122 904,207 178,207"/>
+                <pc:Word id="textract-word_625c5145-59b4-40e6-aa9f-9220b5b6bc4f" production="printed">
+                    <pc:Coords points="178,123 286,123 286,192 178,192"/>
+                    <pc:TextEquiv conf="0.993722915649414">
+                        <pc:Unicode>Wo</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_a9031630-b8a9-4999-803d-55001ad4f75d" production="printed">
+                    <pc:Coords points="288,123 904,123 904,207 288,207"/>
+                    <pc:TextEquiv conf="0.938714828491211">
+                        <pc:Unicode>ptacokwasnych</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.966218872070313">
+                    <pc:Unicode>Wo ptacokwasnych</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_42d39547-25a2-49f5-85f5-14246aa6751c">
+                <pc:Coords points="282,220 796,220 796,303 282,303"/>
+                <pc:Word id="textract-word_b87fcff6-a680-4671-9880-23eeb1af6049" production="printed">
+                    <pc:Coords points="282,220 796,220 796,303 282,303"/>
+                    <pc:TextEquiv conf="0.960987091064453">
+                        <pc:Unicode>swjedzenjach</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.960987091064453">
+                    <pc:Unicode>swjedzenjach</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_fefaeb79-5d56-4d21-a923-f70d250f852d">
+                <pc:Coords points="224,316 854,316 854,387 224,387"/>
+                <pc:Word id="textract-word_aab68882-61f8-41dc-b394-8af5f78fd38e" production="printed">
+                    <pc:Coords points="224,336 309,336 309,387 224,387"/>
+                    <pc:TextEquiv conf="0.994732284545898">
+                        <pc:Unicode>za</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_70412c26-7266-495e-98fc-9e3a96350827" production="printed">
+                    <pc:Coords points="326,319 638,319 638,387 326,387"/>
+                    <pc:TextEquiv conf="0.994702453613281">
+                        <pc:Unicode>serbske</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d57983cf-80ad-4d2e-8282-fc1ae3393522" production="printed">
+                    <pc:Coords points="649,316 854,316 854,386 649,386"/>
+                    <pc:TextEquiv conf="0.401999588012695">
+                        <pc:Unicode>dzeci</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.79714485168457">
+                    <pc:Unicode>za serbske dzeci</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_a303db1e-74f5-49b0-8f72-ffa0ddb2efe9">
+                <pc:Coords points="393,418 685,418 685,484 393,484"/>
+                <pc:Word id="textract-word_f01d1b3a-fd4e-4f42-8853-8a38ddf65617" production="printed">
+                    <pc:Coords points="393,419 466,419 466,484 393,484"/>
+                    <pc:TextEquiv conf="0.999402694702148">
+                        <pc:Unicode>tu</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_48706b49-7f5f-49db-ba2f-d188a84671d0" production="printed">
+                    <pc:Coords points="480,429 526,429 526,483 480,483"/>
+                    <pc:TextEquiv conf="0.998715286254883">
+                        <pc:Unicode>a</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_32245499-6351-43d1-bc8e-a604bcbd9d35" production="printed">
+                    <pc:Coords points="545,418 685,418 685,484 545,484"/>
+                    <pc:TextEquiv conf="0.998153076171875">
+                        <pc:Unicode>tam</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.998757019042969">
+                    <pc:Unicode>tu a tam</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+        </pc:TextRegion>
+        <pc:TextRegion id="textract-layout-text_ee94dbee-a4fd-42ad-be86-6ee8c8311228" custom="textract-layout-type: text;" type="paragraph">
+            <pc:Coords points="186,1863 924,1863 923,1983 186,1983"/>
+            <pc:TextLine id="textract-line_f5dcbc6d-2ac6-42ed-800e-b4ddd6d26451">
+                <pc:Coords points="186,1863 922,1863 922,1900 186,1899"/>
+                <pc:Word id="textract-word_4f915a62-93c8-403b-a6f2-d70a25e20031" production="printed">
+                    <pc:Coords points="186,1863 242,1863 242,1892 186,1892"/>
+                    <pc:TextEquiv conf="0.775765762329102">
+                        <pc:Unicode>Tez</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_551dc594-e7cc-45e5-a9b2-4ee820d3369c" production="printed">
+                    <pc:Coords points="261,1863 301,1863 301,1898 261,1898"/>
+                    <pc:TextEquiv conf="0.985750274658203">
+                        <pc:Unicode>pri</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0d7b3f12-f5d2-413f-bce5-362875404638" production="printed">
+                    <pc:Coords points="318,1864 515,1865 515,1899 318,1899"/>
+                    <pc:TextEquiv conf="0.70672737121582">
+                        <pc:Unicode>zwoblekanju</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_244fc2f0-eaa6-40c3-a3b4-8decd75daac0" production="printed">
+                    <pc:Coords points="533,1865 666,1865 666,1894 533,1894"/>
+                    <pc:TextEquiv conf="0.759552383422852">
+                        <pc:Unicode>stonkow</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c34fc950-3347-4e83-a9e1-f4f1d403293a" production="printed">
+                    <pc:Coords points="683,1872 701,1872 701,1893 683,1893"/>
+                    <pc:TextEquiv conf="0.983009719848633">
+                        <pc:Unicode>a</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e51ad6d9-cc5f-47cf-ac2a-28ecff238350" production="printed">
+                    <pc:Coords points="718,1866 922,1866 922,1900 718,1900"/>
+                    <pc:TextEquiv conf="0.766992111206055">
+                        <pc:Unicode>wuslekanych</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.829632949829102">
+                    <pc:Unicode>Tez pri zwoblekanju stonkow a wuslekanych</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_3bcd6d16-9875-4271-97dd-30a4fada6faa">
+                <pc:Coords points="188,1905 924,1906 923,1942 188,1942"/>
+                <pc:Word id="textract-word_b19a4443-dcc8-480f-87b1-39a7264d0f44" production="printed">
+                    <pc:Coords points="188,1905 300,1905 300,1934 188,1934"/>
+                    <pc:TextEquiv conf="0.995994567871094">
+                        <pc:Unicode>holcow</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e520cf1b-b766-4777-898d-679e066e854b" production="printed">
+                    <pc:Coords points="308,1906 453,1906 453,1941 308,1941"/>
+                    <pc:TextEquiv conf="0.65041862487793">
+                        <pc:Unicode>pomhae</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_35be5303-a8ee-4b2c-ac77-22d614659b6e" production="printed">
+                    <pc:Coords points="462,1906 578,1906 577,1942 462,1941"/>
+                    <pc:TextEquiv conf="0.948933029174805">
+                        <pc:Unicode>Ryncec</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_1a527da2-9c01-447d-abab-3374edf2b9c6" production="printed">
+                    <pc:Coords points="584,1906 657,1906 657,1939 584,1939"/>
+                    <pc:TextEquiv conf="0.95222770690918">
+                        <pc:Unicode>ceta,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_8ad2ac1f-3601-4c2d-abfd-ab969f4404e1" production="printed">
+                    <pc:Coords points="665,1907 718,1907 718,1935 665,1935"/>
+                    <pc:TextEquiv conf="0.936252975463867">
+                        <pc:Unicode>kaz</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_3c72209f-132c-46af-ba75-fa2e3a8016d0" production="printed">
+                    <pc:Coords points="723,1907 753,1907 753,1942 723,1942"/>
+                    <pc:TextEquiv conf="0.98757453918457">
+                        <pc:Unicode>ju</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e8505b91-8e47-48af-ac63-298188f92dc9" production="printed">
+                    <pc:Coords points="761,1907 842,1907 842,1936 760,1936"/>
+                    <pc:TextEquiv conf="0.563138198852539">
+                        <pc:Unicode>dzeci</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b05fcbaf-c654-4e82-9790-c5e90ffd99e5" production="printed">
+                    <pc:Coords points="849,1912 867,1912 867,1935 849,1935"/>
+                    <pc:TextEquiv conf="0.98697509765625">
+                        <pc:Unicode>a</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_7cbda940-8a4c-4876-8a1f-02461e64ebfa" production="printed">
+                    <pc:Coords points="875,1907 924,1907 923,1941 875,1941"/>
+                    <pc:TextEquiv conf="0.40768970489502">
+                        <pc:Unicode>pe-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.825467147827148">
+                    <pc:Unicode>holcow pomhae Ryncec ceta, kaz ju dzeci a pe-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_435bb103-36de-4dc0-9bce-abc527b2561c">
+                <pc:Coords points="188,1947 625,1947 625,1983 187,1983"/>
+                <pc:Word id="textract-word_9e7f5d80-c631-41bd-a0e6-c8222fb44618" production="printed">
+                    <pc:Coords points="188,1947 319,1947 319,1976 187,1976"/>
+                    <pc:TextEquiv conf="0.886872406005859">
+                        <pc:Unicode>stowarki</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_59499e39-5c21-4827-a5f0-be003a1dabb5" production="printed">
+                    <pc:Coords points="326,1947 493,1947 493,1981 326,1981"/>
+                    <pc:TextEquiv conf="0.7727490234375">
+                        <pc:Unicode>lubosciwje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_fc9bcadd-012a-423e-8337-47489a44ec0c" production="printed">
+                    <pc:Coords points="501,1948 625,1948 625,1983 501,1983"/>
+                    <pc:TextEquiv conf="0.989718704223633">
+                        <pc:Unicode>mjenuja</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.883113403320313">
+                    <pc:Unicode>stowarki lubosciwje mjenuja</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+        </pc:TextRegion>
+        <pc:TextRegion id="textract-layout-text_82c131d8-f14a-4349-b914-9c65bf367158" custom="textract-layout-type: text;" type="paragraph">
+            <pc:Coords points="184,3140 919,3141 919,3259 184,3258"/>
+            <pc:TextLine id="textract-line_4044e00d-dc6c-401f-a7fc-35b82d4a638d">
+                <pc:Coords points="187,3140 919,3141 919,3177 186,3176"/>
+                <pc:Word id="textract-word_5e770e3c-dd35-495c-80d3-48658ac10e04" production="printed">
+                    <pc:Coords points="187,3140 335,3140 335,3176 186,3176"/>
+                    <pc:TextEquiv conf="0.97298583984375">
+                        <pc:Unicode>Njewjesta</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_df077be2-c857-4e8d-8cfa-1b14964188c3" production="printed">
+                    <pc:Coords points="347,3141 561,3141 561,3170 347,3170"/>
+                    <pc:TextEquiv conf="0.978286209106445">
+                        <pc:Unicode>Radworskeho</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_3a1cd621-bbe5-46e7-a12f-6208cecda634" production="printed">
+                    <pc:Coords points="572,3142 698,3142 698,3177 572,3177"/>
+                    <pc:TextEquiv conf="0.802249526977539">
+                        <pc:Unicode>ptaceho</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_61bd3419-0966-450d-9618-28d2e2e4a1dd" production="printed">
+                    <pc:Coords points="710,3142 807,3142 807,3171 710,3171"/>
+                    <pc:TextEquiv conf="0.983731460571289">
+                        <pc:Unicode>kwasa</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_90ef7436-f241-461a-be74-fc58039be8ce" production="printed">
+                    <pc:Coords points="817,3143 845,3143 845,3177 817,3177"/>
+                    <pc:TextEquiv conf="0.994734268188477">
+                        <pc:Unicode>je</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_dd6b8dbd-8a84-49de-b47f-eaa7d88d4b83" production="printed">
+                    <pc:Coords points="854,3142 919,3142 919,3177 854,3177"/>
+                    <pc:TextEquiv conf="0.951373672485352">
+                        <pc:Unicode>byta</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.947226791381836">
+                    <pc:Unicode>Njewjesta Radworskeho ptaceho kwasa je byta</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_028a3783-5b79-4a1e-95bd-75d1aea63504">
+                <pc:Coords points="186,3182 919,3183 919,3220 186,3219"/>
+                <pc:Word id="textract-word_64dcebdb-31f4-4201-b6ce-b7e5e561fdb7" production="printed">
+                    <pc:Coords points="186,3182 315,3182 315,3211 186,3211"/>
+                    <pc:TextEquiv conf="0.994733734130859">
+                        <pc:Unicode>Gabriela</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_00bcd9d2-75fd-44ec-8c07-8a2f305863e1" production="printed">
+                    <pc:Coords points="335,3182 501,3183 501,3212 335,3211"/>
+                    <pc:TextEquiv conf="0.985768814086914">
+                        <pc:Unicode>Handrikec.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_33d276b0-b7ef-46d9-850e-068127625af2" production="printed">
+                    <pc:Coords points="518,3184 644,3184 644,3219 518,3219"/>
+                    <pc:TextEquiv conf="0.99763557434082">
+                        <pc:Unicode>Kwasny</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_9219625f-3418-4fa7-b647-7593443746f5" production="printed">
+                    <pc:Coords points="663,3183 769,3183 769,3212 663,3212"/>
+                    <pc:TextEquiv conf="0.619032440185547">
+                        <pc:Unicode>kwecel</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c22baa84-d540-4b65-a426-f2734485c469" production="printed">
+                    <pc:Coords points="788,3190 836,3190 836,3212 788,3212"/>
+                    <pc:TextEquiv conf="0.995825119018555">
+                        <pc:Unicode>ma</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e7170868-6477-4bd9-9492-eee60d09c1aa" production="printed">
+                    <pc:Coords points="855,3183 919,3183 919,3213 855,3213"/>
+                    <pc:TextEquiv conf="0.874616317749023">
+                        <pc:Unicode>hizo</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.911268615722656">
+                    <pc:Unicode>Gabriela Handrikec. Kwasny kwecel ma hizo</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_0e0910fd-9115-4998-8706-e8e5bc65ed43">
+                <pc:Coords points="184,3223 691,3224 691,3259 184,3258"/>
+                <pc:Word id="textract-word_4ead7894-8cb6-49c8-8fc0-7466d0b2096c" production="printed">
+                    <pc:Coords points="184,3230 213,3230 213,3251 184,3251"/>
+                    <pc:TextEquiv conf="0.825076370239258">
+                        <pc:Unicode>W</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_f0be8734-8bea-4dad-abda-8c12029e1ac2" production="printed">
+                    <pc:Coords points="217,3224 353,3224 353,3258 217,3258"/>
+                    <pc:TextEquiv conf="0.972186431884766">
+                        <pc:Unicode>rukomaj,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c1365bea-aea9-43a5-b9c0-784a43b3ee05" production="printed">
+                    <pc:Coords points="361,3224 419,3224 419,3253 361,3253"/>
+                    <pc:TextEquiv conf="0.994974060058594">
+                        <pc:Unicode>tola</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d5ca37b7-b441-4af7-850d-e7d1e13e0f25" production="printed">
+                    <pc:Coords points="427,3224 508,3224 508,3253 427,3253"/>
+                    <pc:TextEquiv conf="0.976965637207031">
+                        <pc:Unicode>borta</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_bed24164-dbf5-4660-ab2f-875ed93f6d32" production="printed">
+                    <pc:Coords points="516,3224 599,3224 599,3253 516,3253"/>
+                    <pc:TextEquiv conf="0.927959823608398">
+                        <pc:Unicode>hisce</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b5b040e9-acc5-432b-9e42-4bd9e57a75c9" production="printed">
+                    <pc:Coords points="606,3224 691,3224 691,3258 606,3258"/>
+                    <pc:TextEquiv conf="0.987003936767578">
+                        <pc:Unicode>faluje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.947361068725586">
+                    <pc:Unicode>W rukomaj, tola borta hisce faluje</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+        </pc:TextRegion>
+        <pc:TextRegion id="textract-layout-text_fcd4990f-9fd9-4cf5-8dd2-cfac74f6791b" custom="textract-layout-type: text;" type="paragraph">
+            <pc:Coords points="985,1157 2509,1157 2509,1443 985,1443"/>
+            <pc:TextLine id="textract-line_f599efd4-e1ed-415a-97fa-908b16516b29">
+                <pc:Coords points="985,1157 2509,1157 2509,1197 985,1197"/>
+                <pc:Word id="textract-word_233e96d1-c4d5-4ca7-8d87-fe8ad63c68cc" production="printed">
+                    <pc:Coords points="985,1157 1036,1157 1036,1186 985,1186"/>
+                    <pc:TextEquiv conf="0.998282165527344">
+                        <pc:Unicode>We</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_4910aa5b-1041-4a65-8f5b-ad3e06ede19d" production="printed">
+                    <pc:Coords points="1043,1157 1170,1157 1170,1192 1043,1192"/>
+                    <pc:TextEquiv conf="0.847924652099609">
+                        <pc:Unicode>wjesolej</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c8965981-ec05-4422-9bf6-c5b6739e7f98" production="printed">
+                    <pc:Coords points="1178,1157 1255,1157 1255,1192 1178,1192"/>
+                    <pc:TextEquiv conf="0.985970458984375">
+                        <pc:Unicode>rejce</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_8f0e5d7b-3f5e-40c1-9ee4-d2bdf45f7982" production="printed">
+                    <pc:Coords points="1260,1158 1432,1158 1432,1193 1260,1193"/>
+                    <pc:TextEquiv conf="0.975953216552734">
+                        <pc:Unicode>predstajeja</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d1d50416-6a7e-4a1e-91bc-c2a674289fd8" production="printed">
+                    <pc:Coords points="1441,1165 1478,1165 1478,1188 1441,1188"/>
+                    <pc:TextEquiv conf="0.860543365478516">
+                        <pc:Unicode>so</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_15fcc132-3909-4845-966d-5f91d3c43871" production="printed">
+                    <pc:Coords points="1486,1161 1517,1161 1517,1188 1486,1188"/>
+                    <pc:TextEquiv conf="0.993847808837891">
+                        <pc:Unicode>tu</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_f2254a0e-2d9e-44ac-aa33-d5149f27c3dd" production="printed">
+                    <pc:Coords points="1526,1159 1610,1159 1610,1194 1526,1194"/>
+                    <pc:TextEquiv conf="0.996779632568359">
+                        <pc:Unicode>holcy</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_80d5079b-8163-4fa5-a984-3fe8cba56f7d" production="printed">
+                    <pc:Coords points="1617,1167 1636,1167 1636,1189 1617,1189"/>
+                    <pc:TextEquiv conf="0.987896423339844">
+                        <pc:Unicode>a</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_1a0e9326-914e-4255-a55d-0d3c90ab7559" production="printed">
+                    <pc:Coords points="1644,1159 1729,1160 1729,1195 1644,1195"/>
+                    <pc:TextEquiv conf="0.955517807006836">
+                        <pc:Unicode>hólcy</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_be80422b-1af6-42b2-86b2-899c6a8cde56" production="printed">
+                    <pc:Coords points="1738,1160 1887,1160 1887,1195 1738,1195"/>
+                    <pc:TextEquiv conf="0.893419723510742">
+                        <pc:Unicode>serbskeje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_be48ae69-05ea-40b0-94de-1f976c625b6c" production="printed">
+                    <pc:Coords points="1895,1161 2084,1161 2084,1196 1895,1196"/>
+                    <pc:TextEquiv conf="0.476465606689453">
+                        <pc:Unicode>péstowarnje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c49ca954-68cf-432f-bb46-87c71b680d21" production="printed">
+                    <pc:Coords points="2091,1167 2110,1167 2110,1190 2091,1190"/>
+                    <pc:TextEquiv conf="0.669717636108398">
+                        <pc:Unicode>Z</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_52f39c7f-8980-4b1f-a73f-9b1c73a100f4" production="printed">
+                    <pc:Coords points="2116,1159 2264,1159 2264,1191 2116,1191"/>
+                    <pc:TextEquiv conf="0.620368232727051">
+                        <pc:Unicode>Chróscic.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e6e2e512-acc7-4bc0-8826-61a7a829bb4f" production="printed">
+                    <pc:Coords points="2270,1158 2409,1158 2409,1197 2270,1197"/>
+                    <pc:TextEquiv conf="0.766682739257812">
+                        <pc:Unicode>Styrnace</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0bc26f1a-e854-4d70-86c7-c7202ec57bd7" production="printed">
+                    <pc:Coords points="2417,1164 2509,1164 2509,1191 2417,1191"/>
+                    <pc:TextEquiv conf="0.965967559814453">
+                        <pc:Unicode>kwas-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.866355819702148">
+                    <pc:Unicode>We wjesolej rejce predstajeja so tu holcy a hólcy serbskeje péstowarnje Z Chróscic. Styrnace kwas-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_aa73f318-1892-49c3-aa05-c35a5d9ade9c">
+                <pc:Coords points="986,1198 2508,1199 2508,1239 986,1238"/>
+                <pc:Word id="textract-word_6cc39c0f-5c71-4c4b-842b-ef42bd290d3b" production="printed">
+                    <pc:Coords points="986,1198 1061,1198 1061,1233 986,1233"/>
+                    <pc:TextEquiv conf="0.989660110473633">
+                        <pc:Unicode>nych</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_6e1fa099-b5d4-48e1-b914-b10357925ffd" production="printed">
+                    <pc:Coords points="1072,1200 1191,1200 1191,1232 1072,1232"/>
+                    <pc:TextEquiv conf="0.984292373657227">
+                        <pc:Unicode>porikow</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_3ddc8b3f-c73b-48e9-bf94-bda0ce7ac3e3" production="printed">
+                    <pc:Coords points="1203,1199 1232,1199 1232,1233 1203,1233"/>
+                    <pc:TextEquiv conf="0.993373107910156">
+                        <pc:Unicode>je</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_2fb32331-e260-4066-a017-e522c3c6b3b2" production="printed">
+                    <pc:Coords points="1240,1199 1318,1199 1318,1228 1240,1228"/>
+                    <pc:TextEquiv conf="0.988982467651367">
+                        <pc:Unicode>sobu</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_6f4669b7-6091-443e-bd7b-b69a1ce56f79" production="printed">
+                    <pc:Coords points="1325,1200 1516,1200 1516,1229 1325,1229"/>
+                    <pc:TextEquiv conf="0.422991638183594">
+                        <pc:Unicode>wuhotowalo</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_efbab12d-f7ec-48c0-ba28-5d0047fd9489" production="printed">
+                    <pc:Coords points="1525,1201 1731,1201 1731,1235 1525,1235"/>
+                    <pc:TextEquiv conf="0.872373504638672">
+                        <pc:Unicode>ptacokwasny</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_3e4f5d92-15e9-4bdc-ac29-ec2645a3c2f8" production="printed">
+                    <pc:Coords points="1739,1207 1871,1207 1871,1237 1739,1237"/>
+                    <pc:TextEquiv conf="0.997804946899414">
+                        <pc:Unicode>program</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ad633355-b731-439c-9d50-bef08f319cc9" production="printed">
+                    <pc:Coords points="1880,1208 1919,1208 1919,1230 1880,1230"/>
+                    <pc:TextEquiv conf="0.995089874267578">
+                        <pc:Unicode>na</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_8f3df893-44ec-43dc-80d6-32d02da2236c" production="printed">
+                    <pc:Coords points="1925,1201 2083,1201 2083,1238 1925,1238"/>
+                    <pc:TextEquiv conf="0.835597686767578">
+                        <pc:Unicode>dzecacym</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_14763972-e4e4-44ac-8df9-020c91d096d6" production="printed">
+                    <pc:Coords points="2091,1203 2285,1203 2285,1238 2091,1238"/>
+                    <pc:TextEquiv conf="0.973222885131836">
+                        <pc:Unicode>predstajenju</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_95bfb85c-5ac9-4bdc-8a6e-e3f347adf953" production="printed">
+                    <pc:Coords points="2293,1203 2460,1203 2461,1232 2293,1232"/>
+                    <pc:TextEquiv conf="0.976492309570313">
+                        <pc:Unicode>Serbskeho</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_390e7213-9313-4839-b232-3a5e29878b95" production="printed">
+                    <pc:Coords points="2469,1204 2508,1204 2508,1232 2469,1232"/>
+                    <pc:TextEquiv conf="0.991028366088867">
+                        <pc:Unicode>lu-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.918409118652344">
+                    <pc:Unicode>nych porikow je sobu wuhotowalo ptacokwasny program na dzecacym predstajenju Serbskeho lu-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_783fb218-73ba-45a4-8420-326125050faa">
+                <pc:Coords points="986,1239 2508,1240 2508,1277 986,1276"/>
+                <pc:Word id="textract-word_9b44e317-6220-4112-bc44-f9266901e978" production="printed">
+                    <pc:Coords points="986,1239 1110,1239 1110,1269 986,1269"/>
+                    <pc:TextEquiv conf="0.987154006958008">
+                        <pc:Unicode>doweho</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_08716b4a-701e-4908-959e-15903673f9e0" production="printed">
+                    <pc:Coords points="1120,1240 1272,1240 1272,1269 1120,1268"/>
+                    <pc:TextEquiv conf="0.984344787597656">
+                        <pc:Unicode>ansambla</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_fe9921e8-d9e4-48e6-ba7c-ffe81fe9b3f5" production="printed">
+                    <pc:Coords points="1280,1245 1309,1245 1309,1268 1280,1268"/>
+                    <pc:TextEquiv conf="0.872448196411133">
+                        <pc:Unicode>W</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c8368f8b-0fce-46eb-b80d-c5a1fb43f2fa" production="printed">
+                    <pc:Coords points="1317,1241 1511,1241 1511,1276 1317,1276"/>
+                    <pc:TextEquiv conf="0.977221221923828">
+                        <pc:Unicode>Kamjenskim</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e995553a-2536-420e-89ac-efc6440f48c2" production="printed">
+                    <pc:Coords points="1521,1242 1676,1242 1676,1271 1521,1271"/>
+                    <pc:TextEquiv conf="0.966811981201172">
+                        <pc:Unicode>hoscencu</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_a85491e6-30f5-4658-8d56-e9ce3e6ac90c" production="printed">
+                    <pc:Coords points="1686,1243 1795,1243 1795,1276 1686,1276"/>
+                    <pc:TextEquiv conf="0.522831573486328">
+                        <pc:Unicode>"Mesto</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_af627e49-dee2-41ec-8c98-d3fe4d99e473" production="printed">
+                    <pc:Coords points="1807,1242 2001,1242 2001,1276 1807,1276"/>
+                    <pc:TextEquiv conf="0.46458610534668">
+                        <pc:Unicode>Drjezdzany.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d825a354-4157-42fb-b1a4-890de1a6bdc0" production="printed">
+                    <pc:Coords points="2012,1244 2056,1244 2056,1272 2013,1272"/>
+                    <pc:TextEquiv conf="0.990013732910156">
+                        <pc:Unicode>Na</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_458a32e9-df81-4b07-8d09-48418b6f62a5" production="printed">
+                    <pc:Coords points="2065,1244 2122,1244 2122,1272 2065,1272"/>
+                    <pc:TextEquiv conf="0.997788391113281">
+                        <pc:Unicode>nim</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e884110f-b026-47e4-9f92-3c7d17729229" production="printed">
+                    <pc:Coords points="2133,1244 2171,1244 2171,1272 2133,1272"/>
+                    <pc:TextEquiv conf="0.770668029785156">
+                        <pc:Unicode>be</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_1e23cee7-7c39-4757-8e4a-62ac184059d9" production="printed">
+                    <pc:Coords points="2179,1249 2217,1249 2217,1273 2179,1273"/>
+                    <pc:TextEquiv conf="0.837675170898437">
+                        <pc:Unicode>so</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_60ea6ba8-5940-4013-b94e-d0b2b593b9e4" production="printed">
+                    <pc:Coords points="2228,1244 2395,1244 2395,1273 2228,1273"/>
+                    <pc:TextEquiv conf="0.262816848754883">
+                        <pc:Unicode>wobdzellito</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e45f9bf7-cc1a-4c6c-9cfb-8ce35cb84d5b" production="printed">
+                    <pc:Coords points="2404,1245 2508,1245 2508,1274 2404,1274"/>
+                    <pc:TextEquiv conf="0.995591278076172">
+                        <pc:Unicode>nimale</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.817688598632813">
+                    <pc:Unicode>doweho ansambla W Kamjenskim hoscencu "Mesto Drjezdzany. Na nim be so wobdzellito nimale</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_b79b933f-9e52-4d0d-b6dd-06a882aaee8a">
+                <pc:Coords points="985,1280 2508,1280 2508,1321 985,1320"/>
+                <pc:Word id="textract-word_bb0eb698-d8e4-4929-8703-25802d16ad5e" production="printed">
+                    <pc:Coords points="985,1281 1040,1281 1040,1309 985,1309"/>
+                    <pc:TextEquiv conf="0.997288665771484">
+                        <pc:Unicode>600</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c00803b6-a49f-4e19-98a5-266ffe8ed412" production="printed">
+                    <pc:Coords points="1050,1280 1132,1280 1132,1311 1050,1311"/>
+                    <pc:TextEquiv conf="0.713365631103516">
+                        <pc:Unicode>dzeci</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b37301c0-98e9-4618-96a7-63aa45c6b929" production="printed">
+                    <pc:Coords points="1140,1288 1176,1288 1176,1309 1140,1309"/>
+                    <pc:TextEquiv conf="0.988376312255859">
+                        <pc:Unicode>ze</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_f2404a2f-ac10-4484-bd89-0925652919e8" production="printed">
+                    <pc:Coords points="1185,1282 1319,1282 1319,1316 1185,1316"/>
+                    <pc:TextEquiv conf="0.634741134643555">
+                        <pc:Unicode>tyrnace</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_36936d8e-e3f9-47ab-a7e3-08a298aa87d9" production="printed">
+                    <pc:Coords points="1327,1282 1547,1282 1547,1318 1327,1318"/>
+                    <pc:TextEquiv conf="0.626689987182617">
+                        <pc:Unicode>pestowarnjow</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_04137454-ead6-4e16-9280-35bc143daf94" production="printed">
+                    <pc:Coords points="1554,1284 1630,1284 1630,1318 1554,1318"/>
+                    <pc:TextEquiv conf="0.685377731323242">
+                        <pc:Unicode>zupy</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_2b4c8e91-7a45-4799-bcff-b4d313449ed3" production="printed">
+                    <pc:Coords points="1637,1283 1756,1283 1756,1315 1637,1315"/>
+                    <pc:TextEquiv conf="0.799767150878906">
+                        <pc:Unicode>"Michal</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_4c7b070f-f70c-4135-98b8-6790c7901e93" production="printed">
+                    <pc:Coords points="1766,1283 1886,1283 1886,1313 1766,1313"/>
+                    <pc:TextEquiv conf="0.703497924804688">
+                        <pc:Unicode>Hórnik"</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_691a46bc-35d9-484b-8d45-14f31ed7d960" production="printed">
+                    <pc:Coords points="1895,1284 1949,1284 1949,1312 1895,1312"/>
+                    <pc:TextEquiv conf="0.891731643676758">
+                        <pc:Unicode>kaz</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d5829c82-108b-4fa2-871b-2b5db1ea05d1" production="printed">
+                    <pc:Coords points="1957,1284 2003,1284 2003,1312 1957,1312"/>
+                    <pc:TextEquiv conf="0.891958389282227">
+                        <pc:Unicode>tez</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_35ef3bb9-e007-4a1c-bab3-897e7d2b1ee7" production="printed">
+                    <pc:Coords points="2011,1283 2093,1283 2093,1312 2011,1312"/>
+                    <pc:TextEquiv conf="0.480084571838379">
+                        <pc:Unicode>dzeci</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_28d3ab95-f030-4a00-8f25-4a48aa1c05e7" production="printed">
+                    <pc:Coords points="2102,1285 2128,1285 2128,1313 2103,1313"/>
+                    <pc:TextEquiv conf="0.978524322509766">
+                        <pc:Unicode>1.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_59856fa9-ddaf-4561-b7d5-785da9d747d7" production="printed">
+                    <pc:Coords points="2137,1285 2239,1285 2239,1314 2137,1314"/>
+                    <pc:TextEquiv conf="0.706575241088867">
+                        <pc:Unicode>letnika</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_dd5b0043-d285-411e-8cfd-3c1931673743" production="printed">
+                    <pc:Coords points="2248,1292 2283,1292 2283,1314 2248,1314"/>
+                    <pc:TextEquiv conf="0.986720123291016">
+                        <pc:Unicode>ze</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_7533c476-d592-47e8-be7f-5196f02901f5" production="printed">
+                    <pc:Coords points="2292,1285 2419,1285 2419,1321 2292,1321"/>
+                    <pc:TextEquiv conf="0.721186752319336">
+                        <pc:Unicode>tyrjoch</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_aea3f5d9-a527-4c1b-9d2f-0e42797ad831" production="printed">
+                    <pc:Coords points="2428,1287 2508,1287 2508,1315 2428,1315"/>
+                    <pc:TextEquiv conf="0.982576522827148">
+                        <pc:Unicode>serb-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.799278869628906">
+                    <pc:Unicode>600 dzeci ze tyrnace pestowarnjow zupy "Michal Hórnik" kaz tez dzeci 1. letnika ze tyrjoch serb-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_da2751ef-f6ad-451f-95c0-f918a82dbc0e">
+                <pc:Coords points="985,1321 2508,1322 2508,1360 985,1360"/>
+                <pc:Word id="textract-word_ab908908-14e6-4edc-a733-13bdc5f64d5c" production="printed">
+                    <pc:Coords points="985,1321 1068,1321 1068,1351 985,1351"/>
+                    <pc:TextEquiv conf="0.995657501220703">
+                        <pc:Unicode>skich</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_3b20bf81-301f-4db8-9cb0-2a32fdd49106" production="printed">
+                    <pc:Coords points="1077,1322 1178,1322 1178,1351 1077,1351"/>
+                    <pc:TextEquiv conf="0.760946884155273">
+                        <pc:Unicode>sulow.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c00e92c5-4fea-419f-b280-6344875c1b30" production="printed">
+                    <pc:Coords points="1187,1322 1255,1322 1255,1357 1187,1357"/>
+                    <pc:TextEquiv conf="0.967230911254883">
+                        <pc:Unicode>Pjec</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_fdb6d5a0-be28-4568-a184-1f0e96996bd3" production="printed">
+                    <pc:Coords points="1262,1323 1413,1323 1413,1352 1262,1352"/>
+                    <pc:TextEquiv conf="0.982217864990234">
+                        <pc:Unicode>serbskich</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ba14e93e-f065-4c1a-8fad-be7168b14191" production="printed">
+                    <pc:Coords points="1424,1324 1580,1324 1580,1360 1424,1360"/>
+                    <pc:TextEquiv conf="0.984785995483398">
+                        <pc:Unicode>kwasnych</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b34a5706-4cb8-4553-919d-e5b10611dc56" production="printed">
+                    <pc:Coords points="1589,1325 1741,1325 1741,1354 1589,1354"/>
+                    <pc:TextEquiv conf="0.986035690307617">
+                        <pc:Unicode>hoscinow</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_347123ea-7520-40eb-9d09-d2162b707d71" production="printed">
+                    <pc:Coords points="1749,1325 1922,1325 1922,1359 1749,1359"/>
+                    <pc:TextEquiv conf="0.732018661499023">
+                        <pc:Unicode>mózachmy</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_1ae047b9-abeb-4aaf-9730-7915a53fee54" production="printed">
+                    <pc:Coords points="1928,1327 1987,1327 1987,1354 1928,1354"/>
+                    <pc:TextEquiv conf="0.994277267456055">
+                        <pc:Unicode>tam</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_1d440f87-ed50-4ad1-a160-7bd22631f180" production="printed">
+                    <pc:Coords points="1995,1326 2153,1326 2153,1355 1995,1355"/>
+                    <pc:TextEquiv conf="0.745241851806641">
+                        <pc:Unicode>wuhladac.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_653023f4-9587-4761-8305-97af2198b264" production="printed">
+                    <pc:Coords points="2161,1327 2184,1327 2184,1354 2161,1354"/>
+                    <pc:TextEquiv conf="0.858007431030273">
+                        <pc:Unicode>Z</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_989ef344-6a28-4079-a0be-42fe70639fb6" production="printed">
+                    <pc:Coords points="2192,1327 2435,1327 2435,1355 2192,1355"/>
+                    <pc:TextEquiv conf="0.956330871582031">
+                        <pc:Unicode>Pancic-Kukowa</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_a3833a9b-9edb-425b-922e-7475535174d1" production="printed">
+                    <pc:Coords points="2443,1326 2508,1326 2508,1355 2443,1355"/>
+                    <pc:TextEquiv conf="0.899543075561523">
+                        <pc:Unicode>dwe</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.905191192626953">
+                    <pc:Unicode>skich sulow. Pjec serbskich kwasnych hoscinow mózachmy tam wuhladac. Z Pancic-Kukowa dwe</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_bee6290c-1bed-4839-8130-6b35ce3ea8e4">
+                <pc:Coords points="985,1363 2507,1363 2507,1403 985,1402"/>
+                <pc:Word id="textract-word_51c7b490-c477-4334-a7e7-e76b23b07078" production="printed">
+                    <pc:Coords points="985,1363 1039,1363 1039,1391 985,1391"/>
+                    <pc:TextEquiv conf="0.944050521850586">
+                        <pc:Unicode>kaz</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e0c90066-37b6-4993-9834-01a4c7d4f5be" production="printed">
+                    <pc:Coords points="1045,1364 1092,1364 1092,1391 1045,1391"/>
+                    <pc:TextEquiv conf="0.906607055664063">
+                        <pc:Unicode>tez</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_5adc13eb-29b1-458a-96dd-3625b51f76ba" production="printed">
+                    <pc:Coords points="1098,1369 1118,1369 1118,1391 1098,1391"/>
+                    <pc:TextEquiv conf="0.688232116699219">
+                        <pc:Unicode>z</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_314b88e9-d000-46e0-b4e8-9e71b93aaf4b" production="printed">
+                    <pc:Coords points="1124,1364 1271,1364 1271,1396 1124,1396"/>
+                    <pc:TextEquiv conf="0.914145736694336">
+                        <pc:Unicode>Wotrowa,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c1b5772e-23d1-4cb4-be12-a887314f5907" production="printed">
+                    <pc:Coords points="1281,1364 1390,1364 1390,1400 1281,1400"/>
+                    <pc:TextEquiv conf="0.962453002929687">
+                        <pc:Unicode>Konjec</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_627f9ac9-aedf-49c7-97ec-7d46351c5b01" production="printed">
+                    <pc:Coords points="1398,1371 1417,1371 1417,1393 1398,1393"/>
+                    <pc:TextEquiv conf="0.98559326171875">
+                        <pc:Unicode>a</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_223b58e4-f91b-4902-bd55-fae71afc348d" production="printed">
+                    <pc:Coords points="1426,1365 1564,1365 1564,1394 1426,1394"/>
+                    <pc:TextEquiv conf="0.561898345947266">
+                        <pc:Unicode>Chróscio</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_375f01ac-b2d3-4075-a68a-9553cbf9e5eb" production="printed">
+                    <pc:Coords points="1572,1372 1613,1372 1613,1400 1572,1400"/>
+                    <pc:TextEquiv conf="0.982292251586914">
+                        <pc:Unicode>po</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ea75e224-7e15-4555-8c73-6684020da78b" production="printed">
+                    <pc:Coords points="1620,1367 1722,1367 1722,1402 1620,1402"/>
+                    <pc:TextEquiv conf="0.973896331787109">
+                        <pc:Unicode>jednej.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_351376e3-481c-4711-a95b-35c6a05da669" production="printed">
+                    <pc:Coords points="1730,1366 1828,1366 1828,1401 1730,1401"/>
+                    <pc:TextEquiv conf="0.618950653076172">
+                        <pc:Unicode>Zabyc</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_31d5fe18-eca5-496b-bc6d-d58cfe030f1a" production="printed">
+                    <pc:Coords points="1836,1367 2000,1367 2000,1401 1836,1401"/>
+                    <pc:TextEquiv conf="0.978625946044922">
+                        <pc:Unicode>nochcemy</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0d5c9857-4b05-4842-9116-eebbd7aef77a" production="printed">
+                    <pc:Coords points="2008,1367 2192,1367 2192,1403 2008,1403"/>
+                    <pc:TextEquiv conf="0.50023754119873">
+                        <pc:Unicode>prispomnic,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c7c58a50-3e5f-43a1-aa9d-3a273a89a5be" production="printed">
+                    <pc:Coords points="2200,1373 2238,1373 2238,1396 2200,1396"/>
+                    <pc:TextEquiv conf="0.747821350097656">
+                        <pc:Unicode>zo</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_bae5e306-cbe9-43a0-bd33-ab106cd27d6c" production="printed">
+                    <pc:Coords points="2246,1368 2417,1368 2417,1402 2246,1402"/>
+                    <pc:TextEquiv conf="0.728446807861328">
+                        <pc:Unicode>poskicichu</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_cf31b261-96bf-488e-bd8e-e61cb5a6c31b" production="printed">
+                    <pc:Coords points="2425,1368 2507,1368 2507,1397 2425,1397"/>
+                    <pc:TextEquiv conf="0.632124557495117">
+                        <pc:Unicode>dzeci</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.808358383178711">
+                    <pc:Unicode>kaz tez z Wotrowa, Konjec a Chróscio po jednej. Zabyc nochcemy prispomnic, zo poskicichu dzeci</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_084ea960-576c-4bcd-a52d-06710a67bcad">
+                <pc:Coords points="985,1404 1932,1404 1932,1443 985,1443"/>
+                <pc:Word id="textract-word_e1c8eb4d-0539-4553-8556-88f229d7c5ed" production="printed">
+                    <pc:Coords points="985,1404 1177,1404 1177,1440 985,1440"/>
+                    <pc:TextEquiv conf="0.594133377075195">
+                        <pc:Unicode>péstowarnje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_969bc339-9213-446d-8d29-b126e02603ff" production="printed">
+                    <pc:Coords points="1183,1406 1312,1406 1312,1441 1183,1441"/>
+                    <pc:TextEquiv conf="0.785759048461914">
+                        <pc:Unicode>"Bjarnat</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_3d21fd9e-a172-4d20-aaa1-a5ca280006fd" production="printed">
+                    <pc:Coords points="1319,1406 1432,1406 1432,1436 1319,1435"/>
+                    <pc:TextEquiv conf="0.954462051391602">
+                        <pc:Unicode>Krawc"</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b9627c74-ef3d-458c-805c-a92f736d46ed" production="printed">
+                    <pc:Coords points="1440,1413 1459,1413 1459,1435 1440,1435"/>
+                    <pc:TextEquiv conf="0.598696784973144">
+                        <pc:Unicode>Z</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_4b575213-94bd-49be-9801-d88dc59ade89" production="printed">
+                    <pc:Coords points="1467,1407 1709,1407 1709,1436 1467,1436"/>
+                    <pc:TextEquiv conf="0.962871780395508">
+                        <pc:Unicode>Pancic-Kukowa</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_bda46452-41e6-4a41-badc-5648e89694c4" production="printed">
+                    <pc:Coords points="1716,1408 1791,1408 1791,1443 1716,1443"/>
+                    <pc:TextEquiv conf="0.990890655517578">
+                        <pc:Unicode>maly</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d0bd8d3a-9a88-42b5-b58c-9cc33585af4c" production="printed">
+                    <pc:Coords points="1799,1414 1932,1414 1932,1443 1799,1443"/>
+                    <pc:TextEquiv conf="0.998654556274414">
+                        <pc:Unicode>program</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.840781173706055">
+                    <pc:Unicode>péstowarnje "Bjarnat Krawc" Z Pancic-Kukowa maly program</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+        </pc:TextRegion>
+        <pc:TextRegion id="textract-layout-section-header_ad88d6e7-9dad-42b4-a243-13f9ee306244" custom="textract-layout-type: section_header;" type="heading">
+            <pc:Coords points="1958,1449 2505,1449 2505,1485 1959,1485"/>
+            <pc:TextLine id="textract-line_9bb6cc19-5a8a-41f5-9acf-ac49999a4203">
+                <pc:Coords points="1958,1449 2505,1449 2505,1485 1959,1485"/>
+                <pc:Word id="textract-word_19b7497f-284c-4967-a03b-4f1db7cea16a" production="printed">
+                    <pc:Coords points="1958,1449 2030,1449 2030,1478 1959,1478"/>
+                    <pc:TextEquiv conf="0.985081405639648">
+                        <pc:Unicode>Fota:</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_7d72362a-ddd3-4f0c-bad3-573e82bd4d42" production="printed">
+                    <pc:Coords points="2039,1449 2141,1449 2141,1478 2039,1478"/>
+                    <pc:TextEquiv conf="0.982452697753906">
+                        <pc:Unicode>H.-Chr.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_eb5a55a5-ea5b-432f-acdd-f38a1aa5db0d" production="printed">
+                    <pc:Coords points="2150,1450 2259,1450 2259,1479 2150,1479"/>
+                    <pc:TextEquiv conf="0.983447418212891">
+                        <pc:Unicode>Lindner</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_43f08aca-8b43-451a-8339-26016583cf2a" production="printed">
+                    <pc:Coords points="2266,1451 2312,1451 2312,1484 2266,1484"/>
+                    <pc:TextEquiv conf="0.974419937133789">
+                        <pc:Unicode>(1),</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d7cf889e-3f5e-4bbf-8ed4-0328a8c6506c" production="printed">
+                    <pc:Coords points="2322,1451 2351,1451 2351,1479 2322,1479"/>
+                    <pc:TextEquiv conf="0.960784530639648">
+                        <pc:Unicode>B.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_2ead5ddb-f252-49cc-a415-ebe66ba7140d" production="printed">
+                    <pc:Coords points="2360,1451 2460,1451 2460,1479 2360,1479"/>
+                    <pc:TextEquiv conf="0.835996475219727">
+                        <pc:Unicode>Hancik</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_03538d97-daad-47ab-b5d1-8896576703ce" production="printed">
+                    <pc:Coords points="2468,1450 2505,1450 2505,1485 2468,1485"/>
+                    <pc:TextEquiv conf="0.985921478271484">
+                        <pc:Unicode>(3)</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.958300628662109">
+                    <pc:Unicode>Fota: H.-Chr. Lindner (1), B. Hancik (3)</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+        </pc:TextRegion>
+        <pc:TextRegion id="textract-layout-text_209364ca-a554-4843-b0a1-7ffa7cdf9a27" custom="textract-layout-type: text;" type="paragraph">
+            <pc:Coords points="982,1511 1720,1511 1721,2127 982,2127"/>
+            <pc:TextLine id="textract-line_d1670a91-62f1-43f4-a049-7e548e7995e1">
+                <pc:Coords points="1019,1511 1719,1511 1719,1549 1019,1549"/>
+                <pc:Word id="textract-word_31685f56-3cba-4610-878f-56fc2e39c42a" production="printed">
+                    <pc:Coords points="1019,1511 1128,1511 1128,1546 1019,1546"/>
+                    <pc:TextEquiv conf="0.983602142333984">
+                        <pc:Unicode>Wjesne</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_cc6c6812-ac72-4486-86a9-226b5235e332" production="printed">
+                    <pc:Coords points="1151,1518 1171,1518 1171,1540 1151,1540"/>
+                    <pc:TextEquiv conf="0.985831985473633">
+                        <pc:Unicode>a</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_72dc5ffa-be11-48c3-af48-307622ea4d70" production="printed">
+                    <pc:Coords points="1191,1513 1325,1513 1325,1542 1191,1542"/>
+                    <pc:TextEquiv conf="0.96326301574707">
+                        <pc:Unicode>centralne</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_44d1bb51-d984-4be3-9c63-dca56879f3a5" production="printed">
+                    <pc:Coords points="1347,1513 1538,1513 1538,1547 1347,1547"/>
+                    <pc:TextEquiv conf="0.695302505493164">
+                        <pc:Unicode>ptacokwasne</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_59c4d328-44de-4745-bbb6-5c262867ea27" production="printed">
+                    <pc:Coords points="1560,1513 1719,1513 1719,1549 1560,1549"/>
+                    <pc:TextEquiv conf="0.91835334777832">
+                        <pc:Unicode>swjedzenje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.909270553588867">
+                    <pc:Unicode>Wjesne a centralne ptacokwasne swjedzenje</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_b2d81499-aff7-4caf-b889-f419148072e5">
+                <pc:Coords points="984,1553 1720,1554 1720,1589 984,1589"/>
+                <pc:Word id="textract-word_0b1bf3df-c233-431a-9e55-f1e0cd279bfc" production="printed">
+                    <pc:Coords points="984,1553 1133,1553 1133,1582 984,1582"/>
+                    <pc:TextEquiv conf="0.73827262878418">
+                        <pc:Unicode>wotmechu</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_dafcb7ae-08b6-4029-bc79-3d92f37633e7" production="printed">
+                    <pc:Coords points="1144,1560 1178,1560 1178,1583 1144,1583"/>
+                    <pc:TextEquiv conf="0.709510269165039">
+                        <pc:Unicode>so</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e145ad20-67a9-4491-8f19-cfcebf09a9bb" production="printed">
+                    <pc:Coords points="1190,1561 1215,1561 1215,1582 1190,1582"/>
+                    <pc:TextEquiv conf="0.921123886108398">
+                        <pc:Unicode>W</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_8a62ccc2-f1aa-4a38-83da-e7dc65eb6ca3" production="printed">
+                    <pc:Coords points="1222,1554 1333,1554 1333,1589 1222,1589"/>
+                    <pc:TextEquiv conf="0.254934349060059">
+                        <pc:Unicode>za</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_13173d7c-2b2a-4ff9-8dea-82ffcac2d12a" production="printed">
+                    <pc:Coords points="1343,1554 1498,1555 1498,1589 1343,1589"/>
+                    <pc:TextEquiv conf="0.86490966796875">
+                        <pc:Unicode>tydzenjach</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_f95a2ca9-58fb-4f8e-b7df-a0538ddea0c2" production="printed">
+                    <pc:Coords points="1509,1562 1528,1562 1528,1584 1509,1584"/>
+                    <pc:TextEquiv conf="0.991276626586914">
+                        <pc:Unicode>a</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_1cca9a6d-95e3-4a68-bb64-b76374406432" production="printed">
+                    <pc:Coords points="1537,1556 1720,1556 1720,1585 1537,1585"/>
+                    <pc:TextEquiv conf="0.838179321289062">
+                        <pc:Unicode>wobradzichu</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.759743804931641">
+                    <pc:Unicode>wotmechu so W za tydzenjach a wobradzichu</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_29bbcba8-24ec-44e0-a93b-87c16c6d7b7f">
+                <pc:Coords points="984,1595 1720,1595 1720,1631 984,1631"/>
+                <pc:Word id="textract-word_444af012-ac72-4d7c-a6ee-38c4ec5ebe6a" production="printed">
+                    <pc:Coords points="984,1595 1099,1595 1099,1624 984,1624"/>
+                    <pc:TextEquiv conf="0.437126350402832">
+                        <pc:Unicode>dzecom</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b85beda3-0fe2-4634-b59f-0b21edaff42c" production="printed">
+                    <pc:Coords points="1107,1596 1182,1596 1182,1630 1107,1630"/>
+                    <pc:TextEquiv conf="0.967802734375">
+                        <pc:Unicode>wjele</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0132677c-3564-43fe-aa29-8dc221b4fbfc" production="printed">
+                    <pc:Coords points="1189,1596 1306,1596 1306,1630 1189,1630"/>
+                    <pc:TextEquiv conf="0.936329803466797">
+                        <pc:Unicode>wjesela.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_a65a939c-1e77-4056-bd90-c2c3ebc88256" production="printed">
+                    <pc:Coords points="1317,1596 1408,1596 1408,1631 1317,1631"/>
+                    <pc:TextEquiv conf="0.972517318725586">
+                        <pc:Unicode>Rjenje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_af49e3f7-e732-40bb-aa0d-eb59624b208b" production="printed">
+                    <pc:Coords points="1417,1596 1468,1597 1468,1628 1417,1628"/>
+                    <pc:TextEquiv conf="0.800670394897461">
+                        <pc:Unicode>tuz,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_2885b5f9-5850-47b6-9456-233ee810f0a5" production="printed">
+                    <pc:Coords points="1476,1603 1513,1603 1513,1625 1476,1625"/>
+                    <pc:TextEquiv conf="0.646874542236328">
+                        <pc:Unicode>ZO</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_35629b5e-aa83-41c3-b8ed-5b5118b3bad0" production="printed">
+                    <pc:Coords points="1521,1603 1555,1603 1555,1625 1521,1625"/>
+                    <pc:TextEquiv conf="0.718990478515625">
+                        <pc:Unicode>so</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_4fda6f76-dbc2-4cd6-9878-030178b7750a" production="printed">
+                    <pc:Coords points="1563,1597 1607,1597 1607,1625 1563,1625"/>
+                    <pc:TextEquiv conf="0.844363632202148">
+                        <pc:Unicode>tez</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_a8f2c544-133b-4a2b-b5ef-45b2817d3a0a" production="printed">
+                    <pc:Coords points="1615,1597 1720,1597 1720,1626 1615,1625"/>
+                    <pc:TextEquiv conf="0.562189025878906">
+                        <pc:Unicode>densa</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.765207138061523">
+                    <pc:Unicode>dzecom wjele wjesela. Rjenje tuz, ZO so tez densa</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_251b20ef-309a-495b-a1ca-5b8676afc8fe">
+                <pc:Coords points="982,1636 1720,1636 1720,1672 982,1672"/>
+                <pc:Word id="textract-word_644a93cd-a9df-44af-ad00-5c64b94e4022" production="printed">
+                    <pc:Coords points="982,1636 1055,1636 1055,1665 982,1665"/>
+                    <pc:TextEquiv conf="0.985544204711914">
+                        <pc:Unicode>tutón</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_aace2e9f-6fa4-46eb-ab9c-0903efea1415" production="printed">
+                    <pc:Coords points="1062,1636 1194,1636 1194,1671 1062,1671"/>
+                    <pc:TextEquiv conf="0.552497329711914">
+                        <pc:Unicode>jónkrótny</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_8271e764-c34c-450b-a4b5-b5bad127d2e5" production="printed">
+                    <pc:Coords points="1203,1638 1305,1638 1305,1668 1203,1668"/>
+                    <pc:TextEquiv conf="0.984558792114258">
+                        <pc:Unicode>serbski</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_666aa26c-2212-47d5-89e4-e669036129e6" production="printed">
+                    <pc:Coords points="1313,1639 1412,1639 1412,1672 1313,1672"/>
+                    <pc:TextEquiv conf="0.983338165283203">
+                        <pc:Unicode>zymski</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_f526ad45-71ce-41b1-9ae7-2144db5d5e66" production="printed">
+                    <pc:Coords points="1421,1638 1513,1638 1513,1666 1421,1666"/>
+                    <pc:TextEquiv conf="0.592258682250977">
+                        <pc:Unicode>nalok</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_de888dff-aabb-42a6-bcb6-0dd4d28af736" production="printed">
+                    <pc:Coords points="1520,1638 1609,1638 1609,1667 1521,1667"/>
+                    <pc:TextEquiv conf="0.716152572631836">
+                        <pc:Unicode>sweru</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_95d03cbb-5b33-4cab-ba09-1cac2a035a4f" production="printed">
+                    <pc:Coords points="1615,1637 1671,1637 1671,1672 1615,1672"/>
+                    <pc:TextEquiv conf="0.97035530090332">
+                        <pc:Unicode>haji.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_65d7b0cc-def0-4d3b-8b37-c38c9aab18fe" production="printed">
+                    <pc:Coords points="1680,1638 1720,1638 1720,1666 1680,1666"/>
+                    <pc:TextEquiv conf="0.989705657958984">
+                        <pc:Unicode>Po</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.846801376342773">
+                    <pc:Unicode>tutón jónkrótny serbski zymski nalok sweru haji. Po</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_3564bbbd-30d7-44c8-b6e6-d76701100244">
+                <pc:Coords points="984,1678 1719,1678 1719,1714 984,1714"/>
+                <pc:Word id="textract-word_1adc188c-dba3-4d79-8dd9-a0aeb871050f" production="printed">
+                    <pc:Coords points="984,1679 1076,1679 1076,1706 984,1706"/>
+                    <pc:TextEquiv conf="0.993470993041992">
+                        <pc:Unicode>wsach</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_518f9204-7cdb-41ca-8fcb-bba2cb99a9d2" production="printed">
+                    <pc:Coords points="1099,1684 1134,1684 1134,1707 1099,1707"/>
+                    <pc:TextEquiv conf="0.989438323974609">
+                        <pc:Unicode>su</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_935b6ffd-d143-4cd0-b07a-32e78e600742" production="printed">
+                    <pc:Coords points="1156,1678 1263,1678 1263,1707 1156,1707"/>
+                    <pc:TextEquiv conf="0.861896286010742">
+                        <pc:Unicode>chodzili</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0078b3cf-2ab4-44eb-a866-c5693c83e0b9" production="printed">
+                    <pc:Coords points="1284,1680 1468,1680 1468,1714 1284,1714"/>
+                    <pc:TextEquiv conf="0.585853118896484">
+                        <pc:Unicode>péstowarske</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_52109c28-9de6-4933-b74e-b6d489ad9c8e" production="printed">
+                    <pc:Coords points="1491,1686 1510,1686 1510,1708 1491,1708"/>
+                    <pc:TextEquiv conf="0.982317733764648">
+                        <pc:Unicode>a</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ed6c04b7-b43b-4a44-9cc3-556730e01997" production="printed">
+                    <pc:Coords points="1530,1679 1623,1679 1623,1708 1530,1708"/>
+                    <pc:TextEquiv conf="0.529544372558594">
+                        <pc:Unicode>sulske</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_00c4986f-a6e0-4aef-be79-ee9808052179" production="printed">
+                    <pc:Coords points="1644,1679 1719,1679 1719,1708 1644,1708"/>
+                    <pc:TextEquiv conf="0.574455795288086">
+                        <pc:Unicode>dzeci</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.788139495849609">
+                    <pc:Unicode>wsach su chodzili péstowarske a sulske dzeci</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_47ad3dcf-82f2-4562-a46e-16ce334b31bf">
+                <pc:Coords points="983,1718 1719,1719 1719,1753 983,1753"/>
+                <pc:Word id="textract-word_dfd48d89-6a1e-4113-9af9-5c122f89e220" production="printed">
+                    <pc:Coords points="983,1725 1009,1725 1009,1746 983,1746"/>
+                    <pc:TextEquiv conf="0.892117691040039">
+                        <pc:Unicode>W</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e266b6c6-1bb1-49fe-b8a8-ab0aa3141c4a" production="printed">
+                    <pc:Coords points="1024,1718 1143,1718 1143,1753 1024,1753"/>
+                    <pc:TextEquiv conf="0.958045272827148">
+                        <pc:Unicode>kwasnej</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_bedb5aac-7a20-4298-82e6-cc5dbd55e7a8" production="printed">
+                    <pc:Coords points="1159,1719 1264,1720 1264,1749 1159,1749"/>
+                    <pc:TextEquiv conf="0.895941543579102">
+                        <pc:Unicode>drasce.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_620dc112-8324-45f1-b70d-75fc3fa536bc" production="printed">
+                    <pc:Coords points="1282,1719 1341,1719 1341,1748 1282,1748"/>
+                    <pc:TextEquiv conf="0.516690139770508">
+                        <pc:Unicode>Hac</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ac7d3bbb-8d36-4f47-8759-aae4dab21aa5" production="printed">
+                    <pc:Coords points="1355,1726 1382,1726 1382,1747 1355,1747"/>
+                    <pc:TextEquiv conf="0.750628433227539">
+                        <pc:Unicode>W</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d1e5379b-5d78-4c6c-ab77-cb004af395ed" production="printed">
+                    <pc:Coords points="1397,1719 1584,1719 1584,1752 1397,1752"/>
+                    <pc:TextEquiv conf="0.78193359375">
+                        <pc:Unicode>Chróscicach,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_3ba18720-228b-4dcd-92d3-cd7a8fbafc8f" production="printed">
+                    <pc:Coords points="1598,1724 1641,1724 1641,1749 1598,1749"/>
+                    <pc:TextEquiv conf="0.980729598999023">
+                        <pc:Unicode>we</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_7d26c3d6-dc4f-4b0e-9fe8-0438e8cf1563" production="printed">
+                    <pc:Coords points="1658,1720 1719,1720 1719,1749 1658,1749"/>
+                    <pc:TextEquiv conf="0.972570114135742">
+                        <pc:Unicode>Wo-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.843582000732422">
+                    <pc:Unicode>W kwasnej drasce. Hac W Chróscicach, we Wo-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_cf4a84ac-6636-4640-bf59-972770835e4c">
+                <pc:Coords points="982,1760 1718,1760 1718,1796 982,1796"/>
+                <pc:Word id="textract-word_a87ca61c-8ea2-4435-b652-af5052fc04f1" production="printed">
+                    <pc:Coords points="982,1760 1077,1760 1077,1794 982,1794"/>
+                    <pc:TextEquiv conf="0.978984069824219">
+                        <pc:Unicode>trowje,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_57288d59-7849-46c9-ae5c-2b5d37ac10e9" production="printed">
+                    <pc:Coords points="1085,1766 1112,1766 1112,1788 1085,1788"/>
+                    <pc:TextEquiv conf="0.722623901367187">
+                        <pc:Unicode>W</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_6e7d5aa4-2297-4968-a81c-cacf83ddf943" production="printed">
+                    <pc:Coords points="1118,1760 1414,1760 1414,1795 1118,1795"/>
+                    <pc:TextEquiv conf="0.93231315612793">
+                        <pc:Unicode>Pancicach-Kukowje,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_bdd74858-261d-4238-b33c-5c5f1ffa2c3f" production="printed">
+                    <pc:Coords points="1424,1761 1572,1762 1572,1793 1424,1793"/>
+                    <pc:TextEquiv conf="0.894524841308594">
+                        <pc:Unicode>Ralbicach,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_115a633b-942c-4c14-9304-e4c25e7b50eb" production="printed">
+                    <pc:Coords points="1583,1761 1718,1761 1718,1796 1583,1796"/>
+                    <pc:TextEquiv conf="0.982335433959961">
+                        <pc:Unicode>Radworju</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.902156295776367">
+                    <pc:Unicode>trowje, W Pancicach-Kukowje, Ralbicach, Radworju</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_51accb8f-552d-4460-8f53-570a5456da84">
+                <pc:Coords points="984,1801 1719,1801 1719,1837 984,1837"/>
+                <pc:Word id="textract-word_0dc035fa-00ec-4ff4-9bf0-e546b151df7c" production="printed">
+                    <pc:Coords points="984,1801 1038,1801 1037,1829 984,1829"/>
+                    <pc:TextEquiv conf="0.990727233886719">
+                        <pc:Unicode>abo</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_4e0dc2c1-6b06-4135-bc7b-e77653e6feb8" production="printed">
+                    <pc:Coords points="1045,1808 1087,1808 1087,1829 1045,1829"/>
+                    <pc:TextEquiv conf="0.989866485595703">
+                        <pc:Unicode>we</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_2c84bf35-2ded-45a3-8bc4-99511abba84c" production="printed">
+                    <pc:Coords points="1094,1801 1271,1802 1271,1830 1094,1830"/>
+                    <pc:TextEquiv conf="0.583555564880371">
+                        <pc:Unicode>Worklecach.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_4392ef23-b57f-4eb6-9c2a-f6959cc35aca" production="printed">
+                    <pc:Coords points="1281,1802 1389,1802 1389,1831 1281,1831"/>
+                    <pc:TextEquiv conf="0.988745727539063">
+                        <pc:Unicode>Serbski</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e50381b1-9a8a-4900-bb88-72eac6a871a7" production="printed">
+                    <pc:Coords points="1396,1802 1498,1802 1498,1837 1396,1837"/>
+                    <pc:TextEquiv conf="0.98774299621582">
+                        <pc:Unicode>ludowy</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e1bba1a7-2e01-4430-b25c-c53f7f3b0a0a" production="printed">
+                    <pc:Coords points="1505,1801 1627,1801 1627,1832 1505,1831"/>
+                    <pc:TextEquiv conf="0.951218872070313">
+                        <pc:Unicode>ansambl</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_1ee4b927-bd70-478d-b3d6-02fbd7a71da1" production="printed">
+                    <pc:Coords points="1633,1803 1659,1803 1659,1837 1634,1837"/>
+                    <pc:TextEquiv conf="0.993243713378906">
+                        <pc:Unicode>je</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d6798624-0d42-43a5-b738-65f8d1fa4212" production="printed">
+                    <pc:Coords points="1666,1808 1719,1808 1719,1831 1666,1831"/>
+                    <pc:TextEquiv conf="0.985240936279297">
+                        <pc:Unicode>wu-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.933792724609375">
+                    <pc:Unicode>abo we Worklecach. Serbski ludowy ansambl je wu-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_d9f57905-3ecb-4628-8ac4-2ee95b5193b5">
+                <pc:Coords points="984,1842 1718,1842 1718,1879 983,1878"/>
+                <pc:Word id="textract-word_e6472b66-7bf5-4f12-9718-3290b5f3a702" production="printed">
+                    <pc:Coords points="984,1842 1096,1842 1096,1871 983,1871"/>
+                    <pc:TextEquiv conf="0.986574020385742">
+                        <pc:Unicode>hotowal</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_02d4ecbd-4ba6-4021-9a68-b81ebae6f45c" production="printed">
+                    <pc:Coords points="1105,1843 1159,1843 1159,1877 1105,1877"/>
+                    <pc:TextEquiv conf="0.951652221679688">
+                        <pc:Unicode>rjad</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_11efc980-17e4-4da1-9442-b98a0631eb9e" production="printed">
+                    <pc:Coords points="1169,1843 1386,1843 1386,1878 1169,1878"/>
+                    <pc:TextEquiv conf="0.974820098876953">
+                        <pc:Unicode>zarjadowanjow</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_8a86b3b3-9da8-4b2c-a6e6-b795c3aa2611" production="printed">
+                    <pc:Coords points="1394,1850 1430,1850 1430,1873 1394,1873"/>
+                    <pc:TextEquiv conf="0.987418212890625">
+                        <pc:Unicode>ze</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_a78f21a1-38b1-43c0-909e-06ffa3555717" production="printed">
+                    <pc:Coords points="1440,1844 1539,1844 1539,1879 1440,1879"/>
+                    <pc:TextEquiv conf="0.986810989379883">
+                        <pc:Unicode>swojim</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_72cee098-933d-4dfd-a24b-c238b5856cec" production="printed">
+                    <pc:Coords points="1550,1843 1718,1843 1718,1879 1550,1878"/>
+                    <pc:TextEquiv conf="0.98464599609375">
+                        <pc:Unicode>spodobnym</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.97865364074707">
+                    <pc:Unicode>hotowal rjad zarjadowanjow ze swojim spodobnym</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_7d3a5aa2-dfe9-40a1-825e-bbca0825d11e">
+                <pc:Coords points="983,1884 1718,1885 1718,1920 983,1920"/>
+                <pc:Word id="textract-word_09dba20f-e93f-4caa-8726-76adb72acc4f" production="printed">
+                    <pc:Coords points="983,1889 1157,1889 1157,1918 983,1918"/>
+                    <pc:TextEquiv conf="0.916299438476562">
+                        <pc:Unicode>programom,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_7ae27aec-9a2d-4baa-ae32-114bddffd5b5" production="printed">
+                    <pc:Coords points="1169,1885 1196,1885 1196,1919 1169,1919"/>
+                    <pc:TextEquiv conf="0.993938827514648">
+                        <pc:Unicode>je</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d9a92c77-0c8b-464f-803d-43ad5d64f165" production="printed">
+                    <pc:Coords points="1207,1885 1307,1885 1307,1918 1207,1918"/>
+                    <pc:TextEquiv conf="0.878398513793945">
+                        <pc:Unicode>pohnut</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ab55d5d6-f1f3-46ff-92cf-6d800ba1f24e" production="printed">
+                    <pc:Coords points="1317,1885 1420,1885 1420,1919 1317,1919"/>
+                    <pc:TextEquiv conf="0.986716842651367">
+                        <pc:Unicode>malych</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_5ddc60dd-15e2-4a81-9a72-c60ba43f9606" production="printed">
+                    <pc:Coords points="1430,1885 1635,1886 1635,1920 1430,1920"/>
+                    <pc:TextEquiv conf="0.904892883300781">
+                        <pc:Unicode>wopytowarjow</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_afb14378-2bff-4290-a47a-01fef5d12387" production="printed">
+                    <pc:Coords points="1646,1885 1664,1885 1664,1913 1646,1913"/>
+                    <pc:TextEquiv conf="0.960900726318359">
+                        <pc:Unicode>k</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_44cbacdb-ee8d-4ce1-9193-d6a71e154ce8" production="printed">
+                    <pc:Coords points="1674,1891 1718,1891 1718,1914 1674,1914"/>
+                    <pc:TextEquiv conf="0.867624969482422">
+                        <pc:Unicode>so-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.929824600219727">
+                    <pc:Unicode>programom, je pohnut malych wopytowarjow k so-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_95440a48-e31e-4a71-9950-7869e6e09562">
+                <pc:Coords points="983,1925 1719,1925 1719,1961 983,1961"/>
+                <pc:Word id="textract-word_3aeb4117-dcf2-4e2d-8f6c-11c0b228a477" production="printed">
+                    <pc:Coords points="983,1925 1166,1925 1166,1960 983,1960"/>
+                    <pc:TextEquiv conf="0.689145050048828">
+                        <pc:Unicode>buspewanju.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_755b3224-04e2-4ce4-ad8c-b202ed30c753" production="printed">
+                    <pc:Coords points="1179,1925 1273,1926 1273,1960 1179,1960"/>
+                    <pc:TextEquiv conf="0.986324310302734">
+                        <pc:Unicode>Wjace</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c06b4f6e-3d39-4074-b5b8-2ac6e42b6d86" production="printed">
+                    <pc:Coords points="1288,1926 1342,1926 1342,1955 1288,1955"/>
+                    <pc:TextEquiv conf="0.731980514526367">
+                        <pc:Unicode>hac</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_31b7a36e-6a81-4163-8b27-6313fc7a399b" production="printed">
+                    <pc:Coords points="1355,1927 1411,1927 1411,1955 1355,1955"/>
+                    <pc:TextEquiv conf="0.9957958984375">
+                        <pc:Unicode>700</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_6c270b8a-16a4-42c6-973d-ff8037d95da1" production="printed">
+                    <pc:Coords points="1426,1926 1502,1926 1502,1955 1426,1955"/>
+                    <pc:TextEquiv conf="0.343445434570313">
+                        <pc:Unicode>dzeci</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_4a1a1521-b2a0-444e-ba67-daee27659fab" production="printed">
+                    <pc:Coords points="1518,1926 1635,1926 1635,1955 1518,1955"/>
+                    <pc:TextEquiv conf="0.994225769042969">
+                        <pc:Unicode>namaka</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c6bbd706-b605-4e46-9cdf-1ff7059bfc42" production="printed">
+                    <pc:Coords points="1650,1927 1719,1927 1719,1961 1650,1961"/>
+                    <pc:TextEquiv conf="0.970680847167969">
+                        <pc:Unicode>mjez</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.815942535400391">
+                    <pc:Unicode>buspewanju. Wjace hac 700 dzeci namaka mjez</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_16e4aa47-cd46-47df-af2c-02d6db4e09c0">
+                <pc:Coords points="983,1966 1718,1967 1719,2002 983,2002"/>
+                <pc:Word id="textract-word_f30f85f2-8f49-4e7b-b2ab-807fdabf53ef" production="printed">
+                    <pc:Coords points="983,1967 1082,1967 1082,1995 983,1995"/>
+                    <pc:TextEquiv conf="0.995835037231445">
+                        <pc:Unicode>druhim</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_98d42ae2-630d-45fb-bf1b-bed8aa9b6fd0" production="printed">
+                    <pc:Coords points="1092,1974 1119,1974 1119,1995 1092,1995"/>
+                    <pc:TextEquiv conf="0.947540893554688">
+                        <pc:Unicode>W</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b1f05dad-69d2-4125-aa53-048bc13a9f24" production="printed">
+                    <pc:Coords points="1129,1967 1216,1967 1216,1996 1129,1996"/>
+                    <pc:TextEquiv conf="0.994255599975586">
+                        <pc:Unicode>hotelu</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_a1fd4871-9f16-421a-af85-7295b9d5cebb" production="printed">
+                    <pc:Coords points="1227,1968 1331,1968 1331,1999 1227,1999"/>
+                    <pc:TextEquiv conf="0.510983657836914">
+                        <pc:Unicode>"Mesto</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_a758ff30-0b84-444d-8857-4c63dd5abe17" production="printed">
+                    <pc:Coords points="1341,1967 1470,1967 1470,2002 1341,2002"/>
+                    <pc:TextEquiv conf="0.514426879882813">
+                        <pc:Unicode>Budyin"</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_56f27168-0cc2-493d-861f-513281eabac0" production="printed">
+                    <pc:Coords points="1481,1968 1565,1968 1565,2002 1481,2002"/>
+                    <pc:TextEquiv conf="0.983855667114258">
+                        <pc:Unicode>swoju</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_2b99d554-34db-4b2c-975d-e63721e82b6a" production="printed">
+                    <pc:Coords points="1574,1968 1673,1968 1673,1997 1574,1997"/>
+                    <pc:TextEquiv conf="0.894441986083984">
+                        <pc:Unicode>radosó</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c8e745c3-5c17-4b61-a840-6febc4949df4" production="printed">
+                    <pc:Coords points="1682,1975 1718,1975 1719,1997 1682,1997"/>
+                    <pc:TextEquiv conf="0.99618522644043">
+                        <pc:Unicode>na</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.854690628051758">
+                    <pc:Unicode>druhim W hotelu "Mesto Budyin" swoju radosó na</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_08534cbf-b5fd-4b01-9f29-71e6443d589f">
+                <pc:Coords points="983,2008 1718,2009 1718,2044 983,2044"/>
+                <pc:Word id="textract-word_9b3ce5f7-842f-4194-89eb-e5aae2ce9603" production="printed">
+                    <pc:Coords points="983,2008 1163,2008 1163,2043 983,2043"/>
+                    <pc:TextEquiv conf="0.865542678833008">
+                        <pc:Unicode>poskicenym,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_8167d103-f15d-46cf-8322-0509d72a77d9" production="printed">
+                    <pc:Coords points="1174,2015 1193,2015 1193,2037 1174,2037"/>
+                    <pc:TextEquiv conf="0.982708053588867">
+                        <pc:Unicode>a</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_9115be7f-47c6-4dbc-86ae-4eeeb07c6076" production="printed">
+                    <pc:Coords points="1203,2009 1283,2009 1283,2038 1203,2038"/>
+                    <pc:TextEquiv conf="0.987123641967773">
+                        <pc:Unicode>skoro</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_58b48622-3174-473d-a7ae-0076aa47f97f" production="printed">
+                    <pc:Coords points="1294,2010 1350,2010 1350,2038 1294,2038"/>
+                    <pc:TextEquiv conf="0.942741394042969">
+                        <pc:Unicode>600</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_2e178c5e-a4f6-4b27-a17d-579e3b6ffd0c" production="printed">
+                    <pc:Coords points="1359,2009 1442,2009 1442,2040 1359,2040"/>
+                    <pc:TextEquiv conf="0.237225399017334">
+                        <pc:Unicode>dzeci,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_5ab5dce8-a08a-450b-b2cf-9007635113e7" production="printed">
+                    <pc:Coords points="1453,2009 1603,2009 1603,2044 1453,2044"/>
+                    <pc:TextEquiv conf="0.731412887573242">
+                        <pc:Unicode>prewaznje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_bfdce8f6-0bfa-468a-8696-7f2c582ed726" production="printed">
+                    <pc:Coords points="1612,2015 1647,2015 1647,2038 1612,2038"/>
+                    <pc:TextEquiv conf="0.988678817749023">
+                        <pc:Unicode>ze</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_6ed77975-0a9a-49a2-af72-b4dd934db56d" production="printed">
+                    <pc:Coords points="1656,2010 1718,2010 1718,2044 1656,2044"/>
+                    <pc:TextEquiv conf="0.735520629882813">
+                        <pc:Unicode>tyr-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.808869171142578">
+                    <pc:Unicode>poskicenym, a skoro 600 dzeci, prewaznje ze tyr-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_67edbb02-8fac-4d77-9850-d2b94f33caf6">
+                <pc:Coords points="984,2049 1720,2050 1720,2086 984,2085"/>
+                <pc:Word id="textract-word_fc1ad706-96cb-4b20-bca6-97b60c2ba6a5" production="printed">
+                    <pc:Coords points="984,2049 1054,2049 1054,2078 984,2078"/>
+                    <pc:TextEquiv conf="0.925750885009766">
+                        <pc:Unicode>nace</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_de0c3810-66a4-4679-9c96-9fcff58d402f" production="printed">
+                    <pc:Coords points="1066,2050 1268,2050 1268,2085 1066,2085"/>
+                    <pc:TextEquiv conf="0.436495170593262">
+                        <pc:Unicode>péstowamjow</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_4b5de1eb-86aa-49ad-b29e-881936645a02" production="printed">
+                    <pc:Coords points="1278,2051 1350,2051 1350,2085 1278,2085"/>
+                    <pc:TextEquiv conf="0.85666862487793">
+                        <pc:Unicode>zupy</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_aca284b8-3bf9-4074-a0b6-78c308b72e0d" production="printed">
+                    <pc:Coords points="1362,2050 1472,2050 1472,2082 1362,2082"/>
+                    <pc:TextEquiv conf="0.73516242980957">
+                        <pc:Unicode>"Michal</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_87d501e7-7663-44fb-891f-9dedc391b813" production="printed">
+                    <pc:Coords points="1484,2050 1600,2050 1600,2083 1484,2083"/>
+                    <pc:TextEquiv conf="0.541356163024902">
+                        <pc:Unicode>Hórnik",</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_f992e106-0019-43d8-959e-9457287d22e5" production="printed">
+                    <pc:Coords points="1616,2050 1720,2050 1720,2086 1616,2086"/>
+                    <pc:TextEquiv conf="0.64920166015625">
+                        <pc:Unicode>méjese</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.690772476196289">
+                    <pc:Unicode>nace péstowamjow zupy "Michal Hórnik", méjese</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_f5e224d7-9925-4667-902f-5eab5cde51fa">
+                <pc:Coords points="983,2091 1718,2091 1718,2127 983,2127"/>
+                <pc:Word id="textract-word_8d1e1298-904f-4f05-98b6-4c30de964dab" production="printed">
+                    <pc:Coords points="983,2091 1066,2091 1066,2127 983,2127"/>
+                    <pc:TextEquiv conf="0.9869921875">
+                        <pc:Unicode>swoje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_5a7d2dd3-c7d3-4ee3-8b21-b5bec57781b0" production="printed">
+                    <pc:Coords points="1079,2091 1187,2092 1187,2126 1079,2126"/>
+                    <pc:TextEquiv conf="0.970084075927734">
+                        <pc:Unicode>wjeselo</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_cea951c2-be47-4aaa-be1c-d5383fe65fdc" production="printed">
+                    <pc:Coords points="1201,2092 1237,2092 1237,2126 1201,2126"/>
+                    <pc:TextEquiv conf="0.901070785522461">
+                        <pc:Unicode>pri</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_81c9c7d4-10a0-4a2b-9d7f-0e3a4321ad07" production="printed">
+                    <pc:Coords points="1249,2092 1379,2092 1380,2127 1249,2127"/>
+                    <pc:TextEquiv conf="0.919482116699219">
+                        <pc:Unicode>wustupje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_6fae8620-5ef1-4bb9-9663-65a7245fe44d" production="printed">
+                    <pc:Coords points="1391,2093 1619,2093 1619,2125 1391,2124"/>
+                    <pc:TextEquiv conf="0.971588592529297">
+                        <pc:Unicode>ansamblowcow</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c10e06a8-6535-43dc-834f-0024d1ca93ff" production="printed">
+                    <pc:Coords points="1629,2099 1655,2099 1655,2120 1629,2120"/>
+                    <pc:TextEquiv conf="0.750297317504883">
+                        <pc:Unicode>W</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_664a1d8a-ea5c-4af0-a355-0bd5cf3fbe56" production="printed">
+                    <pc:Coords points="1668,2092 1718,2092 1718,2120 1668,2120"/>
+                    <pc:TextEquiv conf="0.986630020141602">
+                        <pc:Unicode>Ka-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.926592178344727">
+                    <pc:Unicode>swoje wjeselo pri wustupje ansamblowcow W Ka-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+        </pc:TextRegion>
+        <pc:TextRegion id="textract-layout-text_5e097afd-8294-46bc-ae3b-1def8964ef59" custom="textract-layout-type: text;" type="paragraph">
+            <pc:Coords points="1776,1513 2517,1513 2518,2128 1776,2127"/>
+            <pc:TextLine id="textract-line_3275446b-919d-4f6d-b9c3-14c2636df0e4">
+                <pc:Coords points="1781,1513 2517,1513 2517,1550 1781,1550"/>
+                <pc:Word id="textract-word_0f81f6d2-39b0-4065-b9fd-4d17018743c2" production="printed">
+                    <pc:Coords points="1781,1513 1923,1513 1923,1549 1781,1549"/>
+                    <pc:TextEquiv conf="0.980432357788086">
+                        <pc:Unicode>mjenskim</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0ed84b88-306f-4673-97f8-ee41b932cb1f" production="printed">
+                    <pc:Coords points="1940,1513 2084,1513 2084,1544 1940,1544"/>
+                    <pc:TextEquiv conf="0.976147308349609">
+                        <pc:Unicode>hoscencu</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0f5c807d-1277-4726-8868-21b6acba7ae8" production="printed">
+                    <pc:Coords points="2100,1513 2207,1513 2207,1549 2100,1549"/>
+                    <pc:TextEquiv conf="0.612352714538574">
+                        <pc:Unicode>"Mesto</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_a5635e53-9d7a-442f-ad62-90b1ee326ead" production="printed">
+                    <pc:Coords points="2222,1514 2416,1514 2416,1550 2222,1550"/>
+                    <pc:TextEquiv conf="0.476870307922363">
+                        <pc:Unicode>Drjezdzany.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_a3148785-a054-462e-a1df-0c8d37373ace" production="printed">
+                    <pc:Coords points="2430,1514 2517,1514 2517,1545 2430,1545"/>
+                    <pc:TextEquiv conf="0.604717674255371">
+                        <pc:Unicode>Wezo</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.730104064941406">
+                    <pc:Unicode>mjenskim hoscencu "Mesto Drjezdzany. Wezo</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_e5a7c8b6-f82f-4aa8-9a0c-7252e57ac34c">
+                <pc:Coords points="1781,1555 2517,1555 2517,1592 1781,1591"/>
+                <pc:Word id="textract-word_309a6a1e-0f1d-4025-876f-2ba4f0ffa3b1" production="printed">
+                    <pc:Coords points="1781,1555 1918,1555 1918,1590 1781,1590"/>
+                    <pc:TextEquiv conf="0.829253311157227">
+                        <pc:Unicode>swjecese</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_fd924e0c-4e44-439d-ac58-9d21a24d994b" production="printed">
+                    <pc:Coords points="1931,1562 1967,1562 1967,1585 1931,1585"/>
+                    <pc:TextEquiv conf="0.730651168823242">
+                        <pc:Unicode>so</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ae2dc9cd-82cc-4d7e-8d62-0917b00e88c3" production="printed">
+                    <pc:Coords points="1978,1556 2024,1556 2024,1585 1978,1585"/>
+                    <pc:TextEquiv conf="0.803020782470703">
+                        <pc:Unicode>tez</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_1a0af1a9-4ed5-4455-b9f0-3404a9ce231b" production="printed">
+                    <pc:Coords points="2034,1563 2061,1563 2061,1584 2034,1584"/>
+                    <pc:TextEquiv conf="0.89622314453125">
+                        <pc:Unicode>W</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_507e01a1-bbc6-4014-9132-35c83a59ad8a" production="printed">
+                    <pc:Coords points="2070,1556 2174,1556 2174,1591 2070,1591"/>
+                    <pc:TextEquiv conf="0.903010559082031">
+                        <pc:Unicode>Delnjej</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_bb5e0c8d-d95e-4fa9-b940-c3094af62aaa" production="printed">
+                    <pc:Coords points="2186,1556 2290,1556 2290,1592 2186,1592"/>
+                    <pc:TextEquiv conf="0.926491012573242">
+                        <pc:Unicode>Luzicy.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ef1007e5-4e1d-44d9-aaa5-a677bad3ebf4" production="printed">
+                    <pc:Coords points="2303,1557 2354,1557 2354,1586 2303,1586"/>
+                    <pc:TextEquiv conf="0.998781890869141">
+                        <pc:Unicode>We</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0caf82bf-2753-41b7-b6f4-987a03194674" production="printed">
+                    <pc:Coords points="2364,1557 2451,1557 2451,1589 2364,1589"/>
+                    <pc:TextEquiv conf="0.722841110229492">
+                        <pc:Unicode>wjace</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e3ef056f-5ee2-43f5-b526-9ff87f3034ad" production="printed">
+                    <pc:Coords points="2464,1556 2517,1556 2517,1586 2464,1586"/>
+                    <pc:TextEquiv conf="0.436881141662598">
+                        <pc:Unicode>hao</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.805239410400391">
+                    <pc:Unicode>swjecese so tez W Delnjej Luzicy. We wjace hao</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_1e1d435c-c57d-4039-9c22-42dc312b8ac9">
+                <pc:Coords points="1781,1597 2516,1597 2517,1633 1781,1633"/>
+                <pc:Word id="textract-word_8754196c-8fa8-4277-b707-6e7d41b8dc38" production="printed">
+                    <pc:Coords points="1781,1597 1902,1597 1902,1626 1781,1626"/>
+                    <pc:TextEquiv conf="0.979214706420898">
+                        <pc:Unicode>dwaceci</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_543add87-449d-4f30-9cef-f9335f06b138" production="printed">
+                    <pc:Coords points="1911,1598 2005,1598 2005,1626 1911,1625"/>
+                    <pc:TextEquiv conf="0.989246597290039">
+                        <pc:Unicode>wsach</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_aac4ed5f-fe04-40ac-a4c2-57b26bf6c0e7" production="printed">
+                    <pc:Coords points="2014,1598 2041,1598 2041,1633 2014,1633"/>
+                    <pc:TextEquiv conf="0.993976440429687">
+                        <pc:Unicode>je</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e9650497-6837-473a-b97a-dc1cf9a3d8e5" production="printed">
+                    <pc:Coords points="2050,1603 2085,1603 2085,1626 2050,1626"/>
+                    <pc:TextEquiv conf="0.694055328369141">
+                        <pc:Unicode>so</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d33898e5-43c8-442f-821c-5960fa058255" production="printed">
+                    <pc:Coords points="2094,1598 2171,1598 2171,1627 2094,1627"/>
+                    <pc:TextEquiv conf="0.528609352111816">
+                        <pc:Unicode>létusi</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0070cc98-b33e-4998-87f1-d22d6068c74e" production="printed">
+                    <pc:Coords points="2180,1600 2280,1600 2280,1633 2180,1633"/>
+                    <pc:TextEquiv conf="0.990029983520508">
+                        <pc:Unicode>zapust</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_82ebef48-b9d2-484d-bf01-1e008823463d" production="printed">
+                    <pc:Coords points="2288,1599 2393,1599 2393,1633 2288,1633"/>
+                    <pc:TextEquiv conf="0.841334228515625">
+                        <pc:Unicode>swjecit,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_2e4e88a7-e4f7-40a2-a02b-03d3c25cab89" production="printed">
+                    <pc:Coords points="2403,1599 2440,1599 2440,1633 2403,1633"/>
+                    <pc:TextEquiv conf="0.971635665893555">
+                        <pc:Unicode>pri</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_73e96a2b-890e-44fa-afca-52cc95205ba8" production="printed">
+                    <pc:Coords points="2448,1599 2516,1599 2516,1627 2448,1627"/>
+                    <pc:TextEquiv conf="0.790413284301758">
+                        <pc:Unicode>cimz</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.864279479980469">
+                    <pc:Unicode>dwaceci wsach je so létusi zapust swjecit, pri cimz</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_4ce95a90-e7d5-431c-9bba-de4c657a5576">
+                <pc:Coords points="1780,1638 2495,1638 2495,1674 1780,1674"/>
+                <pc:Word id="textract-word_15da114e-3a3d-4b2f-b60b-d0152e5ab8dd" production="printed">
+                    <pc:Coords points="1780,1644 1814,1644 1814,1667 1780,1667"/>
+                    <pc:TextEquiv conf="0.712455825805664">
+                        <pc:Unicode>so</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_65393791-23ad-410a-b69d-b1cb8aa921d3" production="printed">
+                    <pc:Coords points="1823,1645 1849,1645 1849,1666 1823,1665"/>
+                    <pc:TextEquiv conf="0.73797119140625">
+                        <pc:Unicode>W</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_888a8ab1-bc1e-4cbc-9db2-87d89bf06e5b" production="printed">
+                    <pc:Coords points="1857,1638 1994,1638 1995,1673 1857,1673"/>
+                    <pc:TextEquiv conf="0.824548568725586">
+                        <pc:Unicode>Prjawozu</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_718cd785-d46b-4b1c-a0fd-e7418deb61d8" production="printed">
+                    <pc:Coords points="2002,1638 2064,1638 2064,1667 2002,1667"/>
+                    <pc:TextEquiv conf="0.877099609375">
+                        <pc:Unicode>sled</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e5f49a0c-16f1-47d5-8152-2f7058baa915" production="printed">
+                    <pc:Coords points="2072,1639 2159,1639 2159,1673 2072,1673"/>
+                    <pc:TextEquiv conf="0.988316802978516">
+                        <pc:Unicode>tychle</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_76b48bae-08f5-49eb-997c-105d00f5d156" production="printed">
+                    <pc:Coords points="2168,1639 2393,1639 2393,1674 2168,1674"/>
+                    <pc:TextEquiv conf="0.972333526611328">
+                        <pc:Unicode>zarjadowanjow</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b104ed56-d220-4540-bc2e-c4b50f0697a1" production="printed">
+                    <pc:Coords points="2400,1640 2495,1640 2495,1674 2400,1674"/>
+                    <pc:TextEquiv conf="0.972306213378906">
+                        <pc:Unicode>zahaji.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.869290237426758">
+                    <pc:Unicode>so W Prjawozu sled tychle zarjadowanjow zahaji.</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_a9e5d78a-eac5-4462-9f20-f013dffb5ff8">
+                <pc:Coords points="1815,1679 2515,1679 2516,1716 1815,1716"/>
+                <pc:Word id="textract-word_81a9fc9a-04c1-40ab-81ec-399c41db0af4" production="printed">
+                    <pc:Coords points="1815,1679 1878,1679 1878,1714 1815,1714"/>
+                    <pc:TextEquiv conf="0.983956146240234">
+                        <pc:Unicode>Bjez</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_108a25b0-924c-44e8-a882-79abe7452d06" production="printed">
+                    <pc:Coords points="1886,1679 2076,1679 2076,1708 1886,1708"/>
+                    <pc:TextEquiv conf="0.438400573730469">
+                        <pc:Unicode>kozdehozkuli</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_11176be4-8ebc-4465-bc2a-6ef152872f0d" production="printed">
+                    <pc:Coords points="2084,1679 2165,1679 2165,1709 2084,1709"/>
+                    <pc:TextEquiv conf="0.996607818603516">
+                        <pc:Unicode>fenka</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d6af904e-93f1-45c9-ac9f-56d6d1dd3ddb" production="printed">
+                    <pc:Coords points="2174,1687 2208,1687 2209,1709 2174,1709"/>
+                    <pc:TextEquiv conf="0.661303558349609">
+                        <pc:Unicode>so</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_56c3b676-b425-4a71-8238-3a00113c3881" production="printed">
+                    <pc:Coords points="2218,1681 2277,1681 2277,1709 2218,1709"/>
+                    <pc:TextEquiv conf="0.698901977539062">
+                        <pc:Unicode>nico</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_7f607025-207b-4622-a882-750316a2ca92" production="printed">
+                    <pc:Coords points="2286,1680 2419,1680 2419,1715 2286,1715"/>
+                    <pc:TextEquiv conf="0.512565269470215">
+                        <pc:Unicode>njewjerci,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e99750d2-f080-4d33-989c-97f2fbf3af08" production="printed">
+                    <pc:Coords points="2429,1680 2515,1680 2516,1716 2429,1716"/>
+                    <pc:TextEquiv conf="0.952967681884766">
+                        <pc:Unicode>njeby-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.749243240356445">
+                    <pc:Unicode>Bjez kozdehozkuli fenka so nico njewjerci, njeby-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_e90f4997-42e6-4ca4-8b25-a4e2733502b1">
+                <pc:Coords points="1779,1720 2516,1721 2516,1756 1779,1756"/>
+                <pc:Word id="textract-word_727c042d-33cd-4a46-a4fd-88e25aec3361" production="printed">
+                    <pc:Coords points="1779,1721 1833,1721 1833,1749 1779,1749"/>
+                    <pc:TextEquiv conf="0.995274353027344">
+                        <pc:Unicode>chu</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_eb52d3a3-5cab-4cc2-8a0d-fd7bfbbac87e" production="printed">
+                    <pc:Coords points="1842,1726 1877,1726 1877,1749 1842,1749"/>
+                    <pc:TextEquiv conf="0.606790657043457">
+                        <pc:Unicode>SO</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ab7c154c-9b9e-4772-af35-116f832cd98e" production="printed">
+                    <pc:Coords points="1888,1720 1966,1720 1966,1749 1888,1749"/>
+                    <pc:TextEquiv conf="0.891261138916016">
+                        <pc:Unicode>móhli</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ea182af0-fde9-4535-b216-a11514a2d536" production="printed">
+                    <pc:Coords points="1975,1721 2105,1721 2105,1755 1975,1755"/>
+                    <pc:TextEquiv conf="0.889953155517578">
+                        <pc:Unicode>prewjesó</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_3bc61d1e-8f4e-417e-8225-2d54e926d545" production="printed">
+                    <pc:Coords points="2112,1722 2167,1722 2167,1750 2112,1750"/>
+                    <pc:TextEquiv conf="0.996498870849609">
+                        <pc:Unicode>tute</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_91ef521c-ec41-4eb0-8529-81bf6e4a13b7" production="printed">
+                    <pc:Coords points="2176,1721 2275,1721 2275,1749 2176,1749"/>
+                    <pc:TextEquiv conf="0.95152946472168">
+                        <pc:Unicode>krasne</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_8eaa61c5-9b0e-46b8-a857-52e97e6305ee" production="printed">
+                    <pc:Coords points="2284,1721 2453,1722 2453,1756 2284,1756"/>
+                    <pc:TextEquiv conf="0.897956314086914">
+                        <pc:Unicode>swjedzenje,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_35d4a8a9-5343-4dad-8d4f-f5138c664a89" production="printed">
+                    <pc:Coords points="2463,1723 2516,1723 2516,1756 2463,1756"/>
+                    <pc:TextEquiv conf="0.954314193725586">
+                        <pc:Unicode>nje-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.897947235107422">
+                    <pc:Unicode>chu SO móhli prewjesó tute krasne swjedzenje, nje-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_edb74081-4846-43e3-a3ac-d2fa2b31c3c6">
+                <pc:Coords points="1779,1761 2516,1762 2516,1798 1779,1798"/>
+                <pc:Word id="textract-word_e6016337-cdd6-4f18-b477-e04ef3abbf8c" production="printed">
+                    <pc:Coords points="1779,1761 1869,1761 1869,1790 1779,1790"/>
+                    <pc:TextEquiv conf="0.547822189331055">
+                        <pc:Unicode>móhto</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ee12cda7-af08-4a90-9eb4-6fd7e73c4acc" production="printed">
+                    <pc:Coords points="1879,1768 1915,1768 1915,1790 1879,1790"/>
+                    <pc:TextEquiv conf="0.631857948303223">
+                        <pc:Unicode>so</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_599b3792-3844-4260-b61f-c43e05feab50" production="printed">
+                    <pc:Coords points="1926,1761 1992,1761 1992,1795 1926,1795"/>
+                    <pc:TextEquiv conf="0.645366668701172">
+                        <pc:Unicode>hajic</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d003dfcb-30b6-4b8d-b03f-b8be92de790e" production="printed">
+                    <pc:Coords points="2001,1763 2056,1763 2056,1790 2001,1790"/>
+                    <pc:TextEquiv conf="0.995928802490234">
+                        <pc:Unicode>tuto</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e1333147-5b4c-4085-9c58-cf57050eb696" production="printed">
+                    <pc:Coords points="2066,1763 2180,1763 2180,1791 2066,1791"/>
+                    <pc:TextEquiv conf="0.985065383911133">
+                        <pc:Unicode>serbske</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_fbb853ec-eff2-45af-b84f-8cd952a657d9" production="printed">
+                    <pc:Coords points="2190,1763 2300,1763 2300,1798 2190,1798"/>
+                    <pc:TextEquiv conf="0.47106143951416">
+                        <pc:Unicode>wanje.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_80330840-9f8b-44e5-b620-b653cd266d6f" production="printed">
+                    <pc:Coords points="2310,1763 2431,1763 2431,1792 2310,1792"/>
+                    <pc:TextEquiv conf="0.979169158935547">
+                        <pc:Unicode>Tohodla</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ab31f86b-7c89-4f96-ae44-8df6fef5be3a" production="printed">
+                    <pc:Coords points="2440,1763 2516,1763 2516,1792 2440,1792"/>
+                    <pc:TextEquiv conf="0.758878860473633">
+                        <pc:Unicode>stusa</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.751893844604492">
+                    <pc:Unicode>móhto so hajic tuto serbske wanje. Tohodla stusa</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_d8d1cadd-9abe-4980-a1eb-0538bb5aec87">
+                <pc:Coords points="1779,1803 2516,1803 2516,1838 1779,1838"/>
+                <pc:Word id="textract-word_33773348-479e-43c2-b790-087d6bdb2034" production="printed">
+                    <pc:Coords points="1779,1803 1906,1803 1906,1838 1779,1837"/>
+                    <pc:TextEquiv conf="0.98484733581543">
+                        <pc:Unicode>wosebity</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d76faa11-689e-477f-abd1-8858d5cbd9b7" production="printed">
+                    <pc:Coords points="1913,1803 1982,1803 1982,1831 1913,1831"/>
+                    <pc:TextEquiv conf="0.556019287109375">
+                        <pc:Unicode>dak</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e4c886a4-2b9f-4c2c-b53e-d6158c9e9af7" production="printed">
+                    <pc:Coords points="1989,1810 2024,1810 2024,1832 1989,1832"/>
+                    <pc:TextEquiv conf="0.994747314453125">
+                        <pc:Unicode>na</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_616d1353-d2ee-44ba-959e-e915467fd213" production="printed">
+                    <pc:Coords points="2031,1804 2110,1804 2110,1837 2031,1837"/>
+                    <pc:TextEquiv conf="0.992565994262695">
+                        <pc:Unicode>tutym</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_71409ea6-3ebb-4f5b-a2b4-6a36825a272e" production="printed">
+                    <pc:Coords points="2117,1804 2231,1804 2231,1838 2117,1838"/>
+                    <pc:TextEquiv conf="0.812900619506836">
+                        <pc:Unicode>méstnje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b6f3f697-d58e-4ffe-9778-536f9f6c54d3" production="printed">
+                    <pc:Coords points="2237,1804 2356,1804 2356,1838 2237,1838"/>
+                    <pc:TextEquiv conf="0.60317008972168">
+                        <pc:Unicode>zalozbje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_843ada09-9a9d-46d6-b420-e6172cd2166e" production="printed">
+                    <pc:Coords points="2364,1804 2516,1804 2516,1835 2364,1834"/>
+                    <pc:TextEquiv conf="0.987981414794922">
+                        <pc:Unicode>Hermanna</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.847461700439453">
+                    <pc:Unicode>wosebity dak na tutym méstnje zalozbje Hermanna</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_0cd1bf0c-9242-43cb-8741-50ae375b2173">
+                <pc:Coords points="1779,1843 2516,1844 2516,1880 1779,1880"/>
+                <pc:Word id="textract-word_ef8fc32e-936e-444e-acf0-9db9c0753b48" production="printed">
+                    <pc:Coords points="1779,1844 1947,1844 1947,1876 1779,1876"/>
+                    <pc:TextEquiv conf="0.919492111206055">
+                        <pc:Unicode>Niermanna,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_5edb1227-7982-4990-aaa9-ed6d8d2ef48c" production="printed">
+                    <pc:Coords points="1961,1843 2051,1843 2051,1873 1961,1873"/>
+                    <pc:TextEquiv conf="0.632696914672852">
+                        <pc:Unicode>kotraz</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_f1cbc14d-0785-4537-baac-3c2241673429" production="printed">
+                    <pc:Coords points="2062,1844 2089,1844 2089,1879 2062,1879"/>
+                    <pc:TextEquiv conf="0.993692092895508">
+                        <pc:Unicode>je</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e0cb2789-00e0-4cd6-b7e9-1c50e43d66ab" production="printed">
+                    <pc:Coords points="2102,1845 2162,1845 2162,1873 2102,1873"/>
+                    <pc:TextEquiv conf="0.48753963470459">
+                        <pc:Unicode>wo</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_17b5db6d-5944-4560-afa1-4f7d22b02526" production="printed">
+                    <pc:Coords points="2174,1846 2203,1846 2203,1873 2174,1873"/>
+                    <pc:TextEquiv conf="0.99735710144043">
+                        <pc:Unicode>to</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c8f432a8-c7f1-49b8-8aa9-14b4cc46d687" production="printed">
+                    <pc:Coords points="2215,1851 2251,1851 2251,1873 2215,1873"/>
+                    <pc:TextEquiv conf="0.987391510009766">
+                        <pc:Unicode>ze</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b7b279f7-a091-4798-bf70-bb433512aa4a" production="printed">
+                    <pc:Coords points="2264,1846 2371,1846 2371,1880 2264,1880"/>
+                    <pc:TextEquiv conf="0.986372985839844">
+                        <pc:Unicode>swojimi</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_8a3ccb8f-ad86-403d-ade0-61eb27e83c43" production="printed">
+                    <pc:Coords points="2383,1846 2516,1846 2516,1874 2383,1874"/>
+                    <pc:TextEquiv conf="0.679745483398438">
+                        <pc:Unicode>sredkami</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.835536041259766">
+                    <pc:Unicode>Niermanna, kotraz je wo to ze swojimi sredkami</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_0d2cd471-5d21-427f-94ab-df19a54e298b">
+                <pc:Coords points="1779,1885 2507,1885 2507,1921 1779,1920"/>
+                <pc:Word id="textract-word_9bc9371a-29fa-43d8-bcc7-a530e78ff625" production="printed">
+                    <pc:Coords points="1779,1885 1915,1885 1915,1915 1779,1915"/>
+                    <pc:TextEquiv conf="0.545252304077148">
+                        <pc:Unicode>zmoznita.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b6415423-6b59-423b-bb59-a064e010a8ca" production="printed">
+                    <pc:Coords points="1930,1886 1954,1886 1954,1913 1930,1913"/>
+                    <pc:TextEquiv conf="0.990746612548828">
+                        <pc:Unicode>A</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_93951dae-a5ba-4576-b9dd-1add2959cdb3" production="printed">
+                    <pc:Coords points="1967,1887 2039,1887 2039,1919 1968,1919"/>
+                    <pc:TextEquiv conf="0.994914703369141">
+                        <pc:Unicode>runje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d1ca0c77-ae66-4b2c-b4c1-79914a5233cd" production="printed">
+                    <pc:Coords points="2052,1887 2097,1887 2097,1914 2052,1914"/>
+                    <pc:TextEquiv conf="0.998273162841797">
+                        <pc:Unicode>tak</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_caf09a7e-ad52-4bbb-acf7-cec51014658c" production="printed">
+                    <pc:Coords points="2110,1887 2194,1887 2194,1915 2110,1915"/>
+                    <pc:TextEquiv conf="0.778077087402344">
+                        <pc:Unicode>Wórsi</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_6e9fc252-15e5-4728-9187-9dc789607d33" production="printed">
+                    <pc:Coords points="2209,1886 2507,1887 2507,1921 2209,1921"/>
+                    <pc:TextEquiv conf="0.372692985534668">
+                        <pc:Unicode>Dahmsowej-Meékan</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.779992828369141">
+                    <pc:Unicode>zmoznita. A runje tak Wórsi Dahmsowej-Meékan</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_17998f9e-2a72-469d-b8d0-0c56705ceaca">
+                <pc:Coords points="1778,1927 2405,1927 2405,1963 1778,1963"/>
+                <pc:Word id="textract-word_006c08fa-8069-48f6-bb47-084d1d4ced82" production="printed">
+                    <pc:Coords points="1778,1927 1837,1927 1837,1959 1778,1959"/>
+                    <pc:TextEquiv conf="0.933706817626953">
+                        <pc:Unicode>kec,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d950d69e-4c2a-4db7-bade-762fa5cd06ce" production="printed">
+                    <pc:Coords points="1845,1927 1933,1927 1934,1956 1845,1955"/>
+                    <pc:TextEquiv conf="0.618385124206543">
+                        <pc:Unicode>kotraz</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0e48b2e6-73bb-4d0a-a527-bf1c6525c8ce" production="printed">
+                    <pc:Coords points="1940,1928 1966,1928 1966,1961 1940,1961"/>
+                    <pc:TextEquiv conf="0.992302093505859">
+                        <pc:Unicode>je</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ecef306a-b503-4ba4-8bf1-c5ca40537ece" production="printed">
+                    <pc:Coords points="1975,1928 2118,1928 2118,1962 1975,1962"/>
+                    <pc:TextEquiv conf="0.743490600585938">
+                        <pc:Unicode>nawjazala</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_3f47b13a-8843-4d6a-872c-86c6aa0ad9b5" production="printed">
+                    <pc:Coords points="2125,1929 2180,1929 2180,1956 2125,1956"/>
+                    <pc:TextEquiv conf="0.996848754882813">
+                        <pc:Unicode>tute</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_dd85ecbf-e66b-457f-a010-07917a459745" production="printed">
+                    <pc:Coords points="2186,1928 2231,1928 2231,1956 2186,1956"/>
+                    <pc:TextEquiv conf="0.997471313476562">
+                        <pc:Unicode>tak</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_32e894f6-c9c7-4719-9af6-f4027627a7a8" production="printed">
+                    <pc:Coords points="2239,1933 2326,1933 2326,1956 2239,1955"/>
+                    <pc:TextEquiv conf="0.988465957641602">
+                        <pc:Unicode>nuzne</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_16ddad00-c483-4a02-9c2c-daf0cd1f11f7" production="printed">
+                    <pc:Coords points="2335,1928 2405,1928 2405,1963 2335,1963"/>
+                    <pc:TextEquiv conf="0.938008575439453">
+                        <pc:Unicode>styki.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.901084899902344">
+                    <pc:Unicode>kec, kotraz je nawjazala tute tak nuzne styki.</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_3a7cde29-10f4-4286-999e-5415b061777f">
+                <pc:Coords points="1813,1968 2515,1969 2515,2005 1813,2005"/>
+                <pc:Word id="textract-word_8449a8ed-bfdf-48f4-a651-c1804d873c29" production="printed">
+                    <pc:Coords points="1813,1968 1963,1968 1963,2004 1813,2004"/>
+                    <pc:TextEquiv conf="0.84341552734375">
+                        <pc:Unicode>Cylkownje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_746a2eb4-95a6-425d-b426-b42ceeb3fb98" production="printed">
+                    <pc:Coords points="1974,1969 2124,1969 2124,2004 1974,2004"/>
+                    <pc:TextEquiv conf="0.901204452514648">
+                        <pc:Unicode>prewjedze</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_fb499af0-cb04-4c89-9ae5-9d0677876191" production="printed">
+                    <pc:Coords points="2137,1975 2173,1975 2173,1999 2137,1999"/>
+                    <pc:TextEquiv conf="0.77952262878418">
+                        <pc:Unicode>so</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b42815b0-797e-4dad-a200-7c9b83ea11ed" production="printed">
+                    <pc:Coords points="2185,1969 2254,1969 2254,1998 2185,1998"/>
+                    <pc:TextEquiv conf="0.877699203491211">
+                        <pc:Unicode>letsa</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_3ab9b5cf-c9b0-4b7f-b4e4-297fb75b411b" production="printed">
+                    <pc:Coords points="2268,1970 2303,1970 2303,1998 2268,1998"/>
+                    <pc:TextEquiv conf="0.996497497558594">
+                        <pc:Unicode>17</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_41fb5cfc-27b5-4a4c-a851-9d94ba444daf" production="printed">
+                    <pc:Coords points="2314,1969 2515,1970 2515,2005 2314,2005"/>
+                    <pc:TextEquiv conf="0.939659271240234">
+                        <pc:Unicode>wulkozarjado-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.889666442871094">
+                    <pc:Unicode>Cylkownje prewjedze so letsa 17 wulkozarjado-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_0e0afdec-9b9a-44cb-a92a-60dda734caac">
+                <pc:Coords points="1778,2010 2515,2010 2515,2046 1778,2045"/>
+                <pc:Word id="textract-word_aeb0c400-835f-4f06-bbe1-027014737d45" production="printed">
+                    <pc:Coords points="1778,2010 1889,2010 1889,2044 1778,2044"/>
+                    <pc:TextEquiv conf="0.991033096313477">
+                        <pc:Unicode>wanjow</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_4d21610a-4fe3-46af-9769-3136119aed04" production="printed">
+                    <pc:Coords points="1897,2016 1941,2016 1941,2039 1897,2038"/>
+                    <pc:TextEquiv conf="0.990292892456055">
+                        <pc:Unicode>we</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_737aa79f-5219-4c4c-8a1b-c3fb472fa24a" production="printed">
+                    <pc:Coords points="1950,2010 2051,2010 2051,2045 1950,2045"/>
+                    <pc:TextEquiv conf="0.863483352661133">
+                        <pc:Unicode>Luzicy.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_f7a835dd-621c-4100-8ebd-b04d2521159a" production="printed">
+                    <pc:Coords points="2060,2011 2174,2011 2174,2039 2060,2039"/>
+                    <pc:TextEquiv conf="0.988037567138672">
+                        <pc:Unicode>Wosom</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ddeafe4c-461a-403e-b56e-aa498869918d" production="printed">
+                    <pc:Coords points="2183,2016 2220,2016 2220,2040 2183,2040"/>
+                    <pc:TextEquiv conf="0.988458404541016">
+                        <pc:Unicode>za</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_340bca67-9151-4269-982d-77dd519c9537" production="printed">
+                    <pc:Coords points="2229,2011 2415,2011 2415,2046 2229,2045"/>
+                    <pc:TextEquiv conf="0.920531463623047">
+                        <pc:Unicode>doroscenych</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_8bf8d13c-bc34-4864-84f0-296df81c42ca" production="printed">
+                    <pc:Coords points="2424,2018 2443,2018 2443,2040 2424,2040"/>
+                    <pc:TextEquiv conf="0.986619567871094">
+                        <pc:Unicode>a</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_98d08fd9-3fac-4448-a746-f5f2298740bf" production="printed">
+                    <pc:Coords points="2451,2012 2515,2012 2515,2040 2451,2040"/>
+                    <pc:TextEquiv conf="0.350564346313477">
+                        <pc:Unicode>de-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.884877548217773">
+                    <pc:Unicode>wanjow we Luzicy. Wosom za doroscenych a de-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_6337b913-3ecf-41e5-9847-743e44431ba0">
+                <pc:Coords points="1776,2047 2515,2048 2515,2087 1776,2087"/>
+                <pc:Word id="textract-word_11f95181-1136-4f36-8323-45c889fcd402" production="printed">
+                    <pc:Coords points="1776,2051 1844,2051 1844,2086 1776,2086"/>
+                    <pc:TextEquiv conf="0.977257766723633">
+                        <pc:Unicode>wjec</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_a01d1f3c-aead-4ce7-bb57-88b618c24c71" production="printed">
+                    <pc:Coords points="1853,2057 1889,2057 1889,2079 1853,2079"/>
+                    <pc:TextEquiv conf="0.986867523193359">
+                        <pc:Unicode>za</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_9141192a-817b-472b-8bfe-8504f902b43f" production="printed">
+                    <pc:Coords points="1897,2052 1980,2052 1980,2080 1897,2080"/>
+                    <pc:TextEquiv conf="0.387857856750488">
+                        <pc:Unicode>dzeci.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_09ddcd86-42ab-4fb3-a919-f83ffcb0ec42" production="printed">
+                    <pc:Coords points="1993,2047 2126,2047 2126,2079 1993,2079"/>
+                    <pc:TextEquiv conf="0.971712799072266">
+                        <pc:Unicode>Wulkotna</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_c2af0c8a-e8cc-4c60-9c89-89e15ee8158b" production="printed">
+                    <pc:Coords points="2135,2053 2164,2053 2164,2080 2135,2080"/>
+                    <pc:TextEquiv conf="0.998418884277344">
+                        <pc:Unicode>to</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_8e32bff5-e41c-42c3-9613-026428d4f363" production="printed">
+                    <pc:Coords points="2172,2052 2239,2052 2239,2080 2172,2080"/>
+                    <pc:TextEquiv conf="0.720091400146484">
+                        <pc:Unicode>wec.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_7be85bc4-b6f6-4511-b079-0bef981d9c9c" production="printed">
+                    <pc:Coords points="2249,2052 2429,2052 2429,2087 2249,2087"/>
+                    <pc:TextEquiv conf="0.952529296875">
+                        <pc:Unicode>Nadzijomnje</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_78e3bd7c-ab15-47fc-b1e5-28a94f016b0b" production="printed">
+                    <pc:Coords points="2438,2052 2515,2052 2515,2081 2438,2081"/>
+                    <pc:TextEquiv conf="0.811652984619141">
+                        <pc:Unicode>hodzi</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.850798568725586">
+                    <pc:Unicode>wjec za dzeci. Wulkotna to wec. Nadzijomnje hodzi</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_5bab0bfa-ef5a-4760-9946-76782261f665">
+                <pc:Coords points="1778,2093 2516,2093 2516,2128 1778,2127"/>
+                <pc:Word id="textract-word_9813bf6a-51f6-48ec-9459-dd290d4c929d" production="printed">
+                    <pc:Coords points="1778,2099 1812,2099 1812,2122 1778,2121"/>
+                    <pc:TextEquiv conf="0.815538787841797">
+                        <pc:Unicode>so</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_24f387cf-dca9-48ad-934d-ee57b97791d7" production="printed">
+                    <pc:Coords points="1820,2098 1837,2098 1837,2121 1820,2121"/>
+                    <pc:TextEquiv conf="0.776077423095703">
+                        <pc:Unicode>Z</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_794155e5-bbfd-43ef-bca3-3102abad6a15" production="printed">
+                    <pc:Coords points="1844,2094 1896,2094 1896,2127 1844,2127"/>
+                    <pc:TextEquiv conf="0.996363143920898">
+                        <pc:Unicode>tym</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_34eb550b-08a2-40a7-8b12-6ca97e9c49c0" production="printed">
+                    <pc:Coords points="1904,2094 1947,2094 1947,2120 1904,2120"/>
+                    <pc:TextEquiv conf="0.624789886474609">
+                        <pc:Unicode>tez</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_98b72aa7-b6e2-4edd-8cb6-2ff783f58177" production="printed">
+                    <pc:Coords points="1955,2100 1981,2100 1981,2120 1955,2120"/>
+                    <pc:TextEquiv conf="0.671793670654297">
+                        <pc:Unicode>W</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e253e7e8-ce15-4b50-8781-2491b727ef5f" production="printed">
+                    <pc:Coords points="1988,2093 2128,2093 2128,2128 1988,2128"/>
+                    <pc:TextEquiv conf="0.91730842590332">
+                        <pc:Unicode>prichodze</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_47379fca-4b9f-43bc-9b05-dab6c82880e6" production="printed">
+                    <pc:Coords points="2136,2093 2317,2093 2317,2127 2136,2127"/>
+                    <pc:TextEquiv conf="0.655652236938477">
+                        <pc:Unicode>pokrocowac.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_38b78b66-39eb-4508-a4f4-aded16d0ded1" production="printed">
+                    <pc:Coords points="2377,2094 2407,2094 2407,2123 2378,2123"/>
+                    <pc:TextEquiv conf="0.989444580078125">
+                        <pc:Unicode>B.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_92b5038d-dbc1-4d8c-a899-000f568553df" production="printed">
+                    <pc:Coords points="2416,2094 2516,2094 2516,2123 2416,2123"/>
+                    <pc:TextEquiv conf="0.96620475769043">
+                        <pc:Unicode>Hancik</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.823685913085938">
+                    <pc:Unicode>so Z tym tez W prichodze pokrocowac. B. Hancik</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+        </pc:TextRegion>
+        <pc:TextRegion id="textract-layout-text_6126008f-6ab5-4621-b44f-c254fd1b0f5c" custom="textract-layout-type: text;" type="paragraph">
+            <pc:Coords points="980,3101 2499,3103 2499,3262 980,3260"/>
+            <pc:TextLine id="textract-line_f458d54d-2817-4dd7-9316-58747c5a9981">
+                <pc:Coords points="980,3101 2499,3103 2499,3138 980,3137"/>
+                <pc:Word id="textract-word_afccd4ef-c0f4-4f0a-b451-cab8c69c5285" production="printed">
+                    <pc:Coords points="980,3102 1107,3102 1107,3131 980,3130"/>
+                    <pc:TextEquiv conf="0.994001007080078">
+                        <pc:Unicode>Serbska</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b885ac4d-bde2-49c1-ac6c-3d6871aa670b" production="printed">
+                    <pc:Coords points="1115,3102 1244,3102 1244,3131 1115,3131"/>
+                    <pc:TextEquiv conf="0.97145751953125">
+                        <pc:Unicode>katolska</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e3076f50-7221-410d-9ad7-ecf9eeda4915" production="printed">
+                    <pc:Coords points="1253,3102 1443,3102 1443,3137 1253,3137"/>
+                    <pc:TextEquiv conf="0.570721321105957">
+                        <pc:Unicode>péstowarnja</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_371f3a1f-c993-4116-96ca-beecb0166d66" production="printed">
+                    <pc:Coords points="1452,3102 1545,3102 1545,3136 1452,3136"/>
+                    <pc:TextEquiv conf="0.874540710449219">
+                        <pc:Unicode>"Alojs</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_248a2d47-f373-45ec-81f8-e770f5f73b44" production="printed">
+                    <pc:Coords points="1552,3102 1698,3103 1698,3131 1552,3131"/>
+                    <pc:TextEquiv conf="0.737982940673828">
+                        <pc:Unicode>Andricki"</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_84d15769-3a99-4ffb-809a-561d744ea987" production="printed">
+                    <pc:Coords points="1705,3103 1732,3103 1732,3137 1705,3137"/>
+                    <pc:TextEquiv conf="0.977532577514648">
+                        <pc:Unicode>je</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_77257cde-df41-475f-a37c-20b802becb57" production="printed">
+                    <pc:Coords points="1738,3103 1791,3103 1791,3131 1738,3131"/>
+                    <pc:TextEquiv conf="0.758370971679687">
+                        <pc:Unicode>kaz</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0e284101-cc86-4190-ad5b-f1338b1944c6" production="printed">
+                    <pc:Coords points="1797,3103 1889,3103 1889,3131 1797,3131"/>
+                    <pc:TextEquiv conf="0.992556915283203">
+                        <pc:Unicode>druhe</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_3d302791-e656-4644-9b4b-b431a9bfdd8b" production="printed">
+                    <pc:Coords points="1896,3103 1950,3103 1951,3131 1896,3131"/>
+                    <pc:TextEquiv conf="0.604328765869141">
+                        <pc:Unicode>léta</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_62a52fd7-e3e5-42f5-b2b4-61d32c2d1ede" production="printed">
+                    <pc:Coords points="1956,3102 2144,3103 2144,3131 1956,3131"/>
+                    <pc:TextEquiv conf="0.951975250244141">
+                        <pc:Unicode>wuhotowala</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0268709c-8a60-4d64-9235-987666fdf89d" production="printed">
+                    <pc:Coords points="2151,3104 2359,3104 2359,3138 2151,3138"/>
+                    <pc:TextEquiv conf="0.870641174316406">
+                        <pc:Unicode>ptacokwasnu</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_50b9e529-eff1-4757-89a1-b7b73eaf8c11" production="printed">
+                    <pc:Coords points="2365,3103 2499,3103 2499,3133 2365,3133"/>
+                    <pc:TextEquiv conf="0.943582077026367">
+                        <pc:Unicode>hoscinu.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.853974304199219">
+                    <pc:Unicode>Serbska katolska péstowarnja "Alojs Andricki" je kaz druhe léta wuhotowala ptacokwasnu hoscinu.</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_574ad7b4-c289-4f60-8966-18200020c0d5">
+                <pc:Coords points="981,3142 2499,3144 2499,3180 981,3179"/>
+                <pc:Word id="textract-word_5364e1ae-1027-4bd2-8738-a2c2acf4caec" production="printed">
+                    <pc:Coords points="981,3142 1077,3143 1077,3171 981,3171"/>
+                    <pc:TextEquiv conf="0.925831527709961">
+                        <pc:Unicode>Hanza</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_f9766be1-66c5-49d0-91cb-98054fbd7807" production="printed">
+                    <pc:Coords points="1090,3142 1205,3143 1205,3178 1090,3177"/>
+                    <pc:TextEquiv conf="0.970164184570313">
+                        <pc:Unicode>Ryncec</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_dfb26317-7407-47fe-809d-a0bd3c84996a" production="printed">
+                    <pc:Coords points="1216,3143 1254,3143 1254,3177 1216,3177"/>
+                    <pc:TextEquiv conf="0.986381072998047">
+                        <pc:Unicode>(w</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e42f7b74-13d4-47fd-b6bb-45193f282f1d" production="printed">
+                    <pc:Coords points="1265,3143 1403,3143 1403,3177 1265,3177"/>
+                    <pc:TextEquiv conf="0.904915390014648">
+                        <pc:Unicode>narodnej</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_b3ac481e-acfb-4437-879c-b9c3a0fc1e5c" production="printed">
+                    <pc:Coords points="1415,3143 1531,3143 1531,3178 1415,3178"/>
+                    <pc:TextEquiv conf="0.846607666015625">
+                        <pc:Unicode>drasce)</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0f83e486-2943-4ddc-9cc2-3b2d7c0e09b7" production="printed">
+                    <pc:Coords points="1542,3143 1583,3143 1583,3177 1542,3177"/>
+                    <pc:TextEquiv conf="0.974979858398437">
+                        <pc:Unicode>pri</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_09eee5fa-4a49-4554-bf17-3a1fb22ba4c6" production="printed">
+                    <pc:Coords points="1594,3143 1798,3143 1798,3178 1594,3178"/>
+                    <pc:TextEquiv conf="0.975627517700195">
+                        <pc:Unicode>dohotowanju</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_77bf89ad-6f27-46c7-8b5a-ed34a0bcd39e" production="printed">
+                    <pc:Coords points="1809,3144 1964,3144 1964,3180 1809,3180"/>
+                    <pc:TextEquiv conf="0.937406311035156">
+                        <pc:Unicode>njewjesty,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_d499c807-2743-4896-a61f-8fbdea4e4529" production="printed">
+                    <pc:Coords points="1974,3150 1994,3150 1994,3172 1975,3172"/>
+                    <pc:TextEquiv conf="0.981559982299805">
+                        <pc:Unicode>a</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_ab3206ee-b9ee-4fbe-9f7d-7cf601a88632" production="printed">
+                    <pc:Coords points="2004,3144 2050,3144 2050,3172 2004,3172"/>
+                    <pc:TextEquiv conf="0.883723297119141">
+                        <pc:Unicode>tez</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_6e2942c6-db41-4614-af6f-d5d73c291e96" production="printed">
+                    <pc:Coords points="2060,3144 2240,3144 2240,3179 2060,3179"/>
+                    <pc:TextEquiv conf="0.557831344604492">
+                        <pc:Unicode>pestowarka</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_244beb0e-da85-485b-8d21-904ff0639aca" production="printed">
+                    <pc:Coords points="2253,3144 2390,3145 2390,3173 2253,3173"/>
+                    <pc:TextEquiv conf="0.993402328491211">
+                        <pc:Unicode>Blandina</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_3d675cb7-7759-4cd8-9811-703f1e48caf3" production="printed">
+                    <pc:Coords points="2401,3145 2499,3145 2499,3173 2401,3173"/>
+                    <pc:TextEquiv conf="0.990547027587891">
+                        <pc:Unicode>Rabec</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.91761360168457">
+                    <pc:Unicode>Hanza Ryncec (w narodnej drasce) pri dohotowanju njewjesty, a tez pestowarka Blandina Rabec</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_d2f20234-bbe5-4170-a015-5664f12228b7">
+                <pc:Coords points="981,3183 2498,3184 2498,3222 981,3220"/>
+                <pc:Word id="textract-word_bd14732e-ca9d-4a10-b50f-67846621d58b" production="printed">
+                    <pc:Coords points="981,3184 1088,3184 1088,3218 981,3218"/>
+                    <pc:TextEquiv conf="0.956351318359375">
+                        <pc:Unicode>pomha</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_0f81d05c-ce4c-480b-b59c-9a4389047784" production="printed">
+                    <pc:Coords points="1100,3184 1183,3184 1183,3213 1100,3213"/>
+                    <pc:TextEquiv conf="0.861977005004883">
+                        <pc:Unicode>hisce</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_09a66956-e216-4375-97fb-eb96fafe588a" production="printed">
+                    <pc:Coords points="1193,3184 1234,3184 1234,3219 1193,3219"/>
+                    <pc:TextEquiv conf="0.97402473449707">
+                        <pc:Unicode>pri</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_580d0516-6f0a-4833-872b-68753416b61f" production="printed">
+                    <pc:Coords points="1245,3185 1304,3185 1304,3219 1245,3219"/>
+                    <pc:TextEquiv conf="0.996985931396484">
+                        <pc:Unicode>tym</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_6166a75c-1fa3-46e8-a91c-0a414be842a4" production="printed">
+                    <pc:Coords points="1314,3184 1373,3184 1373,3213 1314,3213"/>
+                    <pc:TextEquiv conf="0.993759002685547">
+                        <pc:Unicode>abo</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_277d9e3f-615c-4196-98b3-1fa1d5e3d4cc" production="printed">
+                    <pc:Coords points="1384,3186 1520,3186 1520,3220 1385,3220"/>
+                    <pc:TextEquiv conf="0.991426239013672">
+                        <pc:Unicode>tamnym.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_59208691-34a9-4ea2-bfc0-0982bf50330b" production="printed">
+                    <pc:Coords points="1530,3184 1602,3184 1602,3214 1530,3214"/>
+                    <pc:TextEquiv conf="0.40498607635498">
+                        <pc:Unicode>Wo</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_3b21ec73-8c4a-494c-b3fb-ce7daed775b0" production="printed">
+                    <pc:Coords points="1611,3184 1691,3184 1691,3220 1611,3220"/>
+                    <pc:TextEquiv conf="0.991028289794922">
+                        <pc:Unicode>dyrbi</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_817144f7-027b-4718-88d1-95a462438f35" production="printed">
+                    <pc:Coords points="1701,3184 1824,3184 1824,3214 1701,3214"/>
+                    <pc:TextEquiv conf="0.968168411254883">
+                        <pc:Unicode>scasom</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_bac79262-6d96-4483-9c50-05b2c025ef89" production="printed">
+                    <pc:Coords points="1835,3185 1950,3185 1950,3214 1835,3214"/>
+                    <pc:TextEquiv conf="0.998199615478516">
+                        <pc:Unicode>hotowe</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_9198217f-80e8-4d79-99d8-c04cbd4838a9" production="printed">
+                    <pc:Coords points="1959,3184 2025,3184 2025,3221 1959,3221"/>
+                    <pc:TextEquiv conf="0.931250457763672">
+                        <pc:Unicode>byc,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_4a541f7a-a5ec-4399-adb0-87770b792c21" production="printed">
+                    <pc:Coords points="2035,3184 2122,3184 2122,3215 2036,3214"/>
+                    <pc:TextEquiv conf="0.777112884521484">
+                        <pc:Unicode>bórze</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_48ad575a-6670-45d4-be29-8a6c2cd5f505" production="printed">
+                    <pc:Coords points="2133,3184 2248,3184 2248,3219 2133,3219"/>
+                    <pc:TextEquiv conf="0.92073127746582">
+                        <pc:Unicode>prindze</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_dcbe2dc9-4922-4d8a-a159-48b4e3ac9ad4" production="printed">
+                    <pc:Coords points="2258,3185 2313,3185 2313,3214 2258,3214"/>
+                    <pc:TextEquiv conf="0.5417919921875">
+                        <pc:Unicode>dze</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_a4162ce9-1bd7-4cf9-84cd-d69729bc7309" production="printed">
+                    <pc:Coords points="2323,3185 2450,3185 2451,3215 2323,3215"/>
+                    <pc:TextEquiv conf="0.992130126953125">
+                        <pc:Unicode>Serbska</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_f9b4a811-914a-42ad-a43f-7bbbd6b666b9" production="printed">
+                    <pc:Coords points="2460,3185 2498,3185 2498,3215 2460,3215"/>
+                    <pc:TextEquiv conf="0.990124969482422">
+                        <pc:Unicode>fil-</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.893128051757813">
+                    <pc:Unicode>pomha hisce pri tym abo tamnym. Wo dyrbi scasom hotowe byc, bórze prindze dze Serbska fil-</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+            <pc:TextLine id="textract-line_0b960f1e-b40d-4120-8053-d6519d586471">
+                <pc:Coords points="980,3226 1204,3226 1204,3260 980,3260"/>
+                <pc:Word id="textract-word_b21b1c64-0cc6-4b30-8a68-cf250d715300" production="printed">
+                    <pc:Coords points="980,3231 1074,3231 1074,3253 980,3253"/>
+                    <pc:TextEquiv conf="0.996373977661133">
+                        <pc:Unicode>mowa</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e52315c1-1333-4cc2-b2dd-ce3949257c6e" production="printed">
+                    <pc:Coords points="1082,3226 1204,3226 1204,3260 1082,3260"/>
+                    <pc:TextEquiv conf="0.993315200805664">
+                        <pc:Unicode>skupina</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.994844589233398">
+                    <pc:Unicode>mowa skupina</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+        </pc:TextRegion>
+        <pc:TextRegion id="textract-layout-text_4f94c85c-771a-48cf-b345-312ba2370b30" custom="textract-layout-type: text;" type="paragraph">
+            <pc:Coords points="181,3314 914,3315 913,3418 181,3417"/>
+            <pc:TextLine id="textract-line_f9f41143-65e7-4a53-9c80-36403f880a04">
+                <pc:Coords points="181,3314 914,3315 913,3418 181,3417"/>
+                <pc:Word id="textract-word_857366cf-6664-4bab-98b2-dcd1e2c4e03b" production="printed">
+                    <pc:Coords points="181,3315 265,3315 265,3413 181,3413"/>
+                    <pc:TextEquiv conf="0.997488708496094">
+                        <pc:Unicode>2</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_1d67cdc3-e6a1-4f40-9e8d-d1c6e3788ae6" production="printed">
+                    <pc:Coords points="338,3315 914,3315 913,3418 338,3417"/>
+                    <pc:TextEquiv conf="0.727420425415039">
+                        <pc:Unicode>predzenak</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.862454528808594">
+                    <pc:Unicode>2 predzenak</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+        </pc:TextRegion>
+        <pc:TextRegion id="textract-layout-footer_9cef3f87-cd73-450a-bca9-335c233c5014" custom="textract-layout-type: footer;" type="footer">
+            <pc:Coords points="1934,3356 2504,3356 2504,3396 1934,3395"/>
+            <pc:TextLine id="textract-line_063a271a-a7f9-453e-9ae3-560cfb24f8e1">
+                <pc:Coords points="1934,3356 2504,3356 2504,3396 1934,3395"/>
+                <pc:Word id="textract-word_9990033c-c706-454f-a452-79e68d481f0a" production="printed">
+                    <pc:Coords points="1934,3356 2120,3356 2120,3395 1934,3395"/>
+                    <pc:TextEquiv conf="0.850062103271484">
+                        <pc:Unicode>SOBOTU,</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_15b05233-e9fd-4a4e-99f2-fb2ff2666bdd" production="printed">
+                    <pc:Coords points="2130,3357 2164,3357 2164,3391 2130,3391"/>
+                    <pc:TextEquiv conf="0.995615768432617">
+                        <pc:Unicode>9.</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_10dff85c-37ab-48d2-a847-919d7d13bafe" production="printed">
+                    <pc:Coords points="2175,3356 2408,3356 2408,3391 2175,3390"/>
+                    <pc:TextEquiv conf="0.991217269897461">
+                        <pc:Unicode>FEBRUARA</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:Word id="textract-word_e23ba278-c526-4aa4-b694-c0fd0e0ce94f" production="printed">
+                    <pc:Coords points="2419,3358 2504,3358 2504,3391 2419,3391"/>
+                    <pc:TextEquiv conf="0.998182144165039">
+                        <pc:Unicode>1991</pc:Unicode>
+                    </pc:TextEquiv>
+                </pc:Word>
+                <pc:TextEquiv conf="0.958769302368164">
+                    <pc:Unicode>SOBOTU, 9. FEBRUARA 1991</pc:Unicode>
+                </pc:TextEquiv>
+            </pc:TextLine>
+        </pc:TextRegion>
+        <pc:ImageRegion id="textract-layout-figure_62098cf2-dafd-4ad4-9f41-21ca03bd8ae0" custom="textract-layout-type: figure;">
+            <pc:Coords points="190,746 926,746 926,1829 188,1829"/>
+        </pc:ImageRegion>
+        <pc:ImageRegion id="textract-layout-figure_c8e8dfaa-f2fb-4d4c-80f1-c65baa6a9e89" custom="textract-layout-type: figure;">
+            <pc:Coords points="190,2040 927,2040 927,3111 188,3111"/>
+        </pc:ImageRegion>
+        <pc:ImageRegion id="textract-layout-figure_26929c61-3dec-4638-b8f4-58f8b0594884" custom="textract-layout-type: figure;">
+            <pc:Coords points="979,111 2527,110 2529,1133 979,1133"/>
+        </pc:ImageRegion>
+        <pc:ImageRegion id="textract-layout-figure_0a571fbd-dc11-4d5c-bbf9-96fa070bbac7" custom="textract-layout-type: figure;">
+            <pc:Coords points="981,2149 2527,2150 2529,3079 981,3077"/>
+        </pc:ImageRegion>
+    </pc:Page>
+</pc:PcGts>

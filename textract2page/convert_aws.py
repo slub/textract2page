@@ -24,6 +24,7 @@ from ocrd_models.ocrd_page import (
     WordType,
     ReadingOrderType,
     OrderedGroupType,
+    OrderedGroupIndexedType,
     UnorderedGroupIndexedType,
     RegionRefIndexedType,
     RegionRefType,
@@ -151,12 +152,15 @@ class TextractLayout(TextractBlock):
     """
 
     def __init__(
-        self, aws_layout_block: Dict, textract_words: Dict, textract_lines: Dict
+        self, aws_layout_block: Dict,
+        aws_top_blocks: Dict,
+        textract_words: Dict,
+        textract_lines: Dict,
     ) -> None:
         super().__init__(aws_block=aws_layout_block)
         # Textract layout types -> Page layout types
 
-        self.page_layout_type = LAYOUT_TYPE_MAP.get(aws_layout_block["BlockType"])
+        self.page_layout_type = LAYOUT_TYPE_MAP.get(aws_layout_block["BlockType"], 'floating')
         self.textract_layout_type = aws_layout_block["BlockType"]
         self.prefix = (
             f"{self.prefix}-{self.textract_layout_type.lower().replace('_','-')}"
@@ -181,6 +185,15 @@ class TextractLayout(TextractBlock):
 
         for line in self.child_lines:
             line.parent_layout = self
+
+        self.child_regions = [
+            aws_top_blocks.get(id)
+            for id in get_ids_of_child_blocks(aws_layout_block)
+            if aws_top_blocks.get(id)
+        ]
+        # layout child blocks must be replaced by child instances later
+        # child instances must be connected to parent later
+        self.parent_layout = None
 
 
 class TextractTable(TextractBlock):
@@ -254,6 +267,7 @@ class TextractTable(TextractBlock):
             col_indices.append(cell.column_index)
         self.rows = max(row_indices) + 1
         self.columns = max(col_indices) + 1
+        self.parent_layout = None
 
 
 class TextractLine(TextractBlock):
@@ -452,6 +466,7 @@ class TextractValue(TextractBlock):
                 self.child_lines.append(word.parent_line)
         for line in self.child_lines:
             line.parent_value = self
+        # self.parent_layout = None
 
 
 class TextractKey(TextractBlock):
@@ -508,6 +523,7 @@ class TextractKey(TextractBlock):
                 self.child_lines.append(word.parent_line)
         for line in self.child_lines:
             line.parent_key = self
+        # self.parent_layout = None
 
 
 class TextractSelectionElement(TextractBlock):
@@ -617,30 +633,27 @@ def get_ids_of_child_blocks(aws_block: Dict) -> List[str]:
 
 def derive_reading_order(word_list: List[TextractWord]):
     """
-    The reding order of the objects within a Textract response is
+    The reading order of the objects within an AWS Textract response is
     ultimately given by the order of the word blocks in the response.
 
     Each word belongs either to a specific line, cell, value, key
-    or layout. From these, value, key and layout can be considered
-    top-level objects in terms of the reading order. Each cell belongs
-    to a table, which then is the top-level reading order object.
+    or layout object. Among these, the cases value, key and layout object
+    can be considered top level in terms of the reading order. Each cell
+    belongs to a table, which then is the top-level reading order object.
+    Lines however are a special case: they mostly belong to one of the
+    top-level reading order objects, but sometimes can also be a top level
+    themselves. This results in two checks for each word:
 
-    Lines are a special case: lines mostly belong to one of the top-
-    level reading order objects mention atop, however they can also
-    be a top-level reading order object themselves. This results in two
-    checks for each word
+    - Does the word belong to a line? 
+      * And if so: Does the line belong to another top-level object
+        (table, key, value, layout)?
+      * Otherwise: to which top-level object does it belong?
 
-    1) belongs the word to a line? And if so: belongs the line to another
-    top-level object (table, key, value, layout)?
-    2) if the word does not belong to a line: to which top-level object
-    it belongs?
-
-    With this checks in palce, we iterate through all words and collect
+    With these checks in place, we iterate through all words and collect
     the respective top-level objects in reading order.
 
-    As of my understanding words can not be top level objects, i.e. always
-    stay in a is-child-of relation to some other object of the textract
-    response.
+    As of my understanding, words can not be top level objects, i.e. always
+    stay in a child relation to some other object of the Textract response.
     """
 
     top_level_objects_in_reading_order = []
@@ -666,9 +679,6 @@ def derive_reading_order(word_list: List[TextractWord]):
             if complex_line_parent:
                 if complex_line_parent not in top_level_objects_in_reading_order:
                     top_level_objects_in_reading_order.append(complex_line_parent)
-            else:
-                if word.parent_line not in top_level_objects_in_reading_order:
-                    top_level_objects_in_reading_order.append(word.parent_line)
 
         complex_word_parent = next(
             (
@@ -727,7 +737,9 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
         key_value_set_blocks,
         layout_blocks,
     ) = ({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {})
-    for block in aws_json["Blocks"]:
+    block_order = {}
+    for order, block in enumerate(aws_json["Blocks"]):
+        block_order[block["Id"]] = order
         if block["BlockType"] == "PAGE":
             assert not page_block, "page must not have more than 1 PAGE block"
             page_block = block
@@ -763,12 +775,6 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
     for line_id, line_block in line_blocks.items():
         lines[line_id] = TextractLine(line_block, words)
 
-    # build layouts
-    layouts = [
-        TextractLayout(layout_block, words, lines)
-        for layout_block in layout_blocks.values()
-    ]
-
     # build tables
     tables = {}
     for table_id, table_block in table_blocks.items():
@@ -796,8 +802,117 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
         if "KEY" in key_value_set.get("EntityTypes", []):
             keys[key_value_set_id] = TextractKey(key_value_set, values, words)
 
+    # build layouts
+    layouts = {}
+    for layout_id, layout_block in layout_blocks.items():
+        layouts[layout_id] = TextractLayout(
+            layout_block,
+            # recursive layout_blocks must be replaced after
+            # all top-level layout_blocks have been instantiated
+            dict(layout_blocks, **tables, **keys, **values),
+            words,
+            lines,
+        )
+
+    # build recursive layouts
+    for layout in list(layouts.values()):
+        for i, child in enumerate(layout.child_regions):
+            if isinstance(child, dict):
+                child_id = child["Id"]
+                assert child_id in layouts
+                layout.child_regions[i] = layouts[child_id]
+                layouts[child_id].parent_layout = layout
+                # avoid instantiating twice:
+                del layouts[child_id]
+            elif child.id in tables:
+                tables[child.id].parent_layout = layout
+                # avoid instantiating twice:
+                del tables[child.id]
+            # elif child.id in keys:
+            #     keys[child.id].parent_layout = layout
+            #     # avoid instantiating twice:
+            #     del keys[child.id]
+            # elif child.id in values:
+            #     values[child.id].parent_layout = layout
+            #     # avoid instantiating twice:
+            #     del values[child.id]
+
+    # build dummy lines for dangling words
+    for word in words.values():
+        # if word is part of a line do nothing here
+        if word.parent_line:
+            continue
+
+        # if word is part of a table do nothing here
+        if word.parent_cell:
+            continue
+
+        # if word is part of a layout do nothing here
+        if word.parent_layout:
+            continue
+
+        # if word is neither part of a line, table, nor layout,
+        # create dummy line around the word
+        dummy_block = dict(word_blocks[word.id])
+        dummy_block["Id"] = word.id + "_parent"
+        dummy = TextractLine(dummy_block, {})
+        dummy.child_words = [word]
+        word.parent_line = dummy
+        block_order[dummy.id] = block_order[word.id]
+        lines.append(dummy)
+
+    # build dummy layouts for dangling lines
+    for line in lines.values():
+        # if line is part of a table do nothing here
+        if line.parent_cell:
+            continue
+
+        # if line is part of a layout do nothing here
+        if line.parent_layout:
+            continue
+
+        # if line is neither part of a table, nor of a layout,
+        # create dummy region around the line
+        dummy_block = dict(line_blocks[line.id])
+        dummy_block["Id"] = line.id + "_parent"
+        dummy_block["BlockType"] = "LAYOUT_DUMMY"
+        dummy = TextractLayout(dummy_block, {}, {}, {})
+        dummy.child_lines = [line]
+        line.parent_layout = dummy
+        block_order[dummy.id] = block_order[line.id]
+        layouts[dummy.id] = dummy
+
     # reading order of top-level objects
-    textract_objects_in_reading_order = derive_reading_order(words.values())
+    # - derived from linear word-order (as fall-back)
+    text_regions = derive_reading_order(words.values())
+    # - taken from top level directly (only useful with LAYOUT results)
+    if any(layouts):
+        def aws_block_order(obj):
+            return block_order[obj.id]
+        layout_regions = sorted(layouts.values(), key=aws_block_order)
+        # tables are special:
+        for table in tables.values():
+            layout_pos = -1
+            # try to find matching LAYOUT_TABLE
+            for layout in layout_regions:
+                if layout.geometry == table.geometry:
+                    layout_pos = layout_regions.index(layout)
+                    layout_regions[layout_pos] = table
+                    break
+            if layout_pos > -1:
+                continue
+            # or re-use prior/next relations in word-based order
+            text_pos = text_regions.index(table)
+            if text_pos > 0:
+                # insert after predecessor
+                layout_pos = layout_regions.index(text_regions[text_pos - 1]) + 1
+            else:
+                # insert before successor
+                layout_pos = layout_regions.index(text_regions[text_pos + 1]) + 1
+            layout_regions = layout_regions[:layout_pos] + [table] + layout_regions[layout_pos:]
+        textract_objects_in_reading_order = layout_regions
+    else:
+        textract_objects_in_reading_order = text_regions
 
     # build PRIMAPageXML
     pil_img = Image.open(img_path)
@@ -828,239 +943,238 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
     ):
         # set up local reading orders for tables
         table = tables.get(textract_object.id, None)
+        layout = layouts.get(textract_object.id, None)
         if table:
             local_reading_order = UnorderedGroupIndexedType(
                 index=global_reading_order_index,
                 id=f"{table.prefix}_{table.id}_reading-order",
                 comments="Reading order of this table.",
+                regionRef=f"{table.prefix}_{table.id}",
             )
             global_ordered_group.add_UnorderedGroupIndexed(local_reading_order)
             local_reading_orders[f"{table.prefix}_{table.id}_reading-order"] = (
+                local_reading_order
+            )
+        elif layout and (
+                layout.textract_layout_type == "LAYOUT_FIGURE" and len(layout.child_lines) or
+                len(layout.child_regions)):
+            local_reading_order = OrderedGroupIndexedType(
+                index=global_reading_order_index,
+                id=f"{layout.prefix}_{layout.id}_reading-order",
+                comments="Reading order of this region.",
+                regionRef=f"{layout.prefix}_{layout.id}",
+            )
+            global_ordered_group.add_OrderedGroupIndexed(local_reading_order)
+            local_reading_orders[f"{layout.prefix}_{layout.id}_reading-order"] = (
                 local_reading_order
             )
         else:
             global_ordered_group.add_RegionRefIndexed(
                 RegionRefIndexedType(
                     index=global_reading_order_index,
-                    regionRef=f"{textract_object.prefix}_text-region_{textract_object.id}",
+                    regionRef=f"{textract_object.prefix}_{textract_object.id}",
                 )
             )
 
-    # build pageXML lines
-    for line_id, line in lines.items():
-        # if line is part of a table do nothing here
-        if line.parent_cell:
-            continue
+    def instantiate_pagexml(block, parent):
+        local_reading_order_index = 0
+        local_block_reading_order = local_reading_orders.get(
+            f"{block.prefix}_{block.id}_reading-order", None
+        )
 
-        # if line is part of a layout do nothing here
-        elif line.parent_layout:
-            continue
-
-        # if line is neither part of a table, nor of a layout, create dummy
-        # region around the line
-        else:
-            # wrap lines in separate TextRegions to preserve reading order
-            # (ReadingOrder references TextRegions)
-            line_region_id = f"{line.prefix}_text-region_{line.id}"
-            pagexml_text_region_line = TextRegionType(
-                Coords=CoordsType(
-                    points=points_from_aws_geometry(
-                        line.geometry, img_width, img_height
-                    )
-                ),
-                id=line_region_id,
-            )
-            pagexml_page.add_TextRegion(pagexml_text_region_line)
-
-            # append lines to text regions
-            pagexml_text_line = TextLineType(
-                Coords=CoordsType(
-                    points=points_from_aws_geometry(
-                        line.geometry, img_width, img_height
-                    )
-                ),
-                id=f"{line.prefix}_{line_id}",
-            )
-            if line.text:
-                pagexml_text_line.add_TextEquiv(
-                    TextEquivType(conf=line.confidence, Unicode=line.text)
-                )
-            pagexml_text_region_line.add_TextLine(pagexml_text_line)
-
-            # build pagexml words
-            for word in line.child_words:
-                pagexml_word = WordType(
-                    Coords=CoordsType(
-                        points=points_from_aws_geometry(
-                            word.geometry, img_width, img_height
-                        )
-                    ),
-                    id=f"{word.prefix}_{word.id}",
-                    production=word.text_type,
-                )
-                if word.text:
-                    pagexml_word.add_TextEquiv(
-                        TextEquivType(conf=word.confidence, Unicode=word.text)
-                    )
-                pagexml_text_line.add_Word(pagexml_word)
-
-    for layout in layouts:
+        # generic arguments
+        kwargs = {'Coords':
+                  CoordsType(
+                      points=points_from_aws_geometry(
+                          block.geometry, img_width, img_height
+                      )
+                  ),
+                  'id': f"{block.prefix}_{block.id}",
+        }
 
         # handle figures
-        if layout.textract_layout_type == "LAYOUT_FIGURE":
+        if isinstance(block, TextractLayout) and block.textract_layout_type == "LAYOUT_FIGURE":
             pagexml_img_region = ImageRegionType(
-                Coords=CoordsType(
-                    points=points_from_aws_geometry(
-                        layout.geometry, img_width, img_height
-                    )
-                ),
-                id=f"{layout.prefix}_{layout.id}",
-                type_=layout.page_layout_type,
-                custom=f"textract-layout-type: {layout.textract_layout_type.split('LAYOUT_')[1].lower()};",
+                type_=block.page_layout_type,
+                custom="textract-layout-type: figure;",
+                **kwargs
             )
-            pagexml_page.add_ImageRegion(pagexml_img_region)
-            continue
+            parent.add_ImageRegion(pagexml_img_region)
 
-        # handle tables
-        if layout.textract_layout_type == "LAYOUT_TABLE":
-            # we cover tables separatly
-            continue
-
-        pagexml_text_region = TextRegionType(
-            Coords=CoordsType(
-                points=points_from_aws_geometry(layout.geometry, img_width, img_height)
-            ),
-            id=f"{layout.prefix}_text-region_{layout.id}",
-            type_=layout.page_layout_type,
-            custom=f"textract-layout-type: {layout.textract_layout_type.split('LAYOUT_')[1].lower()};",
-        )
-        pagexml_page.add_TextRegion(pagexml_text_region)
-
-        for line in layout.child_lines:
-            pagexml_text_line = TextLineType(
-                Coords=CoordsType(
-                    points=points_from_aws_geometry(
-                        line.geometry, img_width, img_height
-                    )
-                ),
-                id=f"{line.prefix}_{line.id}",
-            )
-            if line.text:
-                pagexml_text_region.add_TextEquiv(
-                    TextEquivType(conf=line.confidence, Unicode=line.text)
-                )
-            pagexml_text_region.add_TextLine(pagexml_text_line)
-
-            # build pagexml words
-            for word in line.child_words:
-                pagexml_word = WordType(
-                    Coords=CoordsType(
-                        points=points_from_aws_geometry(
-                            word.geometry, img_width, img_height
-                        )
-                    ),
-                    id=f"{word.prefix}_{word.id}",
-                    production=word.text_type,
-                )
-                if word.text:
-                    pagexml_word.add_TextEquiv(
-                        TextEquivType(conf=word.confidence, Unicode=word.text)
-                    )
-                pagexml_text_line.add_Word(pagexml_word)
-
-    for table_id, table in tables.items():
-        local_reading_order_index = 0
-        local_table_reading_order = local_reading_orders[
-            f"{table.prefix}_{table.id}_reading-order"
-        ]
-
-        pagexml_table_region = TableRegionType(
-            Coords=CoordsType(
-                points=points_from_aws_geometry(table.geometry, img_width, img_height)
-            ),
-            id=f"{table.prefix}_{table.id}",
-            rows=table.rows,
-            columns=table.columns,
-        )
-        pagexml_page.add_TableRegion(pagexml_table_region)
-
-        visited_merged_cells = []
-
-        for cell in table.common_cells:
-            merged_cell = cell.parent_merged_cell
-            if merged_cell:
-                if merged_cell in visited_merged_cells:
-                    continue
-                visited_merged_cells.append(merged_cell)
-                cell = merged_cell
-
-            # create a text region for each cell
-            cell_region_id = f"{cell.prefix}_text-region_{cell.id}"
-            pagexml_cell_region = TextRegionType(
-                Coords=CoordsType(
-                    points=points_from_aws_geometry(
-                        cell.geometry, img_width, img_height
-                    )
-                ),
-                id=cell_region_id,
-            )
-            pagexml_table_region.add_TextRegion(pagexml_cell_region)
-
-            pagexml_table_cell_role = TableCellRoleType(
-                rowIndex=cell.row_index,
-                columnIndex=cell.column_index,
-                rowSpan=cell.row_span,
-                colSpan=cell.column_span,
-                header=cell.column_header,
-            )
-            pagexml_roles_type = RolesType(TableCellRole=pagexml_table_cell_role)
-            pagexml_cell_region.set_Roles(pagexml_roles_type)
-
-            local_table_reading_order.add_RegionRef(
-                RegionRefType(
-                    index=local_reading_order_index,
-                    regionRef=cell_region_id,
-                )
-            )
-            local_reading_order_index += 1
-
-            # lines and words might span multiples cells, if this is the case
-            # all cell are assigned the same line/word-text. To prevent the
-            # according TextLineTypes/WordTypes to have the same IDs, each
-            # id is append with the cells row and col index.
-            for line in cell.child_lines:
-                # append lines to text regions
-
-                pagexml_text_line = TextLineType(
+            for line in block.child_lines:
+                # create a dummy text region for each line
+                line_region_id = f"{line.prefix}_text-region_{line.id}"
+                pagexml_line_region = TextRegionType(
                     Coords=CoordsType(
                         points=points_from_aws_geometry(
                             line.geometry, img_width, img_height
                         )
                     ),
-                    id=f"{line.prefix}_{line.id}-{cell.row_index}-{cell.column_index}",
+                    id=line_region_id,
                 )
-                if line.text:
-                    pagexml_text_line.add_TextEquiv(
-                        TextEquivType(conf=line.confidence, Unicode=line.text)
-                    )
-                pagexml_cell_region.add_TextLine(pagexml_text_line)
+                pagexml_img_region.add_TextRegion(pagexml_line_region)
 
-                # build pagexml words
-                for word in line.child_words:
-                    pagexml_word = WordType(
+                if local_block_reading_order:
+                    local_block_reading_order.add_RegionRefIndexed(
+                        RegionRefIndexedType(
+                            index=local_reading_order_index,
+                            regionRef=line_region_id,
+                        )
+                    )
+                    local_reading_order_index += 1
+
+                instantiate_pagexml(line, pagexml_line_region)
+
+            assert len(block.child_regions) == 0, \
+                (f"unexpected AWS layout recursion of {block.child_regions[0].textract_layout_type} "
+                 f"in {block.textract_layout_type}")
+
+            return pagexml_img_region
+
+        # handle tables
+        if isinstance(block, TextractLayout) and block.textract_layout_type == "LAYOUT_TABLE":
+            # we covered tables already
+            return None
+
+        if isinstance(block, TextractLine):
+            pagexml_text_line = TextLineType(**kwargs)
+            if block.text:
+                pagexml_text_line.add_TextEquiv(
+                    TextEquivType(conf=block.confidence, Unicode=block.text)
+                )
+            parent.add_TextLine(pagexml_text_line)
+
+            # build pagexml words
+            for word in block.child_words:
+                instantiate_pagexml(word, pagexml_text_line)
+            return pagexml_text_line
+
+        if isinstance(block, TextractWord):
+            pagexml_word = WordType(production=block.text_type, **kwargs)
+            if block.text:
+                pagexml_word.add_TextEquiv(
+                    TextEquivType(conf=block.confidence, Unicode=block.text)
+                )
+            parent.add_Word(pagexml_word)
+            return pagexml_word
+
+        if isinstance(block, TextractLayout) and block.textract_layout_type.startswith('LAYOUT_'):
+            pagexml_text_region = TextRegionType(type_=block.page_layout_type, **kwargs)
+            if block.textract_layout_type != "LAYOUT_DUMMY":
+                pagexml_text_region.set_custom(
+                    f"textract-layout-type: {block.textract_layout_type.split('LAYOUT_')[1].lower()};"
+                )
+            parent.add_TextRegion(pagexml_text_region)
+
+            for line in block.child_lines:
+                instantiate_pagexml(line, pagexml_text_region)
+
+            for child_region in block.child_regions:
+                # todo: do we need this assertion?
+                assert child_region.textract_layout_type.startswith("LAYOUT_") and \
+                    child_region.textract_layout_type not in ["LAYOUT_FIGURE", "LAYOUT_TABLE"], \
+                    (f"unexpected AWS layout recursion of {child_region.textract_layout_type} "
+                     f"in {block.textract_layout_type}")
+
+                pagexml_child_text_region = instantiate_pagexml(child_region, pagexml_text_region)
+                if local_block_reading_order:
+                    local_block_reading_order.add_RegionRefIndexed(
+                        RegionRefIndexedType(
+                            index=local_reading_order_index,
+                            regionRef=pagexml_child_text_region.id,
+                        )
+                    )
+                    local_reading_order_index += 1
+            return pagexml_text_region
+
+        if isinstance(block, TextractTable):
+            pagexml_table_region = TableRegionType(rows=block.rows, columns=block.columns, **kwargs)
+            parent.add_TableRegion(pagexml_table_region)
+
+            visited_merged_cells = []
+
+            for cell in block.common_cells:
+                merged_cell = cell.parent_merged_cell
+                if merged_cell:
+                    if merged_cell in visited_merged_cells:
+                        continue
+                    visited_merged_cells.append(merged_cell)
+                    cell = merged_cell
+
+                # create a text region for each cell
+                cell_region_id = f"{cell.prefix}_text-region_{cell.id}"
+                pagexml_cell_region = TextRegionType(
+                    Coords=CoordsType(
+                        points=points_from_aws_geometry(
+                            cell.geometry, img_width, img_height
+                        )
+                    ),
+                    id=cell_region_id,
+                )
+                pagexml_table_region.add_TextRegion(pagexml_cell_region)
+
+                pagexml_table_cell_role = TableCellRoleType(
+                    rowIndex=cell.row_index,
+                    columnIndex=cell.column_index,
+                    rowSpan=cell.row_span,
+                    colSpan=cell.column_span,
+                    header=cell.column_header,
+                )
+                pagexml_roles_type = RolesType(TableCellRole=pagexml_table_cell_role)
+                pagexml_cell_region.set_Roles(pagexml_roles_type)
+
+                local_block_reading_order.add_RegionRef(
+                    RegionRefType(
+                        index=local_reading_order_index,
+                        regionRef=cell_region_id,
+                    )
+                )
+                local_reading_order_index += 1
+
+                # lines and words might span multiples cells, if this is the case
+                # all cell are assigned the same line/word-text. To prevent the
+                # according TextLineTypes/WordTypes to have the same IDs, each
+                # id is append with the cells row and col index.
+                for line in cell.child_lines:
+                    # append lines to text regions
+
+                    pagexml_text_line = TextLineType(
                         Coords=CoordsType(
                             points=points_from_aws_geometry(
-                                word.geometry, img_width, img_height
+                                line.geometry, img_width, img_height
                             )
                         ),
-                        id=f"{word.prefix}_{word.id}-{cell.row_index}-{cell.column_index}",
-                        production=word.text_type,
+                        id=f"{line.prefix}_{line.id}-{cell.row_index}-{cell.column_index}",
                     )
-                    if word.text:
-                        pagexml_word.add_TextEquiv(
-                            TextEquivType(conf=word.confidence, Unicode=word.text)
+                    if line.text:
+                        pagexml_text_line.add_TextEquiv(
+                            TextEquivType(conf=line.confidence, Unicode=line.text)
                         )
-                    pagexml_text_line.add_Word(pagexml_word)
+                    pagexml_cell_region.add_TextLine(pagexml_text_line)
+
+                    # build pagexml words
+                    for word in line.child_words:
+                        pagexml_word = WordType(
+                            Coords=CoordsType(
+                                points=points_from_aws_geometry(
+                                    word.geometry, img_width, img_height
+                                )
+                            ),
+                            id=f"{word.prefix}_{word.id}-{cell.row_index}-{cell.column_index}",
+                            production=word.text_type,
+                        )
+                        if word.text:
+                            pagexml_word.add_TextEquiv(
+                                TextEquivType(conf=word.confidence, Unicode=word.text)
+                            )
+                        pagexml_text_line.add_Word(pagexml_word)
+            return pagexml_table_region
+
+    for layout in layouts.values():
+        instantiate_pagexml(layout, pagexml_page)
+
+    for table in tables.values():
+        instantiate_pagexml(table, pagexml_page)
 
     reading_order = ReadingOrderType(OrderedGroup=global_ordered_group)
     pagexml_page.set_ReadingOrder(reading_order)
