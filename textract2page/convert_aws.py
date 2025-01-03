@@ -712,7 +712,32 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
 
     Arguments:
         json_path (str): path to input JSON file
-        img_path (str): path to input JPEG file
+        img_path (str): path to input image file
+        out_path (str): path to output XML file
+    """
+    
+    # get absolute image coordinates
+    pil_img = Image.open(img_path)
+    img_width = pil_img.width
+    img_height = pil_img.height
+    pil_img.close()
+    
+    convert_file_without_image(json_path, img_path, img_width, img_height, out_path)
+
+
+def convert_file_without_image(json_path: str, img_path: str, img_width: int, img_height: int, out_path: str) -> None:
+    """Convert an AWS-Textract-JSON file to a PAGE-XML file, without the original input image.
+
+    Requires the absolute dimensions of the original input image used for AWS OCR.
+    (If the image is available, call convert_file instead.)
+
+    Amazon Documentation: https://docs.aws.amazon.com/textract/latest/dg/how-it-works-document-layout.html
+
+    Arguments:
+        json_path (str): path to input JSON file
+        img_path (str): filename of input image file
+        img_width (int): width of image in pixels
+        img_height (int): height of image in pixels
         out_path (str): path to output XML file
     """
 
@@ -915,10 +940,6 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
         textract_objects_in_reading_order = text_regions
 
     # build PRIMAPageXML
-    pil_img = Image.open(img_path)
-    img_width = pil_img.width
-    img_height = pil_img.height
-    pil_img.close()
     now = datetime.now()
     page_content_type = PcGtsType(
         Metadata=MetadataType(
