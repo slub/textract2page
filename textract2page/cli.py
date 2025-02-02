@@ -14,9 +14,9 @@ CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
     type=click.Path(dir_okay=False, writable=True, exists=False, allow_dash=True),
 )
 @click.argument("aws-json-file", type=click.Path(dir_okay=False, exists=True))
-@click.argument("image-file", type=str)
-@click.option("--image-width", type=int, help="Width of the image in pixels, if the image isn't available.")
-@click.option("--image-height", type=int, help="Height of the image in pixels, if the image isn't available.")
+@click.argument("image-file", type=click.Path(dir_okay=False, exists=False))
+@click.option("--image-width", type=int, help="width of the image in pixels (to avoid opening the image file)")
+@click.option("--image-height", type=int, help="height of the image in pixels (to avoid opening the image file)")
 def cli(output_file, aws_json_file, image_file, image_width, image_height):
     """Convert an AWS Textract JSON file to a PAGE XML file.
 
@@ -27,6 +27,8 @@ def cli(output_file, aws_json_file, image_file, image_width, image_height):
     The output file will reference the image file using the name you provide.
     (So you may want to use a relative path.)
     """
+    assert image_width and image_height or image_file and exists(image_file),\
+        "requires passing either an existing image file path or --image-width and --image-height"
     if output_file == "-":
         output_file = None
 

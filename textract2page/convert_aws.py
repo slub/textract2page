@@ -728,8 +728,9 @@ def convert_file(json_path: str, img_path: str, out_path: str) -> None:
 def convert_file_without_image(json_path: str, img_path: str, img_width: int, img_height: int, out_path: str) -> None:
     """Convert an AWS-Textract-JSON file to a PAGE-XML file, without the original input image.
 
-    Requires the absolute dimensions of the original input image used for AWS OCR.
-    (If the image is available, call convert_file instead.)
+    Also requires the original input image used for AWS OCR, but only to reference it under 
+    `Page/@imageFilename` with its full path – does not actually require an existing file under that path.
+    Instead, this additionally requires the absolute dimensions (pixel resolution) of the image.
 
     Amazon Documentation: https://docs.aws.amazon.com/textract/latest/dg/how-it-works-document-layout.html
 
