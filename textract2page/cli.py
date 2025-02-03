@@ -1,4 +1,5 @@
 import click
+from os.path import exists
 
 from .convert_aws import convert_file, convert_file_without_image
 
