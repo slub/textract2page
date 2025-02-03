@@ -19,10 +19,21 @@ In a Python [virtualenv](https://packaging.python.org/tutorials/installing-packa
 
 ## Usage
 
-The package contains a file-based conversion function provided as CLI and Python API.
+The package contains a **file-based** conversion function provided as CLI and Python API.
+(So this does not directly use the AWS API, which might be supported in the future.)
+
 The function takes the Textract JSON file and the original image file which was used
 as input for the OCR. (That is necessary because Textract stores coordinates in
-`float` ratios, whereas PAGE uses `int` in pixel indices.)
+`float` ratios, whereas PAGE uses `int` in pixel indices. However, if the with and height
+of the image are passed as well, then the file is not needed – see below.)
+
+> **Note**: Only supports single-page requests. Multi-page JSON results must first be
+> split up, for example via
+> ```sh
+>     jq '{Blocks: [.Blocks[] | select(.Page == 1)]}' aws.json > aws-page1.json
+>     jq '{Blocks: [.Blocks[] | select(.Page == 2)]}' aws.json > aws-page2.json
+>     jq '{Blocks: [.Blocks[] | select(.Page == 3)]}' aws.json > aws-page3.json
+> ```
 
 ### Python API
 
@@ -45,7 +56,7 @@ convert_file_without_image("example.json",
     "example.jpg",
     # set image width so PAGE coordinates will be correct:
     2135,
-    # set image width so PAGE coordinates will be correct:
+    # set image height so PAGE coordinates will be correct:
     3240,
     "example.xml")
 ```
@@ -55,10 +66,10 @@ convert_file_without_image("example.json",
 
 Analogously, on the command line interface:
 
-    # with image file
+    # with image file (path must be readable)
     textract2page example.json example.jpg > example.xml
     textract2page -O example.xml example.json example.jpg
-    # without image file (just its path name)
+    # without image file (just keep path name)
     textract2page --image-width 2135 --image-height 3240 example.json example.jpg > example.xml
     textract2page --image-width 2135 --image-height 3240 -O example.xml example.json example.jpg
 
