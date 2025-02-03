@@ -34,12 +34,33 @@ from textract2page import convert_file
 convert_file("example.json", "example.jpg", "example.xml")
 ```
 
+Alternatively, if you do not have access to the image file, 
+but do know its pixel resolution, use:
+
+```python
+from textract2page import convert_file_without_image
+
+convert_file_without_image("example.json",
+    # just give it a name (will not be read):
+    "example.jpg",
+    # set image width so PAGE coordinates will be correct:
+    2135,
+    # set image width so PAGE coordinates will be correct:
+    3240,
+    "example.xml")
+```
+
+
 ### CLI
 
 Analogously, on the command line interface:
 
+    # with image file
     textract2page example.json example.jpg > example.xml
     textract2page -O example.xml example.json example.jpg
+    # without image file (just its path name)
+    textract2page --image-width 2135 --image-height 3240 example.json example.jpg > example.xml
+    textract2page --image-width 2135 --image-height 3240 -O example.xml example.json example.jpg
 
 You can get a list of options with `--help` or `-h`
 
